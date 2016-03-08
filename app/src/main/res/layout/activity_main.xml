@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+    <RelativeLayout
+        android:id="@+id/relative_main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/mainColor">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/main_mainTitle"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"/>
+    </RelativeLayout>
+<TabHost
+    android:id="@android:id/tabhost"
+    android:layout_below="@+id/relative_main"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="8">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:showDividers="none"
+            >
+
+        </TabWidget>
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_above="@android:id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <FrameLayout
+                android:id="@+id/inforView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></FrameLayout>
+            <FrameLayout
+                android:id="@+id/personalView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></FrameLayout>
+        </FrameLayout>
+    </RelativeLayout>
+</TabHost>
+
+</LinearLayout>

@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:imagecontrol="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragmentBackGround"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@mipmap/personal_infor_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/personalInforRelativeBackground"
+            android:orientation="horizontal">
+
+            <com.example.administrator.thehealthy.util.RoundImageView
+                android:id="@+id/roundImage_information"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:src="@mipmap/person_icon"
+                imagecontrol:border_outside_color="@color/mainColor"
+                imagecontrol:border_thickness="2dp" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3">
+
+                <TextView
+                    android:id="@+id/text_information_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/text_information_forMiddle"
+                    android:text="小明"
+                    android:textSize="@dimen/textSize_biger" />
+
+                <TextView
+                    android:id="@+id/text_information_forMiddle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:id="@+id/text_information_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_information_forMiddle"
+                    android:text="13300003333"
+                    android:textSize="@dimen/fragment_information_normalTextSize" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/fragment_information_linear_marginLeft"
+        android:layout_marginRight="@dimen/personal_infor_list_margin"
+        android:layout_marginTop="@dimen/fragment_information_linear_marginTop"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <!-- 出生日期-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:text="出生日期"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+
+            <TextView
+                android:id="@+id/text_information_birthDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+        </LinearLayout>
+
+        <!--中间线-->
+        <include layout="@layout/middle_line" />
+
+        <!-- 身份证号-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:text="身份证号"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+
+            <TextView
+                android:id="@+id/text_information_idCard"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+        </LinearLayout>
+
+        <!--中间线-->
+        <include layout="@layout/middle_line" />
+
+        <!-- 民族-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:text="民族"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+
+            <TextView
+                android:id="@+id/text_information_national"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+        </LinearLayout>
+
+        <!--中间线-->
+        <include layout="@layout/middle_line" />
+
+        <!-- 联系方式-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:text="联系方式"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+
+            <TextView
+                android:id="@+id/text_information_telephone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+        </LinearLayout>
+
+        <!--中间线-->
+        <include layout="@layout/middle_line" />
+
+        <!-- 联系人-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:text="联系人"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+
+            <TextView
+                android:id="@+id/text_information_contacter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+        </LinearLayout>
+
+        <!--中间线-->
+        <include layout="@layout/middle_line" />
+
+        <!-- 文化程度-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:text="文化程度"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+        </LinearLayout>
+
+        <!--中间线-->
+        <include layout="@layout/middle_line" />
+
+        <!-- 职业-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:text="文化程度"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+        </LinearLayout>
+
+        <!--中间线-->
+        <include layout="@layout/middle_line" />
+
+        <!-- 工作单位-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:text="工作单位"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+        </LinearLayout>
+
+        <!--中间线-->
+        <include layout="@layout/middle_line" />
+
+        <!-- 婚姻状况-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:text="婚姻状况"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+        </LinearLayout>
+
+        <!--中间线-->
+        <include layout="@layout/middle_line" />
+
+        <!-- 血型-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:text="血型"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+        </LinearLayout>
+
+        <!--中间线-->
+        <include layout="@layout/middle_line" />
+
+        <!-- 医疗付费方式-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:text="医疗付费方式"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:padding="@dimen/fragment_information_textPadding"
+                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/fragment_information_normalTextSize" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+            <!-- 在布局的最后空出一段-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

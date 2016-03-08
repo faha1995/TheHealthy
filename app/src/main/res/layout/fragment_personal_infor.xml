@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:imagecontrol="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragmentBackGround"
+    android:orientation="vertical">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@mipmap/personal_infor_background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/personalInforRelativeBackground">
+
+            <com.example.administrator.thehealthy.util.RoundImageView
+                android:id="@+id/roundImage_personalInfor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:src="@mipmap/person_icon"
+                imagecontrol:border_outside_color="#FF44B899"
+                imagecontrol:border_thickness="2dp" />
+
+            <TextView
+                android:id="@+id/text_personalInfor_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/roundImage_personalInfor"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="小明" />
+
+            <TextView
+                android:id="@+id/text_personalInfor_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_personalInfor_name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="5dp"
+                android:text="13300003333" />
+
+            <ImageView
+                android:id="@+id/image_personalInfor_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:src="@drawable/edit_personal_infor" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_personalInfor_first"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/personal_infor_linear_width"
+        android:layout_margin="@dimen/personal_infor_list_margin"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/personal_infor_list_margin"
+            android:drawableLeft="@mipmap/zlxx"
+            android:drawablePadding="@dimen/personal_infor_textDrawPadding"
+            android:text="资料信息"
+            android:textColor="@color/secondaryColor" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_personalInfor_second"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/personal_infor_linear_width"
+        android:layout_marginLeft="@dimen/personal_infor_list_margin"
+        android:layout_marginRight="@dimen/personal_infor_list_margin"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/personal_infor_list_margin"
+            android:layout_marginRight="@dimen/personal_infor_list_margin"
+            android:drawableLeft="@mipmap/shxg"
+            android:drawablePadding="@dimen/personal_infor_textDrawPadding"
+            android:text="生活习惯"
+            android:textColor="@color/secondaryColor" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_personalInfor_third"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/personal_infor_linear_width"
+        android:layout_margin="@dimen/personal_infor_list_margin"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/personal_infor_list_margin"
+            android:layout_marginRight="@dimen/personal_infor_list_margin"
+            android:drawableLeft="@mipmap/jwbs"
+            android:drawablePadding="@dimen/personal_infor_textDrawPadding"
+            android:text="既往病史"
+            android:textColor="@color/secondaryColor" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_personalInfor_fourth"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/personal_infor_linear_width"
+        android:layout_marginLeft="@dimen/personal_infor_list_margin"
+        android:layout_marginRight="@dimen/personal_infor_list_margin"
+        android:background="@color/colorWhite"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/personal_infor_list_margin"
+            android:layout_marginRight="@dimen/personal_infor_list_margin"
+            android:drawableLeft="@mipmap/about_us_icon"
+            android:drawablePadding="@dimen/personal_infor_textDrawPadding"
+            android:text="关于我们"
+            android:textColor="@color/secondaryColor" />
+    </LinearLayout>
+        <Button
+            android:id="@+id/btn_personalInfor_exit"
+            android:layout_width="match_parent"
+            android:layout_marginRight="@dimen/pesonalInfor_btn_marginLeft_marginRight"
+            android:layout_marginLeft="40dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_shape"
+            android:text="退出"
+            android:textSize="22sp"
+            android:layout_marginTop="30dp"
+            />
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

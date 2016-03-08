@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_margin="@dimen/health_report_adapter_cardView_margin"
+        app:cardBackgroundColor="@color/colorWhite"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--上半部分-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.2"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/text_healthReport_adapter_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="中医药健康管理服务"
+                    android:layout_marginTop="@dimen/adapter_health_report_title_marginTop"
+                    android:textColor="@color/mainColor"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/adapter_health_report_title_textSize"/>
+
+                <TextView
+                    android:id="@+id/text_healthReport_adapter_purpose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="18月儿童中医随访"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="@dimen/adapter_health_report_purpose_textSize"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/adapter_health_report_view_marginLeft_tight"
+                android:layout_marginRight="@dimen/adapter_health_report_view_marginLeft_tight"
+                android:background="@color/fragmentBackGround" />
+
+            <!--中间部分-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2.5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/adapter_health_report_doctor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="测试医生"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/secondaryColor"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/adapter_health_report_doctor_textSize"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="燕郊镇卫生院"
+                    android:layout_gravity="center"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="@dimen/adapter_health_report_purpose_textSize"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/adapter_health_report_view_marginLeft_tight"
+                android:layout_marginRight="@dimen/adapter_health_report_view_marginLeft_tight"
+                android:background="@color/fragmentBackGround" />
+
+            <!-- 下半部分-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/text_healthReport_adapter_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="@dimen/adapter_health_report_doctor_textSize"
+                    android:text="17:00:03  2016-01-21"
+                    android:layout_alignParentRight="true"
+                    android:gravity="center"
+                    android:layout_marginRight="@dimen/adapter_health_report_doctor_margin"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

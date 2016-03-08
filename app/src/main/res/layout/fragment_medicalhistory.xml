@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragmentBackGround"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin_title"
+                android:text="既往病史"
+                android:textColor="@color/secondaryColor"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fragment_information_linear_marginLeft"
+                android:layout_marginRight="@dimen/personal_infor_list_margin"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
+
+                <!-- 疾病史-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="疾病史"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_medicalHistory_disease"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+
+                <!--中间线-->
+                <include layout="@layout/middle_line" />
+
+                <!-- 手术史-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="手术史"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_medicalHistory_surgery"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+
+                <!--中间线-->
+                <include layout="@layout/middle_line" />
+
+                <!-- 外伤史-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="外伤史"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_medicalHistory_trauma"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+
+                <!--中间线-->
+                <include layout="@layout/middle_line" />
+
+                <!-- 输血史-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="输血史"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_medicalHistory_blood"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+
+                <!--中间线-->
+                <include layout="@layout/middle_line" />
+
+                <!-- 残疾情况-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="残疾情况"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_mecialHistory_disability"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin_title"
+                android:text="家族病史"
+                android:textColor="@color/secondaryColor"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fragment_information_linear_marginLeft"
+                android:layout_marginRight="@dimen/personal_infor_list_margin"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
+
+                <!-- 家庭成员-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="家族成员"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_medicalHistory_family_father"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="父亲"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+
+                <!--中间线-->
+                <include layout="@layout/middle_line" />
+
+                <!-- 疾病-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="疾病"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_medicalHistory_sick_father"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+
+                <!--中间线-->
+                <include layout="@layout/middle_line" />
+
+                <!-- 家庭成员-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="家庭成员"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_medicalHistory_family_mom"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="母亲"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+
+                <!--中间线-->
+                <include layout="@layout/middle_line" />
+
+                <!-- 疾病-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="疾病"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_medicalHistory_sick_mom"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+
+                <!--中间线-->
+                <include layout="@layout/middle_line" />
+
+
+                <!-- 家庭成员-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="家族成员"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_medicalHistory_family_brother"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="兄弟姐妹"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+
+                <!--中间线-->
+                <include layout="@layout/middle_line" />
+
+                <!-- 疾病-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="疾病"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_medicalHistory_sick_brother"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+
+                <!--中间线-->
+                <include layout="@layout/middle_line" />
+
+                <!-- 家庭成员-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="家庭成员"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_medicalHistory_family_son"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="子女"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+
+                <!--中间线-->
+                <include layout="@layout/middle_line" />
+
+                <!-- 疾病-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="疾病"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_medicalHistory_sick_son"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+
+                <!--中间线-->
+                <include layout="@layout/middle_line" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin_title"
+                android:text="药物过敏史"
+                android:textColor="@color/secondaryColor"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fragment_information_linear_marginLeft"
+                android:layout_marginRight="@dimen/personal_infor_list_margin"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
+                <!-- 过敏史-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="过敏史"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_medicalHistory_allergy"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_margin_title"
+                android:text="遗传病史"
+                android:textColor="@color/secondaryColor"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fragment_information_linear_marginLeft"
+                android:layout_marginRight="@dimen/personal_infor_list_margin"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
+                <!-- 遗传病史-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="遗传病史"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_medicalHistory_genetic"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 在布局的最后空出一段-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
