@@ -42,16 +42,16 @@
                 android:layout_below="@+id/roundImage_personalInfor"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
-                android:text="小明" />
+                android:text="未设置..." />
 
             <TextView
-                android:id="@+id/text_personalInfor_phone"
+                android:id="@+id/text_personalInfor_mobile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/text_personalInfor_name"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
-                android:text="13300003333" />
+                android:text="未知..." />
 
             <ImageView
                 android:id="@+id/image_personalInfor_edit"

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/aa"
+    android:padding="20dp"
+    tools:context="com.example.administrator.thehealthy.activity.inforactivity.RegisterActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linear_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/linearlayout_background"
+        android:orientation="vertical">
+
+        <!-- 上半部分-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/text_register_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="注册"
+                android:layout_margin="5dp"
+                android:textColor="@color/secondaryColor"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请填写以下信息"
+                android:textSize="15sp"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/secondaryColor"
+                android:layout_below="@+id/text_register_title"
+                android:layout_marginLeft="10dp"/>
+        </RelativeLayout>
+
+        <!-- 中间部分-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+
+            <TextView
+                android:id="@+id/text_register_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="名字："
+                android:textSize="@dimen/register_smallTitle_textSize"
+                android:layout_marginLeft="@dimen/register_smallTitle_marginLeft"
+                android:textColor="@color/secondaryColor"/>
+            <EditText
+                android:id="@+id/edit_register_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="@dimen/register_smallTitle_marginLeft"
+                android:layout_marginRight="@dimen/register_smallTitle_marginLeft"
+                android:layout_below="@+id/text_register_name"
+                android:background="@drawable/edittext_register_shape"
+                android:drawableLeft="@mipmap/personal_register_icon"
+                android:drawablePadding="@dimen/edit_login_phone_drawPadding"
+                android:padding="@dimen/editText_login_phone_padding"
+                android:textColor="@color/secondaryColor"
+                android:textColorHint="@color/secondaryColor"
+                android:singleLine="true"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/text_register_mobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_register_name"
+                android:text="电话号码："
+                android:textSize="@dimen/register_smallTitle_textSize"
+                android:layout_marginLeft="@dimen/register_smallTitle_marginLeft"
+                android:textColor="@color/secondaryColor"/>
+            <EditText
+                android:id="@+id/edit_register_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_register_mobile"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="@dimen/register_smallTitle_marginLeft"
+                android:layout_marginRight="@dimen/register_smallTitle_marginLeft"
+                android:singleLine="true"
+                android:background="@drawable/edittext_register_shape"
+                android:drawableLeft="@mipmap/login_phone_icon"
+                android:drawablePadding="@dimen/edit_login_phone_drawPadding"
+                android:padding="@dimen/editText_login_phone_padding"
+                android:textColor="@color/secondaryColor"
+                android:textColorHint="@color/secondaryColor"
+                android:textSize="15sp" />
+
+
+            <TextView
+                android:id="@+id/text_register_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_register_mobile"
+                android:text="身份证号码："
+                android:textSize="@dimen/register_smallTitle_textSize"
+                android:layout_marginLeft="@dimen/register_smallTitle_marginLeft"
+                android:textColor="@color/secondaryColor"/>
+            <EditText
+                android:id="@+id/edit_register_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="@dimen/register_smallTitle_marginLeft"
+                android:layout_marginRight="@dimen/register_smallTitle_marginLeft"
+                android:singleLine="true"
+                android:layout_below="@+id/text_register_id"
+                android:background="@drawable/edittext_register_shape"
+                android:drawableLeft="@mipmap/register_id_icon"
+                android:drawablePadding="@dimen/edit_login_phone_drawPadding"
+                android:padding="@dimen/editText_login_phone_padding"
+                android:textColor="@color/secondaryColor"
+                android:textColorHint="@color/secondaryColor"
+                android:textSize="15sp" />
+
+
+            <TextView
+                android:id="@+id/text_register_psw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_register_id"
+                android:text="密码："
+                android:textSize="@dimen/register_smallTitle_textSize"
+                android:layout_marginLeft="@dimen/register_smallTitle_marginLeft"
+                android:textColor="@color/secondaryColor"/>
+
+            <EditText
+                android:id="@+id/edit_register_psw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_register_psw"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="@dimen/register_smallTitle_marginLeft"
+                android:layout_marginRight="@dimen/register_smallTitle_marginLeft"
+                android:singleLine="true"
+                android:background="@drawable/edittext_register_shape"
+                android:drawableLeft="@mipmap/login_psw_icon"
+                android:drawablePadding="@dimen/edit_login_phone_drawPadding"
+                android:padding="@dimen/editText_login_phone_padding"
+                android:textColor="@color/secondaryColor"
+                android:textColorHint="@color/secondaryColor"
+                android:password="true"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <!-- 下半部分-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_register_sure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="确定"
+                android:layout_margin="@dimen/register_smallTitle_marginLeft"
+                android:background="@drawable/button_shape"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

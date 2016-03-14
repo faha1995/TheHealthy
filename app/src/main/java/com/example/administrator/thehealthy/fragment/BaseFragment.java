@@ -1,5 +1,7 @@
 package com.example.administrator.thehealthy.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -62,7 +64,7 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     }
 
     // fragment的替换
-    public void goToNextFragment(Fragment fragment) {
+    public void goToNextFragmentFromPersonal(Fragment fragment) {
         if (fm == null) {
             fm = getActivity().getSupportFragmentManager();
         }
@@ -81,12 +83,42 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
 
     }
 
-    // 返回的方法
-    public void backBeforFragment(){
+    // fragment的替换
+    public void goToNextFragmentFromEducation(Fragment fragment, int pos) {
         if (fm == null) {
             fm = getActivity().getSupportFragmentManager();
         }
-      fm.popBackStack();
-        fm.popBackStackImmediate(" ",1);
+        ft = fm.beginTransaction();
+        ft.setCustomAnimations(
+                R.anim.move_in_from_right,
+                R.anim.no_move,
+                R.anim.no_move,
+                R.anim.move_out_from_right
+        );
+        Bundle bundle = new Bundle();
+        bundle.putInt("pos", pos);
+        fragment.setArguments(bundle);
+        ft.add(R.id.fragment_healthEducation, fragment);
+        // addToBackStack() 是为了将该Fragment加入到后退栈中
+        // 在返回时,可以直接返回到上一个界面
+        ft.addToBackStack(null);
+        ft.commitAllowingStateLoss();
+
+    }
+
+    // acitvity的跳转
+    public static <T> void activityIntent(Activity activity, Class<T> clazz) {
+        Intent intent = new Intent(activity, clazz);
+        activity.overridePendingTransition(R.anim.move_in_from_right, R.anim.no_move);
+        activity.startActivity(intent);
+    }
+
+    // 返回的方法
+    public void backBeforFragment() {
+        if (fm == null) {
+            fm = getActivity().getSupportFragmentManager();
+        }
+        fm.popBackStack();
+        fm.popBackStackImmediate(" ", 1);
     }
 }

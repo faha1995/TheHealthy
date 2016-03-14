@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/aa"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2">
+
+        <TextView
+            android:id="@+id/text_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:text="卫生系统"
+            android:textColor="@color/colorWhite"
+            android:textSize="35sp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/text_login"
+            android:layout_toRightOf="@+id/text_login"
+            android:text="三河市"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/btn_login_textSize" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5">
+
+        <RelativeLayout
+            android:id="@+id/relative_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editext_login_height"
+            android:layout_marginLeft="@dimen/editext_phone_margin"
+            android:layout_marginRight="@dimen/editext_phone_margin"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/edit_login_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edittext_shape"
+                android:drawableLeft="@mipmap/login_phone_icon"
+                android:drawablePadding="@dimen/edit_login_phone_drawPadding"
+                android:singleLine="true"
+                android:hint="电话号码"
+                android:padding="@dimen/editText_login_phone_padding"
+                android:textColor="@color/secondaryColor"
+                android:textColorHint="@color/secondaryColor"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/img_login_clean"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:visibility="invisible"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/edittext_drawright_icon" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/edit_login_psw"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/editext_login_height"
+            android:layout_below="@+id/relative_login"
+            android:layout_marginLeft="@dimen/editext_phone_margin"
+            android:layout_marginRight="@dimen/editext_phone_margin"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/edittext_shape"
+            android:drawableLeft="@mipmap/login_psw_icon"
+            android:drawablePadding="@dimen/edit_login_phone_drawPadding"
+            android:hint="密码"
+            android:padding="@dimen/editText_login_phone_padding"
+            android:password="true"
+            android:textColor="@color/secondaryColor"
+            android:singleLine="true"
+            android:textColorHint="@color/secondaryColor"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_shape"
+            android:padding="10dp"
+            android:text="登录"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_login"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_shape_register"
+            android:text="还不是系统用户？现在开始注册"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#FF999999"
+            android:textSize="15sp" />
+    </RelativeLayout>
+</LinearLayout>
+
+
