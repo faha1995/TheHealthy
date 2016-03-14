@@ -15,13 +15,15 @@
             android:orientation="vertical">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin_title"
-                android:text="既往病史"
-                android:textColor="@color/secondaryColor"
-                android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_margin_title"
+                    android:text="既往病史"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="16sp" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -41,7 +43,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="疾病史"
                         android:textColor="@color/secondaryColor"
@@ -71,7 +72,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="手术史"
                         android:textColor="@color/secondaryColor"
@@ -101,7 +101,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="外伤史"
                         android:textColor="@color/secondaryColor"
@@ -131,7 +130,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="输血史"
                         android:textColor="@color/secondaryColor"
@@ -161,14 +159,13 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="残疾情况"
                         android:textColor="@color/secondaryColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
 
                     <TextView
-                        android:id="@+id/text_mecialHistory_disability"
+                        android:id="@+id/text_medicalHistory_disability"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
@@ -206,7 +203,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="家族成员"
                         android:textColor="@color/secondaryColor"
@@ -237,7 +233,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="疾病"
                         android:textColor="@color/secondaryColor"
@@ -267,7 +262,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="家庭成员"
                         android:textColor="@color/secondaryColor"
@@ -298,7 +292,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="疾病"
                         android:textColor="@color/secondaryColor"
@@ -329,7 +322,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="家族成员"
                         android:textColor="@color/secondaryColor"
@@ -360,7 +352,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="疾病"
                         android:textColor="@color/secondaryColor"
@@ -390,7 +381,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="家庭成员"
                         android:textColor="@color/secondaryColor"
@@ -421,7 +411,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="疾病"
                         android:textColor="@color/secondaryColor"
@@ -467,7 +456,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="过敏史"
                         android:textColor="@color/secondaryColor"
@@ -511,7 +499,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="遗传病史"
                         android:textColor="@color/secondaryColor"
@@ -532,7 +519,7 @@
             <!-- 在布局的最后空出一段-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"/>
+                android:layout_height="30dp" />
 
         </LinearLayout>
     </ScrollView>
