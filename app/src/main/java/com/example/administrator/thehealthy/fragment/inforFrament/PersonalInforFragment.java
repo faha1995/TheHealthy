@@ -70,9 +70,10 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
 
         if (dbTool.isLogined()) {
             Log.i(TAG, "-------->" + "isLogined()");
-            Log.i(TAG, "-----> NAME :" + user.get("name"));
+            Log.i(TAG, "-----> NAME :");
 
             user = dbTool.getUserDetails();
+            Log.i(TAG, "-----> NAME :" + user.get("name"));
             StringRequest request = new StringRequest(Request.Method.POST,
                     AppConfig.URL_PERSONAL_INFO, new Response.Listener<String>() {
                 @Override

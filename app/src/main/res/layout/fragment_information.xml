@@ -48,7 +48,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_above="@+id/text_information_forMiddle"
-                    android:text="小明"
                     android:textSize="@dimen/textSize_biger" />
 
                 <TextView
@@ -58,11 +57,10 @@
                     android:layout_centerVertical="true" />
 
                 <TextView
-                    android:id="@+id/text_information_phone"
+                    android:id="@+id/text_information_sex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/text_information_forMiddle"
-                    android:text="13300003333"
                     android:textSize="@dimen/fragment_information_normalTextSize" />
             </RelativeLayout>
         </LinearLayout>
@@ -87,7 +85,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="出生日期"
                 android:textColor="@color/secondaryColor"
@@ -97,7 +94,7 @@
                 android:id="@+id/text_information_birthDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="2.5"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
@@ -116,7 +113,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="身份证号"
                 android:textColor="@color/secondaryColor"
@@ -126,7 +122,7 @@
                 android:id="@+id/text_information_idCard"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="2.5"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
@@ -145,7 +141,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="民族"
                 android:textColor="@color/secondaryColor"
@@ -155,7 +150,7 @@
                 android:id="@+id/text_information_national"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="2.5"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
@@ -174,17 +169,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="联系方式"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
-                android:id="@+id/text_information_telephone"
+                android:id="@+id/text_information_mobile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="2.5"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
@@ -203,17 +197,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="联系人"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
-                android:id="@+id/text_information_contacter"
+                android:id="@+id/text_information_others"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="2.5"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
@@ -232,16 +225,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="文化程度"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
+                android:id="@+id/text_information_education"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="2.5"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
@@ -260,16 +253,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:padding="@dimen/fragment_information_textPadding"
-                android:text="文化程度"
+                android:text="职业"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
+                android:id="@+id/text_information_profession"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="2.5"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
@@ -288,16 +281,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="工作单位"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
+                android:id="@+id/text_information_workPlace"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="2.5"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
@@ -316,16 +309,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="婚姻状况"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
+                android:id="@+id/text_information_maritalStatus"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="2.5"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
@@ -344,16 +337,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="血型"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
+                android:id="@+id/text_information_bloodStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
+                android:layout_weight="2.5"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
@@ -372,13 +365,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="医疗付费方式"
                 android:textColor="@color/secondaryColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
+                android:id="@+id/text_information_paymentMethod"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
@@ -392,7 +385,7 @@
             <!-- 在布局的最后空出一段-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            android:layout_height="15dp"/>
 
 
         </LinearLayout>

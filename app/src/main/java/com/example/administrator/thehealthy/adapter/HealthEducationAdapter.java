@@ -55,7 +55,7 @@ public class HealthEducationAdapter extends RecyclerView.Adapter {
             eduHolder = new HealthEducationViewHolder(view);
             eduHolder.healtEduTitle.setText(eduEntityList.get(position).getTitle());
             eduHolder.healthEduContent.setText(eduEntityList.get(position).getContent());
-            eduHolder.healthEduTime.setText(ChangeString.SplitTime(eduEntityList.get(position).getCreate_at()));
+            eduHolder.healthEduTime.setText(ChangeString.splitTime(eduEntityList.get(position).getCreate_at()));
             eduHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

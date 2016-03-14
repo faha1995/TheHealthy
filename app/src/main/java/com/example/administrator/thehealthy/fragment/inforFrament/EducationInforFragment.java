@@ -32,8 +32,8 @@ public class EducationInforFragment extends BaseFragment {
 
         eduInforTitle.setText(AppData.eduEntityList.get(position).getTitle());
         eduInforContent.setText(AppData.eduEntityList.get(position).getContent());
-        eduInforTime.setText(ChangeString.SplitForTime(AppData.eduEntityList.get(position).getCreate_at()));
-        eduInforDate.setText(ChangeString.SplitForDate(AppData.eduEntityList.get(position).getCreate_at()));
+        eduInforTime.setText(ChangeString.splitForTime(AppData.eduEntityList.get(position).getCreate_at()));
+        eduInforDate.setText(ChangeString.splitForDate(AppData.eduEntityList.get(position).getCreate_at()));
 
 
     }

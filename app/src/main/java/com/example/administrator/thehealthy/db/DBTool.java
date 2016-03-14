@@ -47,33 +47,33 @@ public class DBTool implements SQLValues {
     public void addUser(String name, String mobile, String identity,
                         String resident_id, String create_at) {
         ContentValues values = new ContentValues();
-        values.put("name",name);
-        values.put("mobile",mobile);
-        values.put("identity",identity);
-        values.put("resident_id",resident_id);
-        values.put("create_at",create_at);
-
-        long id = database.insert(TABLE_USER,null,values);
+        values.put("name", name);
+        values.put("mobile", mobile);
+        values.put("identity", identity);
+        values.put("resident_id", resident_id);
+        values.put("create_at", create_at);
+        database.insert(TABLE_USER, null, values);
+//        long id = database.insert(TABLE_USER, null, values);
         database.close();
 
-        Log.d(TAG, "New user inserted into SQLite: " + id);
+//        Log.d(TAG, "New user inserted into SQLite: " + id);
 
     }
 
     // 从数据库中获得详细信息
-    public HashMap<String, String> getUserDetails(){
-        HashMap<String ,String> user = new HashMap<>();
+    public HashMap<String, String> getUserDetails() {
+        HashMap<String, String> user = new HashMap<>();
         String selectQuery = "select * from " + TABLE_USER;
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         cursor.moveToFirst();
         if (cursor.getColumnCount() > 0) {
-            user.put("name",cursor.getString(1));
-            user.put("mobile",cursor.getString(2));
-            user.put("identity",cursor.getString(3));
-            user.put("resident_id",cursor.getString(4));
-            user.put("created_at",cursor.getString(5));
+            user.put("name", cursor.getString(1));
+            user.put("mobile", cursor.getString(2));
+            user.put("identity", cursor.getString(3));
+            user.put("resident_id", cursor.getString(4));
+            user.put("created_at", cursor.getString(5));
         }
         cursor.close();
         db.close();
@@ -82,7 +82,7 @@ public class DBTool implements SQLValues {
     }
 
     // 删除当前数据库中所有信息
-    public void deleteUser(){
+    public void deleteUser() {
         database.delete(TABLE_USER, null, null);
         database.close();
 
@@ -90,7 +90,7 @@ public class DBTool implements SQLValues {
     }
 
     // 删除当前数据库中所有个人信息
-    public void deleteSummary(){
+    public void deleteSummary() {
         // 由于在此之前的调用deleteUser()方法中database已经关闭
         // 所以再次调用时要初始化
         this.database = dbHelper.getWritableDatabase();
