@@ -9,4 +9,7 @@
     <color name="fragmentBackGround">#FFE3F9FD</color>
     <color name="tabwidgetSecondColor">#FFE8E8E8</color>
     <color name="personalInforRelativeBackground">#33000000</color>
+    <color name="bg">#FFFFFFFF</color>
+    <color name="colorF0">#FFF0F0F0</color>
+
 </resources>

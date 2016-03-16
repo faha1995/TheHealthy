@@ -47,7 +47,6 @@ public class HealthEducationFragment extends BaseFragment implements MyClickList
         educationAdapter = new HealthEducationAdapter(getActivity());
         educationAdapter.setMyClickListener(this);
         educationRv.setAdapter(educationAdapter);
-//        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -96,14 +95,20 @@ public class HealthEducationFragment extends BaseFragment implements MyClickList
         VolleySingleton.getInstace().addRequest(stringRequest);
     }
 
-    @Override
-    public void myOnClickListener(int pos) {
 
-       goToNextFragmentFromEducation(new EducationInforFragment(),pos);
-    }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void myOnClickListener(int pos) {
+        goToNextFragmentFromEducation(new EducationInforFragment(),pos);
+    }
+
+    @Override
+    public void myOnClickListener(String type_alias, String item_alias, int record_id) {
+
     }
 }

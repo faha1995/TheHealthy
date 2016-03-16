@@ -4,19 +4,19 @@ package com.example.administrator.thehealthy.entity;
  * Created by Administrator on 2016/3/10.
  */
 public class Summary {
-    private int record_id;
-    private String title,clinic,provider,service_time,
-    type_alias,item_alias;
+    private int recordId;
+    private String title,clinic,provider,serviceTime,
+    typeAlias,itemAlias;
 
     public Summary() {
     }
 
-    public int getRecord_id() {
-        return record_id;
+    public int getRecordId() {
+        return recordId;
     }
 
-    public void setRecord_id(int record_id) {
-        this.record_id = record_id;
+    public void setRecordId(int record_id) {
+        this.recordId = record_id;
     }
 
     public String getTitle() {
@@ -43,27 +43,27 @@ public class Summary {
         this.provider = provider;
     }
 
-    public String getService_time() {
-        return service_time;
+    public String getServiceTime() {
+        return serviceTime;
     }
 
-    public void setService_time(String service_time) {
-        this.service_time = service_time;
+    public void setServiceTime(String serviceTime) {
+        this.serviceTime = serviceTime;
     }
 
-    public String getType_alias() {
-        return type_alias;
+    public String getTypeAlias() {
+        return typeAlias;
     }
 
-    public void setType_alias(String type_alias) {
-        this.type_alias = type_alias;
+    public void setTypeAlias(String typeAlias) {
+        this.typeAlias = typeAlias;
     }
 
-    public String getItem_alias() {
-        return item_alias;
+    public String getItemAlias() {
+        return itemAlias;
     }
 
-    public void setItem_alias(String item_alias) {
-        this.item_alias = item_alias;
+    public void setItemAlias(String itemAlias) {
+        this.itemAlias = itemAlias;
     }
 }

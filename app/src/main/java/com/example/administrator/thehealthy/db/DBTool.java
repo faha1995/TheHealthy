@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.administrator.thehealthy.application.BaseApplication;
+import com.example.administrator.thehealthy.entity.Summary;
 
 import java.util.HashMap;
 
@@ -100,5 +101,28 @@ public class DBTool implements SQLValues {
         Log.i(TAG, "Deleted all user infor from TABLE_SUMMARY");
     }
 
+    // 复写添加健康报告方法
+    public void addSummary(Summary summary){
+        addSummary(summary.getRecordId(),summary.getTitle(),summary.getClinic(),
+                summary.getProvider(),summary.getServiceTime(),summary.getTypeAlias(),
+                summary.getItemAlias());
+    }
+    // 添加健康报告方法
+    public void addSummary(int record_id, String title, String clinic, String provider,
+                           String service_time, String type_alias, String item_alias){
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        Log.i(TAG,"开始添加健康报告数据");
+
+        ContentValues values = new ContentValues();
+        values.put(KEY_RECORD_ID, record_id);
+        values.put(KEY_TITLE, title);
+        values.put(KEY_CLINIC, clinic);
+        values.put(KEY_PROVIDER, provider);
+        values.put(KEY_SERVICE_TIME, service_time);
+        values.put(KEY_TYPE_ALIAS, type_alias);
+        values.put(KEY_ITEM_ALIAS, item_alias);
+        database.close();
+        Log.i(TAG, "健康报告数据添加完毕");
+    }
 
 }

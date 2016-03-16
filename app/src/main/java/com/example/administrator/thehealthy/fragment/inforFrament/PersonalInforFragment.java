@@ -3,28 +3,15 @@ package com.example.administrator.thehealthy.fragment.inforFrament;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity;
-import com.example.administrator.thehealthy.application.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
-import com.example.administrator.thehealthy.volley.VolleySingleton;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2016/3/4.
@@ -32,13 +19,11 @@ import java.util.Map;
  */
 public class PersonalInforFragment extends BaseFragment implements View.OnClickListener {
     private final String TAG = PersonalInforFragment.class.getSimpleName();
-
-    private ImageView editImg;
-    private LinearLayout inforLinearFirst, inforLinearSecond, inforLinearThird;
+    private LinearLayout inforLinearFirst, inforLinearSecond, inforLinearThird,
+            inforLinearFourth;
     private Button exitBtn;
     private TextView nameText, mobileText;
     private DBTool dbTool;
-    private static HashMap<String, String> user = null;
 
     @Override
     protected int setLayoutView() {
@@ -50,6 +35,7 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
         inforLinearFirst = findView(R.id.linear_personalInfor_first);
         inforLinearSecond = findView(R.id.linear_personalInfor_second);
         inforLinearThird = findView(R.id.linear_personalInfor_third);
+        inforLinearFourth = findView(R.id.linear_personalInfor_fourth);
         exitBtn = findView(R.id.btn_personalInfor_exit);
         nameText = findView(R.id.text_personalInfor_name);
         mobileText = findView(R.id.text_personalInfor_mobile);
@@ -57,6 +43,7 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
         inforLinearFirst.setOnClickListener(this);
         inforLinearSecond.setOnClickListener(this);
         inforLinearThird.setOnClickListener(this);
+        inforLinearFourth.setOnClickListener(this);
         exitBtn.setOnClickListener(this);
         dbTool = new DBTool();
 
@@ -68,53 +55,22 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
     protected void initData() {
         Log.i(TAG, "-------->" + "initData()");
 
-        if (dbTool.isLogined()) {
-            Log.i(TAG, "-------->" + "isLogined()");
-            Log.i(TAG, "-----> NAME :");
+//         if (dbTool.isLogined()) {
+        Log.i(TAG, "-------->" + "isLogined()");
 
-            user = dbTool.getUserDetails();
-            Log.i(TAG, "-----> NAME :" + user.get("name"));
-            StringRequest request = new StringRequest(Request.Method.POST,
-                    AppConfig.URL_PERSONAL_INFO, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    Log.i(TAG, "个人基本信息操作网络通信响应: " + response.toString());
 
-                    try {
-                        JSONObject jsonObject = new JSONObject(response);
-                        boolean error = jsonObject.getBoolean("error");
 
-                        if (!error) {
-                            nameText.setText(user.get("name"));
-                            mobileText.setText(user.get("mobile"));
-                        } else {
-                            Toast.makeText(getContext(), jsonObject.getString("error_msg") + "",
-                                    Toast.LENGTH_SHORT).show();
-                        }
+        final HashMap<String, String> user = dbTool.getUserDetails();
+        Log.i(TAG, "-----> NAME :" + user.get("name"));
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+        nameText.setText(user.get("name"));
+        mobileText.setText(user.get("mobile"));
 
-                    }
-
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }) {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> params = new HashMap<>();
-                    params.put("resident_id", user.get("resident_id"));
-                    return params;
-                }
-            };
-            VolleySingleton.getInstace().addRequest(request);
-        }
+        Log.i(TAG, "-----> mobile :" + user.get("mobile"));
+//        }
 
         Log.i(TAG, "-------->" + "initDataEnd()");
+
     }
 
     @Override
@@ -129,8 +85,6 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
                     Log.i(TAG, "-------->" + "afterLogoutUser()");
                     // 跳转到登录界面
                     activityIntent(getActivity(), LoginActivity.class);
-//                    Intent intent = new Intent(getActivity(),LoginActivity.class);
-//                    startActivity(intent);
 
                     getActivity().finish();
                 } else {
@@ -160,6 +114,10 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
                 } else {
                     goToNextFragmentFromPersonal(new MedicalHistoryFragment());
                 }
+                break;
+            // 关于我们
+            case R.id.linear_personalInfor_fourth:
+                goToNextFragmentFromPersonal(new AboutUsFragment());
                 break;
             // 退出
             case R.id.btn_personalInfor_exit:

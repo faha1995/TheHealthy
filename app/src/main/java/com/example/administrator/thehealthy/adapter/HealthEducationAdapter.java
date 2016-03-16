@@ -52,7 +52,7 @@ public class HealthEducationAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         HealthEducationViewHolder eduHolder = null;
         if (eduEntityList != null && eduEntityList.size() > 0) {
-            eduHolder = new HealthEducationViewHolder(view);
+            eduHolder = (HealthEducationViewHolder) holder;
             eduHolder.healtEduTitle.setText(eduEntityList.get(position).getTitle());
             eduHolder.healthEduContent.setText(eduEntityList.get(position).getContent());
             eduHolder.healthEduTime.setText(ChangeString.splitTime(eduEntityList.get(position).getCreate_at()));

@@ -70,6 +70,7 @@
                     android:textSize="@dimen/adapter_health_report_doctor_textSize"/>
 
                 <TextView
+                    android:id="@+id/adapter_health_report_clinic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="燕郊镇卫生院"
