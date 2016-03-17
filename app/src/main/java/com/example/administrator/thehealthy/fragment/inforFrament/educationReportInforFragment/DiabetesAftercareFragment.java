@@ -14,6 +14,7 @@ import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.application.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
 import org.json.JSONException;
@@ -44,7 +45,7 @@ public class DiabetesAftercareFragment extends BaseFragment {
     protected void initData() {
         Log.i(TAG,"---->  initData()");
          Bundle bundle = getArguments();
-        final int record_id = bundle.getInt("pos");
+        final int record_id = bundle.getInt("record_id",0);
         Log.i(TAG,"----> "+ record_id);
         if (record_id != 0) {
 
@@ -70,7 +71,7 @@ public class DiabetesAftercareFragment extends BaseFragment {
                                     TextView visit_way = findView(R.id.visit_way);
                                     visit_way.setText(detail.getString("visit_way"));
                                     TextView symptom = findView(R.id.symptom);
-                                    symptom.setText(detail.getString("symptom"));
+                                    symptom.setText(ChangeString.splitMainMore(detail.getString("symptom")));
                                     TextView visit_classification = findView(R.id.visit_classification);
                                     visit_classification.setText(detail.getString("visit_classification"));
                                     TextView transfer_treatment_reason = findView(R.id.transfer_treatment_reason);

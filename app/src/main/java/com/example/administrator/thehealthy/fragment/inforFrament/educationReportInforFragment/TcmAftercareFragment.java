@@ -12,6 +12,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.application.AppConfig;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
 import org.json.JSONException;
@@ -57,7 +58,7 @@ public class TcmAftercareFragment extends BaseFragment {
                                     TextView visit_date = findView(R.id.visit_date);
                                     visit_date.setText(detail.getString("visit_date"));
                                     TextView guide = findView(R.id.guide);
-                                    guide.setText(detail.getString("guide"));
+                                    guide.setText(ChangeString.splitMainMore(detail.getString("guide")));
                                     TextView guide_extra = findView(R.id.guide_extra);
                                     guide_extra.setText(detail.getString("guide_extra"));
                                     TextView next_visit_date = findView(R.id.next_visit_date);

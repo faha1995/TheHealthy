@@ -1,5 +1,6 @@
 package com.example.administrator.thehealthy.fragment.inforFrament.educationReportInforFragment;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,7 +39,8 @@ public class Aftercare1MonthFragment extends BaseFragment {
 
     @Override
     protected void initData() {
-        final Integer record_id = getArguments().getInt("record_id", 0);
+        Bundle bundle = getArguments();
+        final Integer record_id = bundle.getInt("record_id", 0);
 
         if (record_id != 0) {
             Log.e(TAG, "开始从后台获取详情");

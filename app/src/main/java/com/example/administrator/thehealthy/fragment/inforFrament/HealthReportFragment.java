@@ -158,16 +158,19 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
         } else if (type_alias.equals("diabetes") && (item_alias.equals("aftercare_1") || item_alias.equals("aftercare_2")
                 || item_alias.equals("aftercare_3") || item_alias.equals("aftercare_4"))) {
             goToNextFragmentFromPersonal(new DiabetesAftercareFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (item_alias.equals("body_exam_table") || item_alias.equals("physical_examination")) {
             goToNextFragmentFromPersonal(new BodyExamFragment(), record_id);
         } else if (type_alias.equals("vaccine") && item_alias.equals("vaccine_card")) {
             goToNextFragmentFromPersonal(new VaccineCardFragment(), record_id);
         } else if (type_alias.equals("vaccine") && !item_alias.equals("vaccine_card")) {
             goToNextFragmentFromPersonal(new VaccinationFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("tcm") && (item_alias.equals("aftercare_6_month") || item_alias.equals("aftercare_12_month")
                 || item_alias.equals("aftercare_18_month") || item_alias.equals("aftercare_24_month")
                 || item_alias.equals("aftercare_30_month") || item_alias.equals("aftercare_3_year"))) {
             goToNextFragmentFromPersonal(new TcmAftercareFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("tcm") && item_alias.equals("constitution_identification")) {
             goToNextFragmentFromPersonal(new OldIdentifyFragment(), record_id);
         } else if (type_alias.equals("psychiatric") && (item_alias.equals("aftercare_1") || item_alias.equals("aftercare_2")

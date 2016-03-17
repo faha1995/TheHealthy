@@ -47,6 +47,19 @@ public class ChangeString {
         return mainString;
     }
 
+    // 将字符串["多饮","少饮"] 截取为 多饮 少饮
+    public static String splitMainMore(String string) {
+        String allString;
+
+        String[] split=string.split("\"");
+        if (split.length > 4) {
+        allString = split[1]+"  "+split[3];
+        } else {
+            allString = split[1];
+        }
+        return allString;
+    }
+
     // 将字符串 预防接种服务：乙肝疫苗 截取为 预防接种服务
     public static String splitForTitle(String string){
         String titleString;

@@ -84,7 +84,7 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     }
 
     // fragment的替换
-    public void goToNextFragmentFromPersonal(Fragment fragment,int pos) {
+    public void goToNextFragmentFromPersonal(Fragment fragment,int record_id) {
         if (fm == null) {
             fm = getActivity().getSupportFragmentManager();
         }
@@ -96,7 +96,7 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
                 R.anim.move_out_from_right
         );
         Bundle bundle = new Bundle();
-        bundle.putInt("pos", pos);
+        bundle.putInt("record_id", record_id);
         fragment.setArguments(bundle);
 
         ft.add(R.id.fragment_personal, fragment);
