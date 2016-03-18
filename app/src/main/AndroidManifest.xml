@@ -4,6 +4,14 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- 设置程序适应的手机屏幕 -->
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
     <application
         android:name=".application.BaseApplication"
         android:allowBackup="true"
@@ -15,31 +23,24 @@
             android:name=".activity.MainActivity"
             android:launchMode="singleTask">
 
-
-        </activity>
-
-        <activity
-            android:name=".activity.inforactivity.LoginActivity"
-            android:launchMode="singleTask">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.inforactivity.LoginActivity"
+            android:launchMode="singleTask">
 
+        </activity>
         <activity
             android:name=".activity.inforactivity.RegisterActivity"
-            android:launchMode="singleTask"></activity>
-        |
+            android:launchMode="singleTask" />
+
+        <activity android:name=".activity.TestActivity">
+
+        </activity>
     </application>
 
-    <!-- 设置程序适应的手机屏幕-->
-    <supports-screens
-        android:anyDensity="true"
-        android:largeScreens="true"
-        android:normalScreens="true"
-        android:resizeable="true"
-        android:smallScreens="true" />
 </manifest>

@@ -12,6 +12,8 @@
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:overScrollMode="never"
         android:background="@color/fragmentBackGround">
 
         <LinearLayout
@@ -32,6 +34,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="预防接种卡"
+                    android:textColor="@color/secondaryColor"
                     android:textSize="22sp" />
 
                 <LinearLayout
@@ -43,23 +46,27 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="建卡人：" />
+                        android:text="建卡人："
+                        android:textColor="@color/secondaryColor" />
 
                     <TextView
                         android:id="@+id/found_card_person"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:text="建卡日期：" />
+                        android:text="建卡日期："
+                        android:textColor="@color/secondaryColor" />
 
                     <TextView
                         android:id="@+id/found_card_date"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -74,25 +81,32 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="姓名：" />
+                    android:layout_weight="0.7"
+                    android:text="姓名："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.7"
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="性别：" />
+                    android:layout_weight="0.7"
+                    android:text="性别："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/gender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
             <LinearLayout
@@ -105,14 +119,18 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="出生日期：" />
+                    android:layout_weight="1"
+                    android:text="出生日期："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/birth_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
             <LinearLayout
@@ -126,25 +144,32 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="监护人姓名：" />
+                    android:layout_weight="0.9"
+                    android:text="监护人姓名："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/guardian_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.7"
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="与儿童关系：" />
+                    android:layout_weight="0.9"
+                    android:text="与儿童关系："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/relation_to_child"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
             <LinearLayout
@@ -158,14 +183,18 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="联系电话：" />
+                    android:layout_weight="1"
+                    android:text="联系电话："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/contact_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
             <LinearLayout
@@ -179,19 +208,30 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="家庭现住址：" />
+                    android:layout_weight="1"
+                    android:text="家庭现住址："
+                    android:textColor="@color/secondaryColor" />
 
-                <TextView
-                    android:id="@+id/home_county"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/home_town"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/home_county"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
+
+                    <TextView
+                        android:id="@+id/home_town"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -205,24 +245,36 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="户籍地址：" />
+                    android:layout_weight="1"
+                    android:text="户籍地址："
+                    android:textColor="@color/secondaryColor" />
 
-                <TextView
-                    android:id="@+id/register_local"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/register_province"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="省（市、自治区）" />
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/register_local"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
+
+                    <TextView
+                        android:id="@+id/register_province"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="省（市、自治区）"
+                        android:textColor="@color/secondaryColor" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -235,26 +287,41 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:id="@+id/register_city"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="70dp" />
+                    android:layout_weight="1" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="市" />
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/register_county"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp" />
+                    <TextView
+                        android:id="@+id/register_city"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="县（区）" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="市"
+                        android:textColor="@color/secondaryColor" />
+
+                    <TextView
+                        android:id="@+id/register_county"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/secondaryColor" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="县（区）"
+                        android:textColor="@color/secondaryColor" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -267,15 +334,28 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:id="@+id/register_town"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="70dp" />
+                    android:layout_weight="1" />
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="乡镇（街道）" />
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/register_town"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="乡镇（街道）"
+                        android:textColor="@color/secondaryColor" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -289,14 +369,18 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="迁入时间：" />
+                    android:text="迁入时间："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/immigrate_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
             <LinearLayout
@@ -310,14 +394,18 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="迁出时间：" />
+                    android:text="迁出时间："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/emigrate_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
             <LinearLayout
@@ -331,14 +419,18 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="迁出原因：" />
+                    android:text="迁出原因："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/emigrate_reason"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
             <LinearLayout
@@ -352,14 +444,18 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="疫苗异常反应史：" />
+                    android:text="疫苗异常反应史："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/vaccine_abnormal_reaction_history"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
             <LinearLayout
@@ -373,14 +469,18 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="接种禁忌：" />
+                    android:text="接种禁忌："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/vaccinate_taboo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
             <LinearLayout
@@ -394,15 +494,24 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="传染病史：" />
+                    android:text="传染病史："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/infection_history"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/fragmentBackGround"
+                />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -111,4 +111,7 @@ public class HealthEducationFragment extends BaseFragment implements MyClickList
     public void myOnClickListener(String type_alias, String item_alias, int record_id) {
 
     }
+
+
+
 }

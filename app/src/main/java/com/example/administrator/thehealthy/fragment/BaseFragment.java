@@ -7,12 +7,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.administrator.thehealthy.R;
+import com.example.administrator.thehealthy.application.BaseApplication;
 
 /**
  * Created by Administrator on 2016/3/3.
@@ -108,7 +111,7 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     }
 
     // fragment的替换
-    public void goToNextFragmentFromEducation(Fragment fragment, int pos) {
+    public  void goToNextFragmentFromEducation(Fragment fragment, int pos) {
         if (fm == null) {
             fm = getActivity().getSupportFragmentManager();
         }
@@ -131,6 +134,30 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     }
 
 
+    public void doubleClickExit() {
+        View.OnKeyListener keyListener = new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                int exitTime = 0;
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    if ((System.currentTimeMillis() - exitTime) > 2000) {
+                        Toast.makeText(BaseApplication.getContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                        exitTime = (int) System.currentTimeMillis();
+                    } else {
+                        BaseApplication.finishAllActivity();
+                    }
+                    return true;
+                }
+                return false;
+            }
+
+        };
+        view.setFocusable(true);
+        view.setFocusableInTouchMode(true);
+        view.setOnKeyListener(keyListener);
+
+
+    }
 
     // acitvity的跳转
     public static <T> void activityIntent(Activity activity, Class<T> clazz) {

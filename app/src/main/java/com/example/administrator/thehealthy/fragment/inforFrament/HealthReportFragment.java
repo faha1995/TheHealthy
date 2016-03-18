@@ -79,6 +79,10 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
 
     @Override
     protected void initData() {
+
+        if (dbTool.isLogined()) {
+
+
         final HashMap<String, String> user = dbTool.getUserDetails();
 
         final StringRequest request = new StringRequest(Request.Method.POST,
@@ -132,6 +136,7 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
         };
 
         VolleySingleton.getInstace().addRequest(request);
+        }
     }
 
     @Override
@@ -145,6 +150,7 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
 
         if (type_alias.equals("pregnant") && item_alias.equals("aftercare_1")) {
             goToNextFragmentFromPersonal(new AntenatalFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("pregnant") && item_alias.equals("postpartum_visit")) {
             goToNextFragmentFromPersonal(new PostpartumVisitFragment(), record_id);
         } else if (type_alias.equals("pregnant") && (item_alias.equals("aftercare_2") || item_alias.equals("aftercare_3")
@@ -154,15 +160,16 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
                 || item_alias.equals("aftercare_2") || item_alias.equals("aftercare_3")
                 || item_alias.equals("aftercare_4"))) {
             goToNextFragmentFromPersonal(new HypertensionAftercareFragment(), record_id);
-
         } else if (type_alias.equals("diabetes") && (item_alias.equals("aftercare_1") || item_alias.equals("aftercare_2")
                 || item_alias.equals("aftercare_3") || item_alias.equals("aftercare_4"))) {
             goToNextFragmentFromPersonal(new DiabetesAftercareFragment(), record_id);
             Log.i(TAG, "------>    OK");
         } else if (item_alias.equals("body_exam_table") || item_alias.equals("physical_examination")) {
             goToNextFragmentFromPersonal(new BodyExamFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("vaccine") && item_alias.equals("vaccine_card")) {
             goToNextFragmentFromPersonal(new VaccineCardFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("vaccine") && !item_alias.equals("vaccine_card")) {
             goToNextFragmentFromPersonal(new VaccinationFragment(), record_id);
             Log.i(TAG, "------>    OK");
@@ -180,27 +187,38 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
             goToNextFragmentFromPersonal(new PsychiatricAftercareFragment(), record_id);
         } else if (type_alias.equals("child") && item_alias.equals("newborn_family_visit")) {
             goToNextFragmentFromPersonal(new NewbornFamilyVisitFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_1_month")) {
             goToNextFragmentFromPersonal(new Aftercare1MonthFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_12_month")) {
             goToNextFragmentFromPersonal(new Aftercare12MonthFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_18_month")) {
             goToNextFragmentFromPersonal(new Aftercare18MonthFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_24_month")) {
             goToNextFragmentFromPersonal(new Aftercare24MonthFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_30_month")) {
             goToNextFragmentFromPersonal(new Aftercare30MonthFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("child") && (item_alias.equals("aftercare_4_year")
                 || item_alias.equals("aftercare_5_year") || item_alias.equals("aftercare_6_year"))) {
             goToNextFragmentFromPersonal(new Aftercare4To6YearFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_3_year")) {
             goToNextFragmentFromPersonal(new Aftercare3YearFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_3_month")) {
             goToNextFragmentFromPersonal(new Aftercare3MonthFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_6_month")) {
             goToNextFragmentFromPersonal(new Aftercare6MonthFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_8_month")) {
             goToNextFragmentFromPersonal(new Aftercare8MonthFragment(), record_id);
+            Log.i(TAG, "------>    OK");
         }
 
     }

@@ -5,11 +5,13 @@ import android.view.View;
 import android.widget.TabHost;
 
 import com.example.administrator.thehealthy.R;
+import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.fragment.inforFrament.HealthEducationFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.PersonalFragment;
 
 public class MainActivity extends BaseActivity {
     private TabHost mTabHost;
+    private long exitTime;
 
     @Override
     protected int setLayout() {
@@ -38,5 +40,20 @@ public class MainActivity extends BaseActivity {
         replaceFragment(R.id.inforView, new HealthEducationFragment());
         replaceFragment(R.id.personalView,new PersonalFragment());
 
+        BaseApplication.addActivity(new MainActivity());
     }
+
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK) {
+//            if ((System.currentTimeMillis() - exitTime) > 2000) {
+//                Toast.makeText(this,"再按一次退出程序",Toast.LENGTH_SHORT).show();
+//                exitTime = System.currentTimeMillis();
+//            } else{
+//                finish();
+//            }
+//            return true;
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
 }

@@ -25,10 +25,12 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
     private TextView nameText, mobileText;
     private DBTool dbTool;
 
+
     @Override
     protected int setLayoutView() {
         return R.layout.fragment_personal_infor;
     }
+
 
     @Override
     protected void initView() {
@@ -54,10 +56,10 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
     @Override
     protected void initData() {
         Log.i(TAG, "-------->" + "initData()");
+        Log.i(TAG, "-------->" + dbTool.isLogined());
 
-//         if (dbTool.isLogined()) {
+         if (dbTool.isLogined()) {
         Log.i(TAG, "-------->" + "isLogined()");
-
 
 
         final HashMap<String, String> user = dbTool.getUserDetails();
@@ -67,10 +69,16 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
         mobileText.setText(user.get("mobile"));
 
         Log.i(TAG, "-----> mobile :" + user.get("mobile"));
-//        }
+        }
 
         Log.i(TAG, "-------->" + "initDataEnd()");
 
+    }
+
+    @Override
+    public void doubleClickExit() {
+        super.doubleClickExit();
+        Log.i(TAG,"--------->   doubleClickExit()");
     }
 
     @Override
@@ -97,7 +105,7 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
                 if (!dbTool.isLogined()) {
                     logoutUser();
                     // 跳转到登录界面
-                    activityIntent(getActivity(), LoginActivity.class);
+                   activityIntent(getActivity(), LoginActivity.class);
                     getActivity().finish();
                 } else {
                     goToNextFragmentFromPersonal(new HabitFragment());
@@ -112,19 +120,23 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
                     activityIntent(getActivity(), LoginActivity.class);
                     getActivity().finish();
                 } else {
-                    goToNextFragmentFromPersonal(new MedicalHistoryFragment());
+                   goToNextFragmentFromPersonal(new MedicalHistoryFragment());
                 }
                 break;
             // 关于我们
             case R.id.linear_personalInfor_fourth:
-                goToNextFragmentFromPersonal(new AboutUsFragment());
+               goToNextFragmentFromPersonal(new AboutUsFragment());
                 break;
             // 退出
             case R.id.btn_personalInfor_exit:
-                activityIntent(getActivity(), LoginActivity.class);
+                logoutUser();
+               activityIntent(getActivity(), LoginActivity.class);
+                getActivity().finish();
                 break;
         }
     }
+
+
 
     // 一系列删除数据库的方法
     private void logoutUser() {
