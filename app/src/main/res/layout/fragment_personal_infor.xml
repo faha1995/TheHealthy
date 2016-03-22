@@ -42,6 +42,7 @@
                 android:layout_below="@+id/roundImage_personalInfor"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
+                android:textColor="@color/colorWhite"
                 android:text="未设置" />
 
             <TextView
@@ -51,6 +52,7 @@
                 android:layout_below="@+id/text_personalInfor_name"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
+                android:textColor="@color/colorWhite"
                 android:text="未知" />
 
             <ImageView
@@ -151,6 +153,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button_shape"
             android:text="退出"
+            android:textColor="@color/colorWhite"
             android:textSize="22sp"
             android:layout_marginTop="30dp"
             />

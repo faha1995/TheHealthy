@@ -55,6 +55,7 @@ public class InformationFragment extends BaseFragment {
         paymentMethodText = findView(R.id.text_information_paymentMethod);
 
         dbTool = new DBTool();
+        Log.i(TAG, "-------->" + "inforBac"+getActivity().getSupportFragmentManager().getBackStackEntryCount());
     }
 
     @Override

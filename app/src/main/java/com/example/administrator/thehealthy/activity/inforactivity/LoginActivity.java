@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -214,5 +215,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
 
 
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+//        LoginActivity.this.finish();
+        }
+
+        Log.i("LoginActivity","----------->   onKeyDown()");
+        return super.onKeyDown(keyCode, event);
     }
 }

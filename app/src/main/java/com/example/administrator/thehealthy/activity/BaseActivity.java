@@ -47,5 +47,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         fragmentTransaction.commit();
         return fragment;
     }
+    // 替换Fragment的方法
+    protected Fragment replaceFragmentNoBacStack(int resId, Fragment fragment){
+        if (fragmentManager == null) {
+            fragmentManager = getSupportFragmentManager();
+        }
+        fragmentTransaction = fragmentManager.beginTransaction();
+        // addToBackStack(null) 方法的作用是在替换后不会被finish
+        // 好处是 再次返回时,会直接显示原来界面的内容
+        fragmentTransaction.replace(resId,fragment);
+        fragmentTransaction.commit();
+        return fragment;
+    }
 
 }

@@ -3,6 +3,8 @@ package com.example.administrator.thehealthy.fragment.inforFrament;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -11,6 +13,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
+import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity;
 import com.example.administrator.thehealthy.adapter.HealthReportAdapter;
 import com.example.administrator.thehealthy.application.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
@@ -59,6 +62,7 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
     private HealthReportAdapter healthReportAdapter;
     private List<Summary> summaryList = new ArrayList<>();
     private DBTool dbTool;
+    private LinearLayout pleaseLoginLinear;
 
     @Override
     protected int setLayoutView() {
@@ -74,6 +78,7 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
         healthReportAdapter.setMyClickListener(this);
         healthReportRv.setAdapter(healthReportAdapter);
 
+        pleaseLoginLinear = findView(R.id.linear_pleaseLogin);
 
     }
 
@@ -136,6 +141,16 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
         };
 
         VolleySingleton.getInstace().addRequest(request);
+        }  else {
+
+            pleaseLoginLinear.setVisibility(View.VISIBLE);
+            pleaseLoginLinear.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activityIntent(getActivity(), LoginActivity.class);
+                    Log.i(TAG, "------->  textPleaseLogin");
+                }
+            });
         }
     }
 
@@ -222,4 +237,5 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
         }
 
     }
+
 }

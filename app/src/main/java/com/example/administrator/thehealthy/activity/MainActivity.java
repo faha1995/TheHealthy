@@ -1,5 +1,7 @@
 package com.example.administrator.thehealthy.activity;
 
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TabHost;
@@ -9,9 +11,10 @@ import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.fragment.inforFrament.HealthEducationFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.PersonalFragment;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity  {
     private TabHost mTabHost;
-    private long exitTime;
+    private long exitTime = 0;
+//    private BackHandledFragment backHandledFragment;
 
     @Override
     protected int setLayout() {
@@ -37,13 +40,35 @@ public class MainActivity extends BaseActivity {
         spec1.setContent(R.id.personalView);
         mTabHost.addTab(spec1);
 
-        replaceFragment(R.id.inforView, new HealthEducationFragment());
-        replaceFragment(R.id.personalView,new PersonalFragment());
+        replaceFragmentNoBacStack(R.id.inforView, new HealthEducationFragment());
+        replaceFragmentNoBacStack(R.id.personalView,new PersonalFragment());
 
         BaseApplication.addActivity(new MainActivity());
     }
 
-//    @Override
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        super.onKeyDown(keyCode, event);
+            if (getFragmentManager().getBackStackEntryCount() == 0) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+                Log.i("MainActivity","------>" + getFragmentManager().getBackStackEntryCount());
+                if ((System.currentTimeMillis() - exitTime) > 2000) {
+//                    Toast.makeText(getApplicationContext(), "再按一次返回桌面", Toast.LENGTH_SHORT).show();
+                    exitTime = System.currentTimeMillis();
+                } else {
+                    finish();
+                    System.exit(0);
+                }
+                return true;
+            }
+        }
+        return true;
+    }
+
+
+
+
+    //    @Override
 //    public boolean onKeyDown(int keyCode, KeyEvent event) {
 //        if (keyCode == KeyEvent.KEYCODE_BACK) {
 //            if ((System.currentTimeMillis() - exitTime) > 2000) {

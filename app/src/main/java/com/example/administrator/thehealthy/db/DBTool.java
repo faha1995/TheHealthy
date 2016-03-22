@@ -84,6 +84,7 @@ public class DBTool implements SQLValues {
 
     // 删除当前数据库中所有信息
     public void deleteUser() {
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
         database.delete(TABLE_USER, null, null);
         database.close();
 

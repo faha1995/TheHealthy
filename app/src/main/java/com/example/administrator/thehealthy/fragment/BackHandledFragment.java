@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -19,9 +18,10 @@ import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.application.BaseApplication;
 
 /**
- * Created by Administrator on 2016/3/3.
+ * Created by Administrator on 2016/3/21.
  */
-public abstract class BaseFragment extends Fragment implements View.OnTouchListener {
+public abstract class BackHandledFragment extends Fragment {
+
     private View view;
     private FragmentManager fm;
     private FragmentTransaction ft;
@@ -36,7 +36,7 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.view = view;
-        view.setOnTouchListener(this);
+        view.setOnTouchListener((View.OnTouchListener) this);
         initView();
     }
 
@@ -62,10 +62,7 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     }
 
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        return true;
-    }
+
 
     // fragment的替换
     public void goToNextFragmentFromPersonal(Fragment fragment) {
@@ -106,7 +103,7 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
         ft.add(R.id.fragment_personal, fragment);
         // addToBackStack() 是为了将该Fragment加入到后退栈中
         // 在返回时,可以直接返回到上一个界面
-        ft.addToBackStack("fragment");
+        ft.addToBackStack(null);
         ft.commitAllowingStateLoss();
 
     }
@@ -129,7 +126,7 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
         ft.add(R.id.fragment_healthEducation, fragment);
         // addToBackStack() 是为了将该Fragment加入到后退栈中
         // 在返回时,可以直接返回到上一个界面
-        ft.addToBackStack("fragment");
+        ft.addToBackStack(null);
         ft.commitAllowingStateLoss();
 
     }
@@ -141,27 +138,27 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
         view.setOnKeyListener(keyListener);
     }
 
-        View.OnKeyListener keyListener = new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                int exitTime = 0;
-                if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                    if (keyCode == KeyEvent.KEYCODE_BACK) {
+    View.OnKeyListener keyListener = new View.OnKeyListener() {
+        @Override
+        public boolean onKey(View v, int keyCode, KeyEvent event) {
+            int exitTime = 0;
+            if (event.getAction() == KeyEvent.ACTION_DOWN) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-                        if ((System.currentTimeMillis() - exitTime) > 2000) {
-                            Toast.makeText(BaseApplication.getContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
-                            exitTime = (int) System.currentTimeMillis();
-                            Log.i("baseFragment", "----------->" + "再按一次退出程序");
-                        } else {
-                            BaseApplication.finishAllActivity();
-                        }
-                        return true;
+                    if ((System.currentTimeMillis() - exitTime) > 2000) {
+                        Toast.makeText(BaseApplication.getContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                        exitTime = (int) System.currentTimeMillis();
+                        Log.i("baseFragment", "----------->" + "再按一次退出程序");
+                    } else {
+                        BaseApplication.finishAllActivity();
                     }
+                    return true;
                 }
-                return false;
             }
+            return false;
+        }
 
-        };
+    };
 
 
 
@@ -180,6 +177,4 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
         fm.popBackStack();
         fm.popBackStackImmediate(" ", 1);
     }
-
-
 }

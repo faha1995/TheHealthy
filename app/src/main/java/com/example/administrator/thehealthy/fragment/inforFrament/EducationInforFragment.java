@@ -1,6 +1,8 @@
 package com.example.administrator.thehealthy.fragment.inforFrament;
 
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.administrator.thehealthy.R;
@@ -41,5 +43,10 @@ public class EducationInforFragment extends BaseFragment {
     @Override
     protected void initData() {
 
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return super.onTouch(v, event);
     }
 }
