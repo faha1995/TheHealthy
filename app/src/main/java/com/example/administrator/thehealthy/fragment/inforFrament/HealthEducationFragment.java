@@ -33,6 +33,7 @@ public class HealthEducationFragment extends BaseFragment implements MyClickList
     private final String TAG = HealthEducationFragment.class.getSimpleName();
     private RecyclerView educationRv;
     private HealthEducationAdapter educationAdapter;
+
     @Override
     protected int setLayoutView() {
         return R.layout.fragment_health_education;
@@ -47,6 +48,7 @@ public class HealthEducationFragment extends BaseFragment implements MyClickList
         educationAdapter = new HealthEducationAdapter(getActivity());
         educationAdapter.setMyClickListener(this);
         educationRv.setAdapter(educationAdapter);
+
     }
 
     @Override
@@ -96,7 +98,6 @@ public class HealthEducationFragment extends BaseFragment implements MyClickList
     }
 
 
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -104,7 +105,7 @@ public class HealthEducationFragment extends BaseFragment implements MyClickList
 
     @Override
     public void myOnClickListener(int pos) {
-        goToNextFragmentFromEducation(new EducationInforFragment(),pos);
+        goToNextFragmentFromEducation(new EducationInferFragment(), pos);
     }
 
     @Override

@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <ScrollView
+        android:id="@+id/scrollView_information"
         android:scrollbars="none"
         android:layout_width="match_parent"
         android:overScrollMode="never"
@@ -48,6 +49,7 @@
                     android:id="@+id/text_information_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
                     android:layout_above="@+id/text_information_forMiddle"
                     android:textSize="@dimen/textSize_biger" />
 
@@ -61,6 +63,7 @@
                     android:id="@+id/text_information_sex"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
                     android:layout_below="@+id/text_information_forMiddle"
                     android:textSize="@dimen/fragment_information_normalTextSize" />
             </RelativeLayout>

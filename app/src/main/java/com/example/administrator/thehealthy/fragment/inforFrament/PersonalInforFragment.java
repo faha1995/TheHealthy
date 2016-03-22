@@ -60,9 +60,14 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
 
 
     @Override
-    protected void initData() {
-        Log.i(TAG, "-------->" + "initData()");
-        Log.i(TAG, "-------->" + dbTool.isLogined());
+    public void onResume() {
+        super.onResume();
+//        Intent intent = getActivity().getIntent();
+//        if (intent.getStringExtra("loginForMain") == "onResume") {
+//            final HashMap<String, String> user = dbTool.getUserDetails();
+//            nameText.setText(user.get("name"));
+//            mobileText.setText(user.get("mobile"));
+//        }
 
         if (dbTool.isLogined()) {
             Log.i(TAG, "-------->" + "isLogined()");
@@ -77,7 +82,27 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
             Log.i(TAG, "-----> mobile :" + user.get("mobile"));
         }
 
-        Log.i(TAG, "-------->" + "initDataEnd()");
+    }
+
+    @Override
+    protected void initData() {
+//        Log.i(TAG, "-------->" + "initData()");
+//        Log.i(TAG, "-------->" + dbTool.isLogined());
+
+//        if (dbTool.isLogined()) {
+//            Log.i(TAG, "-------->" + "isLogined()");
+//
+//
+//            final HashMap<String, String> user = dbTool.getUserDetails();
+//            Log.i(TAG, "-----> NAME :" + user.get("name"));
+//
+//            nameText.setText(user.get("name"));
+//            mobileText.setText(user.get("mobile"));
+//
+//            Log.i(TAG, "-----> mobile :" + user.get("mobile"));
+//        }
+
+//        Log.i(TAG, "-------->" + "initDataEnd()");
 
     }
 
@@ -168,10 +193,11 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
         sureBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                activityIntent(getActivity(), LoginActivity.class);
+               activityIntent(getActivity(),LoginActivity.class);
                 alertDialog.dismiss();
             }
         });
+
 
         cancleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,6 +206,8 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
             }
         });
     }
+
+
 
     // 一系列删除数据库的方法
     private void logoutUser() {

@@ -10,7 +10,9 @@
     tools:context=".activity.PostpartumVisitActivity"
     tools:showIn="@layout/fragment_postpartum_visit">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
+        android:id="@+id/scrollView_postpartum"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:overScrollMode="never"

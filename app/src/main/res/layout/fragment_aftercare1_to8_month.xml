@@ -10,6 +10,7 @@
     tools:context=".activity.Aftercare1To8MonthActivity">
 
     <ScrollView
+        android:id="@+id/scrollView_after1_to_8"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

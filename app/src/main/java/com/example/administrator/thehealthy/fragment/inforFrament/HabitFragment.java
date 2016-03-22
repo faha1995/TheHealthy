@@ -1,6 +1,10 @@
 package com.example.administrator.thehealthy.fragment.inforFrament;
 
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +35,8 @@ public class HabitFragment extends BaseFragment {
     private TextView exhaustText, fuelText, waterText, toiletText,
             liveStokeText, exposureText;
     private DBTool dbTool;
+    private LinearLayout linearLayout;
+    private GestureDetector gestureDetector;
 
     @Override
     protected int setLayoutView() {
@@ -45,6 +51,9 @@ public class HabitFragment extends BaseFragment {
         toiletText = findView(R.id.text_information_toilet);
         liveStokeText = findView(R.id.text_information_liveStock);
         exposureText = findView(R.id.text_information_exposure);
+        linearLayout = findView(R.id.linear_habit);
+        linearLayout.setOnTouchListener(this);
+        gestureDetector = new GestureDetector(getActivity(), gesture);
 
         dbTool = new DBTool();
     }
@@ -92,5 +101,26 @@ public class HabitFragment extends BaseFragment {
             }
         };
         VolleySingleton.getInstace().addRequest(request);
+    }
+
+    // 创建OnGestureListener对象
+    GestureDetector.OnGestureListener gesture = new GestureDetector.SimpleOnGestureListener() {
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            float x = e2.getX() - e1.getX();
+
+            if (x > 0) {
+                backBeforFragment();
+                Log.i("educationInfor", "-------->  " + x);
+            }
+            return true;
+        }
+    };
+
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        gestureDetector.onTouchEvent(event);
+        return true;
     }
 }

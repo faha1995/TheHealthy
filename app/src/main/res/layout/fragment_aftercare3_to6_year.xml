@@ -10,7 +10,9 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activity.Aftercare3To6YearActivity">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
+        android:id="@+id/scrollView_aftercare3_to_6yeas"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:overScrollMode="never"
         android:scrollbars="none"

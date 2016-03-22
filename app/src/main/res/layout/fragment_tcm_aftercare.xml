@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linear_tcm_aftercare"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fragmentBackGround"
@@ -23,8 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
-            android:textColor="@color/secondaryColor"
             android:text="儿童中医药健康管理"
+            android:textColor="@color/secondaryColor"
             android:textSize="22sp" />
 
         <LinearLayout
@@ -36,27 +37,27 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/secondaryColor"
-                android:text="随访医生：" />
+                android:text="随访医生："
+                android:textColor="@color/secondaryColor" />
 
             <TextView
                 android:id="@+id/doctor_signature"
                 android:layout_width="wrap_content"
-                android:textColor="@color/secondaryColor"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondaryColor" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:textColor="@color/secondaryColor"
-                android:text="随访日期：" />
+                android:text="随访日期："
+                android:textColor="@color/secondaryColor" />
 
             <TextView
                 android:id="@+id/visit_date"
                 android:layout_width="wrap_content"
-                android:textColor="@color/secondaryColor"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondaryColor" />
 
         </LinearLayout>
 
@@ -93,28 +94,29 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:textColor="@color/secondaryColor"
             android:layout_height="wrap_content"
-            android:text="中医药健康管理服务：" />
+            android:layout_weight="1"
+            android:text="中医药健康管理服务："
+            android:textColor="@color/secondaryColor" />
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="1.4"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/guide"
-            android:layout_width="wrap_content"
-            android:textColor="@color/secondaryColor"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/guide_extra"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/secondaryColor"
-            android:layout_marginLeft="10dp" />
+            android:layout_weight="1.4"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/guide"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondaryColor" />
+
+            <TextView
+                android:id="@+id/guide_extra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/secondaryColor" />
         </LinearLayout>
     </LinearLayout>
 
@@ -130,17 +132,17 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:textColor="@color/secondaryColor"
-            android:text="下次随访日期：" />
+            android:layout_weight="1"
+            android:text="下次随访日期："
+            android:textColor="@color/secondaryColor" />
 
         <TextView
             android:id="@+id/next_visit_date"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:textColor="@color/secondaryColor"
-            android:layout_height="wrap_content" />
+            android:textColor="@color/secondaryColor" />
     </LinearLayout>
 
 </LinearLayout>

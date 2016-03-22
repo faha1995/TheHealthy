@@ -84,9 +84,14 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
 
     @Override
     protected void initData() {
+    }
 
-        if (dbTool.isLogined()) {
+    @Override
+    public void onResume() {
+        super.onResume();
 
+    if (dbTool.isLogined()) {
+        pleaseLoginLinear.setVisibility(View.GONE);
 
         final HashMap<String, String> user = dbTool.getUserDetails();
 

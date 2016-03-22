@@ -26,6 +26,7 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     private FragmentManager fm;
     private FragmentTransaction ft;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -126,6 +127,8 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
         Bundle bundle = new Bundle();
         bundle.putInt("pos", pos);
         fragment.setArguments(bundle);
+        View view = findView(R.id.fragment_healthEducation);
+        view.setOnTouchListener((View.OnTouchListener) fragment);
         ft.add(R.id.fragment_healthEducation, fragment);
         // addToBackStack() 是为了将该Fragment加入到后退栈中
         // 在返回时,可以直接返回到上一个界面

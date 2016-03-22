@@ -1,6 +1,10 @@
 package com.example.administrator.thehealthy.fragment.inforFrament;
 
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -31,6 +35,9 @@ public class MedicalHistoryFragment extends BaseFragment {
             fatherSickText, momSickText, bortherSickText, sonSickText, alergyText,
             geneticText;
     private DBTool dbTool;
+    private ScrollView scrollViewAfter;
+    private GestureDetector gestureDetector;
+
 
     @Override
     protected int setLayoutView() {
@@ -50,6 +57,9 @@ public class MedicalHistoryFragment extends BaseFragment {
         sonSickText = findView(R.id.text_medicalHistory_sick_son);
         alergyText = findView(R.id.text_medicalHistory_allergy);
         geneticText = findView(R.id.text_medicalHistory_genetic);
+        scrollViewAfter = findView(R.id.scrollView_medicahistory);
+        scrollViewAfter.setOnTouchListener(this);
+        gestureDetector = new GestureDetector(getActivity(), gesture);
 
         dbTool = new DBTool();
     }
@@ -128,5 +138,26 @@ public class MedicalHistoryFragment extends BaseFragment {
             }
         };
         VolleySingleton.getInstace().addRequest(request);
+    }
+
+    // 创建OnGestureListener对象
+    GestureDetector.OnGestureListener gesture = new GestureDetector.SimpleOnGestureListener() {
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            float x = e2.getX() - e1.getX();
+
+            if (x > 0) {
+                backBeforFragment();
+                Log.i("educationInfor","-------->  "+ x);
+            }
+            return true;
+        }
+    };
+
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        gestureDetector.onTouchEvent(event);
+        return true;
     }
 }

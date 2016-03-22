@@ -10,7 +10,9 @@
     tools:context=".activity.AftercareActivity"
     tools:showIn="@layout/fragment_aftercare">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <ScrollView
+        android:id="@+id/scrollView_aftercare"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"

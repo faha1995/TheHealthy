@@ -11,10 +11,10 @@ import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.fragment.inforFrament.HealthEducationFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.PersonalFragment;
 
-public class MainActivity extends BaseActivity  {
+public class MainActivity extends BaseActivity {
     private TabHost mTabHost;
     private long exitTime = 0;
-//    private BackHandledFragment backHandledFragment;
+    //    private BackHandledFragment backHandledFragment;
 
     @Override
     protected int setLayout() {
@@ -41,7 +41,7 @@ public class MainActivity extends BaseActivity  {
         mTabHost.addTab(spec1);
 
         replaceFragmentNoBacStack(R.id.inforView, new HealthEducationFragment());
-        replaceFragmentNoBacStack(R.id.personalView,new PersonalFragment());
+        replaceFragmentNoBacStack(R.id.personalView, new PersonalFragment());
 
         BaseApplication.addActivity(new MainActivity());
     }
@@ -49,9 +49,9 @@ public class MainActivity extends BaseActivity  {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         super.onKeyDown(keyCode, event);
-            if (getFragmentManager().getBackStackEntryCount() == 0) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
-                Log.i("MainActivity","------>" + getFragmentManager().getBackStackEntryCount());
+        if (getFragmentManager().getBackStackEntryCount() == 0) {
+            if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+                Log.i("MainActivity", "------>" + getFragmentManager().getBackStackEntryCount());
                 if ((System.currentTimeMillis() - exitTime) > 2000) {
 //                    Toast.makeText(getApplicationContext(), "再按一次返回桌面", Toast.LENGTH_SHORT).show();
                     exitTime = System.currentTimeMillis();
@@ -64,8 +64,6 @@ public class MainActivity extends BaseActivity  {
         }
         return true;
     }
-
-
 
 
     //    @Override

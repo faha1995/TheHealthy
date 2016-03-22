@@ -1,6 +1,10 @@
 package com.example.administrator.thehealthy.fragment.inforFrament.educationReportInforFragment;
 
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +29,8 @@ import java.util.Map;
  */
 public class Aftercare12MonthFragment extends BaseFragment {
     private final String TAG = Aftercare12MonthFragment.class.getSimpleName();
-
+    private ScrollView scrollViewAfter;
+    private GestureDetector gestureDetector;
 
     @Override
     protected int setLayoutView() {
@@ -34,6 +39,9 @@ public class Aftercare12MonthFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        scrollViewAfter = findView(R.id.scrollView_12_to_30);
+        scrollViewAfter.setOnTouchListener(this);
+        gestureDetector = new GestureDetector(getActivity(), gesture);
 
     }
 
@@ -106,5 +114,26 @@ public class Aftercare12MonthFragment extends BaseFragment {
         } else {
             Toast.makeText(getActivity(), "没有获得记录ID", Toast.LENGTH_LONG).show();
         }
+    }
+
+    // 创建OnGestureListener对象
+    GestureDetector.OnGestureListener gesture = new GestureDetector.SimpleOnGestureListener() {
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            float x = e2.getX() - e1.getX();
+
+            if (x > 0) {
+                backBeforFragment();
+                Log.i("educationInfor","-------->  "+ x);
+            }
+            return true;
+        }
+    };
+
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        gestureDetector.onTouchEvent(event);
+        return true;
     }
 }

@@ -222,7 +222,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         if (event.getAction() == KeyEvent.ACTION_DOWN) {
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
-//        LoginActivity.this.finish();
+        LoginActivity.this.finish();
         }
 
         Log.i("LoginActivity","----------->   onKeyDown()");

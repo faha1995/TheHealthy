@@ -2,6 +2,10 @@ package com.example.administrator.thehealthy.fragment.inforFrament.educationRepo
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +32,8 @@ import java.util.Map;
  */
 public class VaccinationFragment extends BaseFragment {
     private static final String TAG = VaccinationFragment.class.getSimpleName();
+    private GestureDetector gestureDetector;
+    private LinearLayout linearLayoutVaccina;
 
     @Override
     protected int setLayoutView() {
@@ -36,13 +42,16 @@ public class VaccinationFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        linearLayoutVaccina = findView(R.id.linear_vaccination);
+        linearLayoutVaccina.setOnTouchListener(this);
+        gestureDetector = new GestureDetector(getActivity(), gesture);
 
     }
 
     @Override
     protected void initData() {
         Bundle bundle = getArguments();
-        Log.i(TAG,"record_id"+bundle.getInt("record_id",0));
+        Log.i(TAG, "record_id" + bundle.getInt("record_id", 0));
 
         final Integer record_id = bundle.getInt("record_id", 0);
 
@@ -105,5 +114,26 @@ public class VaccinationFragment extends BaseFragment {
         } else {
             Toast.makeText(getActivity(), "没有获得记录ID", Toast.LENGTH_LONG).show();
         }
+    }
+
+    // 创建OnGestureListener对象
+    GestureDetector.OnGestureListener gesture = new GestureDetector.SimpleOnGestureListener() {
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+            float x = e2.getX() - e1.getX();
+
+            if (x > 0) {
+                backBeforFragment();
+                Log.i("educationInfor","-------->  "+ x);
+            }
+            return true;
+        }
+    };
+
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        gestureDetector.onTouchEvent(event);
+        return true;
     }
 }
