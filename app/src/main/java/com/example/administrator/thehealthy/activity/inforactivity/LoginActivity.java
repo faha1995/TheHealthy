@@ -74,6 +74,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         switch (v.getId()) {
             case R.id.img_login_clean:
                 mobileEdit.setText("");
+                pswEdit.setText("");
                 break;
             case R.id.btn_login:
                 phone = mobileEdit.getText().toString().trim();
@@ -132,13 +133,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                             }
                             else {
                                 String errorMsg = jsonObject.getString("error_msg");
+                                Log.i(TAG, "---------->"+ errorMsg);
                                 Toast.makeText(getApplicationContext(),
-                                        errorMsg, Toast.LENGTH_LONG).show();
+                                        "账号或密码错误", Toast.LENGTH_LONG).show();
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(getApplicationContext(),
-                                    "Json error :"+e.getMessage(), Toast.LENGTH_LONG).show();
+
                         }
 
                     }
@@ -146,7 +147,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
+                        "账号或密码错误", Toast.LENGTH_LONG).show();
             }
         })
         // psot请求需要加请求头信息

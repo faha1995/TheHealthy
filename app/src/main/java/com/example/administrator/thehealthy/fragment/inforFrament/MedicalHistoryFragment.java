@@ -37,7 +37,7 @@ public class MedicalHistoryFragment extends BaseFragment {
     private DBTool dbTool;
     private ScrollView scrollViewAfter;
     private GestureDetector gestureDetector;
-
+int startX,stopX;
 
     @Override
     protected int setLayoutView() {
@@ -58,8 +58,28 @@ public class MedicalHistoryFragment extends BaseFragment {
         alergyText = findView(R.id.text_medicalHistory_allergy);
         geneticText = findView(R.id.text_medicalHistory_genetic);
         scrollViewAfter = findView(R.id.scrollView_medicahistory);
-        scrollViewAfter.setOnTouchListener(this);
-        gestureDetector = new GestureDetector(getActivity(), gesture);
+        scrollViewAfter.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    startX = (int) event.getX();
+                    Log.i("startX","--------->"+ startX);
+                }
+
+                else if (event.getAction() == MotionEvent.ACTION_MOVE){
+                    stopX = (int) event.getX();
+                    Log.i("stopX","--------->"+ stopX);
+                }
+
+                else if (stopX - startX >200){
+                    Log.i("--","--------->"+ (stopX - startX));
+                    backBeforFragment();
+                }
+                return false;
+            }
+
+
+        });
 
         dbTool = new DBTool();
     }
@@ -115,7 +135,11 @@ public class MedicalHistoryFragment extends BaseFragment {
                         fatherSickText.setText(ChangeString.splitMain(jsonObject.getString("family_history_father")));
                         momSickText.setText(ChangeString.splitMain(jsonObject.getString("family_history_mother")));
                         bortherSickText.setText(ChangeString.splitMain(jsonObject.getString("family_history_sibling")));
+                        if (jsonObject.getString("family_history_children").length() > 3) {
                         sonSickText.setText(ChangeString.splitMain(jsonObject.getString("family_history_children")));
+                        } else {
+                            sonSickText.setText(jsonObject.getString("family_history_children"));
+                        }
                         alergyText.setText(ChangeString.splitMain(jsonObject.getString("allergy_history")));
                         geneticText.setText(jsonObject.getString("genetic_disease"));
                     }
@@ -140,24 +164,4 @@ public class MedicalHistoryFragment extends BaseFragment {
         VolleySingleton.getInstace().addRequest(request);
     }
 
-    // 创建OnGestureListener对象
-    GestureDetector.OnGestureListener gesture = new GestureDetector.SimpleOnGestureListener() {
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            float x = e2.getX() - e1.getX();
-
-            if (x > 0) {
-                backBeforFragment();
-                Log.i("educationInfor","-------->  "+ x);
-            }
-            return true;
-        }
-    };
-
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        gestureDetector.onTouchEvent(event);
-        return true;
-    }
 }

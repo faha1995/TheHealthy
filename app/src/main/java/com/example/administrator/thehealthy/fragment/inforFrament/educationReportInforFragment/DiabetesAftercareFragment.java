@@ -2,7 +2,6 @@ package com.example.administrator.thehealthy.fragment.inforFrament.educationRepo
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
@@ -34,7 +33,7 @@ public class DiabetesAftercareFragment extends BaseFragment {
     private final String TAG = DiabetesAftercareFragment.class.getSimpleName();
     private DBTool dbTool;
     private ScrollView scrollViewAfter;
-    private GestureDetector gestureDetector;
+    int startX, stopX;
 
     @Override
     protected int setLayoutView() {
@@ -45,17 +44,31 @@ public class DiabetesAftercareFragment extends BaseFragment {
     protected void initView() {
         dbTool = new DBTool();
         scrollViewAfter = findView(R.id.scrollView_diabetes);
-        scrollViewAfter.setOnTouchListener(this);
-        gestureDetector = new GestureDetector(getActivity(), gesture);
-        Log.i(TAG,"---->  initView()");
+        scrollViewAfter.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    startX = (int) event.getX();
+                    Log.i("startX", "--------->" + startX);
+                } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                    stopX = (int) event.getX();
+                    Log.i("stopX", "--------->" + stopX);
+                } else if (stopX - startX > 200) {
+                    Log.i("--", "--------->" + (stopX - startX));
+                    backBeforFragment();
+                }
+                return false;
+            }
+        });
+        Log.i(TAG, "---->  initView()");
     }
 
     @Override
     protected void initData() {
-        Log.i(TAG,"---->  initData()");
-         Bundle bundle = getArguments();
-        final int record_id = bundle.getInt("record_id",0);
-        Log.i(TAG,"----> "+ record_id);
+        Log.i(TAG, "---->  initData()");
+        Bundle bundle = getArguments();
+        final int record_id = bundle.getInt("record_id", 0);
+        Log.i(TAG, "----> " + record_id);
         if (record_id != 0) {
 
             Log.e(TAG, "开始从后台获取详情");
@@ -75,7 +88,7 @@ public class DiabetesAftercareFragment extends BaseFragment {
                                     TextView visit_date = findView(R.id.visit_date);
                                     TextView doctor_signature = findView(R.id.doctor_signature);
                                     doctor_signature.setText(detail.getString("doctor_signature"));
-                                    Log.i(TAG,"---->"+detail.getString("doctor_signature") );
+                                    Log.i(TAG, "---->" + detail.getString("doctor_signature"));
                                     visit_date.setText(detail.getString("visit_date"));
                                     TextView visit_way = findView(R.id.visit_way);
                                     visit_way.setText(detail.getString("visit_way"));
@@ -212,24 +225,5 @@ public class DiabetesAftercareFragment extends BaseFragment {
         }
     }
 
-    // 创建OnGestureListener对象
-    GestureDetector.OnGestureListener gesture = new GestureDetector.SimpleOnGestureListener() {
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            float x = e2.getX() - e1.getX();
 
-            if (x > 0) {
-                backBeforFragment();
-                Log.i("educationInfor","-------->  "+ x);
-            }
-            return true;
-        }
-    };
-
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        gestureDetector.onTouchEvent(event);
-        return true;
-    }
 }

@@ -1,7 +1,6 @@
 package com.example.administrator.thehealthy.fragment.inforFrament.educationReportInforFragment;
 
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
@@ -33,7 +32,7 @@ public class AftercareFragment extends BaseFragment {
     private DBTool dbTool;
     private int record_id;
     private ScrollView scrollViewAfter;
-    private GestureDetector gestureDetector;
+    int startX, stopX;
 
     @Override
     protected int setLayoutView() {
@@ -45,8 +44,22 @@ public class AftercareFragment extends BaseFragment {
         dbTool = new DBTool();
         record_id = getArguments().getInt("record_id", 0);
         scrollViewAfter = findView(R.id.scrollView_aftercare);
-        scrollViewAfter.setOnTouchListener(this);
-        gestureDetector = new GestureDetector(getActivity(), gesture);
+        scrollViewAfter.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    startX = (int) event.getX();
+                    Log.i("startX", "--------->" + startX);
+                } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                    stopX = (int) event.getX();
+                    Log.i("stopX", "--------->" + stopX);
+                } else if (stopX - startX > 200) {
+                    Log.i("--", "--------->" + (stopX - startX));
+                    backBeforFragment();
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -137,24 +150,4 @@ public class AftercareFragment extends BaseFragment {
         }
     }
 
-    // 创建OnGestureListener对象
-    GestureDetector.OnGestureListener gesture = new GestureDetector.SimpleOnGestureListener() {
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            float x = e2.getX() - e1.getX();
-
-            if (x > 0) {
-                backBeforFragment();
-                Log.i("educationInfor","-------->  "+ x);
-            }
-            return true;
-        }
-    };
-
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        gestureDetector.onTouchEvent(event);
-        return true;
-    }
 }

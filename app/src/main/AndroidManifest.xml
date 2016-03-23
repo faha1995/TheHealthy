@@ -22,21 +22,28 @@
         <activity
             android:name=".activity.MainActivity"
             android:launchMode="singleTask">
+        </activity>
+
+        <activity
+            android:name=".activity.inforactivity.LoginActivity"
+            android:launchMode="singleTop">
+
+        </activity>
+        <activity
+            android:name=".activity.inforactivity.RegisterActivity"
+            android:launchMode="singleTop" >
+            </activity>
+        <activity android:name=".activity.TestActivity"></activity>
+
+        <activity android:name=".activity.inforactivity.SplashActivity">
             <intent-filter>
+
+
+
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name=".activity.inforactivity.LoginActivity"
-            android:launchMode="singleTop"></activity>
-        <activity
-            android:name=".activity.inforactivity.RegisterActivity"
-            android:launchMode="singleTop" />
-        <activity android:name=".activity.TestActivity"></activity>
-
-        <activity android:name=".activity.inforactivity.SplashActivity">
 
         </activity>
     </application>

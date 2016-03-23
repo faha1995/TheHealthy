@@ -181,7 +181,7 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
             fm = getActivity().getSupportFragmentManager();
         }
         fm.popBackStack();
-        fm.popBackStackImmediate(" ", 1);
+//        fm.popBackStackImmediate(" ", 1);
     }
 
 

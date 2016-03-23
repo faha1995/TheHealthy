@@ -1,6 +1,9 @@
 package com.example.administrator.thehealthy.fragment.inforFrament.educationReportInforFragment;
 
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +28,8 @@ import java.util.Map;
  */
 public class Aftercare18MonthFragment extends BaseFragment {
     private final String TAG = Aftercare18MonthFragment.class.getSimpleName();
+    private ScrollView scrollView;
+    int startX, stopX;
 
     @Override
     protected int setLayoutView() {
@@ -33,7 +38,23 @@ public class Aftercare18MonthFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-
+        scrollView = findView(R.id.scrollView_12_to_30);
+        scrollView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    startX = (int) event.getX();
+                    Log.i("startX", "--------->" + startX);
+                } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                    stopX = (int) event.getX();
+                    Log.i("stopX", "--------->" + stopX);
+                } else if (stopX - startX > 200) {
+                    Log.i("--", "--------->" + (stopX - startX));
+                    backBeforFragment();
+                }
+                return false;
+            }
+        });
     }
 
     @Override

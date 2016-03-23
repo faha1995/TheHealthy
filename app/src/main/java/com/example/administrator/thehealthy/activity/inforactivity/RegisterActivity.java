@@ -1,6 +1,7 @@
 package com.example.administrator.thehealthy.activity.inforactivity;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -32,7 +33,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private EditText nameEdit, mobileEdit, idEdit, pswEdit;
     private Button registerBtn;
     private DBTool dbTool;
-
+    private Handler handler;
 
     @Override
     protected int setLayout() {
@@ -57,19 +58,20 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         dbTool = new DBTool();
 
     }
+    String name,mobile,identity,psw;
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_register_sure:
-                String name = nameEdit.getText().toString().trim();
-                String mobile = mobileEdit.getText().toString().trim();
-                String identity = idEdit.getText().toString().trim();
-                String psw = pswEdit.getText().toString().trim();
 
+                 name = nameEdit.getText().toString().trim();
+                 mobile = mobileEdit.getText().toString().trim();
+                 identity = idEdit.getText().toString().trim();
+                 psw = pswEdit.getText().toString().trim();
                 if (!name.isEmpty() && !mobile.isEmpty() &&
                         !identity.isEmpty() && !psw.isEmpty()) {
-                    registerUser(name,mobile,identity,psw);
+                    registerUser(name, mobile, identity, psw);
 
                 } else {
                     Toast.makeText(RegisterActivity.this, "请填入完整信息", Toast.LENGTH_SHORT).show();
@@ -78,7 +80,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         }
     }
 
-    private void registerUser(final String name, final String mobile, final String identity, final String psw) {
+    private void registerUser(final String names, final String mobiles, final String identitys, final String psws) {
         String tag_request = "request_register";
 
         StringRequest request = new StringRequest(Request.Method.POST,
@@ -95,14 +97,31 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         String name = jsonObject.getString("name");
                         String mobile = jsonObject.getString("mobile");
                         String created_at = jsonObject.getString("created_at");
+                        Log.i(TAG, "------>" + name);
+                        Log.i(TAG, "------>" + names);
+                        if (!name.equals(names)) {
 
-                        dbTool.addUser(name,mobile,identity,resident_id,created_at);
-                        Toast.makeText(getApplicationContext(),"恭喜，注册成功",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent();
-                        intent.putExtra("mobile",mobile);
-                        intent.putExtra("password",psw);
-                        setResult(1,intent);
-                        finish();
+                            Toast.makeText(RegisterActivity.this,
+                                    "用户信息不一致", Toast.LENGTH_SHORT).show();
+                        } else {
+                            dbTool.addUser(name, mobile, identity, resident_id, created_at);
+                            Toast.makeText(getApplicationContext(), "恭喜，注册成功", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent();
+                            intent.putExtra("mobile", mobile);
+                            intent.putExtra("password", psw);
+                            setResult(1, intent);
+                            finish();
+                        }
+                    } else {
+                        String error1 = jsonObject.getString("error_msg");
+                        Log.i(TAG, "------->" + error1);
+                        if (error1.equals("The mobile has registered")) {
+                            Toast.makeText(RegisterActivity.this,
+                                    "该身份已被注册", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(RegisterActivity.this,
+                                    "身份证信息不存在，请到三河市公共卫生局建档", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -111,22 +130,26 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(),error.getMessage(),
+                Log.i(TAG, "------->" + error.toString());
+                Toast.makeText(getApplicationContext(), "您输入的身份信息不正确",
                         Toast.LENGTH_SHORT).show();
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() {
-                Map<String,String> params = new HashMap<>();
-                params.put("name",name);
-                params.put("mobile",mobile);
-                params.put("identity",identity);
-                params.put("password",psw);
-
+                Map<String, String> params = new HashMap<>();
+                params.put("name", name);
+                params.put("identity", identity);
+                params.put("mobile", mobile);
+                params.put("password", psw);
+                Log.i("RegisterActivity", "--------->" + name.toString());
+                Log.i("RegisterActivity", "--------->" + mobile.toString());
+                Log.i("RegisterActivity", "--------->" + identity.toString());
+                Log.i("RegisterActivity", "--------->" + psw.toString());
                 return params;
             }
         };
-        VolleySingleton.getInstace()._addRequest(request,tag_request);
+        VolleySingleton.getInstace()._addRequest(request, tag_request);
     }
 
     // 通过一个内部类来实现TextWatcher

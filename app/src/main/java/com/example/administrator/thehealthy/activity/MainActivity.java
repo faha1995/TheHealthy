@@ -5,6 +5,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TabHost;
+import android.widget.TextView;
 
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.application.BaseApplication;
@@ -13,6 +14,7 @@ import com.example.administrator.thehealthy.fragment.inforFrament.PersonalFragme
 
 public class MainActivity extends BaseActivity {
     private TabHost mTabHost;
+    public TextView mainTitle;
     private long exitTime = 0;
     //    private BackHandledFragment backHandledFragment;
 
@@ -23,9 +25,10 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        mainTitle = findView(R.id.text_main_title);
+
         mTabHost = findView(android.R.id.tabhost);
         mTabHost.setup();
-
         TabHost.TabSpec spec0 = mTabHost.newTabSpec("spec0");
         View inforView = LayoutInflater.from(this)
                 .inflate(R.layout.tabwidget_infor, null);
@@ -44,6 +47,7 @@ public class MainActivity extends BaseActivity {
         replaceFragmentNoBacStack(R.id.personalView, new PersonalFragment());
 
         BaseApplication.addActivity(new MainActivity());
+
     }
 
     @Override

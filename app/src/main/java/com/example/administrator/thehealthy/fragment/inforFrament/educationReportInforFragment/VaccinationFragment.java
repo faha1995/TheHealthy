@@ -2,7 +2,6 @@ package com.example.administrator.thehealthy.fragment.inforFrament.educationRepo
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -32,8 +31,8 @@ import java.util.Map;
  */
 public class VaccinationFragment extends BaseFragment {
     private static final String TAG = VaccinationFragment.class.getSimpleName();
-    private GestureDetector gestureDetector;
     private LinearLayout linearLayoutVaccina;
+    int startX, stopX;
 
     @Override
     protected int setLayoutView() {
@@ -43,8 +42,22 @@ public class VaccinationFragment extends BaseFragment {
     @Override
     protected void initView() {
         linearLayoutVaccina = findView(R.id.linear_vaccination);
-        linearLayoutVaccina.setOnTouchListener(this);
-        gestureDetector = new GestureDetector(getActivity(), gesture);
+        linearLayoutVaccina.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    startX = (int) event.getX();
+                    Log.i("startX", "--------->" + startX);
+                } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                    stopX = (int) event.getX();
+                    Log.i("stopX", "--------->" + stopX);
+                } else if (stopX - startX > 200) {
+                    Log.i("--", "--------->" + (stopX - startX));
+                    backBeforFragment();
+                }
+                return false;
+            }
+        });
 
     }
 
@@ -116,24 +129,4 @@ public class VaccinationFragment extends BaseFragment {
         }
     }
 
-    // 创建OnGestureListener对象
-    GestureDetector.OnGestureListener gesture = new GestureDetector.SimpleOnGestureListener() {
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            float x = e2.getX() - e1.getX();
-
-            if (x > 0) {
-                backBeforFragment();
-                Log.i("educationInfor","-------->  "+ x);
-            }
-            return true;
-        }
-    };
-
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        gestureDetector.onTouchEvent(event);
-        return true;
-    }
 }

@@ -37,7 +37,7 @@ public class HabitFragment extends BaseFragment {
     private DBTool dbTool;
     private LinearLayout linearLayout;
     private GestureDetector gestureDetector;
-
+int startX,stopX;
     @Override
     protected int setLayoutView() {
         return R.layout.fragment_habit;
@@ -52,8 +52,26 @@ public class HabitFragment extends BaseFragment {
         liveStokeText = findView(R.id.text_information_liveStock);
         exposureText = findView(R.id.text_information_exposure);
         linearLayout = findView(R.id.linear_habit);
-        linearLayout.setOnTouchListener(this);
-        gestureDetector = new GestureDetector(getActivity(), gesture);
+        linearLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    startX = (int) event.getX();
+                    Log.i("startX","--------->"+ startX);
+                }
+
+                else if (event.getAction() == MotionEvent.ACTION_MOVE){
+                    stopX = (int) event.getX();
+                    Log.i("stopX","--------->"+ stopX);
+                }
+
+                else if (stopX - startX >200){
+                    Log.i("--","--------->"+ (stopX - startX));
+                    backBeforFragment();
+                }
+                return true;
+            }
+        });
 
         dbTool = new DBTool();
     }
@@ -103,24 +121,4 @@ public class HabitFragment extends BaseFragment {
         VolleySingleton.getInstace().addRequest(request);
     }
 
-    // 创建OnGestureListener对象
-    GestureDetector.OnGestureListener gesture = new GestureDetector.SimpleOnGestureListener() {
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            float x = e2.getX() - e1.getX();
-
-            if (x > 0) {
-                backBeforFragment();
-                Log.i("educationInfor", "-------->  " + x);
-            }
-            return true;
-        }
-    };
-
-
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-        gestureDetector.onTouchEvent(event);
-        return true;
-    }
 }
