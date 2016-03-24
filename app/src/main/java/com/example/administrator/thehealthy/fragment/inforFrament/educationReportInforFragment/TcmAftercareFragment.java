@@ -30,6 +30,11 @@ public class TcmAftercareFragment extends BaseFragment {
     private final String TAG = TcmAftercareFragment.class.getSimpleName();
     private LinearLayout linearLayoutTcm;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
+    private String titles;
+
+    public TcmAftercareFragment(String titles) {
+        this.titles = titles;
+    }
 
     @Override
     protected int setLayoutView() {
@@ -60,6 +65,8 @@ public class TcmAftercareFragment extends BaseFragment {
                                 if (!obj.getBoolean("error")) {
                                     JSONObject detail = obj.getJSONObject("detail");
                                     // Toast.makeText(getApplicationContext(), detail.getString("visit_date"), Toast.LENGTH_SHORT).show();
+                                    TextView title = findView(R.id.text_tcm_after_title);
+                                    title.setText(titles);
                                     TextView visit_date = findView(R.id.visit_date);
                                     visit_date.setText(detail.getString("visit_date"));
                                     TextView guide = findView(R.id.guide);

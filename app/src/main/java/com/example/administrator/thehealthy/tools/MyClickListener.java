@@ -6,5 +6,5 @@ package com.example.administrator.thehealthy.tools;
  */
 public interface MyClickListener {
     void myOnClickListener(int pos);
-    void myOnClickListener(String type_alias,String item_alias,int record_id);
+    void myOnClickListener(String type_alias,String item_alias, String title,int record_id);
 }

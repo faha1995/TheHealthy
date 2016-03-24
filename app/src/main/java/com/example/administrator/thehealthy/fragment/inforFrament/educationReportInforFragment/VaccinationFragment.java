@@ -32,6 +32,11 @@ public class VaccinationFragment extends BaseFragment {
     private static final String TAG = VaccinationFragment.class.getSimpleName();
     private LinearLayout linearLayoutVaccina;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
+    private String titles;
+
+    public VaccinationFragment(String title) {
+        this.titles = title;
+    }
 
     @Override
     protected int setLayoutView() {
@@ -66,6 +71,8 @@ public class VaccinationFragment extends BaseFragment {
                                 if (!obj.getBoolean("error")) {
                                     JSONObject detail = obj.getJSONObject("detail");
                                     // Toast.makeText(getApplicationContext(), detail.getString("visit_date"), Toast.LENGTH_SHORT).show();
+                                    TextView title = findView(R.id.text_vaccina_title);
+                                    title.setText(titles);
                                     TextView visit_date = findView(R.id.visit_date);
                                     visit_date.setText(detail.getString("visit_date"));
                                     TextView vaccine = findView(R.id.vaccine);

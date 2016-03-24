@@ -30,4 +30,5 @@
     <dimen name="register_smallTitle_textSize">12sp</dimen>
     <dimen name="register_smallTitle_marginLeft">15dp</dimen>
     <dimen name="diabetes_aftercare_linear_marTop">10dp</dimen>
+    <dimen name="body_exam_linear_jiange">5dp</dimen>
 </resources>

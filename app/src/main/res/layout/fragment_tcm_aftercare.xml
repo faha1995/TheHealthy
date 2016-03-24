@@ -26,8 +26,15 @@
             android:paddingTop="5dp"
             android:text="儿童中医药健康管理"
             android:textColor="@color/secondaryColor"
-            android:textSize="22sp" />
+            android:textSize="19sp" />
 
+        <TextView
+            android:id="@+id/text_tcm_after_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:textColor="@color/secondaryColor"
+            android:textSize="17sp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

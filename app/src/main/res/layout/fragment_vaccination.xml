@@ -24,7 +24,15 @@
             android:layout_height="wrap_content"
             android:text="疫苗接种记录"
             android:textColor="@color/secondaryColor"
-            android:textSize="22sp" />
+            android:textSize="19sp" />
+
+        <TextView
+            android:id="@+id/text_vaccina_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/secondaryColor"
+            android:textSize="17sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"

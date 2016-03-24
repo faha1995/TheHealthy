@@ -1,6 +1,8 @@
 package com.example.administrator.thehealthy.fragment.inforFrament.educationReportInforFragment;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,7 +14,6 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.application.AppConfig;
-import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
@@ -28,9 +29,20 @@ import java.util.Map;
  */
 public class BodyExamFragment extends BaseFragment {
     private final String TAG = BodyExamFragment.class.getSimpleName();
-    private DBTool dbTool;
+    private TextView xiegangLeftText, xiegangRightText, haokeLeftText, haokeRightText,
+            heightDanweiText, weightDanweiText, indexDanweiText, waistlineDanweiText,
+            heartRateDanweiText, hemoglobinDanweiText, leucocyteDanweiText, plateletsDanweiText,
+    altDanweiText,astDanweiText,tbilDanweiText,hdlcDanweiText,ldlcDanweiText,tgDanweiText,tcDanweiText,
+    bunDanweiText,scrDanweiText;
     private ScrollView scrollViewAfter;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
+    private String titles;
+    private LinearLayout linearTemperture, linearFrequency, linearGlucose;
+
+
+    public BodyExamFragment(String titles) {
+        this.titles = titles;
+    }
 
     @Override
     protected int setLayoutView() {
@@ -39,8 +51,33 @@ public class BodyExamFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        xiegangLeftText = findView(R.id.text_body_exam_xiegangLeft);
+        xiegangRightText = findView(R.id.text_body_exam_xiegangRight);
+        haokeLeftText = findView(R.id.text_body_exam_haokeLeft);
+        haokeRightText = findView(R.id.text_body_exam_haokeRight);
+        heightDanweiText = findView(R.id.text_body_exam_heightDanwei);
+        weightDanweiText = findView(R.id.text_body_exam_weightDanwei);
+        indexDanweiText = findView(R.id.text_body_exam_indexDanwei);
+        waistlineDanweiText = findView(R.id.text_body_exam_waistlineDanwei);
+        heartRateDanweiText = findView(R.id.text_body_exam_heart_rateDanwei);
+        hemoglobinDanweiText = findView(R.id.text_body_exam_hemoglobinDanwei);
+        leucocyteDanweiText = findView(R.id.text_body_exam_leucocyteDanwei);
+        plateletsDanweiText = findView(R.id.text_body_exam_plateletsDanwei);
+        altDanweiText = findView(R.id.text_body_exam_alt);
+        astDanweiText = findView(R.id.text_body_exam_ast);
+        tbilDanweiText = findView(R.id.text_body_exam_tbil);
+        hdlcDanweiText = findView(R.id.text_body_exam_hdl_c);
+        ldlcDanweiText = findView(R.id.text_body_exam_ldl_c);
+        tgDanweiText = findView(R.id.text_body_exam_tg);
+        bunDanweiText = findView(R.id.text_body_exam_bun);
+        tcDanweiText = findView(R.id.text_body_exam_tc);
+        scrDanweiText = findView(R.id.text_body_exam_scr);
+
+        linearGlucose = findView(R.id.linear_body_exam_glucose);
+        linearTemperture = findView(R.id.linear_body_exam_temperture);
+        linearFrequency = findView(R.id.linear_body_exam_frequency);
         scrollViewAfter = findView(R.id.scrollView_body_exam);
-       scrollViewOnTouch.setScrollView(scrollViewAfter);
+        scrollViewOnTouch.setScrollView(scrollViewAfter);
     }
 
     @Override
@@ -60,30 +97,66 @@ public class BodyExamFragment extends BaseFragment {
                         if (!obj.getBoolean("error")) {
                             JSONObject detail = obj.getJSONObject("detail");
                             // Toast.makeText(getApplicationContext(), detail.getString("visit_date"), Toast.LENGTH_SHORT).show();
+                            TextView title = findView(R.id.text_body_exam_title);
+                            title.setText(titles);
                             TextView doctor = findView(R.id.doctor);
                             doctor.setText(detail.getString("doctor"));
                             TextView body_temperature = findView(R.id.body_temperature);
                             body_temperature.setText(detail.getString("body_temperature"));
+                            // 如果没有数据就隐藏单位
+                            if (detail.getString("body_temperature").equals("")) {
+                                linearTemperture.setVisibility(View.INVISIBLE);
+                            }
                             TextView pulse = findView(R.id.pulse);
                             pulse.setText(detail.getString("pulse"));
                             TextView breath_frequency = findView(R.id.breath_frequency);
                             breath_frequency.setText(detail.getString("breath_frequency"));
+                            // 如果没有数据就隐藏单位
+                            if (detail.getString("breath_frequency").equals("")) {
+                                linearFrequency.setVisibility(View.INVISIBLE);
+                            }
                             TextView blood_pressure_left_sbp = findView(R.id.blood_pressure_left_sbp);
                             blood_pressure_left_sbp.setText(detail.getString("blood_pressure_left_sbp"));
+                            if (detail.getString("blood_pressure_left_sbp").equals("")) {
+                                xiegangLeftText.setVisibility(View.INVISIBLE);
+                            }
                             TextView blood_pressure_left_dbp = findView(R.id.blood_pressure_left_dbp);
                             blood_pressure_left_dbp.setText(detail.getString("blood_pressure_left_dbp"));
+                            if (detail.getString("blood_pressure_left_dbp").equals("")) {
+                                haokeLeftText.setVisibility(View.INVISIBLE);
+                            }
                             TextView blood_pressure_right_sbp = findView(R.id.blood_pressure_right_sbp);
                             blood_pressure_right_sbp.setText(detail.getString("blood_pressure_right_sbp"));
+                            if (detail.getString("blood_pressure_right_sbp").equals("")) {
+                                xiegangRightText.setVisibility(View.INVISIBLE);
+                            }
                             TextView blood_pressure_right_dbp = findView(R.id.blood_pressure_right_dbp);
                             blood_pressure_right_dbp.setText(detail.getString("blood_pressure_right_dbp"));
+                            if (!detail.getString("blood_pressure_right_dbp").equals("")) {
+                                haokeRightText.setVisibility(View.INVISIBLE);
+                            }
                             TextView height = findView(R.id.height);
                             height.setText(detail.getString("height"));
+                            // 没有数值就隐藏单位
+                            if (detail.getString("height").equals("")) {
+                                heightDanweiText.setVisibility(View.INVISIBLE);
+                            }
                             TextView weight = findView(R.id.weight);
                             weight.setText(detail.getString("weight"));
+                            if (detail.getString("weight").equals("")) {
+                                weightDanweiText.setVisibility(View.INVISIBLE);
+                            }
                             TextView waistline = findView(R.id.waistline);
                             waistline.setText(detail.getString("waistline"));
+                            if (detail.getString("waistline").equals("")) {
+                                waistlineDanweiText.setVisibility(View.INVISIBLE);
+                            }
                             TextView body_mass_index = findView(R.id.body_mass_index);
                             body_mass_index.setText(detail.getString("body_mass_index"));
+                            if (detail.getString("body_mass_index").equals("")) {
+                                indexDanweiText.setVisibility(View.INVISIBLE);
+                            }
+
                             TextView mouth_lip = findView(R.id.mouth_lip);
                             mouth_lip.setText(detail.getString("mouth_lip"));
                             TextView mouth_tooth = findView(R.id.mouth_tooth);
@@ -170,6 +243,9 @@ public class BodyExamFragment extends BaseFragment {
                             lung_rale_extra.setText(detail.getString("lung_rale_extra"));
                             TextView heart_rate = findView(R.id.heart_rate);
                             heart_rate.setText(detail.getString("heart_rate"));
+                            if (detail.getString("heart_rate").equals("")) {
+                                heartRateDanweiText.setVisibility(View.INVISIBLE);
+                            }
                             TextView heart_rhythm = findView(R.id.heart_rhythm);
                             heart_rhythm.setText(detail.getString("heart_rhythm"));
                             TextView heart_noise = findView(R.id.heart_noise);
@@ -199,14 +275,20 @@ public class BodyExamFragment extends BaseFragment {
                             if (!detail.getString("hemoglobin").equals("null")) {
                                 TextView hemoglobin = findView(R.id.hemoglobin);
                                 hemoglobin.setText(detail.getString("hemoglobin"));
+                            } else {
+                                hemoglobinDanweiText.setVisibility(View.INVISIBLE);
                             }
                             if (!detail.getString("leucocyte").equals("null")) {
                                 TextView leucocyte = findView(R.id.leucocyte);
                                 leucocyte.setText(detail.getString("leucocyte"));
+                            } else {
+                                leucocyteDanweiText.setVisibility(View.INVISIBLE);
                             }
                             if (!detail.getString("blood_platelets").equals("null")) {
                                 TextView blood_platelets = findView(R.id.blood_platelets);
                                 blood_platelets.setText(detail.getString("blood_platelets"));
+                            } else {
+                                plateletsDanweiText.setVisibility(View.INVISIBLE);
                             }
                             if (!detail.getString("blood_routine_test_extra").equals("null")) {
                                 TextView blood_routine_test_extra = findView(R.id.blood_routine_test_extra);
@@ -235,6 +317,8 @@ public class BodyExamFragment extends BaseFragment {
                             if (!detail.getString("blood_glucose_mmol").equals("null")) {
                                 TextView blood_glucose_mmol = findView(R.id.blood_glucose_mmol);
                                 blood_glucose_mmol.setText(detail.getString("blood_glucose_mmol"));
+                            } else {
+                                linearGlucose.setVisibility(View.INVISIBLE);
                             }
                             if (!detail.getString("blood_glucose_mg").equals("null")) {
                                 TextView blood_glucose_mg = findView(R.id.blood_glucose_mg);
@@ -251,38 +335,56 @@ public class BodyExamFragment extends BaseFragment {
                             if (!detail.getString("alt").equals("null")) {
                                 TextView alt = findView(R.id.alt);
                                 alt.setText(detail.getString("alt"));
+                            } else {
+                                altDanweiText.setVisibility(View.INVISIBLE);
                             }
                             if (!detail.getString("ast").equals("null")) {
                                 TextView ast = findView(R.id.ast);
                                 ast.setText(detail.getString("ast"));
+                            } else {
+                                astDanweiText.setVisibility(View.INVISIBLE);
                             }
                             if (!detail.getString("tbil").equals("null")) {
                                 TextView tbil = findView(R.id.tbil);
                                 tbil.setText(detail.getString("tbil"));
+                            } else {
+                                tbilDanweiText.setVisibility(View.INVISIBLE);
                             }
                             if (!detail.getString("scr").equals("null")) {
                                 TextView scr = findView(R.id.scr);
                                 scr.setText(detail.getString("scr"));
+                            } else {
+                                scrDanweiText.setVisibility(View.INVISIBLE);
                             }
                             if (!detail.getString("bun").equals("null")) {
                                 TextView bun = findView(R.id.bun);
                                 bun.setText(detail.getString("bun"));
+                            } else {
+                                bunDanweiText.setVisibility(View.INVISIBLE);
                             }
                             if (!detail.getString("tc").equals("null")) {
                                 TextView tc = findView(R.id.tc);
                                 tc.setText(detail.getString("tc"));
+                            } else {
+                                tcDanweiText.setVisibility(View.INVISIBLE);
                             }
                             if (!detail.getString("tg").equals("null")) {
                                 TextView tg = findView(R.id.tg);
                                 tg.setText(detail.getString("tg"));
+                            } else {
+                                tgDanweiText.setVisibility(View.INVISIBLE);
                             }
                             if (!detail.getString("ldl_c").equals("null")) {
                                 TextView ldl_c = findView(R.id.ldl_c);
                                 ldl_c.setText(detail.getString("ldl_c"));
+                            } else {
+                                ldlcDanweiText.setVisibility(View.INVISIBLE);
                             }
                             if (!detail.getString("hdl_c").equals("null")) {
                                 TextView hdl_c = findView(R.id.hdl_c);
                                 hdl_c.setText(detail.getString("hdl_c"));
+                            } else {
+                                hdlcDanweiText.setVisibility(View.INVISIBLE);
                             }
                             if (!detail.getString("b_ultrasonic").equals("null")) {
                                 TextView b_ultrasonic = findView(R.id.b_ultrasonic);

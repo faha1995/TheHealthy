@@ -31,6 +31,11 @@ public class VaccineCardFragment extends BaseFragment {
     private DBTool dbTool;
     private ScrollView scrollViewAfter;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
+    private String titles;
+
+    public VaccineCardFragment(String titles) {
+        this.titles = titles;
+    }
 
     @Override
     protected int setLayoutView() {
@@ -63,6 +68,8 @@ public class VaccineCardFragment extends BaseFragment {
                                 JSONObject obj = new JSONObject(response);
                                 if (!obj.getBoolean("error")) {
                                     JSONObject detail = obj.getJSONObject("detail");
+                                    TextView title = findView(R.id.text_vaccine_title);
+                                    title.setText(titles);
                                     TextView name = findView(R.id.name);
                                     name.setText(user.get("name"));
                                     TextView gender = findView(R.id.gender);

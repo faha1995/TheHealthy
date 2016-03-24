@@ -165,7 +165,7 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
     }
 
     @Override
-    public void myOnClickListener(String type_alias, String item_alias, int record_id) {
+    public void myOnClickListener(String type_alias, String item_alias, String title, int record_id) {
         Log.i(TAG, "---------->" + type_alias + "---->" + item_alias + "--->"+record_id);
 
         if (type_alias.equals("pregnant") && item_alias.equals("aftercare_1")) {
@@ -182,21 +182,21 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
             goToNextFragmentFromPersonal(new HypertensionAftercareFragment(), record_id);
         } else if (type_alias.equals("diabetes") && (item_alias.equals("aftercare_1") || item_alias.equals("aftercare_2")
                 || item_alias.equals("aftercare_3") || item_alias.equals("aftercare_4"))) {
-            goToNextFragmentFromPersonal(new DiabetesAftercareFragment(), record_id);
+            goToNextFragmentFromPersonal(new DiabetesAftercareFragment(title), record_id);
             Log.i(TAG, "------>    OK");
         } else if (item_alias.equals("body_exam_table") || item_alias.equals("physical_examination")) {
-            goToNextFragmentFromPersonal(new BodyExamFragment(), record_id);
+            goToNextFragmentFromPersonal(new BodyExamFragment(title), record_id);
             Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("vaccine") && item_alias.equals("vaccine_card")) {
-            goToNextFragmentFromPersonal(new VaccineCardFragment(), record_id);
+            goToNextFragmentFromPersonal(new VaccineCardFragment(title), record_id);
             Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("vaccine") && !item_alias.equals("vaccine_card")) {
-            goToNextFragmentFromPersonal(new VaccinationFragment(), record_id);
+            goToNextFragmentFromPersonal(new VaccinationFragment(title), record_id);
             Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("tcm") && (item_alias.equals("aftercare_6_month") || item_alias.equals("aftercare_12_month")
                 || item_alias.equals("aftercare_18_month") || item_alias.equals("aftercare_24_month")
                 || item_alias.equals("aftercare_30_month") || item_alias.equals("aftercare_3_year"))) {
-            goToNextFragmentFromPersonal(new TcmAftercareFragment(), record_id);
+            goToNextFragmentFromPersonal(new TcmAftercareFragment(title), record_id);
             Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("tcm") && item_alias.equals("constitution_identification")) {
             goToNextFragmentFromPersonal(new OldIdentifyFragment(), record_id);

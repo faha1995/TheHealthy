@@ -10,12 +10,12 @@
     tools:context=".activity.DiabetesAftercareActivity">
 
     <ScrollView
-        android:id="@+id/scrollView_diabetes"
         xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollView_diabetes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:overScrollMode="never"
         android:background="@color/fragmentBackGround"
+        android:overScrollMode="never"
         android:scrollbars="none">
 
         <LinearLayout
@@ -37,7 +37,15 @@
                     android:layout_height="wrap_content"
                     android:text="糖尿病患者健康管理"
                     android:textColor="@color/secondaryColor"
-                    android:textSize="22sp" />
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/text_diabetes_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="17sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -263,7 +271,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="/"
+                        android:text=" / "
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
@@ -308,14 +316,13 @@
                         android:id="@+id/textView01261"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="/"
+                        android:text=" / "
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
                         android:id="@+id/sign_weight_next"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
                         android:textColor="@color/secondaryColor" />
                 </LinearLayout>
             </LinearLayout>
@@ -353,14 +360,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="/"
+                        android:text=" / "
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
                         android:id="@+id/sign_bmi_next"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
                         android:textColor="@color/secondaryColor" />
                 </LinearLayout>
             </LinearLayout>
@@ -456,14 +462,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="/"
+                        android:text=" / "
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
                         android:id="@+id/life_style_guide_smoke_next"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
                         android:textColor="@color/secondaryColor" />
                 </LinearLayout>
             </LinearLayout>
@@ -500,14 +505,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="/"
+                        android:text=" / "
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
                         android:id="@+id/life_style_guide_liquor_next"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
                         android:textColor="@color/secondaryColor" />
                 </LinearLayout>
             </LinearLayout>
@@ -525,11 +529,19 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.5"
                     android:text="运动："
                     android:textColor="@color/secondaryColor" />
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="现状："
+                    android:textColor="@color/secondaryColor" />
+
                 <LinearLayout
+                    android:id="@+id/linear_diabetes_sport_now"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -544,7 +556,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="次/周"
+                        android:text="次 / 周"
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
@@ -557,7 +569,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="分钟/次"
+                        android:text="分钟 / 次"
                         android:textColor="@color/secondaryColor" />
                 </LinearLayout>
             </LinearLayout>
@@ -574,9 +586,17 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="0.5" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:text="医嘱："
+                    android:textColor="@color/secondaryColor" />
 
                 <LinearLayout
+                    android:id="@+id/linear_diabetes_sport_suggest"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -641,14 +661,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="/"
+                        android:text=" / "
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
                         android:id="@+id/life_style_guide_staple_next"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
                         android:textColor="@color/secondaryColor" />
                 </LinearLayout>
             </LinearLayout>
@@ -743,7 +762,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="mmol/L"
+                        android:text=" mmol/L"
                         android:textColor="@color/secondaryColor" />
                 </LinearLayout>
             </LinearLayout>
@@ -779,18 +798,19 @@
                     android:layout_weight="1.5"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/auxiliary_examination_extra_hemoglobin"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:textColor="@color/secondaryColor" />
+                        <TextView
+                            android:id="@+id/auxiliary_examination_extra_hemoglobin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:textColor="@color/secondaryColor" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="%"
-                        android:textColor="@color/secondaryColor" />
+                        <TextView
+                            android:id="@+id/text_diabetes_baifenhao"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="%"
+                            android:textColor="@color/secondaryColor" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -983,6 +1003,7 @@
                     android:textColor="@color/secondaryColor" />
 
                 <LinearLayout
+                    android:id="@+id/linear_diabetes_dosageFirst"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -1074,6 +1095,7 @@
                     android:textColor="@color/secondaryColor" />
 
                 <LinearLayout
+                    android:id="@+id/linear_diabetes_dosageSecond"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -1166,10 +1188,12 @@
                     android:textColor="@color/secondaryColor" />
 
                 <LinearLayout
+                    android:id="@+id/linear_diabetes_dosageThird"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
                     android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

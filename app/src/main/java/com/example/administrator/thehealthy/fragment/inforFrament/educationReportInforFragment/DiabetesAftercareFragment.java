@@ -2,6 +2,8 @@ package com.example.administrator.thehealthy.fragment.inforFrament.educationRepo
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,7 +15,6 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.application.AppConfig;
-import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
 import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
@@ -30,9 +31,15 @@ import java.util.Map;
  */
 public class DiabetesAftercareFragment extends BaseFragment {
     private final String TAG = DiabetesAftercareFragment.class.getSimpleName();
-    private DBTool dbTool;
+    private LinearLayout linearDosageFirst, linearDosageSecond, linearDosageThird,
+            linearSportNow, linearSportSuggest;
     private ScrollView scrollViewAfter;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
+    private String titles;
+
+    public DiabetesAftercareFragment(String title) {
+        this.titles = title;
+    }
 
     @Override
     protected int setLayoutView() {
@@ -41,7 +48,12 @@ public class DiabetesAftercareFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        dbTool = new DBTool();
+        linearDosageFirst = findView(R.id.linear_diabetes_dosageFirst);
+        linearDosageSecond = findView(R.id.linear_diabetes_dosageSecond);
+        linearDosageThird = findView(R.id.linear_diabetes_dosageThird);
+        linearSportNow = findView(R.id.linear_diabetes_sport_now);
+        linearSportSuggest = findView(R.id.linear_diabetes_sport_suggest);
+
         scrollViewAfter = findView(R.id.scrollView_diabetes);
         scrollViewOnTouch.setScrollView(scrollViewAfter);
         Log.i(TAG, "---->  initView()");
@@ -69,6 +81,8 @@ public class DiabetesAftercareFragment extends BaseFragment {
                                 if (!obj.getBoolean("error")) {
                                     JSONObject detail = obj.getJSONObject("detail");
                                     // Toast.makeText(getApplicationContext(), detail.getString("visit_date"), Toast.LENGTH_SHORT).show();
+                                    TextView title = findView(R.id.text_diabetes_title);
+                                    title.setText(titles);
                                     TextView visit_date = findView(R.id.visit_date);
                                     TextView doctor_signature = findView(R.id.doctor_signature);
                                     doctor_signature.setText(detail.getString("doctor_signature"));
@@ -111,9 +125,18 @@ public class DiabetesAftercareFragment extends BaseFragment {
                                     TextView life_style_guide_liquor_next = findView(R.id.life_style_guide_liquor_next);
                                     life_style_guide_liquor_next.setText(detail.getString("life_style_guide_liquor_next"));
                                     TextView life_style_guide_sport1 = findView(R.id.life_style_guide_sport1);
-                                    life_style_guide_sport1.setText(detail.getString("life_style_guide_sport1"));
+                                    // 如果运动没有值则隐藏单位
+                                    if (detail.getString("life_style_guide_sport1").equals("")) {
+                                        linearSportNow.setVisibility(View.INVISIBLE);
+                                    } else {
+                                        life_style_guide_sport1.setText(detail.getString("life_style_guide_sport1"));
+                                    }
                                     TextView life_style_guide_sport2 = findView(R.id.life_style_guide_sport2);
-                                    life_style_guide_sport2.setText(detail.getString("life_style_guide_sport2"));
+                                    if (detail.getString("life_style_guide_sport1").equals("")) {
+                                        linearSportSuggest.setVisibility(View.INVISIBLE);
+                                    } else {
+                                        life_style_guide_sport2.setText(detail.getString("life_style_guide_sport2"));
+                                    }
                                     TextView life_style_guide_sport3 = findView(R.id.life_style_guide_sport3);
                                     life_style_guide_sport3.setText(detail.getString("life_style_guide_sport3"));
                                     TextView life_style_guide_sport4 = findView(R.id.life_style_guide_sport4);
@@ -129,9 +152,17 @@ public class DiabetesAftercareFragment extends BaseFragment {
                                     TextView auxiliary_examination_fbg_value = findView(R.id.auxiliary_examination_fbg_value);
                                     auxiliary_examination_fbg_value.setText(detail.getString("auxiliary_examination_fbg_value"));
                                     TextView auxiliary_examination_extra_hemoglobin = findView(R.id.auxiliary_examination_extra_hemoglobin);
-                                    auxiliary_examination_extra_hemoglobin.setText(detail.getString("auxiliary_examination_extra_hemoglobin"));
+                                    // 如果百分号钱没有值，则其隐藏
+                                    if (!detail.getString("auxiliary_examination_extra_hemoglobin").equals("null")) {
+                                        auxiliary_examination_extra_hemoglobin.setText(detail.getString("auxiliary_examination_extra_hemoglobin"));
+                                    } else {
+                                        TextView banfenhao = findView(R.id.text_diabetes_baifenhao);
+                                        banfenhao.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView auxiliary_examination_extra_examination_date = findView(R.id.auxiliary_examination_extra_examination_date);
-                                    auxiliary_examination_extra_examination_date.setText(detail.getString("auxiliary_examination_extra_examination_date"));
+                                    if (!detail.getString("auxiliary_examination_extra_examination_date").equals("null")) {
+                                        auxiliary_examination_extra_examination_date.setText(detail.getString("auxiliary_examination_extra_examination_date"));
+                                    }
                                     TextView take_medicine_compliance = findView(R.id.take_medicine_compliance);
                                     take_medicine_compliance.setText(detail.getString("take_medicine_compliance"));
                                     TextView medicine_untoward_effect = findView(R.id.medicine_untoward_effect);
@@ -142,6 +173,8 @@ public class DiabetesAftercareFragment extends BaseFragment {
                                     take_medicine_insulin.setText(detail.getString("take_medicine_insulin"));
                                     TextView take_medicine_insulin_volume = findView(R.id.take_medicine_insulin_volume);
                                     take_medicine_insulin_volume.setText(detail.getString("take_medicine_insulin_volume"));
+
+                                    // 如果药物剂量没有值，则隐藏其单位
                                     if (!detail.getString("take_medicine_1").equals("null")) {
                                         TextView take_medicine_1 = findView(R.id.take_medicine_1);
                                         take_medicine_1.setText(detail.getString("take_medicine_1"));
@@ -149,6 +182,8 @@ public class DiabetesAftercareFragment extends BaseFragment {
                                     if (!detail.getString("take_medicine_1_day").equals("null")) {
                                         TextView take_medicine_1_day = findView(R.id.take_medicine_1_day);
                                         take_medicine_1_day.setText(detail.getString("take_medicine_1_day"));
+                                    } else {
+                                        linearDosageFirst.setVisibility(View.INVISIBLE);
                                     }
                                     if (!detail.getString("take_medicine_1_time").equals("null")) {
                                         TextView take_medicine_1_time = findView(R.id.take_medicine_1_time);
@@ -161,6 +196,8 @@ public class DiabetesAftercareFragment extends BaseFragment {
                                     if (!detail.getString("take_medicine_2_day").equals("null")) {
                                         TextView take_medicine_2_day = findView(R.id.take_medicine_2_day);
                                         take_medicine_2_day.setText(detail.getString("take_medicine_2_day"));
+                                    } else {
+                                        linearDosageSecond.setVisibility(View.GONE);
                                     }
                                     if (!detail.getString("take_medicine_2_time").equals("null")) {
                                         TextView take_medicine_2_time = findView(R.id.take_medicine_2_time);
@@ -173,6 +210,8 @@ public class DiabetesAftercareFragment extends BaseFragment {
                                     if (!detail.getString("take_medicine_3_day").equals("null")) {
                                         TextView take_medicine_3_day = findView(R.id.take_medicine_3_day);
                                         take_medicine_3_day.setText(detail.getString("take_medicine_3_day"));
+                                    } else {
+                                        linearDosageThird.setVisibility(View.GONE);
                                     }
                                     if (!detail.getString("take_medicine_3_time").equals("null")) {
                                         TextView take_medicine_3_time = findView(R.id.take_medicine_3_time);

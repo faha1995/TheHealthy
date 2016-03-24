@@ -37,7 +37,15 @@
                     android:layout_height="wrap_content"
                     android:text="健康体检"
                     android:textColor="@color/secondaryColor"
-                    android:textSize="22sp" />
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/text_body_exam_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="17sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -99,6 +107,7 @@
                     android:textColor="@color/secondaryColor" />
 
                 <LinearLayout
+                    android:id="@+id/linear_body_exam_temperture"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.4"
@@ -136,6 +145,7 @@
                     android:textColor="@color/secondaryColor" />
 
                 <LinearLayout
+                    android:id="@+id/linear_body_exam_frequency"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -188,13 +198,14 @@
                         android:id="@+id/blood_pressure_left_sbp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
+                        android:layout_marginLeft="20dp"
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_xiegangLeft"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="/"
+                        android:text=" / "
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
@@ -204,6 +215,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_haokeLeft"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" mmHg"
@@ -241,13 +253,14 @@
                         android:id="@+id/blood_pressure_right_sbp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="40dp"
+                        android:layout_marginLeft="20dp"
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_xiegangRight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="/"
+                        android:text=" / "
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
@@ -257,6 +270,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_haokeRight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" mmHg"
@@ -294,6 +308,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_heightDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="cm"
@@ -320,6 +335,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_weightDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="kg"
@@ -357,6 +373,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_indexDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" kg/m2"
@@ -393,6 +410,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_waistlineDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text=" cm"
@@ -1029,6 +1047,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_heart_rateDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="次/分钟 "
@@ -1323,6 +1342,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_hemoglobinDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="g/L"
@@ -1359,6 +1379,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_leucocyteDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="x10^9/L"
@@ -1396,6 +1417,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_plateletsDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="x10^9/L"
@@ -1540,7 +1562,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
@@ -1556,6 +1578,7 @@
                     android:textColor="@color/secondaryColor" />
 
                 <LinearLayout
+                    android:id="@+id/linear_body_exam_glucose"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.5"
@@ -1591,7 +1614,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
@@ -1665,6 +1688,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_alt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="U/L"
@@ -1701,6 +1725,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_ast"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="U/L"
@@ -1738,6 +1763,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_tbil"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="μmol/L"
@@ -1783,6 +1809,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_scr"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="μmol/L"
@@ -1819,6 +1846,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_bun"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="μmol/L"
@@ -1864,6 +1892,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_tc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="mmol/L"
@@ -1900,6 +1929,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_body_exam_tg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="mmol/L"
@@ -1930,6 +1960,7 @@
                     android:textColor="@color/secondaryColor" />
 
                 <TextView
+                    android:id="@+id/text_body_exam_ldl_c"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="mmol/L"
@@ -1959,6 +1990,7 @@
                     android:textColor="@color/secondaryColor" />
 
                 <TextView
+                    android:id="@+id/text_body_exam_hdl_c"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="mmol/L"
@@ -1968,7 +2000,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"

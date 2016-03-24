@@ -109,7 +109,7 @@ public class HealthEducationFragment extends BaseFragment implements MyClickList
     }
 
     @Override
-    public void myOnClickListener(String type_alias, String item_alias, int record_id) {
+    public void myOnClickListener(String type_alias, String item_alias, String title, int record_id) {
 
     }
 

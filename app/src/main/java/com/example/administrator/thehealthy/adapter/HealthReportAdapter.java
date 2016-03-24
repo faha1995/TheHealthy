@@ -89,7 +89,7 @@ public class HealthReportAdapter extends RecyclerView.Adapter
         public void onClick(View v) {
             myClickListener.myOnClickListener(
                     summaryList.get(itemPos).getTypeAlias(),summaryList.get(itemPos).getItemAlias()
-            ,summaryList.get(itemPos).getRecordId());
+            ,ChangeString.splitForPurpose(summaryList.get(itemPos).getTitle()),summaryList.get(itemPos).getRecordId());
         }
     }
 }
