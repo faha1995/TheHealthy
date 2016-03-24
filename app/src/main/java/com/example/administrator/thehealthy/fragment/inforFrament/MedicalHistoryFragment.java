@@ -1,9 +1,6 @@
 package com.example.administrator.thehealthy.fragment.inforFrament;
 
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -17,6 +14,7 @@ import com.example.administrator.thehealthy.application.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
 import com.example.administrator.thehealthy.tools.ChangeString;
+import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
 import org.json.JSONException;
@@ -36,8 +34,7 @@ public class MedicalHistoryFragment extends BaseFragment {
             geneticText;
     private DBTool dbTool;
     private ScrollView scrollViewAfter;
-    private GestureDetector gestureDetector;
-int startX,stopX;
+    private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
 
     @Override
     protected int setLayoutView() {
@@ -58,29 +55,8 @@ int startX,stopX;
         alergyText = findView(R.id.text_medicalHistory_allergy);
         geneticText = findView(R.id.text_medicalHistory_genetic);
         scrollViewAfter = findView(R.id.scrollView_medicahistory);
-        scrollViewAfter.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    startX = (int) event.getX();
-                    Log.i("startX","--------->"+ startX);
-                }
 
-                else if (event.getAction() == MotionEvent.ACTION_MOVE){
-                    stopX = (int) event.getX();
-                    Log.i("stopX","--------->"+ stopX);
-                }
-
-                else if (stopX - startX >200){
-                    Log.i("--","--------->"+ (stopX - startX));
-                    backBeforFragment();
-                }
-                return false;
-            }
-
-
-        });
-
+        scrollViewOnTouch.setScrollView(scrollViewAfter);
         dbTool = new DBTool();
     }
 
@@ -136,7 +112,7 @@ int startX,stopX;
                         momSickText.setText(ChangeString.splitMain(jsonObject.getString("family_history_mother")));
                         bortherSickText.setText(ChangeString.splitMain(jsonObject.getString("family_history_sibling")));
                         if (jsonObject.getString("family_history_children").length() > 3) {
-                        sonSickText.setText(ChangeString.splitMain(jsonObject.getString("family_history_children")));
+                            sonSickText.setText(ChangeString.splitMain(jsonObject.getString("family_history_children")));
                         } else {
                             sonSickText.setText(jsonObject.getString("family_history_children"));
                         }
@@ -157,7 +133,7 @@ int startX,stopX;
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
-                params.put("resident_id",user.get("resident_id"));
+                params.put("resident_id", user.get("resident_id"));
                 return params;
             }
         };

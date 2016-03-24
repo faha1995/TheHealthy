@@ -1,9 +1,6 @@
 package com.example.administrator.thehealthy.fragment.inforFrament;
 
 import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +15,7 @@ import com.example.administrator.thehealthy.application.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
 import com.example.administrator.thehealthy.tools.ChangeString;
+import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
 import org.json.JSONException;
@@ -36,8 +34,7 @@ public class HabitFragment extends BaseFragment {
             liveStokeText, exposureText;
     private DBTool dbTool;
     private LinearLayout linearLayout;
-    private GestureDetector gestureDetector;
-int startX,stopX;
+    private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
     @Override
     protected int setLayoutView() {
         return R.layout.fragment_habit;
@@ -52,26 +49,8 @@ int startX,stopX;
         liveStokeText = findView(R.id.text_information_liveStock);
         exposureText = findView(R.id.text_information_exposure);
         linearLayout = findView(R.id.linear_habit);
-        linearLayout.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    startX = (int) event.getX();
-                    Log.i("startX","--------->"+ startX);
-                }
 
-                else if (event.getAction() == MotionEvent.ACTION_MOVE){
-                    stopX = (int) event.getX();
-                    Log.i("stopX","--------->"+ stopX);
-                }
-
-                else if (stopX - startX >200){
-                    Log.i("--","--------->"+ (stopX - startX));
-                    backBeforFragment();
-                }
-                return true;
-            }
-        });
+        scrollViewOnTouch.setLinearRelative(linearLayout);
 
         dbTool = new DBTool();
     }

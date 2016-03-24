@@ -23,8 +23,8 @@ import com.example.administrator.thehealthy.application.BaseApplication;
  */
 public abstract class BaseFragment extends Fragment implements View.OnTouchListener {
     private View view;
-    private FragmentManager fm;
-    private FragmentTransaction ft;
+    private static FragmentManager fm;
+    private static FragmentTransaction ft;
 
 
     @Nullable
@@ -176,10 +176,8 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     }
 
     // 返回的方法
-    public void backBeforFragment() {
-        if (fm == null) {
-            fm = getActivity().getSupportFragmentManager();
-        }
+    public static void backBeforFragment() {
+
         fm.popBackStack();
 //        fm.popBackStackImmediate(" ", 1);
     }

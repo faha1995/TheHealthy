@@ -2,8 +2,6 @@ package com.example.administrator.thehealthy.fragment.inforFrament.educationRepo
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +14,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.application.AppConfig;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
 import org.json.JSONException;
@@ -32,7 +31,7 @@ import java.util.Map;
 public class VaccinationFragment extends BaseFragment {
     private static final String TAG = VaccinationFragment.class.getSimpleName();
     private LinearLayout linearLayoutVaccina;
-    int startX, stopX;
+    private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
 
     @Override
     protected int setLayoutView() {
@@ -42,22 +41,7 @@ public class VaccinationFragment extends BaseFragment {
     @Override
     protected void initView() {
         linearLayoutVaccina = findView(R.id.linear_vaccination);
-        linearLayoutVaccina.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    startX = (int) event.getX();
-                    Log.i("startX", "--------->" + startX);
-                } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                    stopX = (int) event.getX();
-                    Log.i("stopX", "--------->" + stopX);
-                } else if (stopX - startX > 200) {
-                    Log.i("--", "--------->" + (stopX - startX));
-                    backBeforFragment();
-                }
-                return false;
-            }
-        });
+        scrollViewOnTouch.setLinearRelative(linearLayoutVaccina);
 
     }
 

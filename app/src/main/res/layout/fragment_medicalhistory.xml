@@ -522,7 +522,7 @@
             <!-- 在布局的最后空出一段-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp" />
+                android:layout_height="10dp" />
 
         </LinearLayout>
     </ScrollView>

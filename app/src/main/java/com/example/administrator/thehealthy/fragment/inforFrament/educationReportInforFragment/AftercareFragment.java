@@ -1,8 +1,6 @@
 package com.example.administrator.thehealthy.fragment.inforFrament.educationReportInforFragment;
 
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +14,7 @@ import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.application.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
 import org.json.JSONException;
@@ -32,7 +31,7 @@ public class AftercareFragment extends BaseFragment {
     private DBTool dbTool;
     private int record_id;
     private ScrollView scrollViewAfter;
-    int startX, stopX;
+    private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
 
     @Override
     protected int setLayoutView() {
@@ -44,22 +43,7 @@ public class AftercareFragment extends BaseFragment {
         dbTool = new DBTool();
         record_id = getArguments().getInt("record_id", 0);
         scrollViewAfter = findView(R.id.scrollView_aftercare);
-        scrollViewAfter.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    startX = (int) event.getX();
-                    Log.i("startX", "--------->" + startX);
-                } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                    stopX = (int) event.getX();
-                    Log.i("stopX", "--------->" + stopX);
-                } else if (stopX - startX > 200) {
-                    Log.i("--", "--------->" + (stopX - startX));
-                    backBeforFragment();
-                }
-                return false;
-            }
-        });
+        scrollViewOnTouch.setScrollView(scrollViewAfter);
     }
 
     @Override

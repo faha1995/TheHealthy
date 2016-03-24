@@ -1,8 +1,6 @@
 package com.example.administrator.thehealthy.fragment.inforFrament;
 
 import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +15,7 @@ import com.example.administrator.thehealthy.application.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
 import com.example.administrator.thehealthy.tools.ChangeString;
+import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
 import org.json.JSONException;
@@ -36,7 +35,7 @@ public class InformationFragment extends BaseFragment {
             maritalStatusText, bloodStyleText, paymentMethodText;
     private DBTool dbTool;
     private ScrollView scrollViewAfter;
-    int startX,stopX;
+    private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
 
     @Override
     protected int setLayoutView() {
@@ -59,26 +58,9 @@ public class InformationFragment extends BaseFragment {
         bloodStyleText = findView(R.id.text_information_bloodStyle);
         paymentMethodText = findView(R.id.text_information_paymentMethod);
         scrollViewAfter = findView(R.id.scrollView_information);
-        scrollViewAfter.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    startX = (int) event.getX();
-                    Log.i("startX","--------->"+ startX);
-                }
 
-                else if (event.getAction() == MotionEvent.ACTION_MOVE){
-                    stopX = (int) event.getX();
-                    Log.i("stopX","--------->"+ stopX);
-                }
+        scrollViewOnTouch.setScrollView(scrollViewAfter);
 
-                else if (stopX - startX >200){
-                    Log.i("--","--------->"+ (stopX - startX));
-                    backBeforFragment();
-                }
-                return false;
-            }
-        });
         dbTool = new DBTool();
         Log.i(TAG, "-------->" + "inforBac"+getActivity().getSupportFragmentManager().getBackStackEntryCount());
     }
