@@ -1,6 +1,8 @@
 package com.example.administrator.thehealthy.fragment.inforFrament.educationReportInforFragment;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,7 +14,6 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.application.AppConfig;
-import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
@@ -28,10 +29,16 @@ import java.util.Map;
  */
 public class AftercareFragment extends BaseFragment {
     private final String TAG = AftercareFragment.class.getSimpleName();
-    private DBTool dbTool;
     private int record_id;
     private ScrollView scrollViewAfter;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
+    private TextView afterTitle;
+    private String titles;
+    private LinearLayout linearSbpDanwei;
+
+    public AftercareFragment(String titles) {
+        this.titles = titles;
+    }
 
     @Override
     protected int setLayoutView() {
@@ -40,7 +47,8 @@ public class AftercareFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        dbTool = new DBTool();
+        afterTitle = findView(R.id.aftercare_title);
+        linearSbpDanwei = findView(R.id.linear_aftercareSbpDanwei);
         record_id = getArguments().getInt("record_id", 0);
         scrollViewAfter = findView(R.id.scrollView_aftercare);
         scrollViewOnTouch.setScrollView(scrollViewAfter);
@@ -63,6 +71,7 @@ public class AftercareFragment extends BaseFragment {
                                 if (!obj.getBoolean("error")) {
                                     JSONObject detail = obj.getJSONObject("detail");
                                     // Toast.makeText(getApplicationContext(), detail.getString("visit_date"), Toast.LENGTH_SHORT).show();
+                                    afterTitle.setText(titles);
                                     TextView visit_date = findView(R.id.visit_date);
                                     visit_date.setText(detail.getString("visit_date"));
                                     TextView doctor_signature = findView(R.id.doctor_signature);
@@ -75,6 +84,9 @@ public class AftercareFragment extends BaseFragment {
                                     weight.setText(detail.getString("weight"));
                                     TextView sbp = findView(R.id.sbp);
                                     sbp.setText(detail.getString("sbp"));
+                                    if (detail.getString("sbp").equals("")) {
+                                        linearSbpDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView dbp = findView(R.id.dbp);
                                     dbp.setText(detail.getString("dbp"));
                                     TextView hemoglobin = findView(R.id.hemoglobin);

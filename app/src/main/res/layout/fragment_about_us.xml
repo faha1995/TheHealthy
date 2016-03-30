@@ -32,7 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="三河市公共卫生手机APP"
-            android:textSize="24sp" />
+            android:textColor="@color/secondaryColor"
+            android:textSize="19sp" />
     </LinearLayout>
 
     <TextView
@@ -40,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
 
+        android:textColor="@color/secondaryColor"
         android:text="        三河市公共卫生手机APP致力打造一款守护您健康的APP。收集各方健康数据，发布健康教育知识，实时展现在您面前。"
         android:textSize="16sp" />
 
@@ -53,7 +55,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="当前版本"
-            android:textSize="22sp" />
+            android:textColor="@color/secondaryColor"
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -61,7 +64,8 @@
             android:layout_marginRight="20dp"
             android:gravity="right"
             android:text="V 2.0"
-            android:textSize="22sp" />
+            android:textColor="@color/secondaryColor"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <ImageView

@@ -20,6 +20,7 @@ import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.BaseActivity;
 import com.example.administrator.thehealthy.activity.MainActivity;
 import com.example.administrator.thehealthy.application.AppConfig;
+import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
@@ -79,6 +80,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             case R.id.btn_login:
                 phone = mobileEdit.getText().toString().trim();
                 psw = pswEdit.getText().toString().trim();
+                if (BaseApplication.isNetwork()) {
 
                 if ( phone.isEmpty() || psw.isEmpty()) {
                     Toast.makeText(this, "手机号或密码不能为空", Toast.LENGTH_SHORT).show();
@@ -86,7 +88,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     Log.e("checkLogin", "----->" + phone + "—————>" + psw);
                     checkLogin(phone, psw);
                 }
-
+                } else {
+                    Toast.makeText(this,"当前无网络",Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.btn_register:
                 Intent intent = new Intent(this, RegisterActivity.class);
@@ -98,6 +102,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     // 检验是否有该用户
     private void checkLogin(final String phone, final String psw) {
+
         Log.i(TAG, " -----> 开始与后台通信");
         final String tag_request = "request_login";
 
@@ -123,7 +128,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                                 String create_at = jsonObject.getString("created_at");
 
                                 Log.i(TAG, "用户名 ：" + name);
-
                                 dbTool.addUser(name, phone, identity, resident_id, create_at);
                                 Log.i(TAG, "添加用户到本地数据库成功~");
 

@@ -21,7 +21,6 @@ public class PersonalFragment extends BaseFragment {
     private PersonalAdapter personalAdapter;
     private List<Fragment> fragmentList = new ArrayList<>();
     private List<String> titles = new ArrayList<>();
-    private int exitTime;
 
 
 

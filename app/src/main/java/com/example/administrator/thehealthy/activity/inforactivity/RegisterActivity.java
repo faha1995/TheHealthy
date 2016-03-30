@@ -18,6 +18,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.BaseActivity;
 import com.example.administrator.thehealthy.application.AppConfig;
+import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
@@ -64,17 +65,21 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_register_sure:
+                if (BaseApplication.isNetwork()) {
 
-                 name = nameEdit.getText().toString().trim();
-                 mobile = mobileEdit.getText().toString().trim();
-                 identity = idEdit.getText().toString().trim();
-                 psw = pswEdit.getText().toString().trim();
-                if (!name.isEmpty() && !mobile.isEmpty() &&
-                        !identity.isEmpty() && !psw.isEmpty()) {
-                    registerUser(name, mobile, identity, psw);
+                    name = nameEdit.getText().toString().trim();
+                    mobile = mobileEdit.getText().toString().trim();
+                    identity = idEdit.getText().toString().trim();
+                    psw = pswEdit.getText().toString().trim();
+                    if (!name.isEmpty() && !mobile.isEmpty() &&
+                            !identity.isEmpty() && !psw.isEmpty()) {
+                        registerUser(name, mobile, identity, psw);
 
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "请填入完整信息", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(RegisterActivity.this, "请填入完整信息", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,"当前无网络",Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

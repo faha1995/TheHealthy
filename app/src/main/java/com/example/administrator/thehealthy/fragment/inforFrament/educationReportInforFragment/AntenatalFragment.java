@@ -1,6 +1,7 @@
 package com.example.administrator.thehealthy.fragment.inforFrament.educationReportInforFragment;
 
 import android.util.Log;
+import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,15 @@ public class AntenatalFragment extends BaseFragment {
     private int record_id;
     private ScrollView scrollViewAfter;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
+    private TextView titleText, weeksDanwei, naturalProductionDanwei, surgeryProductionDanwei,
+            heightDanwei, weightDanwei, dbpDanwei, thrombocyteDanwei, hemoglobinDanwei, leukocyteDanwei,
+            bunDanwei, scrDanwei, dbilDanwei, tabilDanwei, albuminDanwei, sgotDanwei, sgptDanwei,
+            bloodGlucoseDanwei;
+    private String titles;
+
+    public AntenatalFragment(String titles) {
+        this.titles = titles;
+    }
 
     @Override
     protected int setLayoutView() {
@@ -42,6 +52,25 @@ public class AntenatalFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        titleText = findView(R.id.text_antenatal_title);
+        weeksDanwei = findView(R.id.text_antenatal_weeksDanwei);
+        naturalProductionDanwei = findView(R.id.text_antenatal_natural_productionDanwei);
+        surgeryProductionDanwei = findView(R.id.text_medicalHistory_surgery);
+        heightDanwei = findView(R.id.text_body_exam_heightDanwei);
+        weightDanwei = findView(R.id.text_body_exam_weightDanwei);
+        dbpDanwei = findView(R.id.antenatal_dbpDanwei);
+        thrombocyteDanwei = findView(R.id.antenatal_thrombocyteDanwei);
+        hemoglobinDanwei = findView(R.id.antenatal_hemoglobinDanwei);
+        leukocyteDanwei = findView(R.id.antenatal_leukocyteDanwei);
+        bunDanwei = findView(R.id.antenatal_bunDanwei);
+        scrDanwei = findView(R.id.antenatal_scrDanwei);
+        dbilDanwei = findView(R.id.antenatal_dbilDanwei);
+        tabilDanwei =  findView(R.id.antenatal_tabilDanwei);
+        albuminDanwei = findView(R.id.antenatal_albuminDanwei);
+        sgotDanwei = findView(R.id.antenatal_sgotDanwei);
+        sgptDanwei = findView(R.id.antenatal_sgptDanwei);
+        bloodGlucoseDanwei = findView(R.id.antenatal_blood_glucoseDanwei);
+
         dbTool = new DBTool();
         record_id = getArguments().getInt("record_id", 0);
         scrollViewAfter = findView(R.id.scrollView_antenatal);
@@ -64,10 +93,14 @@ public class AntenatalFragment extends BaseFragment {
                                 if (!obj.getBoolean("error")) {
                                     JSONObject detail = obj.getJSONObject("detail");
                                     // Toast.makeText(getApplicationContext(), detail.getString("visit_date"), Toast.LENGTH_SHORT).show();
+                                    titleText.setText(titles);
                                     TextView visit_date = findView(R.id.visit_date);
                                     visit_date.setText(detail.getString("visit_date"));
                                     TextView weeks = findView(R.id.weeks);
                                     weeks.setText(detail.getString("weeks"));
+                                    if (detail.getString("weeks").equals("")) {
+                                        weeksDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView age = findView(R.id.age);
                                     age.setText(detail.getString("age"));
                                     TextView husband_name = findView(R.id.husband_name);
@@ -80,8 +113,14 @@ public class AntenatalFragment extends BaseFragment {
                                     pregnant_times.setText(detail.getString("pregnant_times"));
                                     TextView natural_production = findView(R.id.natural_production);
                                     natural_production.setText(detail.getString("natural_production"));
+                                    if (detail.getString("natural_production").equals("")) {
+                                        naturalProductionDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView surgery_production = findView(R.id.surgery_production);
                                     surgery_production.setText(detail.getString("surgery_production"));
+                                    if (detail.getString("surgery_production").equals("")) {
+                                        surgeryProductionDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView last_menstruation = findView(R.id.last_menstruation);
                                     last_menstruation.setText(detail.getString("last_menstruation"));
                                     TextView due_date = findView(R.id.due_date);
@@ -106,14 +145,23 @@ public class AntenatalFragment extends BaseFragment {
                                     birth_defect.setText(detail.getString("birth_defect"));
                                     TextView height = findView(R.id.height);
                                     height.setText(detail.getString("height"));
+                                    if (detail.getString("height").equals("")) {
+                                        heightDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView weight = findView(R.id.weight);
                                     weight.setText(detail.getString("weight"));
+                                    if (detail.getString("weight").equals("")) {
+                                        weightDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView bmi = findView(R.id.bmi);
                                     bmi.setText(detail.getString("bmi"));
                                     TextView sbp = findView(R.id.sbp);
                                     sbp.setText(detail.getString("sbp"));
                                     TextView dbp = findView(R.id.dbp);
                                     dbp.setText(detail.getString("dbp"));
+                                    if (detail.getString("dbp").equals("")) {
+                                        dbpDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView ausculate_heart = findView(R.id.ausculate_heart);
                                     ausculate_heart.setText(detail.getString("ausculate_heart"));
                                     TextView ausculate_heart_abnormal = findView(R.id.ausculate_heart_abnormal);
@@ -143,14 +191,20 @@ public class AntenatalFragment extends BaseFragment {
                                     if (!detail.getString("hemoglobin").equals("null")) {
                                         TextView hemoglobin = findView(R.id.hemoglobin);
                                         hemoglobin.setText(detail.getString("hemoglobin"));
+                                    } else {
+                                        hemoglobinDanwei.setVisibility(View.INVISIBLE);
                                     }
                                     if (!detail.getString("leukocyte").equals("null")) {
                                         TextView leukocyte = findView(R.id.leukocyte);
                                         leukocyte.setText(detail.getString("leukocyte"));
+                                    } else {
+                                        leukocyteDanwei.setVisibility(View.INVISIBLE);
                                     }
                                     if (!detail.getString("thrombocyte").equals("null")) {
                                         TextView thrombocyte = findView(R.id.thrombocyte);
                                         thrombocyte.setText(detail.getString("thrombocyte"));
+                                    } else {
+                                        thrombocyteDanwei.setVisibility(View.INVISIBLE);
                                     }
                                     if (!detail.getString("urine_protein").equals("null")) {
                                         TextView urine_protein = findView(R.id.urine_protein);
@@ -179,14 +233,20 @@ public class AntenatalFragment extends BaseFragment {
                                     if (!detail.getString("blood_glucose").equals("null")) {
                                         TextView blood_glucose = findView(R.id.blood_glucose);
                                         blood_glucose.setText(detail.getString("blood_glucose"));
+                                    } else {
+                                        bloodGlucoseDanwei.setVisibility(View.INVISIBLE);
                                     }
                                     if (!detail.getString("sgpt").equals("null")) {
                                         TextView sgpt = findView(R.id.sgpt);
                                         sgpt.setText(detail.getString("sgpt"));
+                                    } else {
+                                        sgptDanwei.setVisibility(View.INVISIBLE);
                                     }
                                     if (!detail.getString("sgot").equals("null")) {
                                         TextView sgot = findView(R.id.sgot);
                                         sgot.setText(detail.getString("sgot"));
+                                    } else {
+                                        sgotDanwei.setVisibility(View.INVISIBLE);
                                     }
                                     if (!detail.getString("albumin").equals("null")) {
                                         TextView albumin = findView(R.id.albumin);
@@ -195,18 +255,26 @@ public class AntenatalFragment extends BaseFragment {
                                     if (!detail.getString("tbil").equals("null")) {
                                         TextView tbil = findView(R.id.tbil);
                                         tbil.setText(detail.getString("tbil"));
+                                    } else {
+                                        tabilDanwei.setVisibility(View.INVISIBLE);
                                     }
                                     if (!detail.getString("dbil").equals("null")) {
                                         TextView dbil = findView(R.id.dbil);
                                         dbil.setText(detail.getString("dbil"));
+                                    } else {
+                                        dbilDanwei.setVisibility(View.INVISIBLE);
                                     }
                                     if (!detail.getString("scr").equals("null")) {
                                         TextView scr = findView(R.id.scr);
                                         scr.setText(detail.getString("scr"));
+                                    } else {
+                                        scrDanwei.setVisibility(View.INVISIBLE);
                                     }
                                     if (!detail.getString("bun").equals("null")) {
                                         TextView bun = findView(R.id.bun);
                                         bun.setText(detail.getString("bun"));
+                                    } else {
+                                        bunDanwei.setVisibility(View.INVISIBLE);
                                     }
 
                                     if (!detail.getString("surface_antigen").equals("null")) {

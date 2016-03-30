@@ -95,6 +95,8 @@ public class InformationFragment extends BaseFragment {
                         maritalStatusText.setText(jsonObject.getString("marriage"));
                         bloodStyleText.setText(jsonObject.getString("blood_type"));
                         paymentMethodText.setText(ChangeString.splitMain(jsonObject.getString("payment_way")));
+                    } else if (jsonObject.getString("error_msg").equals("The resident has not fill the personal info table")){
+                        Toast.makeText(getActivity(),"请前往卫生院完善个人信息",Toast.LENGTH_SHORT).show();
                     }
 
                 } catch (JSONException e) {
@@ -106,7 +108,7 @@ public class InformationFragment extends BaseFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(),error.getMessage(),
+                Toast.makeText(getActivity(),"网络无应答",
                         Toast.LENGTH_SHORT).show();
             }
         }){

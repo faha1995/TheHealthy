@@ -1,5 +1,6 @@
 package com.example.administrator.thehealthy.fragment.inforFrament;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.util.Log;
 import android.view.Display;
@@ -20,7 +21,7 @@ import java.util.HashMap;
  * Created by Administrator on 2016/3/4.
  * TabLayout个人界面
  */
-public class PersonalInforFragment extends BaseFragment implements View.OnClickListener {
+public class PersonalInforFragment extends BaseFragment implements View.OnClickListener{
     private final String TAG = PersonalInforFragment.class.getSimpleName();
     private LinearLayout inforLinearFirst, inforLinearSecond, inforLinearThird,
             inforLinearFourth;
@@ -107,6 +108,7 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
     }
 
 
+    @SuppressLint("NewApi")
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -155,7 +157,10 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
             case R.id.btn_personalInfor_exit:
                 logoutUser();
                 activityIntent(getActivity(), LoginActivity.class);
-                getActivity().finish();
+                nameText.setText("未设置");
+                mobileText.setText("未知");
+//                getActivity().finish();
+                HealthReportFragment fragment = new HealthReportFragment();
                 break;
             // 名字和电话
             case R.id.text_personalInfor_name:
@@ -193,7 +198,8 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
         sureBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               activityIntent(getActivity(),LoginActivity.class);
+                logoutUser();
+               activityIntent(getActivity(), LoginActivity.class);
                 alertDialog.dismiss();
             }
         });
@@ -215,5 +221,6 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
         dbTool.deleteUser();
         dbTool.deleteSummary();
     }
+
 
 }

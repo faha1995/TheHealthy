@@ -16,6 +16,7 @@ import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity;
 import com.example.administrator.thehealthy.adapter.HealthReportAdapter;
 import com.example.administrator.thehealthy.application.AppConfig;
+import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.entity.Summary;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
@@ -58,11 +59,12 @@ import java.util.Map;
  */
 public class HealthReportFragment extends BaseFragment implements MyClickListener {
     private final String TAG = HealthReportFragment.class.getSimpleName();
-    private RecyclerView healthReportRv;
+    public RecyclerView healthReportRv;
     private HealthReportAdapter healthReportAdapter;
     private List<Summary> summaryList = new ArrayList<>();
     private DBTool dbTool;
     private LinearLayout pleaseLoginLinear;
+
 
     @Override
     protected int setLayoutView() {
@@ -79,74 +81,83 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
         healthReportRv.setAdapter(healthReportAdapter);
 
         pleaseLoginLinear = findView(R.id.linear_pleaseLogin);
-
+//        NetBroadcastReceiver.mListeners.add(this);
     }
 
     @Override
     protected void initData() {
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        Log.i(TAG,"--------->  +onResume()");
+        if (!BaseApplication.isNetwork()) {
+            Toast.makeText(getActivity(), "当前无网络", Toast.LENGTH_SHORT).show();
+        } else {
+            initNetWork();
+        }
+    }
 
-    if (dbTool.isLogined()) {
-        pleaseLoginLinear.setVisibility(View.GONE);
+    private void initNetWork() {
+        if (dbTool.isLogined()) {
+            pleaseLoginLinear.setVisibility(View.GONE);
+            final HashMap<String, String> user = dbTool.getUserDetails();
 
-        final HashMap<String, String> user = dbTool.getUserDetails();
+            final StringRequest request = new StringRequest(Request.Method.POST,
+                    AppConfig.URL_SUMMARYS, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    Log.i(TAG, "健康报告界面数据网络通信响应");
 
-        final StringRequest request = new StringRequest(Request.Method.POST,
-                AppConfig.URL_SUMMARYS, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.i(TAG, "健康报告界面数据网络通信响应");
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        boolean error = jsonObject.getBoolean("error");
 
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    boolean error = jsonObject.getBoolean("error");
+                        if (!error) {
+                            for (int i = 0; i < jsonObject.getInt("length"); i++) {
+                                JSONObject item = (JSONObject) jsonObject.getJSONArray("list").get(i);
 
-                    if (!error) {
-                        for (int i = 0; i < jsonObject.getInt("length"); i++) {
-                            JSONObject item = (JSONObject) jsonObject.getJSONArray("list").get(i);
+                                Summary summary = new Summary();
+                                summary.setRecordId(item.getInt("record_id"));
+                                summary.setTitle(item.getString("title"));
+                                summary.setClinic(item.getString("clinic"));
+                                summary.setProvider(item.getString("provider"));
+                                summary.setServiceTime(item.getString("service_time"));
+                                summary.setTypeAlias(item.getString("type_alias"));
+                                summary.setItemAlias(item.getString("item_alias"));
+                                summaryList.add(summary);
+                                dbTool.addSummary(summary);
 
-                            Summary summary = new Summary();
-                            summary.setRecordId(item.getInt("record_id"));
-                            summary.setTitle(item.getString("title"));
-                            summary.setClinic(item.getString("clinic"));
-                            summary.setProvider(item.getString("provider"));
-                            summary.setServiceTime(item.getString("service_time"));
-                            summary.setTypeAlias(item.getString("type_alias"));
-                            summary.setItemAlias(item.getString("item_alias"));
-                            summaryList.add(summary);
-                            dbTool.addSummary(summary);
+                                Log.e(TAG, "summary length: " + summaryList.size());
+                            }
 
-                            Log.e(TAG, "summary length: " + summaryList.size());
+                            healthReportAdapter.addData(summaryList);
                         }
 
-                        healthReportAdapter.addData(summaryList);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
                 }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("resident_id", user.get("resident_id"));
+                    Log.i(TAG,"----------->"+user.get("resident_id"));
+                    return params;
+                }
+            };
 
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("resident_id", user.get("resident_id"));
-                return params;
-            }
-        };
-
-        VolleySingleton.getInstace().addRequest(request);
-        }  else {
+            VolleySingleton.getInstace().addRequest(request);
+        } else {
 
             pleaseLoginLinear.setVisibility(View.VISIBLE);
             pleaseLoginLinear.setOnClickListener(new View.OnClickListener() {
@@ -159,6 +170,8 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
         }
     }
 
+
+
     @Override
     public void myOnClickListener(int pos) {
 
@@ -166,20 +179,20 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
 
     @Override
     public void myOnClickListener(String type_alias, String item_alias, String title, int record_id) {
-        Log.i(TAG, "---------->" + type_alias + "---->" + item_alias + "--->"+record_id);
+        Log.i(TAG, "---------->" + type_alias + "---->" + item_alias + "--->" + record_id);
 
         if (type_alias.equals("pregnant") && item_alias.equals("aftercare_1")) {
-            goToNextFragmentFromPersonal(new AntenatalFragment(), record_id);
+            goToNextFragmentFromPersonal(new AntenatalFragment(title), record_id);
             Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("pregnant") && item_alias.equals("postpartum_visit")) {
-            goToNextFragmentFromPersonal(new PostpartumVisitFragment(), record_id);
+            goToNextFragmentFromPersonal(new PostpartumVisitFragment(title), record_id);
         } else if (type_alias.equals("pregnant") && (item_alias.equals("aftercare_2") || item_alias.equals("aftercare_3")
                 || item_alias.equals("aftercare_4") || item_alias.equals("aftercare_5"))) {
-            goToNextFragmentFromPersonal(new AftercareFragment(), record_id);
+            goToNextFragmentFromPersonal(new AftercareFragment(title), record_id);
         } else if (type_alias.equals("hypertension") && (item_alias.equals("aftercare_1")
                 || item_alias.equals("aftercare_2") || item_alias.equals("aftercare_3")
                 || item_alias.equals("aftercare_4"))) {
-            goToNextFragmentFromPersonal(new HypertensionAftercareFragment(), record_id);
+            goToNextFragmentFromPersonal(new HypertensionAftercareFragment(title), record_id);
         } else if (type_alias.equals("diabetes") && (item_alias.equals("aftercare_1") || item_alias.equals("aftercare_2")
                 || item_alias.equals("aftercare_3") || item_alias.equals("aftercare_4"))) {
             goToNextFragmentFromPersonal(new DiabetesAftercareFragment(title), record_id);
@@ -243,4 +256,13 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
 
     }
 
+//    @Override
+//    public void netState() {
+//        if (NetUtil.getNetworkState(getActivity()) == NetUtil.NETWORK_NONE) {
+//            Toast.makeText(getActivity(), "没有网络", Toast.LENGTH_SHORT).show();
+//            Log.i(TAG,"--------->"+NetUtil.getNetworkState(getActivity()) );
+//        } else {
+//            initNetWork();
+//        }
+//    }
 }

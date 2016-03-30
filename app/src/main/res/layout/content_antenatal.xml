@@ -36,7 +36,14 @@
                     android:layout_height="wrap_content"
                     android:text="孕产妇健康服务"
                     android:textColor="@color/secondaryColor"
-                    android:textSize="22sp" />
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/text_antenatal_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="17sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -74,7 +81,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
@@ -101,6 +108,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_antenatal_weeksDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -261,6 +269,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/text_antenatal_natural_productionDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -287,6 +296,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/antenatal_surgery_productionDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -374,6 +384,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/antenatal_heightDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -401,6 +412,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/antenatal_weightDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -477,6 +489,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/antenatal_dbpDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -488,7 +501,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
@@ -1012,6 +1025,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/antenatal_leukocyteDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -1049,6 +1063,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/antenatal_hemoglobinDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -1087,6 +1102,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/antenatal_thrombocyteDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -1271,6 +1287,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/antenatal_blood_glucoseDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -1319,6 +1336,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/antenatal_sgptDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -1356,6 +1374,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/antenatal_sgotDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -1394,6 +1413,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/antenatal_albuminDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -1421,6 +1441,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/antenatal_tabilDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -1459,6 +1480,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/antenatal_dbilDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -1506,6 +1528,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/antenatal_scrDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -1543,6 +1566,7 @@
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
+                        android:id="@+id/antenatal_bunDanwei"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"

@@ -47,7 +47,6 @@ public class MainActivity extends BaseActivity {
         replaceFragmentNoBacStack(R.id.personalView, new PersonalFragment());
 
         BaseApplication.addActivity(new MainActivity());
-
     }
 
     @Override
@@ -83,4 +82,10 @@ public class MainActivity extends BaseActivity {
 //        }
 //        return super.onKeyDown(keyCode, event);
 //    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

@@ -1,6 +1,8 @@
 package com.example.administrator.thehealthy.fragment.inforFrament.educationReportInforFragment;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,7 +14,6 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.application.AppConfig;
-import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
 import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
@@ -29,9 +30,17 @@ import java.util.Map;
  */
 public class HypertensionAftercareFragment extends BaseFragment {
     private final String TAG = HypertensionAftercareFragment.class.getSimpleName();
-    private DBTool dbTool;
     private ScrollView scrollViewAfter;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
+    private TextView hypeTitle,signRhythm,smokeDanwei,liquorDanwei,saltDanwei;
+    private LinearLayout linearSbpDanwei,linearSignWeightDanwei,linearSignbmiDanwei,
+    linearSportNowDanwei,linearSportSuggestDanwei,linearMedicineFirstDanwei,
+    linearMedicineSecondDanwei,linearMedicineThirdDanwei,linearMedicineOthersDanwei;
+    private String titles;
+
+    public HypertensionAftercareFragment(String titles) {
+        this.titles = titles;
+    }
 
     @Override
     protected int setLayoutView() {
@@ -40,7 +49,21 @@ public class HypertensionAftercareFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        dbTool = new DBTool();
+        hypeTitle = findView(R.id.hypertension_afterCare_title);
+        signRhythm = findView(R.id.hypertension_sign_heart_rhythmDanwei);
+        linearSbpDanwei = findView(R.id.linear_hypertension_sbpDanwei);
+        linearSignWeightDanwei = findView(R.id.linear_hypertension_sign_weightDanwei);
+        linearSignbmiDanwei = findView(R.id.linear_hypertension_sign_bmiDanwei);
+        smokeDanwei = findView(R.id.life_style_guide_smokeDanwei);
+        liquorDanwei = findView(R.id.life_style_guide_liquorDanwei);
+        saltDanwei = findView(R.id.life_style_guide_saltDanwei);
+        linearSportNowDanwei = findView(R.id.linear_diabetes_sport_now);
+        linearSportSuggestDanwei = findView(R.id.linear_diabetes_sport_suggest);
+        linearMedicineFirstDanwei = findView(R.id.linear_medicineFirstDanwei);
+        linearMedicineSecondDanwei = findView(R.id.linear_medicineSecondDanwei);
+        linearMedicineThirdDanwei = findView(R.id.linear_medicineThirdDanwei);
+        linearMedicineOthersDanwei = findView(R.id.linear_medicineOthersDanwei);
+
         scrollViewAfter = findView(R.id.scrollView_hypertension);
         scrollViewOnTouch.setScrollView(scrollViewAfter);
 
@@ -65,6 +88,7 @@ public class HypertensionAftercareFragment extends BaseFragment {
                                 if (!obj.getBoolean("error")) {
                                     JSONObject detail = obj.getJSONObject("detail");
                                     // Toast.makeText(getApplicationContext(), detail.getString("visit_date"), Toast.LENGTH_SHORT).show();
+                                    hypeTitle.setText(titles);
                                     TextView visit_date = findView(R.id.visit_date);
                                     visit_date.setText(detail.getString("visit_date"));
                                     TextView visit_way = findView(R.id.visit_way);
@@ -85,36 +109,63 @@ public class HypertensionAftercareFragment extends BaseFragment {
                                     next_visit_date.setText(detail.getString("next_visit_date"));
                                     TextView sign_sbp = findView(R.id.sign_sbp);
                                     sign_sbp.setText(detail.getString("sign_sbp"));
+                                    if (detail.getString("sign_sbp").equals("")) {
+                                        linearSbpDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView sign_dbp = findView(R.id.sign_dbp);
                                     sign_dbp.setText(detail.getString("sign_dbp"));
                                     TextView sign_weight = findView(R.id.sign_weight);
                                     sign_weight.setText(detail.getString("sign_weight"));
+                                    if (detail.getString("sign_weight").equals("")) {
+                                        linearSignWeightDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView sign_weight_next = findView(R.id.sign_weight_next);
                                     sign_weight_next.setText(detail.getString("sign_weight_next"));
                                     TextView sign_bmi = findView(R.id.sign_bmi);
                                     sign_bmi.setText(detail.getString("sign_bmi"));
+                                    if (detail.getString("sign_bmi").equals("")) {
+                                        linearSignbmiDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView sign_bmi_next = findView(R.id.sign_bmi_next);
                                     sign_bmi_next.setText(detail.getString("sign_bmi_next"));
                                     TextView sign_heart_rhythm = findView(R.id.sign_heart_rhythm);
                                     sign_heart_rhythm.setText(detail.getString("sign_heart_rhythm"));
+                                    if (detail.getString("sign_heart_rhythm").equals("")) {
+                                        signRhythm.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView life_style_guide_smoke = findView(R.id.life_style_guide_smoke);
                                     life_style_guide_smoke.setText(detail.getString("life_style_guide_smoke"));
+                                    if (detail.getString("life_style_guide_smoke").equals("")) {
+                                        smokeDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView life_style_guide_smoke_next = findView(R.id.life_style_guide_smoke_next);
                                     life_style_guide_smoke_next.setText(detail.getString("life_style_guide_smoke_next"));
                                     TextView life_style_guide_liquor = findView(R.id.life_style_guide_liquor);
                                     life_style_guide_liquor.setText(detail.getString("life_style_guide_liquor"));
+                                    if (detail.getString("life_style_guide_liquor").equals("")) {
+                                        liquorDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView life_style_guide_liquor_next = findView(R.id.life_style_guide_liquor_next);
                                     life_style_guide_liquor_next.setText(detail.getString("life_style_guide_liquor_next"));
                                     TextView life_style_guide_sport1 = findView(R.id.life_style_guide_sport1);
                                     life_style_guide_sport1.setText(detail.getString("life_style_guide_sport1"));
+                                    if (detail.getString("life_style_guide_sport1").equals("")) {
+                                        linearSportNowDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView life_style_guide_sport2 = findView(R.id.life_style_guide_sport2);
                                     life_style_guide_sport2.setText(detail.getString("life_style_guide_sport2"));
                                     TextView life_style_guide_sport3 = findView(R.id.life_style_guide_sport3);
                                     life_style_guide_sport3.setText(detail.getString("life_style_guide_sport3"));
+                                    if (detail.getString("life_style_guide_sport3").equals("")) {
+                                        linearSportSuggestDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView life_style_guide_sport4 = findView(R.id.life_style_guide_sport4);
                                     life_style_guide_sport4.setText(detail.getString("life_style_guide_sport4"));
                                     TextView life_style_guide_salt = findView(R.id.life_style_guide_salt);
                                     life_style_guide_salt.setText(detail.getString("life_style_guide_salt"));
+                                    if (detail.getString("life_style_guide_salt").equals("")) {
+                                        saltDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView life_style_guide_salt_next = findView(R.id.life_style_guide_salt_next);
                                     life_style_guide_salt_next.setText(detail.getString("life_style_guide_salt_next"));
                                     TextView life_style_guide_mentality = findView(R.id.life_style_guide_mentality);
@@ -130,6 +181,8 @@ public class HypertensionAftercareFragment extends BaseFragment {
                                     if (!detail.getString("take_medicine_1").equals("null")) {
                                         TextView take_medicine_1 = findView(R.id.take_medicine_1);
                                         take_medicine_1.setText(detail.getString("take_medicine_1"));
+                                    } else {
+                                        linearMedicineFirstDanwei.setVisibility(View.INVISIBLE);
                                     }
                                     if (!detail.getString("take_medicine_1_day").equals("null")) {
                                         TextView take_medicine_1_day = findView(R.id.take_medicine_1_day);
@@ -142,6 +195,8 @@ public class HypertensionAftercareFragment extends BaseFragment {
                                     if (!detail.getString("take_medicine_2").equals("null")) {
                                         TextView take_medicine_2 = findView(R.id.take_medicine_2);
                                         take_medicine_2.setText(detail.getString("take_medicine_2"));
+                                    } else {
+                                        linearMedicineSecondDanwei.setVisibility(View.INVISIBLE);
                                     }
                                     if (!detail.getString("take_medicine_2_day").equals("null")) {
                                         TextView take_medicine_2_day = findView(R.id.take_medicine_2_day);
@@ -154,6 +209,8 @@ public class HypertensionAftercareFragment extends BaseFragment {
                                     if (!detail.getString("take_medicine_3").equals("null")) {
                                         TextView take_medicine_3 = findView(R.id.take_medicine_3);
                                         take_medicine_3.setText(detail.getString("take_medicine_3"));
+                                    } else {
+                                        linearMedicineThirdDanwei.setVisibility(View.INVISIBLE);
                                     }
                                     if (!detail.getString("take_medicine_3_day").equals("null")) {
                                         TextView take_medicine_3_day = findView(R.id.take_medicine_3_day);
@@ -166,6 +223,8 @@ public class HypertensionAftercareFragment extends BaseFragment {
                                     if (!detail.getString("take_medicine_qt").equals("null")) {
                                         TextView take_medicine_qt = findView(R.id.take_medicine_qt);
                                         take_medicine_qt.setText(detail.getString("take_medicine_qt"));
+                                    } else {
+                                        linearMedicineOthersDanwei.setVisibility(View.INVISIBLE);
                                     }
                                     if (!detail.getString("take_medicine_qt_day").equals("null")) {
                                         TextView take_medicine_qt_day = findView(R.id.take_medicine_qt_day);

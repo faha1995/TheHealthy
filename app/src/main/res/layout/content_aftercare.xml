@@ -38,7 +38,14 @@
                     android:layout_height="wrap_content"
                     android:text="孕产妇健康服务"
                     android:textColor="@color/secondaryColor"
-                    android:textSize="22sp" />
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/aftercare_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="17sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -78,12 +85,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
                     android:textColor="@color/secondaryColor"
@@ -93,7 +101,8 @@
 
                 <TextView
                     android:id="@+id/gestational_weeks"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -101,23 +110,24 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
-
                     android:textColor="@color/secondaryColor"
                     android:text="主诉：" />
 
                 <TextView
                     android:id="@+id/complaint"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -125,12 +135,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -140,7 +151,8 @@
 
                 <TextView
                     android:id="@+id/weight"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -154,12 +166,19 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingLeft="16dp"
                     android:textColor="@color/secondaryColor"
                     android:text="血压：" />
 
+                <LinearLayout
+                    android:id="@+id/linear_aftercareSbpDanwei"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/sbp"
                     android:layout_width="wrap_content"
@@ -187,6 +206,7 @@
                     android:textColor="@color/secondaryColor"
                     android:text="mmHg" />
             </LinearLayout>
+                </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -196,7 +216,8 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.3"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -207,19 +228,21 @@
                 <TextView
                     android:id="@+id/hemoglobin"
                     android:textColor="@color/secondaryColor"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
                     android:layout_height="wrap_content"
                     android:textColor="@color/secondaryColor"
-                    android:layout_marginLeft="30dp"
                     android:text="尿蛋白：" />
 
                 <TextView
                     android:id="@+id/urine_protein"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -241,7 +264,8 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.3"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -251,20 +275,22 @@
 
                 <TextView
                     android:id="@+id/examination_before_parturition_uteri_bottom_height"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
                     android:textColor="@color/secondaryColor"
                     android:text="腹围（cm）：" />
 
                 <TextView
                     android:id="@+id/examination_before_parturition_abdomen_circumference"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -277,7 +303,8 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -287,7 +314,8 @@
 
                 <TextView
                     android:id="@+id/examination_before_parturition_fetus_position"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -300,7 +328,8 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:paddingBottom="5dp"
@@ -310,7 +339,8 @@
 
                 <TextView
                     android:id="@+id/examination_before_parturition_fetal_heart_rate"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -318,14 +348,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:textColor="@color/secondaryColor"
@@ -333,7 +364,8 @@
 
                 <TextView
                     android:id="@+id/extra_auxiliary_examination"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
                     android:layout_height="wrap_content"
                     android:textColor="@color/secondaryColor"
                     android:layout_marginLeft="20dp" />
@@ -342,14 +374,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:textColor="@color/secondaryColor"
@@ -357,7 +390,8 @@
 
                 <TextView
                     android:id="@+id/classification"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
 
@@ -379,7 +413,8 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:textColor="@color/secondaryColor"
@@ -387,7 +422,8 @@
 
                 <TextView
                     android:id="@+id/guide"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -402,7 +438,8 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:textColor="@color/secondaryColor"
@@ -410,20 +447,22 @@
 
                 <TextView
                     android:id="@+id/transfer_treatment"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.7"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
                     android:textColor="@color/secondaryColor"
                     android:text="转诊原因：" />
 
                 <TextView
                     android:id="@+id/transfer_treatment_reason"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -438,7 +477,8 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:textColor="@color/secondaryColor"
@@ -446,7 +486,8 @@
 
                 <TextView
                     android:id="@+id/transfer_treatment_institution"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -459,7 +500,8 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -469,7 +511,8 @@
 
                 <TextView
                     android:id="@+id/next_visit_date"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
             </LinearLayout>

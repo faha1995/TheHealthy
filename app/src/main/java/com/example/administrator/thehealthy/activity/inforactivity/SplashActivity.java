@@ -15,7 +15,7 @@ import com.example.administrator.thehealthy.fragment.BaseFragment;
 
 
 public class SplashActivity extends BaseActivity {
-    private TextView titleText, discripText;
+    private TextView titleText, discripText,versionText;
     private Handler handler;
     Animation animation = null;
 
@@ -28,9 +28,13 @@ public class SplashActivity extends BaseActivity {
     protected void initView() {
         titleText = findView(R.id.text_splash_title);
         discripText = findView(R.id.text_splash_discrip);
+        versionText = findView(R.id.text_version);
         animation = AnimationUtils.loadAnimation(this, R.anim.splash_text);
 
-
+// 注册监听有无网络的广播
+//        Intent intent = new Intent();
+//        intent.setAction("android.net.conn.CONNECTIVITY_CHANGE");
+//        sendBroadcast(intent);
         handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message msg) {
@@ -42,8 +46,12 @@ public class SplashActivity extends BaseActivity {
                         titleText.setText("医疗卫生");
                         discripText.setTypeface(discripType);
                         discripText.setText("让你对健康, 了如指掌");
+                        versionText.setTypeface(discripType);
+                        versionText.setText("V 2.0");
+
                         titleText.startAnimation(animation);
                         discripText.startAnimation(animation);
+                        versionText.startAnimation(animation);
                         Log.i("Splash", "------->" + titleText.getText().toString());
                         break;
                     case 200:
@@ -58,6 +66,9 @@ public class SplashActivity extends BaseActivity {
         });
         handler.sendEmptyMessageDelayed(100, 500);
         handler.sendEmptyMessageDelayed(200, 3500);
+
+
+
 
     }
 }

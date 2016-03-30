@@ -47,6 +47,7 @@ public class DBTool implements SQLValues {
     // 向本地数据库添加用户的方法
     public void addUser(String name, String mobile, String identity,
                         String resident_id, String create_at) {
+        database = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("name", name);
         values.put("mobile", mobile);
@@ -84,7 +85,7 @@ public class DBTool implements SQLValues {
 
     // 删除当前数据库中所有信息
     public void deleteUser() {
-        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        database = dbHelper.getWritableDatabase();
         database.delete(TABLE_USER, null, null);
         database.close();
 

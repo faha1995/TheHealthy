@@ -77,6 +77,8 @@ public class HabitFragment extends BaseFragment {
                         liveStokeText.setText(jsonObject.getString("surrounding_livestock_fence"));
                         exposureText.setText(
                                 ChangeString.splitMain(jsonObject.getString("expose_history")));
+                    }else if (jsonObject.getString("error_msg").equals("The resident has not fill the personal info table")){
+                        Toast.makeText(getActivity(),"请前往卫生院完善个人信息",Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -87,7 +89,7 @@ public class HabitFragment extends BaseFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "网络无应答", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override

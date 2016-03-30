@@ -1,6 +1,8 @@
 package com.example.administrator.thehealthy.fragment.inforFrament.educationReportInforFragment;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,7 +14,6 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.application.AppConfig;
-import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
@@ -30,10 +31,17 @@ import java.util.Map;
  */
 public class PostpartumVisitFragment extends BaseFragment {
     private final String TAG = PostpartumVisitFragment.class.getSimpleName();
-    private DBTool dbTool;
     private int record_id;
     private ScrollView scrollViewAfter;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
+    private TextView titleText, temperatureDanwei;
+    private LinearLayout linearsbpDanwei;
+    private String titles;
+
+    public PostpartumVisitFragment(String titles) {
+        this.titles = titles;
+    }
+
 
     @Override
     protected int setLayoutView() {
@@ -42,7 +50,10 @@ public class PostpartumVisitFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        dbTool = new DBTool();
+        titleText = findView(R.id.postPartum_title);
+        temperatureDanwei = findView(R.id.postpartum_temperatureDanwei);
+        linearsbpDanwei = findView(R.id.linear_postPartum_sbpDanwei);
+
         record_id = getArguments().getInt("record_id", 0);
         scrollViewAfter = findView(R.id.scrollView_postpartum);
         scrollViewOnTouch.setScrollView(scrollViewAfter);
@@ -65,18 +76,25 @@ public class PostpartumVisitFragment extends BaseFragment {
                                 if (!obj.getBoolean("error")) {
                                     JSONObject detail = obj.getJSONObject("detail");
                                     // Toast.makeText(getApplicationContext(), detail.getString("visit_date"), Toast.LENGTH_SHORT).show();
+                                    titleText.setText(titles);
                                     TextView visit_date = findView(R.id.visit_date);
                                     visit_date.setText(detail.getString("visit_date"));
                                     TextView doctor_signature = findView(R.id.doctor_signature);
                                     doctor_signature.setText(detail.getString("doctor_signature"));
                                     TextView body_temperature = findView(R.id.body_temperature);
                                     body_temperature.setText(detail.getString("body_temperature"));
+                                    if (detail.getString("body_temperature").equals("")) {
+                                        temperatureDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView general_health_situation = findView(R.id.general_health_situation);
                                     general_health_situation.setText(detail.getString("general_health_situation"));
                                     TextView general_mentality_situation = findView(R.id.general_mentality_situation);
                                     general_mentality_situation.setText(detail.getString("general_mentality_situation"));
                                     TextView sbp = findView(R.id.sbp);
                                     sbp.setText(detail.getString("sbp"));
+                                    if (detail.getString("sbp").equals("")) {
+                                        linearsbpDanwei.setVisibility(View.INVISIBLE);
+                                    }
                                     TextView dbp = findView(R.id.dbp);
                                     dbp.setText(detail.getString("dbp"));
                                     TextView breast = findView(R.id.breast);

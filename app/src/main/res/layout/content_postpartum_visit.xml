@@ -10,14 +10,13 @@
     tools:context=".activity.PostpartumVisitActivity"
     tools:showIn="@layout/fragment_postpartum_visit">
 
-    <ScrollView
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scrollView_postpartum"
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/fragmentBackGround"
         android:overScrollMode="never"
-        android:scrollbars="none"
-        android:background="@color/fragmentBackGround">
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -36,9 +35,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
                     android:text="孕产妇健康服务"
-                    android:textSize="22sp" />
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="19sp" />
+
+                <TextView
+                    android:id="@+id/postPartum_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="17sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -54,29 +60,29 @@
                     <TextView
                         android:id="@+id/visit_date"
                         android:layout_width="wrap_content"
-                        android:textColor="@color/secondaryColor"
+                        android:layout_height="wrap_content"
 
-                        android:layout_height="wrap_content" />
+                        android:textColor="@color/secondaryColor" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:textColor="@color/secondaryColor"
-                        android:text="随访医生：" />
+                        android:text="随访医生："
+                        android:textColor="@color/secondaryColor" />
 
                     <TextView
                         android:id="@+id/doctor_signature"
-                        android:textColor="@color/secondaryColor"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
@@ -84,28 +90,37 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="体温：" />
+                    android:layout_weight="1"
+                    android:text="体温："
+                    android:textColor="@color/secondaryColor" />
 
-                <TextView
-                    android:id="@+id/body_temperature"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="°C" />
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/body_temperature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
+
+                    <TextView
+                        android:id="@+id/postpartum_temperatureDanwei"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="°C"
+                        android:textColor="@color/secondaryColor" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
@@ -113,23 +128,25 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="一般健康状况：" />
+                    android:layout_weight="1"
+                    android:text="一般健康状况："
+                    android:textColor="@color/secondaryColor" />
+
 
                 <TextView
                     android:id="@+id/general_health_situation"
-                    android:layout_width="wrap_content"
-
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
@@ -137,23 +154,24 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="一般心理状况：" />
+                    android:layout_weight="1"
+                    android:text="一般心理状况："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/general_mentality_situation"
-                    android:layout_width="wrap_content"
-
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
@@ -161,44 +179,52 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="血压：" />
+                    android:layout_weight="1"
+                    android:text="血压："
+                    android:textColor="@color/secondaryColor" />
 
-                <TextView
-                    android:id="@+id/sbp"
-                    android:layout_width="wrap_content"
-
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/linear_postPartum_sbpDanwei"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:textColor="@color/secondaryColor"
-                    android:text="/" />
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/dbp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_marginLeft="3dp" />
+                    <TextView
+                        android:id="@+id/sbp"
+                        android:layout_width="wrap_content"
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:textColor="@color/secondaryColor"
-                    android:text="mmHg" />
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:text=" / "
+                        android:textColor="@color/secondaryColor" />
+
+                    <TextView
+                        android:id="@+id/dbp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:textColor="@color/secondaryColor" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="mmHg"
+                        android:textColor="@color/secondaryColor" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
@@ -206,22 +232,30 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="乳房：" />
+                    android:layout_weight="1"
+                    android:text="乳房："
+                    android:textColor="@color/secondaryColor" />
 
-                <TextView
-                    android:id="@+id/breast"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/breast_abnormal"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/breast"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
+
+                    <TextView
+                        android:id="@+id/breast_abnormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -234,22 +268,30 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="恶露：" />
+                    android:layout_weight="1"
+                    android:text="恶露："
+                    android:textColor="@color/secondaryColor" />
 
-                <TextView
-                    android:id="@+id/lochia"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/lochia_abnormal"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/lochia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
+
+                    <TextView
+                        android:id="@+id/lochia_abnormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -263,22 +305,30 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="子宫：" />
+                    android:layout_weight="1"
+                    android:text="子宫："
+                    android:textColor="@color/secondaryColor" />
 
-                <TextView
-                    android:id="@+id/uterus"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/uterus_abnormal"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/uterus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
+
+                    <TextView
+                        android:id="@+id/uterus_abnormal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondaryColor" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -291,23 +341,30 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="伤口：" />
+                    android:text="伤口："
+                    android:textColor="@color/secondaryColor" />
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/wound"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/wound_abnormal"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
+                </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -320,22 +377,24 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="其他：" />
+                    android:text="其他："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/extra"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+                android:layout_marginTop="@dimen/body_exam_linear_jiange"
                 android:background="@color/bg"
                 android:orientation="horizontal"
                 android:paddingBottom="5dp"
@@ -343,23 +402,30 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="分类：" />
+                    android:text="分类："
+                    android:textColor="@color/secondaryColor" />
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/classification"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/classification_abnormal"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
+                </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -372,23 +438,30 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="指导：" />
+                    android:text="指导："
+                    android:textColor="@color/secondaryColor" />
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/guide"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/guide_extra"
                     android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
+                </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -401,16 +474,18 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="转诊：" />
+                    android:text="转诊："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/transfer_treatment"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
             <LinearLayout
@@ -423,16 +498,18 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="原因：" />
+                    android:text="原因："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/transfer_treatment_reason"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
             <LinearLayout
@@ -446,16 +523,18 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="转诊机构及科室：" />
+                    android:text="转诊机构及科室："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/transfer_treatment_institution"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
             <LinearLayout
@@ -469,22 +548,24 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:text="下次随访日期：" />
+                    android:text="下次随访日期："
+                    android:textColor="@color/secondaryColor" />
 
                 <TextView
                     android:id="@+id/next_visit_date"
-                    android:layout_width="wrap_content"
-                    android:textColor="@color/secondaryColor"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="0dp"
+                    android:layout_weight="1.5"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/secondaryColor" />
             </LinearLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:background="@color/fragmentBackGround"
-                />
+                android:background="@color/fragmentBackGround" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
