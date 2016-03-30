@@ -35,6 +35,7 @@ public class HabitFragment extends BaseFragment {
     private DBTool dbTool;
     private LinearLayout linearLayout;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
+
     @Override
     protected int setLayoutView() {
         return R.layout.fragment_habit;
@@ -77,8 +78,8 @@ public class HabitFragment extends BaseFragment {
                         liveStokeText.setText(jsonObject.getString("surrounding_livestock_fence"));
                         exposureText.setText(
                                 ChangeString.splitMain(jsonObject.getString("expose_history")));
-                    }else if (jsonObject.getString("error_msg").equals("The resident has not fill the personal info table")){
-                        Toast.makeText(getActivity(),"请前往卫生院完善个人信息",Toast.LENGTH_SHORT).show();
+                    } else if (jsonObject.getString("error_msg").equals("The resident has not fill the personal info table")) {
+                        showAlertDialog("请前往卫生院完善个人信息", 2);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

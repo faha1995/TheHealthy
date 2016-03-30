@@ -55,9 +55,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         fragmentTransaction = fragmentManager.beginTransaction();
         // addToBackStack(null) 方法的作用是在替换后不会被finish
         // 好处是 再次返回时,会直接显示原来界面的内容
-        fragmentTransaction.replace(resId,fragment);
+        fragmentTransaction.replace(resId, fragment);
         fragmentTransaction.commit();
         return fragment;
     }
+
+    protected void cleanTask(){
+        if (fragmentManager != null) {
+            fragmentManager.getFragments().clear();
+        }
+
+    }
+
 
 }

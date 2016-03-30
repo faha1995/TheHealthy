@@ -1,10 +1,7 @@
 package com.example.administrator.thehealthy.fragment.inforFrament;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.util.Log;
-import android.view.Display;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -21,7 +18,7 @@ import java.util.HashMap;
  * Created by Administrator on 2016/3/4.
  * TabLayout个人界面
  */
-public class PersonalInforFragment extends BaseFragment implements View.OnClickListener{
+public class PersonalInforFragment extends BaseFragment implements View.OnClickListener {
     private final String TAG = PersonalInforFragment.class.getSimpleName();
     private LinearLayout inforLinearFirst, inforLinearSecond, inforLinearThird,
             inforLinearFourth;
@@ -63,6 +60,7 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
     @Override
     public void onResume() {
         super.onResume();
+        Log.i(TAG,"-------->  onResume()");
 //        Intent intent = getActivity().getIntent();
 //        if (intent.getStringExtra("loginForMain") == "onResume") {
 //            final HashMap<String, String> user = dbTool.getUserDetails();
@@ -120,7 +118,7 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
                     logoutUser();
                     Log.i(TAG, "-------->" + "afterLogoutUser()");
                     // 跳转到登录界面
-                    showAlertDialog();
+                    showAlertDialog("请先进行登录", 1);
                 } else {
                     goToNextFragmentFromPersonal(new InformationFragment());
                 }
@@ -131,7 +129,7 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
                 if (!dbTool.isLogined()) {
                     logoutUser();
                     // 跳转到登录界面
-                    showAlertDialog();
+                    showAlertDialog("请先进行登录", 1);
 
                 } else {
                     goToNextFragmentFromPersonal(new HabitFragment());
@@ -143,7 +141,7 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
                 if (!dbTool.isLogined()) {
                     logoutUser();
                     // 跳转到登录界面
-                    showAlertDialog();
+                    showAlertDialog("请先进行登录", 1);
 
                 } else {
                     goToNextFragmentFromPersonal(new MedicalHistoryFragment());
@@ -160,59 +158,20 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
                 nameText.setText("未设置");
                 mobileText.setText("未知");
 //                getActivity().finish();
-                HealthReportFragment fragment = new HealthReportFragment();
                 break;
             // 名字和电话
             case R.id.text_personalInfor_name:
                 if (!dbTool.isLogined()) {
-                    showAlertDialog();
+                    showAlertDialog("请先进行登录", 1);
                 }
                 break;
             case R.id.text_personalInfor_mobile:
                 if (!dbTool.isLogined()) {
-                    showAlertDialog();
+                    showAlertDialog("请先进行登录", 1);
                 }
                 return;
         }
     }
-
-    // 未登录的提示Dialog
-    private void showAlertDialog() {
-
-        Display display = getActivity().getWindowManager().getDefaultDisplay();
-        final int width = display.getWidth() * 2 / 3;
-        final int height = display.getHeight() / 4;
-
-
-        View view = LayoutInflater.from(getActivity())
-                .inflate(R.layout.show_alertdialog, null);
-        final AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-        alertDialog.setCancelable(false);
-        alertDialog.show();
-        alertDialog.getWindow().setLayout(width, height);
-        alertDialog.getWindow().setContentView(view);
-
-        Button sureBtn = (Button) view.findViewById(R.id.btn_dialog_sure);
-        Button cancleBtn = (Button) view.findViewById(R.id.btn_dialog_cancle);
-
-        sureBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logoutUser();
-               activityIntent(getActivity(), LoginActivity.class);
-                alertDialog.dismiss();
-            }
-        });
-
-
-        cancleBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
-    }
-
 
 
     // 一系列删除数据库的方法

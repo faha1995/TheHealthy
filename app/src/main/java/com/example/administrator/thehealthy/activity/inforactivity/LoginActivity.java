@@ -24,6 +24,7 @@ import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -62,12 +63,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
         dbTool = new DBTool();
 
-        // 若已登录过就直接进入
-        if (dbTool.isLogined()) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+//        // 若已登录过就直接进入
+//        if (dbTool.isLogined()) {
+//            Intent intent = new Intent(this, MainActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
     }
 
     @Override
@@ -130,7 +131,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                                 Log.i(TAG, "用户名 ：" + name);
                                 dbTool.addUser(name, phone, identity, resident_id, create_at);
                                 Log.i(TAG, "添加用户到本地数据库成功~");
-
+                                EventBus.getDefault().post("isNew");
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
                                 finish();

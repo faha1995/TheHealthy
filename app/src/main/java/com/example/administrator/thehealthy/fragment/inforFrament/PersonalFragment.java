@@ -74,8 +74,8 @@ public class PersonalFragment extends BaseFragment {
     protected void initView() {
         personalTabLayout = findView(R.id.tabLayout_per);
         personalViewPager = findView(R.id.viewPager_per);
-        // 预缓存为2
-        personalViewPager.setOffscreenPageLimit(2);
+//        // 预缓存为2
+//        personalViewPager.setOffscreenPageLimit(0);
         // 添加Fragment
         fragmentList.add(new PersonalInforFragment());
         fragmentList.add(new HealthReportFragment());

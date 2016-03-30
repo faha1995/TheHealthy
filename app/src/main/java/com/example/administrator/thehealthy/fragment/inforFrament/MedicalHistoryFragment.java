@@ -3,7 +3,6 @@ package com.example.administrator.thehealthy.fragment.inforFrament;
 import android.util.Log;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -119,8 +118,8 @@ public class MedicalHistoryFragment extends BaseFragment {
                         }
                         alergyText.setText(ChangeString.splitMain(jsonObject.getString("allergy_history")));
                         geneticText.setText(jsonObject.getString("genetic_disease"));
-                    }else if (jsonObject.getString("error_msg").equals("The resident has not fill the personal info table")){
-                        Toast.makeText(getActivity(), "请前往卫生院完善个人信息", Toast.LENGTH_SHORT).show();
+                    } else if (jsonObject.getString("error_msg").equals("The resident has not fill the personal info table")) {
+                        showAlertDialog("请前往卫生院完善个人信息", 2);
                     }
 
                 } catch (JSONException e) {

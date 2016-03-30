@@ -1,10 +1,12 @@
 package com.example.administrator.thehealthy.fragment.inforFrament;
 
+import android.graphics.Typeface;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -45,6 +47,8 @@ import com.example.administrator.thehealthy.fragment.inforFrament.educationRepor
 import com.example.administrator.thehealthy.tools.MyClickListener;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -64,6 +68,7 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
     private List<Summary> summaryList = new ArrayList<>();
     private DBTool dbTool;
     private LinearLayout pleaseLoginLinear;
+    private TextView nothingText;
 
 
     @Override
@@ -73,6 +78,7 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
 
     @Override
     protected void initView() {
+        nothingText = findView(R.id.text_health_report_nothing);
         dbTool = new DBTool();
         healthReportRv = findView(R.id.recyclerView_healthReport);
         healthReportRv.setLayoutManager(new GridLayoutManager(getActivity(), 1));
@@ -84,8 +90,16 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
 //        NetBroadcastReceiver.mListeners.add(this);
     }
 
+    @Subscribe
+    public void onEvent(String string){
+        Log.i(TAG, "--------------->  onEvent()");
+        initNetWork();
+    }
+
+
     @Override
     protected void initData() {
+        EventBus.getDefault().register(this);
 
     }
 
@@ -116,6 +130,8 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
                         boolean error = jsonObject.getBoolean("error");
 
                         if (!error) {
+                            if (jsonObject.getInt("length") > 0) {
+
                             for (int i = 0; i < jsonObject.getInt("length"); i++) {
                                 JSONObject item = (JSONObject) jsonObject.getJSONArray("list").get(i);
 
@@ -132,8 +148,14 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
 
                                 Log.e(TAG, "summary length: " + summaryList.size());
                             }
-
-                            healthReportAdapter.addData(summaryList);
+                            } else {
+                                summaryList.clear();
+                                Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/splash_discrip_text_type.ttf");
+                                nothingText.setTypeface(typeface);
+                                nothingText.setText("还未有相关记录");
+                                nothingText.setVisibility(View.VISIBLE);
+                            }
+                                healthReportAdapter.addData(summaryList);
                         }
 
                     } catch (JSONException e) {
@@ -157,8 +179,11 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
             };
 
             VolleySingleton.getInstace().addRequest(request);
-        } else {
-
+        }
+        else {
+             dbTool.deleteSummary();
+            summaryList.clear();
+            healthReportAdapter.addData(summaryList);
             pleaseLoginLinear.setVisibility(View.VISIBLE);
             pleaseLoginLinear.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -256,7 +281,20 @@ public class HealthReportFragment extends BaseFragment implements MyClickListene
 
     }
 
-//    @Override
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i(TAG, "---------> onPause()");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+        Log.i(TAG,"---------> onDestroy()");
+    }
+
+    //    @Override
 //    public void netState() {
 //        if (NetUtil.getNetworkState(getActivity()) == NetUtil.NETWORK_NONE) {
 //            Toast.makeText(getActivity(), "没有网络", Toast.LENGTH_SHORT).show();

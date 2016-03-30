@@ -81,6 +81,7 @@ public class HealthReportAdapter extends RecyclerView.Adapter
             clinicText = (TextView) itemView.findViewById(R.id.adapter_health_report_clinic);
             doctorText = (TextView) itemView.findViewById(R.id.adapter_health_report_doctor);
             timeText = (TextView) itemView.findViewById(R.id.text_healthReport_adapter_time);
+
             itemView.setOnClickListener(this);
 
         }

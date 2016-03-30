@@ -36,6 +36,7 @@ public class InformationFragment extends BaseFragment {
     private DBTool dbTool;
     private ScrollView scrollViewAfter;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
+    private String errorMsg = null;
 
     @Override
     protected int setLayoutView() {
@@ -62,7 +63,7 @@ public class InformationFragment extends BaseFragment {
         scrollViewOnTouch.setScrollView(scrollViewAfter);
 
         dbTool = new DBTool();
-        Log.i(TAG, "-------->" + "inforBac"+getActivity().getSupportFragmentManager().getBackStackEntryCount());
+        Log.i(TAG, "-------->" + "inforBac" + getActivity().getSupportFragmentManager().getBackStackEntryCount());
     }
 
     @Override
@@ -74,7 +75,7 @@ public class InformationFragment extends BaseFragment {
                 AppConfig.URL_PERSONAL_INFO, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.i(TAG,"个人资料信息网络通信响应："+ response.toString());
+                Log.i(TAG, "个人资料信息网络通信响应：" + response.toString());
 
                 try {
                     JSONObject jsonObject = new JSONObject(response);
@@ -88,15 +89,19 @@ public class InformationFragment extends BaseFragment {
                         nationalText.setText(jsonObject.getString("nation"));
                         mobileText.setText(jsonObject.getString("phone"));
                         othersText.setText(jsonObject.getString(
-                                "contact_name")+": "+ jsonObject.getString("contact_phone"));
+                                "contact_name") + ": " + jsonObject.getString("contact_phone"));
                         educationText.setText(jsonObject.getString("education"));
                         professionText.setText(jsonObject.getString("occupation"));
                         workPlaceText.setText(jsonObject.getString("work_company"));
                         maritalStatusText.setText(jsonObject.getString("marriage"));
                         bloodStyleText.setText(jsonObject.getString("blood_type"));
                         paymentMethodText.setText(ChangeString.splitMain(jsonObject.getString("payment_way")));
-                    } else if (jsonObject.getString("error_msg").equals("The resident has not fill the personal info table")){
-                        Toast.makeText(getActivity(),"请前往卫生院完善个人信息",Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (jsonObject.getString("error_msg").equals("The resident has not fill the personal info table")) {
+
+                            showAlertDialog("请前往卫生院完善个人信息", 2);
+                            Log.i(TAG, "----------> initData()" + errorMsg);
+                        }
                     }
 
                 } catch (JSONException e) {
@@ -108,18 +113,19 @@ public class InformationFragment extends BaseFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(),"网络无应答",
+                Toast.makeText(getActivity(), "网络无应答",
                         Toast.LENGTH_SHORT).show();
             }
-        }){
+        }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                  HashMap<String, String> params = new HashMap<>();
-                  params.put("resident_id",user.get("resident_id"));
+                HashMap<String, String> params = new HashMap<>();
+                params.put("resident_id", user.get("resident_id"));
                 return params;
             }
         };
         VolleySingleton.getInstace().addRequest(request);
     }
+
 
 }

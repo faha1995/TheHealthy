@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="show_dialog_anim" >
+        <item name="android:duration">3000</item>
+        <item name="android:alpha">0</item>
+        <item name="android:toAlpha">1</item>
+    </style>
 </resources>
