@@ -84,7 +84,29 @@
             android:textColor="@color/secondaryColor" />
     </LinearLayout>
 
-    <LinearLayout
+        <LinearLayout
+            android:id="@+id/linear_personalInfor_third"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/personal_infor_linear_width"
+            android:layout_marginLeft="@dimen/personal_infor_list_margin"
+            android:layout_marginRight="@dimen/personal_infor_list_margin"
+            android:layout_marginBottom="@dimen/personal_infor_list_margin"
+            android:background="@color/colorWhite"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/personal_infor_list_margin"
+                android:layout_marginRight="@dimen/personal_infor_list_margin"
+                android:drawableLeft="@mipmap/jwbs"
+                android:drawablePadding="12dp"
+                android:text="既往史"
+                android:textColor="@color/secondaryColor" />
+        </LinearLayout>
+
+        <LinearLayout
         android:id="@+id/linear_personalInfor_second"
         android:layout_width="match_parent"
         android:layout_height="@dimen/personal_infor_linear_width"
@@ -101,34 +123,16 @@
             android:layout_marginRight="@dimen/personal_infor_list_margin"
             android:drawableLeft="@mipmap/shxg"
             android:drawablePadding="@dimen/personal_infor_textDrawPadding"
-            android:text="生活习惯"
+            android:text="生活状况"
             android:textColor="@color/secondaryColor" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/linear_personalInfor_third"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/personal_infor_linear_width"
-        android:layout_margin="@dimen/personal_infor_list_margin"
-        android:background="@color/colorWhite"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/personal_infor_list_margin"
-            android:layout_marginRight="@dimen/personal_infor_list_margin"
-            android:drawableLeft="@mipmap/jwbs"
-            android:drawablePadding="@dimen/personal_infor_textDrawPadding"
-            android:text="既往病史"
-            android:textColor="@color/secondaryColor" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linear_personalInfor_fourth"
         android:layout_width="match_parent"
         android:layout_height="@dimen/personal_infor_linear_width"
+        android:layout_marginTop="@dimen/personal_infor_list_margin"
         android:layout_marginLeft="@dimen/personal_infor_list_margin"
         android:layout_marginRight="@dimen/personal_infor_list_margin"
         android:background="@color/colorWhite"

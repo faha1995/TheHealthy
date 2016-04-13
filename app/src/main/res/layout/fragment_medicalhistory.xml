@@ -203,43 +203,15 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="@dimen/fragment_information_textPadding"
-                        android:text="家族成员"
-                        android:textColor="@color/secondaryColor"
-                        android:textSize="@dimen/fragment_information_normalTextSize" />
-
-                    <TextView
                         android:id="@+id/text_medicalHistory_family_father"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:gravity="center"
+                        android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="父亲"
                         android:textColor="@color/secondaryColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
-                </LinearLayout>
 
-                <!--中间线-->
-                <include layout="@layout/middle_line" />
-
-                <!-- 疾病-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="@dimen/fragment_information_textPadding"
-                        android:text="疾病"
-                        android:textColor="@color/secondaryColor"
-                        android:textSize="@dimen/fragment_information_normalTextSize" />
 
                     <TextView
                         android:id="@+id/text_medicalHistory_sick_father"
@@ -250,7 +222,13 @@
                         android:padding="@dimen/fragment_information_textPadding"
                         android:textColor="@color/secondaryColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
+
                 </LinearLayout>
+
+
+
+
+
 
                 <!--中间线-->
                 <include layout="@layout/middle_line" />
@@ -262,43 +240,15 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="@dimen/fragment_information_textPadding"
-                        android:text="家庭成员"
-                        android:textColor="@color/secondaryColor"
-                        android:textSize="@dimen/fragment_information_normalTextSize" />
-
-                    <TextView
                         android:id="@+id/text_medicalHistory_family_mom"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:gravity="center"
+                        android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="母亲"
                         android:textColor="@color/secondaryColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
-                </LinearLayout>
 
-                <!--中间线-->
-                <include layout="@layout/middle_line" />
-
-                <!-- 疾病-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="@dimen/fragment_information_textPadding"
-                        android:text="疾病"
-                        android:textColor="@color/secondaryColor"
-                        android:textSize="@dimen/fragment_information_normalTextSize" />
 
                     <TextView
                         android:id="@+id/text_medicalHistory_sick_mom"
@@ -309,7 +259,11 @@
                         android:padding="@dimen/fragment_information_textPadding"
                         android:textColor="@color/secondaryColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
+
                 </LinearLayout>
+
+
+
 
                 <!--中间线-->
                 <include layout="@layout/middle_line" />
@@ -322,41 +276,12 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="@dimen/fragment_information_textPadding"
-                        android:text="家族成员"
-                        android:textColor="@color/secondaryColor"
-                        android:textSize="@dimen/fragment_information_normalTextSize" />
-
-                    <TextView
                         android:id="@+id/text_medicalHistory_family_brother"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:gravity="center"
-                        android:padding="@dimen/fragment_information_textPadding"
-                        android:text="兄弟姐妹"
-                        android:textColor="@color/secondaryColor"
-                        android:textSize="@dimen/fragment_information_normalTextSize" />
-                </LinearLayout>
-
-                <!--中间线-->
-                <include layout="@layout/middle_line" />
-
-                <!-- 疾病-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
-                        android:text="疾病"
+                        android:text="兄弟姐妹"
                         android:textColor="@color/secondaryColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
 
@@ -371,8 +296,7 @@
                         android:textSize="@dimen/fragment_information_normalTextSize" />
                 </LinearLayout>
 
-                <!--中间线-->
-                <include layout="@layout/middle_line" />
+
 
                 <!-- 家庭成员-->
                 <LinearLayout
@@ -381,41 +305,12 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="@dimen/fragment_information_textPadding"
-                        android:text="家庭成员"
-                        android:textColor="@color/secondaryColor"
-                        android:textSize="@dimen/fragment_information_normalTextSize" />
-
-                    <TextView
                         android:id="@+id/text_medicalHistory_family_son"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:gravity="center"
-                        android:padding="@dimen/fragment_information_textPadding"
-                        android:text="子女"
-                        android:textColor="@color/secondaryColor"
-                        android:textSize="@dimen/fragment_information_normalTextSize" />
-                </LinearLayout>
-
-                <!--中间线-->
-                <include layout="@layout/middle_line" />
-
-                <!-- 疾病-->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
-                        android:text="疾病"
+                        android:text="子女"
                         android:textColor="@color/secondaryColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
 
@@ -428,17 +323,17 @@
                         android:padding="@dimen/fragment_information_textPadding"
                         android:textColor="@color/secondaryColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
+
                 </LinearLayout>
 
-                <!--中间线-->
-                <include layout="@layout/middle_line" />
+
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin_title"
-                android:text="药物过敏史"
+                android:text="其他既往史"
                 android:textColor="@color/secondaryColor"
                 android:textSize="16sp" />
 
@@ -474,16 +369,9 @@
                         android:textColor="@color/secondaryColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
                 </LinearLayout>
-
             </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_margin_title"
-                android:text="遗传病史"
-                android:textColor="@color/secondaryColor"
-                android:textSize="16sp" />
+            <!--中间线-->
+            <include layout="@layout/middle_line" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -518,13 +406,10 @@
                         android:textSize="@dimen/fragment_information_normalTextSize" />
                 </LinearLayout>
             </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="暴露史"
-                android:layout_margin="@dimen/text_margin_title"
-                android:textColor="@color/secondaryColor"
-                android:textSize="16sp" />
+
+            <!--中间线-->
+            <include layout="@layout/middle_line" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -553,15 +438,19 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2.5"
+                        android:gravity="center"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:textColor="@color/secondaryColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
                 </LinearLayout>
+
             </LinearLayout>
+
             <!-- 在布局的最后空出一段-->
-            <LinearLayout
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="10dp" />
+                android:layout_height="5dp"
+                />
 
         </LinearLayout>
     </ScrollView>
