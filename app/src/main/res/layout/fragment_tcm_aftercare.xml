@@ -21,20 +21,12 @@
         android:paddingTop="5dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:text="儿童中医药健康管理"
-            android:textColor="@color/secondaryColor"
-            android:textSize="19sp" />
-
-        <TextView
             android:id="@+id/text_tcm_after_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
             android:textColor="@color/secondaryColor"
-            android:textSize="17sp" />
+            android:textSize="19sp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,26 +37,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="随访医生："
-                android:textColor="@color/secondaryColor" />
+                android:textSize="@dimen/health_report_infor_secondTitle_textSize"
+                android:textColor="@color/personalInforRelativeBackground" />
 
             <TextView
                 android:id="@+id/doctor_signature"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/secondaryColor" />
+                android:textSize="@dimen/health_report_infor_secondTitle_textSize"
+                android:textColor="@color/personalInforRelativeBackground"  />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="随访日期："
-                android:textColor="@color/secondaryColor" />
+                android:textSize="@dimen/health_report_infor_secondTitle_textSize"
+                android:textColor="@color/personalInforRelativeBackground" />
 
             <TextView
                 android:id="@+id/visit_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/secondaryColor" />
+                android:textSize="@dimen/health_report_infor_secondTitle_textSize"
+                android:textColor="@color/personalInforRelativeBackground" />
 
         </LinearLayout>
 
@@ -92,7 +88,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="5dp"
         android:background="@color/bg"
         android:orientation="horizontal"
         android:paddingBottom="5dp"
@@ -103,7 +99,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="中医药健康管理服务："
+            android:text="服务内容："
             android:textColor="@color/secondaryColor" />
 
         <LinearLayout
@@ -130,7 +126,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="1dp"
         android:background="@color/bg"
         android:orientation="horizontal"
         android:paddingBottom="5dp"
