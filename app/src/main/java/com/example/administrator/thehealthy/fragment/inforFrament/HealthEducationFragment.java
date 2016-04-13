@@ -67,21 +67,6 @@ public class HealthEducationFragment extends BaseFragment implements MyClickList
         } else {
             Toast.makeText(getActivity(),"当前无网络", Toast.LENGTH_SHORT).show();
         }
-//        switch (BaseApplication.getNETCHANGE()) {
-//            case 1:
-//                initNetWork();
-//                break;
-//            case 2:
-//                Toast.makeText(getActivity(),"请检查网络",Toast.LENGTH_SHORT).show();
-//                break;
-//        }
-
-//        if (BaseApplication.isNetwork()) {
-//            initNetWork();
-//        } else {
-//            Toast.makeText(getActivity(),"请检查网络",Toast.LENGTH_SHORT).show();
-//        }
-//        NetBroadcastReceiver.mListeners.add(this);
     }
 
 
@@ -131,23 +116,6 @@ public class HealthEducationFragment extends BaseFragment implements MyClickList
         VolleySingleton.getInstace().addRequest(stringRequest);
     }
 
-//    @Override
-//    public boolean onTouch(View v, MotionEvent event) {
-//        switch (v.getId()) {
-//            case R.id.fragment_healthEducation:
-//
-//                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//                    Log.i(TAG, "--------> " + MotionEvent.ACTION_UP);
-//                    if (BaseApplication.isNetwork()) {
-//                        Log.i(TAG, "--------> isNetwork()" + BaseApplication.isNetwork());
-//                        initNetWork();
-//                    }
-//                }
-//                return true;
-//        }
-//        return true;
-//    }
-
 
     @Override
     public void myOnClickListener(int pos) {
@@ -160,24 +128,6 @@ public class HealthEducationFragment extends BaseFragment implements MyClickList
     }
 
 
-//    @Override
-//    public void netState() {
-//        Log.i(TAG,"------->   netState()");
-//        Log.i(TAG, "------->   netState()" + NetUtil.getNetworkState(getActivity()));
-//
-//        switch (BaseApplication.getmNetWorkState()) {
-//            case 1:
-//                initNetWork();
-//                break;
-//            case 2:
-//                Toast.makeText(getActivity(),"没有网络",Toast.LENGTH_SHORT).show();
-//                break;
-//        }
-        //没有网络
-//        if (NetUtil.getNetworkState(getActivity()) == NetUtil.NETWORK_NONE) {
-//            Toast.makeText(getActivity(),"没有网络",Toast.LENGTH_SHORT).show();
-//        } else {
-//            initNetWork();
-//        }
-//    }
+
+
 }

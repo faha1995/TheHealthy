@@ -14,7 +14,7 @@ public class AppConfig {
     public static String URL_PERSONAL_INFO = "http://124.248.40.142/backend/personal_info/";
 
     // url to get service list
-    public static String URL_SUMMARYS = "http://124.248.40.142/backend/summarys/";
+    public static String URL_SUMMARYS = "http://124.248.40.142/backend/summaries/";
     public static String URL_EDUCATION = "http://124.248.40.142/backend/educations/";
     public static String URL_DETAIL = "http://124.248.40.142/backend/detail/";
 }

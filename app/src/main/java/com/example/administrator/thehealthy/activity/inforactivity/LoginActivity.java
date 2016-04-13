@@ -151,6 +151,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                Log.i(TAG,"---> error" + error.toString());
+                Log.i(TAG, "---> errorMessage" + error.getMessage().toString());
+
                 Toast.makeText(getApplicationContext(),
                         "账号或密码错误", Toast.LENGTH_LONG).show();
             }

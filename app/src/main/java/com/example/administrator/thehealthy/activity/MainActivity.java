@@ -16,7 +16,6 @@ public class MainActivity extends BaseActivity {
     private TabHost mTabHost;
     public TextView mainTitle;
     private long exitTime = 0;
-    //    private BackHandledFragment backHandledFragment;
 
     @Override
     protected int setLayout() {
@@ -67,21 +66,6 @@ public class MainActivity extends BaseActivity {
         }
         return true;
     }
-
-
-    //    @Override
-//    public boolean onKeyDown(int keyCode, KeyEvent event) {
-//        if (keyCode == KeyEvent.KEYCODE_BACK) {
-//            if ((System.currentTimeMillis() - exitTime) > 2000) {
-//                Toast.makeText(this,"再按一次退出程序",Toast.LENGTH_SHORT).show();
-//                exitTime = System.currentTimeMillis();
-//            } else{
-//                finish();
-//            }
-//            return true;
-//        }
-//        return super.onKeyDown(keyCode, event);
-//    }
 
 
     @Override

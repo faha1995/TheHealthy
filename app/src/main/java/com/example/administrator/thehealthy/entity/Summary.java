@@ -5,8 +5,22 @@ package com.example.administrator.thehealthy.entity;
  */
 public class Summary {
     private int recordId;
-    private String title,clinic,provider,serviceTime,
-    typeAlias,itemAlias;
+    private String title;
+    private String clinic;
+    private String provider;
+    private String serviceTime;
+    private String typeAlias;
+    private String itemAlias;
+
+    public String getResident() {
+        return resident;
+    }
+
+    public void setResident(String resident) {
+        this.resident = resident;
+    }
+
+    private String resident;
 
     public Summary() {
     }

@@ -22,7 +22,10 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activity.MainActivity"
-            android:launchMode="singleTask"></activity>
+            android:launchMode="singleTask">
+
+
+        </activity>
 
         <activity
             android:name=".activity.inforactivity.LoginActivity"
