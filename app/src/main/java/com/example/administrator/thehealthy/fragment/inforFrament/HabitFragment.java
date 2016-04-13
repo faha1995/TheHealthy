@@ -31,7 +31,7 @@ import java.util.Map;
 public class HabitFragment extends BaseFragment {
     private final String TAG = HabitFragment.class.getSimpleName();
     private TextView exhaustText, fuelText, waterText, toiletText,
-            liveStokeText, exposureText;
+            liveStokeText;
     private DBTool dbTool;
     private LinearLayout linearLayout;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
@@ -48,7 +48,7 @@ public class HabitFragment extends BaseFragment {
         waterText = findView(R.id.text_information_water);
         toiletText = findView(R.id.text_information_toilet);
         liveStokeText = findView(R.id.text_information_liveStock);
-        exposureText = findView(R.id.text_information_exposure);
+
         linearLayout = findView(R.id.linear_habit);
 
         scrollViewOnTouch.setLinearRelative(linearLayout);
@@ -76,8 +76,7 @@ public class HabitFragment extends BaseFragment {
                         waterText.setText(jsonObject.getString("surroundings_water"));
                         toiletText.setText(jsonObject.getString("surroundings_toilet"));
                         liveStokeText.setText(jsonObject.getString("surrounding_livestock_fence"));
-                        exposureText.setText(
-                                ChangeString.splitMain(jsonObject.getString("expose_history")));
+
                     } else if (jsonObject.getString("error_msg").equals("The resident has not fill the personal info table")) {
                         showAlertDialog("请前往卫生院完善个人信息", 2);
                     }

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.entity.Summary;
-import com.example.administrator.thehealthy.fragment.inforFrament.HealthReportFragment;
+import com.example.administrator.thehealthy.fragment.inforFrament.HealthRepFragment;
 import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.tools.MyClickListener;
 
@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class HealthReportAdapter extends RecyclerView.Adapter
         <HealthReportAdapter.HealthReportViewHolder> {
-    private final String TAG = HealthReportFragment.class.getSimpleName();
+    private final String TAG = HealthRepFragment.class.getSimpleName();
     private Context context;
     private List<Summary> summaryList;
     private MyClickListener myClickListener;
@@ -77,7 +77,7 @@ public class HealthReportAdapter extends RecyclerView.Adapter
         public HealthReportViewHolder(View itemView) {
             super(itemView);
             titleText = (TextView) itemView.findViewById(R.id.text_healthReport_adapter_title);
-            purposeText = (TextView) itemView.findViewById(R.id.text_healthReport_adapter_purpose);
+//            purposeText = (TextView) itemView.findViewById(R.id.text_healthReport_adapter_purpose);
             clinicText = (TextView) itemView.findViewById(R.id.adapter_health_report_clinic);
             doctorText = (TextView) itemView.findViewById(R.id.adapter_health_report_doctor);
             timeText = (TextView) itemView.findViewById(R.id.text_healthReport_adapter_time);

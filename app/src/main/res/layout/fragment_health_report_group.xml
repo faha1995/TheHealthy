@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linear_health_report_group"
     android:layout_width="match_parent"
     android:orientation="horizontal"
     android:background="@drawable/expandable_listview_group_background"

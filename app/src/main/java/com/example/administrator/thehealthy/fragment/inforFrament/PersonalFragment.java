@@ -40,7 +40,7 @@ public class PersonalFragment extends BaseFragment {
 //        personalViewPager.setOffscreenPageLimit(0);
         // 添加Fragment
         fragmentList.add(new PersonalInforFragment());
-        fragmentList.add(new HealthReFragment());
+        fragmentList.add(new HealthReportFragment());
         fragmentList.add(new HospitalTreatmentFragment());
 
         // 添加Title

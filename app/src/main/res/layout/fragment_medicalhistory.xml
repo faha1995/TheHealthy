@@ -518,7 +518,46 @@
                         android:textSize="@dimen/fragment_information_normalTextSize" />
                 </LinearLayout>
             </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="暴露史"
+                android:layout_margin="@dimen/text_margin_title"
+                android:textColor="@color/secondaryColor"
+                android:textSize="16sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/fragment_information_linear_marginLeft"
+                android:layout_marginRight="@dimen/personal_infor_list_margin"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
 
+                <!-- 暴露史-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:text="暴露史"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+
+                    <TextView
+                        android:id="@+id/text_information_exposure"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.5"
+                        android:padding="@dimen/fragment_information_textPadding"
+                        android:textColor="@color/secondaryColor"
+                        android:textSize="@dimen/fragment_information_normalTextSize" />
+                </LinearLayout>
+            </LinearLayout>
             <!-- 在布局的最后空出一段-->
             <LinearLayout
                 android:layout_width="match_parent"

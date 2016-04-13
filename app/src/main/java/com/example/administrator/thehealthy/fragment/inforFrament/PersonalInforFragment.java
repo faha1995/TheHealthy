@@ -12,6 +12,8 @@ import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.HashMap;
 
 /**
@@ -147,13 +149,16 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
                     goToNextFragmentFromPersonal(new MedicalHistoryFragment());
                 }
                 break;
+
             // 关于我们
             case R.id.linear_personalInfor_fourth:
                 goToNextFragmentFromPersonal(new AboutUsFragment());
                 break;
+
             // 退出
             case R.id.btn_personalInfor_exit:
                 logoutUser();
+                EventBus.getDefault().post("退出当前用户");
                 activityIntent(getActivity(), LoginActivity.class);
                 nameText.setText("未设置");
                 mobileText.setText("未知");

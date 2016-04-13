@@ -1,11 +1,13 @@
 package com.example.administrator.thehealthy.fragment.inforFrament;
 
 import android.graphics.Typeface;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -13,8 +15,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
-import com.example.administrator.thehealthy.adapter.ExpandAdapter;
+import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity;
+import com.example.administrator.thehealthy.adapter.HealthReportAdapter;
 import com.example.administrator.thehealthy.application.AppConfig;
+import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.entity.Summary;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
@@ -43,7 +47,8 @@ import com.example.administrator.thehealthy.fragment.inforFrament.educationRepor
 import com.example.administrator.thehealthy.tools.MyClickListener;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
-import org.json.JSONArray;
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -53,38 +58,67 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2016/4/11.
+ * Created by Administrator on 2016/3/4.
+ * 健康报告界面
  */
-public class HealthReFragment extends BaseFragment implements MyClickListener{
-    private final String TAG = HealthReFragment.class.getSimpleName();
+public class HealthRepFragment extends BaseFragment implements MyClickListener {
+    private final String TAG = HealthRepFragment.class.getSimpleName();
+    public RecyclerView healthReportRv;
+    private HealthReportAdapter healthReportAdapter;
+    private List<Summary> summaryList = new ArrayList<>();
     private DBTool dbTool;
-    private ExpandableListView exListView;
-    private ExpandAdapter expandAdapter;
-    private List<String> groups = new ArrayList<>();
-    private List<List<Summary>> childs = new ArrayList<>();
     private LinearLayout pleaseLoginLinear;
     private TextView nothingText;
 
+
     @Override
     protected int setLayoutView() {
-        return R.layout.fragment_health_repor;
+        return R.layout.fragment_health_rep;
+
     }
 
     @Override
     protected void initView() {
-//        EventBus.getDefault().register(this);
         nothingText = findView(R.id.text_health_report_nothing);
-        pleaseLoginLinear = findView(R.id.linear_pleaseLogin);
-//        groups.add("李丽");
-//        groups.add("李丽之子");
-//        groups.add("李丽侄女");
-
         dbTool = new DBTool();
+        healthReportRv = findView(R.id.recyclerView_healthReport);
+        healthReportRv.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        healthReportAdapter = new HealthReportAdapter(getActivity());
+        healthReportAdapter.setMyClickListener(this);
+        healthReportRv.setAdapter(healthReportAdapter);
 
+        pleaseLoginLinear = findView(R.id.linear_pleaseLogin);
+//        NetBroadcastReceiver.mListeners.add(this);
+    }
+
+    @Subscribe
+    public void onEvent(String string){
+        Log.i(TAG, "--------------->  onEvent()");
+        initNetWork();
+    }
+
+
+    @Override
+    protected void initData() {
+        EventBus.getDefault().register(this);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i(TAG,"--------->  +onResume()");
+        if (!BaseApplication.isNetwork()) {
+            Toast.makeText(getActivity(), "当前无网络", Toast.LENGTH_SHORT).show();
+        } else {
+            initNetWork();
+        }
+    }
+
+    private void initNetWork() {
         if (dbTool.isLogined()) {
             pleaseLoginLinear.setVisibility(View.GONE);
             final HashMap<String, String> user = dbTool.getUserDetails();
-
 
             final StringRequest request = new StringRequest(Request.Method.POST,
                     AppConfig.URL_SUMMARYS, new Response.Listener<String>() {
@@ -95,50 +129,34 @@ public class HealthReFragment extends BaseFragment implements MyClickListener{
                     try {
                         JSONObject jsonObject = new JSONObject(response);
                         boolean error = jsonObject.getBoolean("error");
-                        Log.i(TAG, "------> + error1");
 
                         if (!error) {
-                            Log.i(TAG, "------> + error2");
-                            // 得到一级分类的数据加入groups集合中
-                            JSONArray member = jsonObject.getJSONArray("member");
-                            for (int i = 0; i < member.length(); i++) {
-                                groups.add(member.getJSONObject(i).getString("resident"));
-                                Log.i(TAG, "------> member.length" + member.getJSONObject(i).getString("resident"));
-                                Log.i(TAG, "-------> Groups.size" + groups.size());
-                                expandAdapter.addGroups(groups);
-                            }
+                            if (jsonObject.getInt("length") > 0) {
 
-//                             得到一级分类对应的二级分类数据，加入childs集合中
-                            JSONArray summaries = jsonObject.getJSONArray("summary");
-                            for (int i = 0; i < summaries.length(); i++) {
-                                List<Summary> child = new ArrayList<>();
-                                Log.i(TAG, "---------->  summaries.length" + summaries.length() + "  " + i);
-                                JSONArray array = summaries.getJSONArray(i);
-                                Log.i(TAG, "---------->  array.length" + array.length() + "  " + i);
-                                for (int k = 0; k < array.length(); k++) {
-                                    JSONObject item = (JSONObject) array.get(k);
-                                    Summary summary = new Summary();
-//
-                                    summary.setRecordId(item.getInt("record_id"));
-                                    summary.setTitle(item.getString("title"));
-                                    summary.setResident(item.getString("resident"));
-                                    summary.setClinic(item.getString("clinic"));
-                                    summary.setProvider(item.getString("provider"));
-                                    summary.setServiceTime(item.getString("service_time"));
-                                    summary.setTypeAlias(item.getString("type_alias"));
-                                    summary.setItemAlias(item.getString("item_alias"));
-                                    child.add(summary);
-                                    dbTool.addSummary(summary);
-                                }
-                                childs.add(child);
+                            for (int i = 0; i < jsonObject.getInt("length"); i++) {
+                                JSONObject item = (JSONObject) jsonObject.getJSONArray("list").get(i);
+
+                                Summary summary = new Summary();
+                                summary.setRecordId(item.getInt("record_id"));
+                                summary.setTitle(item.getString("title"));
+                                summary.setClinic(item.getString("clinic"));
+                                summary.setProvider(item.getString("provider"));
+                                summary.setServiceTime(item.getString("service_time"));
+                                summary.setTypeAlias(item.getString("type_alias"));
+                                summary.setItemAlias(item.getString("item_alias"));
+                                summaryList.add(summary);
+                                dbTool.addSummary(summary);
+
+                                Log.e(TAG, "summary length: " + summaryList.size());
                             }
-                            expandAdapter.addChilds(childs);
-                        } else {
-//                            childs.clear();
-                            Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/splash_discrip_text_type.ttf");
-                            nothingText.setTypeface(typeface);
-                            nothingText.setText("还未有相关记录");
-                            nothingText.setVisibility(View.VISIBLE);
+                            } else {
+                                summaryList.clear();
+                                Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/splash_discrip_text_type.ttf");
+                                nothingText.setTypeface(typeface);
+                                nothingText.setText("还未有相关记录");
+                                nothingText.setVisibility(View.VISIBLE);
+                            }
+                                healthReportAdapter.addData(summaryList);
                         }
 
                     } catch (JSONException e) {
@@ -156,55 +174,38 @@ public class HealthReFragment extends BaseFragment implements MyClickListener{
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> params = new HashMap<>();
                     params.put("resident_id", user.get("resident_id"));
-                    Log.i(TAG, "----------->" + user.get("resident_id"));
+                    Log.i(TAG,"-----------> + resident_id"+user.get("resident_id"));
                     return params;
                 }
             };
 
             VolleySingleton.getInstace().addRequest(request);
         }
-
-
+        else {
+             dbTool.deleteSummary();
+            summaryList.clear();
+            healthReportAdapter.addData(summaryList);
+            pleaseLoginLinear.setVisibility(View.VISIBLE);
+            pleaseLoginLinear.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    activityIntent(getActivity(), LoginActivity.class);
+                    Log.i(TAG, "------->  textPleaseLogin");
+                }
+            });
+        }
     }
 
-    int group, child;
-
-    @Override
-    protected void initData() {
-        exListView = findView(R.id.exlistView_health_report);
-        expandAdapter = new ExpandAdapter(getActivity(), groups, childs);
-        exListView.setAdapter(expandAdapter);
-        expandAdapter.setMyClickListener(this);
-        exListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                group = groupPosition;
-                child = childPosition;
-
-                expandAdapter.setPosition(groupPosition, childPosition);
-                Log.i("AAA", "--------> group " + groupPosition + " child " + childPosition);
-                return true;
-            }
-        });
-
-    }
-//    @Subscribe
-//    public void onEvent(List<List<Summary>> childs) {
-//        GoWhick(childs.get(group).get(child).getTypeAlias(),
-//                childs.get(group).get(child).getItemAlias(),
-//                ChangeString.splitForPurpose(childs.get(group).get(child).getTitle()),
-//                childs.get(group).get(child).getRecordId());
-//        Log.i("AAA","-------> " +childs.get(group).get(child).getTitle());
-//    }
 
     @Override
     public void myOnClickListener(int pos) {
 
     }
 
-        @Override
+    @Override
     public void myOnClickListener(String type_alias, String item_alias, String title, int record_id) {
-//    private void GoWhick(String type_alias, String item_alias, String title, int record_id) {
+        Log.i(TAG, "---------->" + type_alias + "---->" + item_alias + "--->" + record_id);
+
         if (type_alias.equals("pregnant") && item_alias.equals("aftercare_1")) {
             goToNextFragmentFromPersonal(new AntenatalFragment(title), record_id);
             Log.i(TAG, "------>    OK");
@@ -277,11 +278,21 @@ public class HealthReFragment extends BaseFragment implements MyClickListener{
             goToNextFragmentFromPersonal(new Aftercare8MonthFragment(), record_id);
             Log.i(TAG, "------>    OK");
         }
+
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i(TAG, "---------> onPause()");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-//        EventBus.getDefault().unregister(this);
+        EventBus.getDefault().unregister(this);
+        Log.i(TAG,"---------> onDestroy()");
     }
+
+
 }

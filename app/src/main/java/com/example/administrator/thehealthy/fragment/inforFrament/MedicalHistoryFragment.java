@@ -31,7 +31,7 @@ public class MedicalHistoryFragment extends BaseFragment {
     private final String TAG = MedicalHistoryFragment.class.getSimpleName();
     private TextView diseaseText, surgeryText, traumaText, bloodText, disabilityText,
             fatherSickText, momSickText, bortherSickText, sonSickText, alergyText,
-            geneticText;
+            geneticText,exposureText;
     private DBTool dbTool;
     private ScrollView scrollViewAfter;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
@@ -55,6 +55,7 @@ public class MedicalHistoryFragment extends BaseFragment {
         alergyText = findView(R.id.text_medicalHistory_allergy);
         geneticText = findView(R.id.text_medicalHistory_genetic);
         scrollViewAfter = findView(R.id.scrollView_medicahistory);
+        exposureText = findView(R.id.text_information_exposure);
 
         scrollViewOnTouch.setScrollView(scrollViewAfter);
         dbTool = new DBTool();
@@ -118,6 +119,8 @@ public class MedicalHistoryFragment extends BaseFragment {
                         }
                         alergyText.setText(ChangeString.splitMain(jsonObject.getString("allergy_history")));
                         geneticText.setText(jsonObject.getString("genetic_disease"));
+                        exposureText.setText(
+                                ChangeString.splitMain(jsonObject.getString("expose_history")));
                     } else if (jsonObject.getString("error_msg").equals("The resident has not fill the personal info table")) {
                         showAlertDialog("请前往卫生院完善个人信息", 2);
                     }

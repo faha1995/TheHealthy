@@ -10,6 +10,6 @@
     android:layout_centerInParent="true"
     android:drawableTop="@drawable/tabs_infor_image"
     android:textSize="@dimen/tabwidget_textsize"
-    android:text="讯息"
+    android:text="资讯"
     android:textColor="@drawable/tabs_textcolor"/>
 </RelativeLayout>
