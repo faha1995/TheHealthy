@@ -88,7 +88,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="胸部正位片"
+                                android:text="DR胸部正位片"
                                 android:layout_marginTop="15dp"
                                 android:layout_marginLeft="10dp"
                                 android:textColor="@color/mainColor"
@@ -151,7 +151,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="血常检"
+                            android:text="血常规"
                             android:layout_marginTop="15dp"
                             android:layout_marginLeft="10dp"
                             android:textColor="@color/mainColor"
@@ -408,7 +408,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="全额："
+                            android:text="金额："
                             android:layout_marginTop="15dp"
                             android:layout_marginBottom="15dp"
                             android:layout_marginLeft="10dp"
@@ -418,7 +418,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="583.45 "
+                            android:text="583.45 ¥"
                             android:layout_marginTop="15dp"
                             android:layout_marginBottom="15dp"
                             android:layout_marginLeft="10dp"

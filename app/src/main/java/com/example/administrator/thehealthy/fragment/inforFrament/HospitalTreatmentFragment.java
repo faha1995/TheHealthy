@@ -8,7 +8,6 @@ import android.widget.ScrollView;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
-import com.example.administrator.thehealthy.fragment.inforFrament.educationReportInforFragment.HospitalTreamInforFragment;
 
 import org.greenrobot.eventbus.Subscribe;
 

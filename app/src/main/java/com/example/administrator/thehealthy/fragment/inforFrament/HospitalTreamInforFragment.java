@@ -1,4 +1,4 @@
-package com.example.administrator.thehealthy.fragment.inforFrament.educationReportInforFragment;
+package com.example.administrator.thehealthy.fragment.inforFrament;
 
 import android.widget.ScrollView;
 
