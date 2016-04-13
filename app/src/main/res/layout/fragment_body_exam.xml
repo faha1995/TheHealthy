@@ -10,9 +10,8 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".activity.BodyExamActivity">
 
-    <ScrollView
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/scrollView_body_exam"
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:overScrollMode="never"
@@ -33,36 +32,63 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/text_body_exam_title"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="健康体检"
+                    android:gravity="center"
+                    android:background="@color/colorWhite"
                     android:textColor="@color/secondaryColor"
                     android:textSize="19sp" />
 
-                <TextView
-                    android:id="@+id/text_body_exam_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/secondaryColor"
-                    android:textSize="17sp" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="责任医生："
-                        android:textColor="@color/secondaryColor" />
 
-                    <TextView
-                        android:id="@+id/doctor"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/secondaryColor" />
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                      >
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="责任医生："
+                                android:textColor="@color/personalInforRelativeBackground"
+                                android:textSize="@dimen/health_report_infor_secondTitle_textSize" />
+
+                            <TextView
+                                android:id="@+id/doctor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/personalInforRelativeBackground"
+                                android:textSize="@dimen/health_report_infor_secondTitle_textSize" />
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="体检日期："
+                                android:textColor="@color/personalInforRelativeBackground"
+                                android:textSize="@dimen/health_report_infor_secondTitle_textSize" />
+
+                            <TextView
+                                android:id="@+id/check_time_body_exam"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/personalInforRelativeBackground"
+                                android:textSize="15sp" />
+
+                    </LinearLayout>
+
+
                 </LinearLayout>
             </LinearLayout>
 
@@ -424,7 +450,7 @@
                 android:paddingBottom="5dp"
                 android:paddingLeft="16dp"
                 android:paddingTop="5dp"
-                android:text="口腔"
+                android:text="脏器功能"
                 android:textColor="@color/secondaryColor" />
 
             <LinearLayout

@@ -101,6 +101,8 @@ public class BodyExamFragment extends BaseFragment {
                             title.setText(titles);
                             TextView doctor = findView(R.id.doctor);
                             doctor.setText(detail.getString("doctor"));
+                            TextView time = findView(R.id.check_time_body_exam);
+                            time.setText(detail.getString("visit_date"));
                             TextView body_temperature = findView(R.id.body_temperature);
                             body_temperature.setText(detail.getString("body_temperature"));
                             // 如果没有数据就隐藏单位
