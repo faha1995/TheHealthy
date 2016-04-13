@@ -86,10 +86,10 @@ public class VaccineCardFragment extends BaseFragment {
                                     home_county.setText(detail.getString("home_county"));
                                     TextView home_town = findView(R.id.home_town);
                                     home_town.setText(detail.getString("home_town"));
-                                    if (!detail.getString("register_local").equals("false")) {
-                                        TextView register_local = findView(R.id.register_local);
-                                        register_local.setText(detail.getString("register_local"));
-                                    }
+//                                    if (!detail.getString("register_local").equals("false")) {
+//                                        TextView register_local = findView(R.id.register_local);
+//                                        register_local.setText(detail.getString("register_local"));
+//                                    }
                                     TextView register_province = findView(R.id.register_province);
                                     register_province.setText(detail.getString("register_province"));
                                     TextView register_city = findView(R.id.register_city);

@@ -72,7 +72,7 @@ public class VaccinationFragment extends BaseFragment {
                                     JSONObject detail = obj.getJSONObject("detail");
                                     // Toast.makeText(getApplicationContext(), detail.getString("visit_date"), Toast.LENGTH_SHORT).show();
                                     TextView title = findView(R.id.text_vaccina_title);
-                                    title.setText(titles);
+                                    title.setText("预防接种 "+titles);
                                     TextView visit_date = findView(R.id.visit_date);
                                     visit_date.setText(detail.getString("visit_date"));
                                     TextView vaccine = findView(R.id.vaccine);

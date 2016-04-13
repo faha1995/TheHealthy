@@ -29,6 +29,8 @@
     <dimen name="editText_login_phone_padding">10dp</dimen>
     <dimen name="register_smallTitle_textSize">12sp</dimen>
     <dimen name="register_smallTitle_marginLeft">15dp</dimen>
-    <dimen name="diabetes_aftercare_linear_marTop">10dp</dimen>
+    <dimen name="diabetes_aftercare_linear_marTop">1dp</dimen>
     <dimen name="body_exam_linear_jiange">5dp</dimen>
+    <dimen name="adapter_health_report_time_textSize">13sp</dimen>
+    <dimen name="health_report_infor_secondTitle_textSize">15sp</dimen>
 </resources>

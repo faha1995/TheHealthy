@@ -33,19 +33,12 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="糖尿病患者健康管理"
-                    android:textColor="@color/secondaryColor"
-                    android:textSize="19sp" />
-
-                <TextView
                     android:id="@+id/text_diabetes_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/secondaryColor"
-                    android:textSize="17sp" />
+                    android:textSize="19sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -56,26 +49,30 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="随访医生："
-                        android:textColor="@color/secondaryColor" />
+                        android:textSize="@dimen/health_report_infor_secondTitle_textSize"
+                        android:textColor="@color/personalInforRelativeBackground" />
 
                     <TextView
                         android:id="@+id/doctor_signature"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/secondaryColor" />
+                        android:textSize="@dimen/health_report_infor_secondTitle_textSize"
+                        android:textColor="@color/personalInforRelativeBackground" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:text="随访日期："
-                        android:textColor="@color/secondaryColor" />
+                        android:textSize="@dimen/health_report_infor_secondTitle_textSize"
+                        android:textColor="@color/personalInforRelativeBackground" />
 
                     <TextView
                         android:id="@+id/visit_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/secondaryColor" />
+                        android:textSize="@dimen/health_report_infor_secondTitle_textSize"
+                        android:textColor="@color/personalInforRelativeBackground" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -764,23 +761,17 @@
                         android:layout_height="wrap_content"
                         android:text=" mmol/L"
                         android:textColor="@color/secondaryColor" />
-                </LinearLayout>
-            </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="5dp"
-                android:paddingLeft="16dp"
-                android:paddingTop="5dp"
-                android:text="其他检查*"
-                android:textColor="@color/secondaryColor" />
+
+                </LinearLayout>
+                </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/bg"
                 android:orientation="horizontal"
+                android:layout_marginTop="1dp"
                 android:paddingBottom="5dp"
                 android:paddingLeft="16dp"
                 android:paddingTop="5dp">
@@ -798,19 +789,19 @@
                     android:layout_weight="1.5"
                     android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/auxiliary_examination_extra_hemoglobin"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:textColor="@color/secondaryColor" />
+                    <TextView
+                        android:id="@+id/auxiliary_examination_extra_hemoglobin"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:textColor="@color/secondaryColor" />
 
-                        <TextView
-                            android:id="@+id/text_diabetes_baifenhao"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="%"
-                            android:textColor="@color/secondaryColor" />
+                    <TextView
+                        android:id="@+id/text_diabetes_baifenhao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="%"
+                        android:textColor="@color/secondaryColor" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -825,7 +816,10 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/secondaryColor" />
                 </LinearLayout>
+
             </LinearLayout>
+
+
 
             <TextView
                 android:layout_width="wrap_content"

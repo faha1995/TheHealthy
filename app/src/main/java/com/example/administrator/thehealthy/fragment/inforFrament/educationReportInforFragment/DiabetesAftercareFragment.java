@@ -82,7 +82,7 @@ public class DiabetesAftercareFragment extends BaseFragment {
                                     JSONObject detail = obj.getJSONObject("detail");
                                     // Toast.makeText(getApplicationContext(), detail.getString("visit_date"), Toast.LENGTH_SHORT).show();
                                     TextView title = findView(R.id.text_diabetes_title);
-                                    title.setText(titles);
+                                    title.setText("糖尿病患者 "+titles);
                                     TextView visit_date = findView(R.id.visit_date);
                                     TextView doctor_signature = findView(R.id.doctor_signature);
                                     doctor_signature.setText(detail.getString("doctor_signature"));

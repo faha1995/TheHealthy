@@ -20,19 +20,12 @@
         android:paddingTop="5dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="疫苗接种记录"
-            android:textColor="@color/secondaryColor"
-            android:textSize="19sp" />
-
-        <TextView
             android:id="@+id/text_vaccina_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:textColor="@color/secondaryColor"
-            android:textSize="17sp" />
+            android:textSize="19sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -42,25 +35,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/personalInforRelativeBackground"
                 android:text="接种医生：" />
 
             <TextView
                 android:id="@+id/doctor_signature"
                 android:layout_width="wrap_content"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/personalInforRelativeBackground"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/personalInforRelativeBackground"
                 android:text="接种日期：" />
 
             <TextView
                 android:id="@+id/visit_date"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/personalInforRelativeBackground"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
@@ -69,7 +62,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/diabetes_aftercare_linear_marTop"
+        android:layout_marginTop="5dp"
         android:background="@color/bg"
         android:orientation="horizontal"
         android:paddingBottom="5dp"

@@ -8,7 +8,7 @@
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="130dp"
         android:layout_marginLeft="@dimen/health_report_adapter_cardView_margin"
         android:layout_marginRight="@dimen/health_report_adapter_cardView_margin"
         android:layout_marginTop="@dimen/health_report_adapter_cardView_margin"
@@ -51,17 +51,27 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2.5"
-                android:orientation="vertical">
+                android:layout_weight="2"
+                android:orientation="horizontal">
 
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="match_parent"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
                 <TextView
                     android:id="@+id/adapter_health_report_doctor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="测试医生"
-                    android:layout_marginTop="5dp"
+                    android:layout_centerVertical="true"
                     android:textColor="@color/secondaryColor"
-                    android:layout_gravity="center"
+                    android:layout_alignParentLeft="true"
                     android:textSize="@dimen/adapter_health_report_doctor_textSize"/>
 
                 <TextView
@@ -69,9 +79,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="燕郊镇卫生院"
-                    android:layout_gravity="center"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
                     android:textColor="@color/secondaryColor"
-                    android:textSize="@dimen/adapter_health_report_purpose_textSize"/>
+                    android:textSize="@dimen/adapter_health_report_doctor_textSize"/>
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_weight="0.3"
+                    android:layout_height="match_parent"
+                    />
+
             </LinearLayout>
 
             <View
@@ -91,8 +110,8 @@
                     android:id="@+id/text_healthReport_adapter_time"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textColor="@color/secondaryColor"
-                    android:textSize="@dimen/adapter_health_report_doctor_textSize"
+                    android:textColor="@color/personalInforRelativeBackground"
+                    android:textSize="@dimen/adapter_health_report_time_textSize"
                     android:text="17:00:03  2016-01-21"
                     android:layout_alignParentRight="true"
                     android:gravity="center"
