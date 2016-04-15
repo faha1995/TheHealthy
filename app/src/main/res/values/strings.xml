@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">三河市医疗卫生</string>
+    <string name="app_name">三河市公共卫生</string>
     <string name="tabwidget_infor">讯息</string>
-    <string name="main_mainTitle">三河市医疗卫生</string>
+    <string name="main_mainTitle">三河市公共卫生</string>
 </resources>

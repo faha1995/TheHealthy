@@ -21,7 +21,6 @@ public class EducationInferFragment extends BaseFragment implements View.OnTouch
     private TextView eduInforTitle, eduInforContent, eduInforTime, eduInforDate;
     private ScrollView scrollViewEducationInfor;
     private RelativeLayout relativeLayoutEducation;
-    private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
 
 
     @Override
@@ -41,11 +40,10 @@ public class EducationInferFragment extends BaseFragment implements View.OnTouch
         eduInforDate = findView(R.id.text_EducationInfor_date);
         scrollViewEducationInfor = findView(R.id.scrollView_educationInfor);
         relativeLayoutEducation = findView(R.id.relative_education_infor);
-
-        scrollViewOnTouch.setScrollView(scrollViewEducationInfor);
-        scrollViewOnTouch.setLinearRelative(relativeLayoutEducation);
+        ScrollViewOnTouch.getInstance().setScrollView(scrollViewEducationInfor);
+        ScrollViewOnTouch.getInstance().setViewFinishTouchFromFragment(relativeLayoutEducation);
         eduInforTitle.setText(AppData.eduEntityList.get(position).getTitle());
-        eduInforContent.setText(AppData.eduEntityList.get(position).getContent());
+//        eduInforContent.setText(AppData.eduEntityList.get(position).getContent());
         eduInforTime.setText(ChangeString.splitForTime(AppData.eduEntityList.get(position).getCreate_at()));
         eduInforDate.setText(ChangeString.splitForDate(AppData.eduEntityList.get(position).getCreate_at()));
 

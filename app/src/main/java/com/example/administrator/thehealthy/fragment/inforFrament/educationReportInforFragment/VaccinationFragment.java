@@ -12,7 +12,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
-import com.example.administrator.thehealthy.application.AppConfig;
+import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
@@ -31,7 +31,6 @@ import java.util.Map;
 public class VaccinationFragment extends BaseFragment {
     private static final String TAG = VaccinationFragment.class.getSimpleName();
     private LinearLayout linearLayoutVaccina;
-    private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
     private String titles;
 
     public VaccinationFragment(String title) {
@@ -46,7 +45,7 @@ public class VaccinationFragment extends BaseFragment {
     @Override
     protected void initView() {
         linearLayoutVaccina = findView(R.id.linear_vaccination);
-        scrollViewOnTouch.setLinearRelative(linearLayoutVaccina);
+        ScrollViewOnTouch.getInstance().setViewFinishTouchFromFragment(linearLayoutVaccina);
 
     }
 

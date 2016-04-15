@@ -87,23 +87,6 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
 
     @Override
     protected void initData() {
-//        Log.i(TAG, "-------->" + "initData()");
-//        Log.i(TAG, "-------->" + dbTool.isLogined());
-
-//        if (dbTool.isLogined()) {
-//            Log.i(TAG, "-------->" + "isLogined()");
-//
-//
-//            final HashMap<String, String> user = dbTool.getUserDetails();
-//            Log.i(TAG, "-----> NAME :" + user.get("name"));
-//
-//            nameText.setText(user.get("name"));
-//            mobileText.setText(user.get("mobile"));
-//
-//            Log.i(TAG, "-----> mobile :" + user.get("mobile"));
-//        }
-
-//        Log.i(TAG, "-------->" + "initDataEnd()");
 
     }
 

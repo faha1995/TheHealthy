@@ -41,12 +41,12 @@ public class PersonalFragment extends BaseFragment {
         // 添加Fragment
         fragmentList.add(new PersonalInforFragment());
         fragmentList.add(new HealthReportFragment());
-        fragmentList.add(new HospitalTreatmentFragment());
+//        fragmentList.add(new HospitalTreatmentFragment());
 
         // 添加Title
         titles.add("个人信息");
         titles.add("健康报告");
-        titles.add("医院诊疗");
+//        titles.add("医院诊疗");
 
         personalAdapter = new PersonalAdapter(
                 getActivity().getSupportFragmentManager(), getActivity(), fragmentList, titles);
@@ -56,7 +56,7 @@ public class PersonalFragment extends BaseFragment {
         // 添加tab对应的文字
         personalTabLayout.addTab(personalTabLayout.newTab().setText(titles.get(0)));
         personalTabLayout.addTab(personalTabLayout.newTab().setText(titles.get(1)));
-        personalTabLayout.addTab(personalTabLayout.newTab().setText(titles.get(2)));
+//        personalTabLayout.addTab(personalTabLayout.newTab().setText(titles.get(2)));
         personalTabLayout.setupWithViewPager(personalViewPager);
     }
 

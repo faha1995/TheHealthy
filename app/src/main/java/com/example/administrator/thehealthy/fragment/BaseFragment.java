@@ -2,6 +2,7 @@ package com.example.administrator.thehealthy.fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,13 +16,20 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.ImageLoader;
 import com.example.administrator.thehealthy.R;
+import com.example.administrator.thehealthy.activity.MainActivity;
 import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity;
 import com.example.administrator.thehealthy.application.BaseApplication;
+import com.example.administrator.thehealthy.volley.VolleySingleton;
 
 /**
  * Created by Administrator on 2016/3/3.
@@ -30,6 +38,8 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     private View view;
     private static FragmentManager fm;
     private static FragmentTransaction ft;
+    private static ImageLoader imageLoader;
+    private Context context;
 
 
     @Nullable
@@ -42,7 +52,9 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         this.view = view;
+        this.context = getActivity();
         view.setOnTouchListener(this);
+        imageLoader = VolleySingleton.getInstace()._getImageLoader();
         initView();
     }
 
@@ -67,6 +79,9 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
         return t;
     }
 
+    public static ImageLoader getImageLoader() {
+        return imageLoader;
+    }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -175,8 +190,16 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     // acitvity的跳转
     public static <T> void activityIntent(Activity activity, Class<T> clazz) {
         Intent intent = new Intent(activity, clazz);
-        activity.overridePendingTransition(R.anim.move_in_from_right, R.anim.no_move);
         activity.startActivity(intent);
+        activity.overridePendingTransition(R.anim.move_in_from_bottom, R.anim.no_move);
+    }
+
+    // acitvity的跳转
+    public static <T> void activityIntent(Fragment fragment, Activity clazz, int pos) {
+        Intent intent = new Intent(fragment.getActivity(), clazz.getClass());
+        intent.putExtra("pos", pos);
+        fragment.getActivity().startActivity(intent);
+        fragment.getActivity().overridePendingTransition(R.anim.move_in_from_bottom, R.anim.no_move);
     }
 
     // 返回的方法
@@ -243,6 +266,55 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
                 alertDialog.dismiss();
             }
         });
+    }
+
+
+    // 设置WebView属性的方法
+    public void setWebView(WebView webView, String url) {
+
+        webView.loadUrl(url);
+        WebSettings settings = webView.getSettings();
+        // 设置该属性可以将网页完全加载出来
+        settings.setJavaScriptEnabled(true);
+        // 支持缩放
+        settings.setSupportZoom(true);
+//         显示缩放大小
+        settings.setBuiltInZoomControls(true);
+
+        //设置加载进来的页面自适应手机屏幕
+        settings.setLoadWithOverviewMode(true);
+        settings.setUseWideViewPort(true);
+
+        // 设置后在当前app中浏览网页
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                Log.i(MainActivity.class.getSimpleName(), "---------> url " + url);
+                view.loadUrl(url);
+                // 返回true表明点击网页里面的链接还是在当前的webview里跳转，不跳到浏览器那边。
+                return true;
+            }
+        });
+
+        // 得到网页标题的方法
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+//                super.onReceivedTitle(view, title);
+                Log.i(MainActivity.class.getSimpleName(), "-----> title" + title);
+//                mtitle.setText(title);
+            }
+        });
+
+        // 得到网页加载进度的方法
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                super.onProgressChanged(view, newProgress);
+                Log.i(MainActivity.class.getSimpleName(), "-------->" + newProgress);
+            }
+        });
+
     }
 
 }

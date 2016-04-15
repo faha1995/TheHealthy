@@ -1,4 +1,4 @@
-package com.example.administrator.thehealthy.application;
+package com.example.administrator.thehealthy.entity;
 
 /**
  * Created by Administrator on 2016/3/8.

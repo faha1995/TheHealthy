@@ -12,7 +12,7 @@ import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
  */
 public class AboutUsFragment extends BaseFragment {
     private LinearLayout linearAboutUs;
-    private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
+
 
     @Override
     protected int setLayoutView() {
@@ -22,7 +22,7 @@ public class AboutUsFragment extends BaseFragment {
     @Override
     protected void initView() {
         linearAboutUs = findView(R.id.linear_aboutUs);
-        scrollViewOnTouch.setLinearRelative(linearAboutUs);
+        ScrollViewOnTouch.getInstance().setViewFinishTouchFromFragment(linearAboutUs);
     }
 
     @Override

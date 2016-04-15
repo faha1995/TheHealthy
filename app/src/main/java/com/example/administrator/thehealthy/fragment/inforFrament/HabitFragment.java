@@ -11,10 +11,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
-import com.example.administrator.thehealthy.application.AppConfig;
+import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
-import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
@@ -34,7 +33,6 @@ public class HabitFragment extends BaseFragment {
             liveStokeText;
     private DBTool dbTool;
     private LinearLayout linearLayout;
-    private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
 
     @Override
     protected int setLayoutView() {
@@ -50,8 +48,7 @@ public class HabitFragment extends BaseFragment {
         liveStokeText = findView(R.id.text_information_liveStock);
 
         linearLayout = findView(R.id.linear_habit);
-
-        scrollViewOnTouch.setLinearRelative(linearLayout);
+        ScrollViewOnTouch.getInstance().setViewFinishTouchFromFragment(linearLayout);
 
         dbTool = new DBTool();
     }

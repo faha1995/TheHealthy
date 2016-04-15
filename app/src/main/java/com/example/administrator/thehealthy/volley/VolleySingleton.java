@@ -2,6 +2,7 @@ package com.example.administrator.thehealthy.volley;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 import com.example.administrator.thehealthy.application.BaseApplication;
 
@@ -10,9 +11,11 @@ import com.example.administrator.thehealthy.application.BaseApplication;
  */
 public class VolleySingleton {
     private RequestQueue queue;
+    private ImageLoader imageLoader;
 
     public VolleySingleton() {
         queue = getQueue();
+        imageLoader = new ImageLoader(queue,new DoubleCache());
     }
 
     // 初始化RequestQueue
@@ -43,6 +46,13 @@ public class VolleySingleton {
         getQueue().add(request);
     }
 
+    public ImageLoader _getImageLoader(){
+        return  imageLoader;
+    }
+
+    public static ImageLoader getImageLoader(){
+        return getInstace()._getImageLoader();
+    }
 
 
 

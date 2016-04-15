@@ -50,7 +50,7 @@
                         android:layout_height="wrap_content"
                         android:text="随访医生："
                         android:textSize="@dimen/health_report_infor_secondTitle_textSize"
-                        android:textColor="@color/personalInforRelativeBackground" />
+                        android:textColor="@color/health_infor_nameTextColor" />
 
                     <TextView
                         android:id="@+id/doctor_signature"
@@ -65,7 +65,7 @@
                         android:layout_marginLeft="20dp"
                         android:text="随访日期："
                         android:textSize="@dimen/health_report_infor_secondTitle_textSize"
-                        android:textColor="@color/personalInforRelativeBackground" />
+                        android:textColor="@color/health_infor_nameTextColor" />
 
                     <TextView
                         android:id="@+id/visit_date"
@@ -92,13 +92,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="随访方式："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/visit_way"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -117,14 +117,14 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="症状："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/symptom"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -143,13 +143,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="此次随访分类："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/visit_classification"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -168,13 +168,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="转诊原因："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/transfer_treatment_reason"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -193,13 +193,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="转诊机构及科室："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/transfer_treatment_institution"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -218,13 +218,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="下次随访日期："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/next_visit_date"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -235,7 +235,8 @@
                 android:paddingLeft="16dp"
                 android:paddingTop="5dp"
                 android:text="体征"
-                android:textColor="@color/secondaryColor" />
+                android:textSize="@dimen/health_infor_second_titleSize"
+                android:textColor="@color/health_infor_nameTextColor" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -251,12 +252,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="血压（mmHg）："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
@@ -294,13 +295,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="体重（kg）："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
@@ -339,13 +340,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="体质指数："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
@@ -383,13 +384,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="足背动脉搏动："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/sign_acrotarsium_artery_pulse"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -408,13 +409,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="其他："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/sign_extra"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -425,7 +426,8 @@
                 android:paddingLeft="16dp"
                 android:paddingTop="5dp"
                 android:text="生活方式指导"
-                android:textColor="@color/secondaryColor" />
+                android:textSize="@dimen/health_infor_second_titleSize"
+                android:textColor="@color/health_infor_nameTextColor" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -442,12 +444,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="日吸烟量（支）："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
@@ -485,12 +487,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="日饮酒量（两）："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
@@ -528,20 +530,20 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:text="运动："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:text="现状："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <LinearLayout
                     android:id="@+id/linear_diabetes_sport_now"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
@@ -590,13 +592,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.5"
                     android:text="医嘱："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <LinearLayout
                     android:id="@+id/linear_diabetes_sport_suggest"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
@@ -608,7 +610,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="次/周"
+                        android:text="次 / 周"
                         android:textColor="@color/secondaryColor" />
 
                     <TextView
@@ -621,7 +623,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="分钟/次"
+                        android:text="分钟 / 次"
                         android:textColor="@color/secondaryColor" />
                 </LinearLayout>
             </LinearLayout>
@@ -641,12 +643,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="主食（克/天）："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
@@ -684,13 +686,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="心理调整："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/life_style_guide_mentality"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -709,13 +711,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="遵医行为："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/life_style_guide_medical_compliance"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -726,7 +728,8 @@
                 android:paddingLeft="16dp"
                 android:paddingTop="5dp"
                 android:text="辅助检查"
-                android:textColor="@color/secondaryColor" />
+                android:textSize="@dimen/health_infor_second_titleSize"
+                android:textColor="@color/health_infor_nameTextColor" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -742,12 +745,12 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="空腹血糖值："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
@@ -779,46 +782,45 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0.7"
                     android:text="糖化血红蛋白:"
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <LinearLayout
                     android:layout_width="0dp"
+                    android:layout_weight="0.5"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
                     android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/auxiliary_examination_extra_hemoglobin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="@color/secondaryColor" />
+
+                <TextView
+                    android:id="@+id/text_diabetes_baifenhao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="%"
+                    android:textColor="@color/secondaryColor" />
+                </LinearLayout>
+
 
                     <TextView
-                        android:id="@+id/auxiliary_examination_extra_hemoglobin"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.7"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:textColor="@color/secondaryColor" />
-
-                    <TextView
-                        android:id="@+id/text_diabetes_baifenhao"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="%"
-                        android:textColor="@color/secondaryColor" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
                         android:text="检查日期："
-                        android:textColor="@color/secondaryColor" />
+                        android:textColor="@color/health_infor_nameTextColor" />
 
                     <TextView
                         android:id="@+id/auxiliary_examination_extra_examination_date"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
                         android:layout_height="wrap_content"
                         android:textColor="@color/secondaryColor" />
                 </LinearLayout>
-
-            </LinearLayout>
-
 
 
             <TextView
@@ -828,7 +830,8 @@
                 android:paddingLeft="16dp"
                 android:paddingTop="5dp"
                 android:text="用药情况"
-                android:textColor="@color/secondaryColor" />
+                android:textSize="@dimen/health_infor_second_titleSize"
+                android:textColor="@color/health_infor_nameTextColor" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -844,13 +847,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="服药依从性："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/take_medicine_compliance"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -869,13 +872,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="药物不良反应："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/medicine_untoward_effect"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -894,13 +897,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="低血糖反应："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/hypoglycemia_reaction"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -919,13 +922,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="胰岛素种类："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/take_medicine_insulin"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -944,13 +947,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="用法和用量："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/take_medicine_insulin_volume"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -969,13 +972,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="药物名称1："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/take_medicine_1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -994,20 +997,20 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="用法用量："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <LinearLayout
                     android:id="@+id/linear_diabetes_dosageFirst"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="每日"
-                        android:textColor="@color/secondaryColor" />
+                        android:textColor="@color/health_infor_nameTextColor" />
 
                     <TextView
                         android:id="@+id/take_medicine_1_day"
@@ -1028,7 +1031,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:text="每次"
-                        android:textColor="@color/secondaryColor" />
+                        android:textColor="@color/health_infor_nameTextColor" />
 
                     <TextView
                         android:id="@+id/take_medicine_1_time"
@@ -1061,13 +1064,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="药物名称2："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/take_medicine_2"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -1086,20 +1089,20 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="用法用量："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <LinearLayout
                     android:id="@+id/linear_diabetes_dosageSecond"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="每日"
-                        android:textColor="@color/secondaryColor" />
+                        android:textColor="@color/health_infor_nameTextColor" />
 
                     <TextView
                         android:id="@+id/take_medicine_2_day"
@@ -1120,7 +1123,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:text="每次"
-                        android:textColor="@color/secondaryColor" />
+                        android:textColor="@color/health_infor_nameTextColor" />
 
                     <TextView
                         android:id="@+id/take_medicine_2_time"
@@ -1153,13 +1156,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="药物名称3："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/take_medicine_3"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
 
@@ -1179,20 +1182,20 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="用法用量："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <LinearLayout
                     android:id="@+id/linear_diabetes_dosageThird"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="每日"
-                        android:textColor="@color/secondaryColor" />
+                        android:textColor="@color/health_infor_nameTextColor" />
 
                     <TextView
                         android:id="@+id/take_medicine_3_day"
@@ -1213,7 +1216,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:text="每次"
-                        android:textColor="@color/secondaryColor" />
+                        android:textColor="@color/health_infor_nameTextColor" />
 
                     <TextView
                         android:id="@+id/take_medicine_3_time"

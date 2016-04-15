@@ -34,18 +34,11 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="孕产妇健康服务"
-                    android:textColor="@color/secondaryColor"
-                    android:textSize="19sp" />
-
-                <TextView
                     android:id="@+id/aftercare_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/secondaryColor"
-                    android:textSize="17sp" />
+                    android:textSize="19sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -57,7 +50,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/secondaryColor"
+                        android:textColor="@color/health_infor_nameTextColor"
+                        android:textSize="@dimen/health_infor_second_titleSize"
                         android:text="随访医生：" />
 
                     <TextView
@@ -69,7 +63,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/secondaryColor"
+                        android:textColor="@color/health_infor_nameTextColor"
+                        android:textSize="@dimen/health_infor_second_titleSize"
                         android:layout_marginLeft="20dp"
                         android:text="随访日期：" />
 
@@ -94,7 +89,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingTop="5dp"
                     android:text="孕周（周）：" />
@@ -121,7 +116,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:text="主诉：" />
 
                 <TextView
@@ -145,7 +140,7 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:paddingTop="5dp"
                     android:text="体重（kg）：" />
 
@@ -170,7 +165,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingLeft="16dp"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:text="血压：" />
 
                 <LinearLayout
@@ -221,7 +216,7 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:paddingTop="5dp"
                     android:text="血红蛋白（g/L）：" />
 
@@ -236,7 +231,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="0.7"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:text="尿蛋白：" />
 
                 <TextView
@@ -253,7 +248,8 @@
                 android:paddingBottom="5dp"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingTop="5dp"
-                android:textColor="@color/secondaryColor"
+                android:textSize="@dimen/health_infor_second_titleSize"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:text="产科检查" />
 
             <LinearLayout
@@ -270,7 +266,7 @@
                     android:paddingBottom="5dp"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingTop="5dp"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:text="宫底高度（cm）：" />
 
                 <TextView
@@ -284,7 +280,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:text="腹围（cm）：" />
 
                 <TextView
@@ -309,7 +305,7 @@
                     android:paddingBottom="5dp"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
                     android:paddingTop="5dp"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:text="胎位：" />
 
                 <TextView
@@ -333,7 +329,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:paddingBottom="5dp"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:paddingTop="5dp"
                     android:text="胎心率（次/分钟）：" />
 
@@ -359,7 +355,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:text="其他辅助检查*" />
 
                 <TextView
@@ -385,7 +381,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:text="分类：" />
 
                 <TextView
@@ -417,7 +413,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:text="指导：" />
 
                 <TextView
@@ -442,13 +438,13 @@
                     android:layout_weight="0.7"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:text="转诊：" />
 
                 <TextView
                     android:id="@+id/transfer_treatment"
                     android:layout_width="0dp"
-                    android:layout_weight="0.7"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
 
@@ -456,13 +452,13 @@
                     android:layout_width="0dp"
                     android:layout_weight="0.7"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:text="转诊原因：" />
 
                 <TextView
                     android:id="@+id/transfer_treatment_reason"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.7"
                     android:textColor="@color/secondaryColor"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -481,7 +477,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:text="转诊机构及科室：" />
 
                 <TextView
@@ -505,7 +501,7 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
                     android:paddingLeft="@dimen/activity_horizontal_margin"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:paddingTop="5dp"
                     android:text="下次随访日期：" />
 

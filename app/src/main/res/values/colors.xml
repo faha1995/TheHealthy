@@ -11,5 +11,6 @@
     <color name="personalInforRelativeBackground">#33000000</color>
     <color name="bg">#FFFFFFFF</color>
     <color name="colorF0">#FFF0F0F0</color>
+    <color name="health_infor_nameTextColor">#FF000000</color>
 
 </resources>

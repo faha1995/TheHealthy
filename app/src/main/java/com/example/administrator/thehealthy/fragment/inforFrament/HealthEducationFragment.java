@@ -12,9 +12,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
+import com.example.administrator.thehealthy.activity.inforactivity.EducateWebViewActivity;
 import com.example.administrator.thehealthy.adapter.HealthEducationAdapter;
-import com.example.administrator.thehealthy.application.AppConfig;
 import com.example.administrator.thehealthy.application.BaseApplication;
+import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.entity.AppData;
 import com.example.administrator.thehealthy.entity.HealthEduEntity;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
@@ -78,18 +79,20 @@ public class HealthEducationFragment extends BaseFragment implements MyClickList
             public void onResponse(String response) {
                 try {
                     JSONObject object = new JSONObject(response);
-                    Log.i("aaaa", object.getBoolean("error") + "");
                     if (!object.getBoolean("error")) {
-
                         int length = object.getInt("length");
+
                         for (int i = 0; i < length; i++) {
+                            Log.i(TAG, "-------->" + object.getInt("length"));
                             JSONObject obj = (JSONObject) object.getJSONArray("list").get(i);
                             HealthEduEntity eduEntity = new HealthEduEntity();
                             eduEntity.setItem_id(obj.getInt("item_id"));
                             eduEntity.setTitle(obj.getString("title"));
-                            eduEntity.setContent(obj.getString("content"));
+                            eduEntity.setDescription(obj.getString("description"));
                             eduEntity.setCreate_at(obj.getString("create_at"));
                             eduEntity.setCreate_by(obj.getString("create_by"));
+                            eduEntity.setContent_url(obj.getString("content_url"));
+                            eduEntity.setImage_url(obj.getString("image_url"));
                             AppData.eduEntityList.add(eduEntity);
                             educationAdapter.addData(AppData.eduEntityList);
                         }
@@ -119,7 +122,11 @@ public class HealthEducationFragment extends BaseFragment implements MyClickList
 
     @Override
     public void myOnClickListener(int pos) {
-        goToNextFragmentFromEducation(new EducationInferFragment(), pos);
+        activityIntent(this,new EducateWebViewActivity(), pos);
+//        Intent intent = new Intent(getContext(),EducateWebViewActivity.class);
+//        intent.putExtra("pos",pos);
+//        startActivity(intent);
+//        getActivity().overridePendingTransition(R.anim.move_in_from_bottom, R.anim.no_move);
     }
 
     @Override

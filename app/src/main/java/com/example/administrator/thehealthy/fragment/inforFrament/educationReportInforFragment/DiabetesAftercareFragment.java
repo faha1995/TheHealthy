@@ -14,7 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
-import com.example.administrator.thehealthy.application.AppConfig;
+import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
 import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;

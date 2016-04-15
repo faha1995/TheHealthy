@@ -10,7 +10,7 @@ import com.google.gson.Gson;
 import java.io.UnsupportedEncodingException;
 
 /**
- * Created by wuqi on 15/7/8.
+ * Created by Administrator on 2016/3/8
  */
 public class GsonRequest<T> extends Request<T> {
 

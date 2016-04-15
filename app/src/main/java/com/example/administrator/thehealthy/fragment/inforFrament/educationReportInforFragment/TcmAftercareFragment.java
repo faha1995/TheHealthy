@@ -11,7 +11,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
-import com.example.administrator.thehealthy.application.AppConfig;
+import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
 import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
@@ -29,7 +29,6 @@ import java.util.Map;
 public class TcmAftercareFragment extends BaseFragment {
     private final String TAG = TcmAftercareFragment.class.getSimpleName();
     private LinearLayout linearLayoutTcm;
-    private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
     private String titles;
 
     public TcmAftercareFragment(String titles) {
@@ -44,7 +43,7 @@ public class TcmAftercareFragment extends BaseFragment {
     @Override
     protected void initView() {
         linearLayoutTcm = findView(R.id.linear_tcm_aftercare);
-        scrollViewOnTouch.setLinearRelative(linearLayoutTcm);
+        ScrollViewOnTouch.getInstance().setViewFinishTouchFromFragment(linearLayoutTcm);
     }
 
     @Override

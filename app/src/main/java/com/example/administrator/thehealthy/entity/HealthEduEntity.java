@@ -5,21 +5,14 @@ package com.example.administrator.thehealthy.entity;
  * 健康教育实体类
  */
 public class HealthEduEntity {
-    private String title,content,create_at,create_by;
+    private String title, content_url,image_url,description, create_at, create_by;
     private int item_id;
 
     public HealthEduEntity() {
     }
 
-    public HealthEduEntity(String title, String content, String create_at, String create_by, int item_id) {
-        this.title = title;
-        this.content = content;
-        this.create_at = create_at;
-        this.create_by = create_by;
-        this.item_id = item_id;
-    }
-
     public String getTitle() {
+
         return title;
     }
 
@@ -27,12 +20,28 @@ public class HealthEduEntity {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getContent_url() {
+        return content_url;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setContent_url(String content_url) {
+        this.content_url = content_url;
+    }
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String discription) {
+        this.description = discription;
     }
 
     public String getCreate_at() {

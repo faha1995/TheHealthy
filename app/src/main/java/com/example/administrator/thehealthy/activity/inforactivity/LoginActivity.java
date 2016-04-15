@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,9 +18,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.BaseActivity;
 import com.example.administrator.thehealthy.activity.MainActivity;
-import com.example.administrator.thehealthy.application.AppConfig;
 import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.db.DBTool;
+import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
 import org.greenrobot.eventbus.EventBus;
@@ -83,14 +82,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 psw = pswEdit.getText().toString().trim();
                 if (BaseApplication.isNetwork()) {
 
-                if ( phone.isEmpty() || psw.isEmpty()) {
-                    Toast.makeText(this, "手机号或密码不能为空", Toast.LENGTH_SHORT).show();
+                    if (phone.isEmpty() || psw.isEmpty()) {
+                        Toast.makeText(this, "手机号或密码不能为空", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.e("checkLogin", "----->" + phone + "—————>" + psw);
+                        checkLogin(phone, psw);
+                    }
                 } else {
-                    Log.e("checkLogin", "----->" + phone + "—————>" + psw);
-                    checkLogin(phone, psw);
-                }
-                } else {
-                    Toast.makeText(this,"当前无网络",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "当前无网络", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.btn_register:
@@ -116,7 +115,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             boolean error = jsonObject.getBoolean("error");
-                            Log.i(TAG,"------->" + error);
+                            Log.i(TAG, "------->" + error);
 
                             if (!error) {
                                 Log.i(TAG, "登录操作网络响应返回正确！");
@@ -134,11 +133,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                                 EventBus.getDefault().post("isNew");
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
+                                overridePendingTransition(R.anim.no_move,R.anim.move_out_from_bottom);
                                 finish();
-                            }
-                            else {
+                            } else {
                                 String errorMsg = jsonObject.getString("error_msg");
-                                Log.i(TAG, "---------->"+ errorMsg);
+                                Log.i(TAG, "---------->" + errorMsg);
                                 Toast.makeText(getApplicationContext(),
                                         "账号或密码错误", Toast.LENGTH_LONG).show();
                             }
@@ -151,28 +150,28 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i(TAG,"---> error" + error.toString());
+                Log.i(TAG, "---> error" + error.toString());
                 Log.i(TAG, "---> errorMessage" + error.getMessage().toString());
 
                 Toast.makeText(getApplicationContext(),
                         "账号或密码错误", Toast.LENGTH_LONG).show();
             }
         })
-        // psot请求需要加请求头信息
+                // psot请求需要加请求头信息
         {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
+                Map<String, String> params = new HashMap<>();
                 params.put("mobile", phone);
-                params.put("password",psw);
-                Log.i("sss",phone+"-->"+psw);
+                params.put("password", psw);
+                Log.i("sss", phone + "-->" + psw);
                 return params;
             }
         };
-        VolleySingleton.getInstace()._addRequest(request,tag_request);
+        VolleySingleton.getInstace()._addRequest(request, tag_request);
     }
 
-// 将注册后的结果返回给LoginActivity
+    // 将注册后的结果返回给LoginActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -213,7 +212,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         public void afterTextChanged(Editable s) {
 
 
-
             if (mobileEdit.getText().length() == 0) {
                 mobileEdit.setBackgroundResource(R.drawable.edittext_register_shape);
                 editCleanImg.setVisibility(View.INVISIBLE);
@@ -223,18 +221,15 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             }
         }
 
-
     }
+
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (event.getAction() == KeyEvent.ACTION_DOWN) {
-            Intent intent = new Intent(this,MainActivity.class);
-            startActivity(intent);
-        LoginActivity.this.finish();
-        }
-
-        Log.i("LoginActivity","----------->   onKeyDown()");
-        return super.onKeyDown(keyCode, event);
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        overridePendingTransition(R.anim.no_move,R.anim.move_out_from_bottom);
     }
+
+
 }

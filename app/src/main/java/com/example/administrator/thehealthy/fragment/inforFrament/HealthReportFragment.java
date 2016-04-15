@@ -15,7 +15,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity;
 import com.example.administrator.thehealthy.adapter.ExpandAdapter;
-import com.example.administrator.thehealthy.application.AppConfig;
+import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.entity.Summary;
 import com.example.administrator.thehealthy.fragment.BaseFragment;

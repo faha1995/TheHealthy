@@ -52,7 +52,7 @@
                         android:layout_height="wrap_content"
                         android:text="建卡人："
                         android:textSize="@dimen/health_report_infor_secondTitle_textSize"
-                        android:textColor="@color/personalInforRelativeBackground" />
+                        android:textColor="@color/health_infor_nameTextColor" />
 
                     <TextView
                         android:id="@+id/found_card_person"
@@ -67,7 +67,7 @@
                         android:layout_marginLeft="20dp"
                         android:text="建卡日期："
                         android:textSize="15sp"
-                        android:textColor="@color/personalInforRelativeBackground" />
+                        android:textColor="@color/health_infor_nameTextColor" />
 
                     <TextView
                         android:id="@+id/found_card_date"
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.9"
                     android:text="姓名："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/name"
@@ -107,7 +107,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.9"
                     android:text="性别："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/gender"
@@ -132,7 +132,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.9"
                     android:text="监护人姓名："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/guardian_name"
@@ -146,7 +146,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.9"
                     android:text="与儿童关系："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/relation_to_child"
@@ -171,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="出生日期："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/birth_date"
@@ -197,7 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="联系电话："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/contact_number"
@@ -222,7 +222,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="家庭现住址："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -259,7 +259,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="户籍地址："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -376,7 +376,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="迁入时间："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/immigrate_time"
@@ -401,7 +401,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="迁出时间："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/emigrate_time"
@@ -426,7 +426,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="迁出原因："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/emigrate_reason"
@@ -451,7 +451,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="疫苗异常反应史："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/vaccine_abnormal_reaction_history"
@@ -476,7 +476,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="接种禁忌："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/vaccinate_taboo"
@@ -501,7 +501,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="传染病史："
-                    android:textColor="@color/secondaryColor" />
+                    android:textColor="@color/health_infor_nameTextColor" />
 
                 <TextView
                     android:id="@+id/infection_history"

@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:text="随访医生："
                 android:textSize="@dimen/health_report_infor_secondTitle_textSize"
-                android:textColor="@color/personalInforRelativeBackground" />
+                android:textColor="@color/health_infor_nameTextColor" />
 
             <TextView
                 android:id="@+id/doctor_signature"
@@ -53,7 +53,7 @@
                 android:layout_marginLeft="20dp"
                 android:text="随访日期："
                 android:textSize="@dimen/health_report_infor_secondTitle_textSize"
-                android:textColor="@color/personalInforRelativeBackground" />
+                android:textColor="@color/health_infor_nameTextColor" />
 
             <TextView
                 android:id="@+id/visit_date"
@@ -100,12 +100,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="服务内容："
-            android:textColor="@color/secondaryColor" />
+            android:textColor="@color/health_infor_nameTextColor" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.4"
+            android:layout_weight="1"
             android:orientation="horizontal">
 
             <TextView
@@ -138,13 +138,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="下次随访日期："
-            android:textColor="@color/secondaryColor" />
+            android:textColor="@color/health_infor_nameTextColor" />
 
         <TextView
             android:id="@+id/next_visit_date"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5"
+            android:layout_weight="1"
             android:textColor="@color/secondaryColor" />
     </LinearLayout>
 

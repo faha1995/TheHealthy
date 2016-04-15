@@ -8,10 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.entity.HealthEduEntity;
 import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.tools.MyClickListener;
+import com.example.administrator.thehealthy.volley.VolleySingleton;
 
 import java.util.List;
 
@@ -25,6 +28,7 @@ public class HealthEducationAdapter extends RecyclerView.Adapter {
     private List<HealthEduEntity> eduEntityList;
     private View view;
     private MyClickListener myClickListener;
+    private ImageLoader imageLoader;
 
     public void setMyClickListener(MyClickListener myClickListener) {
         this.myClickListener = myClickListener;
@@ -32,6 +36,7 @@ public class HealthEducationAdapter extends RecyclerView.Adapter {
 
     public HealthEducationAdapter(Context context) {
         this.context = context;
+        this.imageLoader =  VolleySingleton.getImageLoader();
     }
 
     // 添加数剧的方法
@@ -54,13 +59,15 @@ public class HealthEducationAdapter extends RecyclerView.Adapter {
         if (eduEntityList != null && eduEntityList.size() > 0) {
             eduHolder = (HealthEducationViewHolder) holder;
             eduHolder.healtEduTitle.setText(eduEntityList.get(position).getTitle());
-            eduHolder.healthEduContent.setText(eduEntityList.get(position).getContent());
+            eduHolder.healthEduDescrip.setText(eduEntityList.get(position).getDescription());
             eduHolder.healthEduTime.setText(ChangeString.splitTime(eduEntityList.get(position).getCreate_at()));
+//            imageLoader.get(eduEntityList.get(position).getImage_url(),eduHolder.imageHealthEducate);
+            eduHolder.imageHealthEducate.setImageUrl(eduEntityList.get(position).getImage_url(), imageLoader);
             eduHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     myClickListener.myOnClickListener(position);
-                    Log.i(TAG,"---------->"+position);
+                    Log.i(TAG, "---------->" + position);
                 }
             });
         }
@@ -75,15 +82,15 @@ public class HealthEducationAdapter extends RecyclerView.Adapter {
 
 
     class HealthEducationViewHolder extends RecyclerView.ViewHolder {
-        private TextView healtEduTitle, healthEduTime, healthEduContent;
-
+        private TextView healtEduTitle, healthEduTime, healthEduDescrip;
+        private NetworkImageView imageHealthEducate;
 
         public HealthEducationViewHolder(View itemView) {
             super(itemView);
-            healtEduTitle = (TextView) itemView.findViewById(R.id.text_healthEducationAdapter_title);
-            healthEduContent = (TextView) itemView.findViewById(R.id.text_healthEducationAdapter_content);
-            healthEduTime = (TextView) itemView.findViewById(R.id.text_healthEducationAdapter_time);
-
+            healtEduTitle = (TextView) itemView.findViewById(R.id.text_health_educate_item_title);
+            healthEduDescrip = (TextView) itemView.findViewById(R.id.text_health_educate_item_descrip);
+            healthEduTime = (TextView) itemView.findViewById(R.id.text_health_educate_item_time);
+            imageHealthEducate = (NetworkImageView) itemView.findViewById(R.id.image_health_educate_item);
         }
 
 
