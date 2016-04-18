@@ -1,5 +1,6 @@
 package com.example.administrator.thehealthy.fragment.inforFrament;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -8,8 +9,11 @@ import android.widget.ScrollView;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.fragment.inforFrament.hospitalFragment.HospitalTreamInforFragment;
 
 import org.greenrobot.eventbus.Subscribe;
+
+import java.lang.reflect.Field;
 
 /**
  * Created by Administrator on 2016/3/4.
@@ -64,5 +68,31 @@ public class HospitalTreatmentFragment extends BaseFragment {
     public void onDestroy() {
         super.onDestroy();
 //        EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+
+    public void onDetach() {
+
+        super.onDetach();
+
+        try {
+
+            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
+
+            childFragmentManager.setAccessible(true);
+
+            childFragmentManager.set(this, null);
+
+        } catch (NoSuchFieldException e) {
+
+            throw new RuntimeException(e);
+
+        } catch (IllegalAccessException e) {
+
+            throw new RuntimeException(e);
+
+        }
+
     }
 }

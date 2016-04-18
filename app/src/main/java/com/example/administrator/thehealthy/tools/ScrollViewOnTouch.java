@@ -107,7 +107,7 @@ public class ScrollViewOnTouch {
                     if (poorX > 200 && Math.abs(poorY) < 80) {
                         Log.i("--", "--------->" + poorX + "------>" + Math.abs(poorY));
                        activity.finish();
-                        activity.overridePendingTransition(R.anim.no_move,R.anim.move_out_from_bottom);
+                        activity.overridePendingTransition(R.anim.no_move,R.anim.move_out_from_right);
                     }
                     return false;
                 }

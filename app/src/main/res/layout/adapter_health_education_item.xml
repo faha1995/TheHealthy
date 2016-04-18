@@ -10,7 +10,6 @@
         android:layout_height="120dp"
         android:layout_marginLeft="@dimen/health_report_adapter_cardView_margin"
         android:layout_marginRight="@dimen/health_report_adapter_cardView_margin"
-        android:layout_marginTop="@dimen/health_report_adapter_cardView_margin"
         app:cardBackgroundColor="@color/colorWhite"
         app:cardCornerRadius="10dp">
 

@@ -31,12 +31,14 @@ import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity
 import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
+import java.lang.reflect.Field;
+
 /**
  * Created by Administrator on 2016/3/3.
  */
 public abstract class BaseFragment extends Fragment implements View.OnTouchListener {
     private View view;
-    private static FragmentManager fm;
+    public static FragmentManager fm;
     private static FragmentTransaction ft;
     private static ImageLoader imageLoader;
     private Context context;
@@ -91,8 +93,10 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     // fragment的替换
     public void goToNextFragmentFromPersonal(Fragment fragment) {
         if (fm == null) {
+
             fm = getActivity().getSupportFragmentManager();
         }
+
         ft = fm.beginTransaction();
         ft.setCustomAnimations(
                 R.anim.move_in_from_right,
@@ -104,12 +108,39 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
         // addToBackStack() 是为了将该Fragment加入到后退栈中
         // 在返回时,可以直接返回到上一个界面
         ft.addToBackStack(null);
+        Log.i("FragmentManagerCounts","---------> "+ fm.getBackStackEntryCount());
         ft.commitAllowingStateLoss();
 
     }
 
+    @Override
+
+    public void onDetach() {
+
+        super.onDetach();
+
+        try {
+
+            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
+
+            childFragmentManager.setAccessible(true);
+
+            childFragmentManager.set(this, null);
+
+        } catch (NoSuchFieldException e) {
+
+            throw new RuntimeException(e);
+
+        } catch (IllegalAccessException e) {
+
+            throw new RuntimeException(e);
+
+        }
+
+    }
+
     // fragment的替换
-    public void goToNextFragmentFromPersonal(Fragment fragment, int record_id) {
+    public void goToNextFragmentFromHealthReport(Fragment fragment, int record_id) {
         if (fm == null) {
             fm = getActivity().getSupportFragmentManager();
         }
@@ -132,30 +163,30 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
 
     }
 
-    // fragment的替换
-    public void goToNextFragmentFromEducation(Fragment fragment, int pos) {
-        if (fm == null) {
-            fm = getActivity().getSupportFragmentManager();
-        }
-        ft = fm.beginTransaction();
-        ft.setCustomAnimations(
-                R.anim.move_in_from_right,
-                R.anim.no_move,
-                R.anim.no_move,
-                R.anim.move_out_from_right
-        );
-        Bundle bundle = new Bundle();
-        bundle.putInt("pos", pos);
-        fragment.setArguments(bundle);
-        View view = findView(R.id.fragment_healthEducation);
-        view.setOnTouchListener((View.OnTouchListener) fragment);
-        ft.add(R.id.fragment_healthEducation, fragment);
-        // addToBackStack() 是为了将该Fragment加入到后退栈中
-        // 在返回时,可以直接返回到上一个界面
-        ft.addToBackStack(null);
-        ft.commitAllowingStateLoss();
-
-    }
+//    // fragment的替换
+//    public void goToNextFragmentFromEducation(Fragment fragment, int pos) {
+//        if (fm == null) {
+//            fm = getActivity().getSupportFragmentManager();
+//        }
+//        ft = fm.beginTransaction();
+//        ft.setCustomAnimations(
+//                R.anim.move_in_from_right,
+//                R.anim.no_move,
+//                R.anim.no_move,
+//                R.anim.move_out_from_right
+//        );
+//        Bundle bundle = new Bundle();
+//        bundle.putInt("pos", pos);
+//        fragment.setArguments(bundle);
+//        View view = findView(R.id.fragment_healthEducation);
+//        view.setOnTouchListener((View.OnTouchListener) fragment);
+//        ft.replace(R.id.fragment_healthEducation, fragment);
+//        // addToBackStack() 是为了将该Fragment加入到后退栈中
+//        // 在返回时,可以直接返回到上一个界面
+//        ft.addToBackStack(null);
+//        ft.commitAllowingStateLoss();
+//
+//    }
 
 
     public void doubleClickExit(View view) {
@@ -191,7 +222,7 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
     public static <T> void activityIntent(Activity activity, Class<T> clazz) {
         Intent intent = new Intent(activity, clazz);
         activity.startActivity(intent);
-        activity.overridePendingTransition(R.anim.move_in_from_bottom, R.anim.no_move);
+        activity.overridePendingTransition(R.anim.move_in_from_right, R.anim.no_move);
     }
 
     // acitvity的跳转
@@ -199,7 +230,7 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
         Intent intent = new Intent(fragment.getActivity(), clazz.getClass());
         intent.putExtra("pos", pos);
         fragment.getActivity().startActivity(intent);
-        fragment.getActivity().overridePendingTransition(R.anim.move_in_from_bottom, R.anim.no_move);
+        fragment.getActivity().overridePendingTransition(R.anim.move_in_from_right, R.anim.no_move);
     }
 
     // 返回的方法

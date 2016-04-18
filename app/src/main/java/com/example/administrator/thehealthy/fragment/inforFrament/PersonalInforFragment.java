@@ -1,6 +1,7 @@
 package com.example.administrator.thehealthy.fragment.inforFrament;
 
 import android.annotation.SuppressLint;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,9 +12,14 @@ import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.fragment.inforFrament.personalFragment.AboutUsFragment;
+import com.example.administrator.thehealthy.fragment.inforFrament.personalFragment.HabitFragment;
+import com.example.administrator.thehealthy.fragment.inforFrament.personalFragment.InformationFragment;
+import com.example.administrator.thehealthy.fragment.inforFrament.personalFragment.MedicalHistoryFragment;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 
 /**
@@ -27,8 +33,6 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
     private Button exitBtn;
     private TextView nameText, mobileText;
     private DBTool dbTool;
-    private View view;
-
 
     @Override
     protected int setLayoutView() {
@@ -42,9 +46,11 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
         inforLinearSecond = findView(R.id.linear_personalInfor_second);
         inforLinearThird = findView(R.id.linear_personalInfor_third);
         inforLinearFourth = findView(R.id.linear_personalInfor_fourth);
+//        linearAll = findView(R.id.fragment_personal_infor);
         exitBtn = findView(R.id.btn_personalInfor_exit);
         nameText = findView(R.id.text_personalInfor_name);
         mobileText = findView(R.id.text_personalInfor_mobile);
+
 
         inforLinearFirst.setOnClickListener(this);
         inforLinearSecond.setOnClickListener(this);
@@ -62,7 +68,7 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
     @Override
     public void onResume() {
         super.onResume();
-        Log.i(TAG,"-------->  onResume()");
+        Log.i(TAG, "-------->  onResume()");
 //        Intent intent = getActivity().getIntent();
 //        if (intent.getStringExtra("loginForMain") == "onResume") {
 //            final HashMap<String, String> user = dbTool.getUserDetails();
@@ -90,6 +96,31 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
 
     }
 
+    @Override
+
+    public void onDetach() {
+
+        super.onDetach();
+
+        try {
+
+            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
+
+            childFragmentManager.setAccessible(true);
+
+            childFragmentManager.set(this, null);
+
+        } catch (NoSuchFieldException e) {
+
+            throw new RuntimeException(e);
+
+        } catch (IllegalAccessException e) {
+
+            throw new RuntimeException(e);
+
+        }
+
+    }
 
     @SuppressLint("NewApi")
     @Override
@@ -105,6 +136,7 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
                     // 跳转到登录界面
                     showAlertDialog("请先进行登录", 1);
                 } else {
+
                     goToNextFragmentFromPersonal(new InformationFragment());
                 }
                 break;
@@ -112,6 +144,7 @@ public class PersonalInforFragment extends BaseFragment implements View.OnClickL
             case R.id.linear_personalInfor_second:
                 //没有登录的判断
                 if (!dbTool.isLogined()) {
+
                     logoutUser();
                     // 跳转到登录界面
                     showAlertDialog("请先进行登录", 1);

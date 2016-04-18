@@ -28,6 +28,9 @@ public class BaseApplication extends Application {
     }
 
     public static synchronized BaseApplication getInstance() {
+        if (mApplication == null) {
+            mApplication = new BaseApplication();
+        }
         return mApplication;
     }
 

@@ -1,5 +1,6 @@
 package com.example.administrator.thehealthy.activity.inforactivity;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Message;
@@ -11,7 +12,6 @@ import android.widget.TextView;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.BaseActivity;
 import com.example.administrator.thehealthy.activity.MainActivity;
-import com.example.administrator.thehealthy.fragment.BaseFragment;
 
 
 public class SplashActivity extends BaseActivity {
@@ -56,7 +56,8 @@ public class SplashActivity extends BaseActivity {
                         break;
                     case 200:
                         Log.i("Splash", "------->" + "Intent.toString()");
-                        BaseFragment.activityIntent(SplashActivity.this, MainActivity.class);
+                        Intent intent = new Intent(SplashActivity.this,MainActivity.class);
+                        startActivity(intent);
                         finish();
                         break;
                 }

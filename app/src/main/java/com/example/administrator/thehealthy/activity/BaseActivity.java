@@ -52,21 +52,21 @@ public abstract class BaseActivity extends AppCompatActivity {
         fragmentTransaction = fragmentManager.beginTransaction();
         // addToBackStack(null) 方法的作用是在替换后不会被finish
         // 好处是 再次返回时,会直接显示原来界面的内容
-        fragmentTransaction.replace(resId,fragment).addToBackStack(null);
-        fragmentTransaction.commit();
+        fragmentTransaction.add(resId,fragment).addToBackStack(null);
+        fragmentTransaction.commitAllowingStateLoss();
         return fragment;
     }
     // 替换Fragment的方法
-    protected Fragment replaceFragmentNoBacStack(int resId, Fragment fragment){
+    protected void replaceFragmentNoBacStack(int resId, Fragment fragment){
         if (fragmentManager == null) {
             fragmentManager = getSupportFragmentManager();
         }
         fragmentTransaction = fragmentManager.beginTransaction();
         // addToBackStack(null) 方法的作用是在替换后不会被finish
         // 好处是 再次返回时,会直接显示原来界面的内容
-        fragmentTransaction.replace(resId, fragment);
-        fragmentTransaction.commit();
-        return fragment;
+        fragmentTransaction.add(resId, fragment);
+        fragmentTransaction.commitAllowingStateLoss();
+//        return fragment;
     }
 
     protected void cleanTask(){
@@ -81,7 +81,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         Intent intent = new Intent(activity, clazz);
         intent.putExtra("pos", pos);
         activity.startActivity(intent);
-        activity.overridePendingTransition(R.anim.move_in_from_bottom, R.anim.no_move);
+        activity.overridePendingTransition(R.anim.move_in_from_right, R.anim.no_move);
     }
 
     // 设置WebView属性的方法
