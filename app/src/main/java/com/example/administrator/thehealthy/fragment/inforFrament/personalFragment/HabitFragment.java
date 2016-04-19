@@ -11,9 +11,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
-import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
-import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.entity.AppConfig;
+import com.example.administrator.thehealthy.fragment.BaseSonFragment;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
@@ -27,7 +27,7 @@ import java.util.Map;
  * Created by Administrator on 2016/3/7.
  * 生活习惯界面
  */
-public class HabitFragment extends BaseFragment {
+public class HabitFragment extends BaseSonFragment {
     private final String TAG = HabitFragment.class.getSimpleName();
     private TextView exhaustText, fuelText, waterText, toiletText,
             liveStokeText;
@@ -98,5 +98,6 @@ public class HabitFragment extends BaseFragment {
         };
         VolleySingleton.getInstace().addRequest(request);
     }
+
 
 }

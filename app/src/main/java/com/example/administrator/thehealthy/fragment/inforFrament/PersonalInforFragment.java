@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity;
 import com.example.administrator.thehealthy.db.DBTool;
-import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.fragment.BaseFatherFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.personalFragment.AboutUsFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.personalFragment.HabitFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.personalFragment.InformationFragment;
@@ -26,7 +26,7 @@ import java.util.HashMap;
  * Created by Administrator on 2016/3/4.
  * TabLayout个人界面
  */
-public class PersonalInforFragment extends BaseFragment implements View.OnClickListener {
+public class PersonalInforFragment extends BaseFatherFragment implements View.OnClickListener {
     private final String TAG = PersonalInforFragment.class.getSimpleName();
     private LinearLayout inforLinearFirst, inforLinearSecond, inforLinearThird,
             inforLinearFourth;

@@ -21,7 +21,7 @@ import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.entity.Summary;
-import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.fragment.BaseFatherFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.Aftercare12MonthFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.Aftercare18MonthFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.Aftercare1MonthFragment;
@@ -61,7 +61,7 @@ import java.util.Map;
  * Created by Administrator on 2016/3/4.
  * 健康报告界面
  */
-public class HealthRepFragment extends BaseFragment implements MyClickListener {
+public class HealthRepFragment extends BaseFatherFragment implements MyClickListener {
     private final String TAG = HealthRepFragment.class.getSimpleName();
     public RecyclerView healthReportRv;
     private HealthReportAdapter healthReportAdapter;

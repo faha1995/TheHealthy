@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.ScrollView;
 
 import com.example.administrator.thehealthy.R;
-import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.fragment.BaseFatherFragment;
 
 /**
  * Created by Administrator on 2016/3/24.
@@ -46,7 +46,7 @@ public class ScrollViewOnTouch {
 
                     if (poorX > 200 && Math.abs(poorY) < 80) {
                         Log.i("--", "--------->" + poorX + "------>" + poorY);
-                        BaseFragment.backBeforFragment();
+                        BaseFatherFragment.backBeforFragment();
                     }
                     return false;
                 }
@@ -76,7 +76,7 @@ public class ScrollViewOnTouch {
 
                     if (poorX > 200 && Math.abs(poorY) < 80) {
                         Log.i("--", "--------->" + poorX + "------>" + poorY);
-                        BaseFragment.backBeforFragment();
+                        BaseFatherFragment.backBeforFragment();
                     }
                     return true;
                 }

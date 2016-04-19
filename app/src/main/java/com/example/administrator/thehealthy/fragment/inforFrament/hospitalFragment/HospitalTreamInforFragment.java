@@ -3,13 +3,13 @@ package com.example.administrator.thehealthy.fragment.inforFrament.hospitalFragm
 import android.widget.ScrollView;
 
 import com.example.administrator.thehealthy.R;
-import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.fragment.BaseFatherFragment;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 
 /**
  * Created by Administrator on 2016/4/12.
  */
-public class HospitalTreamInforFragment extends BaseFragment {
+public class HospitalTreamInforFragment extends BaseFatherFragment {
     private ScrollView scrollView;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
 

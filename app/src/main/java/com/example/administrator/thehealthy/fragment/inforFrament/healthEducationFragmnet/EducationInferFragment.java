@@ -8,14 +8,14 @@ import android.widget.TextView;
 
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.entity.AppData;
-import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.fragment.BaseFatherFragment;
 import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 
 /**
  * Created by Administrator on 2016/3/9.
  */
-public class EducationInferFragment extends BaseFragment implements View.OnTouchListener {
+public class EducationInferFragment extends BaseFatherFragment implements View.OnTouchListener {
     private final String TAG = EducationInferFragment.class.getSimpleName();
     private int position;
     private TextView eduInforTitle, eduInforContent, eduInforTime, eduInforDate;

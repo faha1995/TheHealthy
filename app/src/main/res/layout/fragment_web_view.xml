@@ -39,6 +39,7 @@
         android:scrollbars="none"
         android:overScrollMode="never"
         android:scaleX="1"></WebView>
+
 </ScrollView>
 
 </LinearLayout>

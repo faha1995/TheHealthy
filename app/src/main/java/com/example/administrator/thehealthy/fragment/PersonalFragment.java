@@ -9,7 +9,6 @@ import com.example.administrator.thehealthy.adapter.PersonalAdapter;
 import com.example.administrator.thehealthy.fragment.inforFrament.HealthReportFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.PersonalInforFragment;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +16,7 @@ import java.util.List;
  * Created by Administrator on 2016/3/3.
  * TabHost个人界面
  */
-public class PersonalFragment extends BaseFragment {
+public class PersonalFragment extends BaseFatherFragment {
     private TabLayout personalTabLayout;
     private ViewPager personalViewPager;
     private PersonalAdapter personalAdapter;
@@ -65,31 +64,31 @@ public class PersonalFragment extends BaseFragment {
 
     }
 
-    @Override
+//    @Override
+//
+//    public void onDetach() {
+//
+//        super.onDetach();
+//
+//        try {
+//
+//            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
+//
+//            childFragmentManager.setAccessible(true);
+//
+//            childFragmentManager.set(this, null);
+//
+//        } catch (NoSuchFieldException e) {
+//
+//            throw new RuntimeException(e);
+//
+//        } catch (IllegalAccessException e) {
+//
+//            throw new RuntimeException(e);
+//
+//        }
 
-    public void onDetach() {
-
-        super.onDetach();
-
-        try {
-
-            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
-
-            childFragmentManager.setAccessible(true);
-
-            childFragmentManager.set(this, null);
-
-        } catch (NoSuchFieldException e) {
-
-            throw new RuntimeException(e);
-
-        } catch (IllegalAccessException e) {
-
-            throw new RuntimeException(e);
-
-        }
-
-    }
+//    }
 
 
 }

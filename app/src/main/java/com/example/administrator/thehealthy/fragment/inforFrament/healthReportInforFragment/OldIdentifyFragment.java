@@ -12,7 +12,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.entity.AppConfig;
-import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.fragment.BaseSonFragment;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
@@ -26,7 +26,7 @@ import java.util.Map;
  * Created by Administrator on 2016/3/16.
  * type_alias.equals("tcm") && item_alias.equals("constitution_identification")
  */
-public class OldIdentifyFragment extends BaseFragment {
+public class OldIdentifyFragment extends BaseSonFragment {
     private final String TAG = OldIdentifyFragment.class.getSimpleName();
     private ScrollView scrollViewAfter;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();

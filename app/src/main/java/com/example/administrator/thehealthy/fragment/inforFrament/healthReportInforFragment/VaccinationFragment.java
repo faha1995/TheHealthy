@@ -13,7 +13,8 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.entity.AppConfig;
-import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.fragment.BaseFatherFragment;
+import com.example.administrator.thehealthy.fragment.BaseSonFragment;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
@@ -28,7 +29,7 @@ import java.util.Map;
  * type_alias.equals("vaccine") && !item_alias.equals("vaccine_card")
  * 的界面
  */
-public class VaccinationFragment extends BaseFragment {
+public class VaccinationFragment extends BaseSonFragment {
     private static final String TAG = VaccinationFragment.class.getSimpleName();
     private LinearLayout linearLayoutVaccina;
     private String titles;

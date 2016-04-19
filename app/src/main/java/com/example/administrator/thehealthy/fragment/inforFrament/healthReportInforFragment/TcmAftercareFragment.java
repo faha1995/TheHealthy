@@ -12,7 +12,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.entity.AppConfig;
-import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.fragment.BaseSonFragment;
 import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
@@ -26,7 +26,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 2016/3/16.
  */
-public class TcmAftercareFragment extends BaseFragment {
+public class TcmAftercareFragment extends BaseSonFragment {
     private final String TAG = TcmAftercareFragment.class.getSimpleName();
     private LinearLayout linearLayoutTcm;
     private String titles;

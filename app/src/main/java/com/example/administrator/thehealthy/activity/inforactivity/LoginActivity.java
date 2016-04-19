@@ -228,7 +228,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-        overridePendingTransition(R.anim.no_move,R.anim.move_out_from_bottom);
+        overridePendingTransition(R.anim.no_move, R.anim.move_out_from_bottom);
+        EventBus.getDefault().post("forMainActivityBackPressed");
     }
 
 

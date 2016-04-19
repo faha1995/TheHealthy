@@ -11,7 +11,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Display;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,13 +21,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.MainActivity;
 import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity;
-import com.example.administrator.thehealthy.application.BaseApplication;
+import com.example.administrator.thehealthy.entity.AppData;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
 import java.lang.reflect.Field;
@@ -36,7 +34,7 @@ import java.lang.reflect.Field;
 /**
  * Created by Administrator on 2016/3/3.
  */
-public abstract class BaseFragment extends Fragment implements View.OnTouchListener {
+public abstract class BaseSonFragment extends Fragment implements View.OnTouchListener {
     private View view;
     public static FragmentManager fm;
     private static FragmentTransaction ft;
@@ -58,6 +56,7 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
         view.setOnTouchListener(this);
         imageLoader = VolleySingleton.getInstace()._getImageLoader();
         initView();
+        setCounts();
     }
 
     @Override
@@ -163,66 +162,12 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
 
     }
 
-//    // fragment的替换
-//    public void goToNextFragmentFromEducation(Fragment fragment, int pos) {
-//        if (fm == null) {
-//            fm = getActivity().getSupportFragmentManager();
-//        }
-//        ft = fm.beginTransaction();
-//        ft.setCustomAnimations(
-//                R.anim.move_in_from_right,
-//                R.anim.no_move,
-//                R.anim.no_move,
-//                R.anim.move_out_from_right
-//        );
-//        Bundle bundle = new Bundle();
-//        bundle.putInt("pos", pos);
-//        fragment.setArguments(bundle);
-//        View view = findView(R.id.fragment_healthEducation);
-//        view.setOnTouchListener((View.OnTouchListener) fragment);
-//        ft.replace(R.id.fragment_healthEducation, fragment);
-//        // addToBackStack() 是为了将该Fragment加入到后退栈中
-//        // 在返回时,可以直接返回到上一个界面
-//        ft.addToBackStack(null);
-//        ft.commitAllowingStateLoss();
-//
-//    }
-
-
-    public void doubleClickExit(View view) {
-        view.setFocusable(true);
-        view.setFocusableInTouchMode(true);
-        view.setOnKeyListener(keyListener);
-    }
-
-    View.OnKeyListener keyListener = new View.OnKeyListener() {
-        @Override
-        public boolean onKey(View v, int keyCode, KeyEvent event) {
-            int exitTime = 0;
-            if (event.getAction() == KeyEvent.ACTION_DOWN) {
-                if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-                    if ((System.currentTimeMillis() - exitTime) > 2000) {
-                        Toast.makeText(BaseApplication.getContext(), "再按一次退出程序", Toast.LENGTH_SHORT).show();
-                        exitTime = (int) System.currentTimeMillis();
-                        Log.i("baseFragment", "----------->" + "再按一次退出程序");
-                    } else {
-                        BaseApplication.finishAllActivity();
-                    }
-                    return true;
-                }
-            }
-            return false;
-        }
-
-    };
-
 
     // acitvity的跳转
     public static <T> void activityIntent(Activity activity, Class<T> clazz) {
         Intent intent = new Intent(activity, clazz);
         activity.startActivity(intent);
-        activity.overridePendingTransition(R.anim.move_in_from_right, R.anim.no_move);
+        activity.overridePendingTransition(R.anim.move_in_from_bottom, R.anim.no_move);
     }
 
     // acitvity的跳转
@@ -346,6 +291,11 @@ public abstract class BaseFragment extends Fragment implements View.OnTouchListe
             }
         });
 
+    }
+
+
+    private void setCounts(){
+        AppData.counts = 1;
     }
 
 }

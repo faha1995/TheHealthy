@@ -19,7 +19,7 @@ import com.example.administrator.thehealthy.adapter.ExpandAdapter;
 import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.entity.Summary;
-import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.fragment.BaseFatherFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.Aftercare12MonthFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.Aftercare18MonthFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.Aftercare1MonthFragment;
@@ -61,7 +61,7 @@ import java.util.Map;
  * Created by Administrator on 2016/4/11.
  * 健康报告界面
  */
-public class HealthReportFragment extends BaseFragment {
+public class HealthReportFragment extends BaseFatherFragment {
     private final String TAG = HealthReportFragment.class.getSimpleName();
     private DBTool dbTool;
     private ExpandableListView exListView;

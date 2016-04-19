@@ -10,9 +10,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
-import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
-import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.entity.AppConfig;
+import com.example.administrator.thehealthy.fragment.BaseSonFragment;
 import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
@@ -27,7 +27,7 @@ import java.util.Map;
  * Created by Administrator on 2016/3/7.
  * 既往病史界面
  */
-public class MedicalHistoryFragment extends BaseFragment {
+public class MedicalHistoryFragment extends BaseSonFragment {
     private final String TAG = MedicalHistoryFragment.class.getSimpleName();
     private TextView diseaseText, surgeryText, traumaText, bloodText, disabilityText,
             fatherSickText, momSickText, bortherSickText, sonSickText, alergyText,
@@ -144,5 +144,6 @@ public class MedicalHistoryFragment extends BaseFragment {
         };
         VolleySingleton.getInstace().addRequest(request);
     }
+
 
 }

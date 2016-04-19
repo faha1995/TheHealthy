@@ -14,7 +14,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
-import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.fragment.BaseFatherFragment;
+import com.example.administrator.thehealthy.fragment.BaseSonFragment;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
@@ -29,7 +30,7 @@ import java.util.Map;
  * type_alias.equals("pregnant") && item_alias.equals("aftercare_1"）
  * 产前界面
  */
-public class AntenatalFragment extends BaseFragment {
+public class AntenatalFragment extends BaseSonFragment {
     private static final String TAG = AntenatalFragment.class.getSimpleName();
     private DBTool dbTool;
     private int record_id;

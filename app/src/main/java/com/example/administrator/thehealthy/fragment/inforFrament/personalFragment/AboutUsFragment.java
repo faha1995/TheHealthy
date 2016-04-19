@@ -3,14 +3,14 @@ package com.example.administrator.thehealthy.fragment.inforFrament.personalFragm
 import android.widget.LinearLayout;
 
 import com.example.administrator.thehealthy.R;
-import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.fragment.BaseSonFragment;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 
 /**
  * Created by Administrator on 2016/3/15.\
  * 关于我们界面
  */
-public class AboutUsFragment extends BaseFragment {
+public class AboutUsFragment extends BaseSonFragment {
     private LinearLayout linearAboutUs;
 
 
@@ -23,10 +23,13 @@ public class AboutUsFragment extends BaseFragment {
     protected void initView() {
         linearAboutUs = findView(R.id.linear_aboutUs);
         ScrollViewOnTouch.getInstance().setViewFinishTouchFromFragment(linearAboutUs);
+
     }
 
     @Override
     protected void initData() {
 
     }
+
+
 }

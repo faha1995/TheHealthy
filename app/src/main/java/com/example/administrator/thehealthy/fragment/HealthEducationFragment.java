@@ -31,7 +31,7 @@ import java.util.Map;
  * Created by Administrator on 2016/3/3.
  * 健康教育界面
  */
-public class HealthEducationFragment extends BaseFragment implements MyClickListener {
+public class HealthEducationFragment extends BaseFatherFragment implements MyClickListener {
     private final String TAG = HealthEducationFragment.class.getSimpleName();
     private RecyclerView educationRv;
     private HealthEducationAdapter educationAdapter;

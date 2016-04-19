@@ -12,9 +12,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
-import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
-import com.example.administrator.thehealthy.fragment.BaseFragment;
+import com.example.administrator.thehealthy.entity.AppConfig;
+import com.example.administrator.thehealthy.fragment.BaseSonFragment;
 import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
@@ -29,7 +29,7 @@ import java.util.Map;
  * Created by Administrator on 2016/3/7.
  * 资料信息界面
  */
-public class InformationFragment extends BaseFragment {
+public class InformationFragment extends BaseSonFragment {
     private final String TAG = InformationFragment.class.getSimpleName();
     private TextView nameText, sexText, birthdayText, idCardText, nationalText,
             mobileText, othersText, educationText, professionText, workPlaceText,
@@ -61,12 +61,10 @@ public class InformationFragment extends BaseFragment {
         bloodStyleText = findView(R.id.text_information_bloodStyle);
         paymentMethodText = findView(R.id.text_information_paymentMethod);
         scrollViewAfter = findView(R.id.scrollView_information);
-//        frameLayout = findView(R.id.fragment_personal_infor);
-        Log.i("InformationFragment", "------>" + BaseFragment.fm.getBackStackEntryCount());
+
         scrollViewOnTouch.setScrollView(scrollViewAfter);
 
         dbTool = new DBTool();
-        Log.i(TAG, "-------->" + "inforBac" + getActivity().getSupportFragmentManager().getBackStackEntryCount());
     }
 
     @Override
