@@ -12,13 +12,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
-import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
-import com.example.administrator.thehealthy.fragment.BaseFatherFragment;
+import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.fragment.BaseSonFragment;
+import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -127,11 +128,11 @@ public class AntenatalFragment extends BaseSonFragment {
                                     TextView due_date = findView(R.id.due_date);
                                     due_date.setText(detail.getString("due_date"));
                                     TextView disease_history = findView(R.id.disease_history);
-                                    disease_history.setText(detail.getString("disease_history"));
+                                    disease_history.setText(ChangeString.splitMain(detail.getString("disease_history")));
                                     TextView family_history = findView(R.id.family_history);
-                                    family_history.setText(detail.getString("family_history"));
+                                    family_history.setText(ChangeString.splitMain(detail.getString("family_history")));
                                     TextView personal_history = findView(R.id.personal_history);
-                                    personal_history.setText(detail.getString("family_history"));
+                                    personal_history.setText(ChangeString.splitMain(detail.getString("personal_history")));
                                     TextView gynaecology_surgery_history = findView(R.id.gynaecology_surgery_history);
                                     gynaecology_surgery_history.setText(detail.getString("gynaecology_surgery_history"));
                                     TextView miscarriage = findView(R.id.miscarriage);
@@ -308,7 +309,14 @@ public class AntenatalFragment extends BaseSonFragment {
                                         total_evaluation_abnormal.setText(detail.getString("total_evaluation_abnormal"));
                                     }
                                     TextView guide = findView(R.id.guide);
-                                    guide.setText(detail.getString("guide"));
+                                    JSONArray array = detail.getJSONArray("guide");
+                                    String guides = "";
+                                    if (array.length() > 0) {
+                                        for (int i = 0; i < array.length(); i++) {
+                                            guides += ChangeString.splitOut((String) array.get(i))+"  ";
+                                        }
+                                    }
+                                    guide.setText(guides);
                                     if (!detail.getString("transfer").equals("null")) {
                                         TextView transfer = findView(R.id.transfer);
                                         transfer.setText(detail.getString("transfer"));

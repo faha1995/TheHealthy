@@ -29,8 +29,6 @@ import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity
 import com.example.administrator.thehealthy.entity.AppData;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
-import java.lang.reflect.Field;
-
 /**
  * Created by Administrator on 2016/3/3.
  */
@@ -112,31 +110,6 @@ public abstract class BaseSonFragment extends Fragment implements View.OnTouchLi
 
     }
 
-    @Override
-
-    public void onDetach() {
-
-        super.onDetach();
-
-        try {
-
-            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
-
-            childFragmentManager.setAccessible(true);
-
-            childFragmentManager.set(this, null);
-
-        } catch (NoSuchFieldException e) {
-
-            throw new RuntimeException(e);
-
-        } catch (IllegalAccessException e) {
-
-            throw new RuntimeException(e);
-
-        }
-
-    }
 
     // fragment的替换
     public void goToNextFragmentFromHealthReport(Fragment fragment, int record_id) {

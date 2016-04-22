@@ -8,8 +8,8 @@ public class ChangeString {
 
 // 测试
     public static void main(String[] arg){
-        String a = "预防接种服务:乙肝疫苗";
-        System.out.print(splitForPurpose(a));
+        String a = "乙肝疫苗";
+        System.out.print(splitOut(a));
     }
 
     // 将字符串2016-03-08 16：12：55 转换成 16：12：55 2016-03-08
@@ -76,5 +76,13 @@ public class ChangeString {
         return purposeString;
     }
 
+    // 将字符串 "全公费" 截取为 全公费
+    public static String splitOut(String string) {
+        String mainString;
+
+        String[] split=string.split("\"");
+        mainString = split[0];
+        return mainString;
+    }
 
 }

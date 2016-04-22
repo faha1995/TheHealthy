@@ -36,7 +36,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:src="@mipmap/person_icon"
+                android:src="@mipmap/personal_boy_icon"
                 imagecontrol:border_outside_color="@color/mainColor"
                 imagecontrol:border_thickness="2dp" />
 
@@ -91,7 +91,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="出生日期"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
@@ -119,7 +119,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="身份证号"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
@@ -147,7 +147,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="民族"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
@@ -175,7 +175,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="联系方式"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
@@ -203,7 +203,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="联系人"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
@@ -231,7 +231,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="文化程度"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
@@ -259,7 +259,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="职业"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
@@ -287,7 +287,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="工作单位"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
@@ -315,7 +315,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="婚姻状况"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
@@ -343,7 +343,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="血型"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
@@ -371,7 +371,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="医疗付费方式"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView

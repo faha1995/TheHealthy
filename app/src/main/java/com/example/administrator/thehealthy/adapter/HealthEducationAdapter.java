@@ -45,6 +45,7 @@ public class HealthEducationAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         view = LayoutInflater.from(parent.getContext())

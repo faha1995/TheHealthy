@@ -24,7 +24,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_margin_title"
                     android:text="既往病史"
-                    android:textColor="@color/secondaryColor"
+                    android:textColor="@color/health_infor_nameTextColor"
                     android:textSize="16sp" />
 
 
@@ -48,7 +48,7 @@
                         android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="疾病史"
-                        android:textColor="@color/secondaryColor"
+                        android:textColor="@color/health_infor_nameTextColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
 
                     <TextView
@@ -77,7 +77,7 @@
                         android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="手术史"
-                        android:textColor="@color/secondaryColor"
+                        android:textColor="@color/health_infor_nameTextColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
 
                     <TextView
@@ -106,7 +106,7 @@
                         android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="外伤史"
-                        android:textColor="@color/secondaryColor"
+                        android:textColor="@color/health_infor_nameTextColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
 
                     <TextView
@@ -135,7 +135,7 @@
                         android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="输血史"
-                        android:textColor="@color/secondaryColor"
+                        android:textColor="@color/health_infor_nameTextColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
 
                     <TextView
@@ -164,7 +164,7 @@
                         android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="残疾情况"
-                        android:textColor="@color/secondaryColor"
+                        android:textColor="@color/health_infor_nameTextColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
 
                     <TextView
@@ -185,7 +185,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin_title"
                 android:text="家族病史"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -209,7 +209,7 @@
                         android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="父亲"
-                        android:textColor="@color/secondaryColor"
+                        android:textColor="@color/health_infor_nameTextColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
 
 
@@ -246,7 +246,7 @@
                         android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="母亲"
-                        android:textColor="@color/secondaryColor"
+                        android:textColor="@color/health_infor_nameTextColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
 
 
@@ -282,7 +282,7 @@
                         android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="兄弟姐妹"
-                        android:textColor="@color/secondaryColor"
+                        android:textColor="@color/health_infor_nameTextColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
 
                     <TextView
@@ -311,7 +311,7 @@
                         android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="子女"
-                        android:textColor="@color/secondaryColor"
+                        android:textColor="@color/health_infor_nameTextColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
 
                     <TextView
@@ -334,7 +334,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_margin_title"
                 android:text="其他既往史"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="16sp" />
 
             <LinearLayout
@@ -356,7 +356,7 @@
                         android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="过敏史"
-                        android:textColor="@color/secondaryColor"
+                        android:textColor="@color/health_infor_nameTextColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
 
                     <TextView
@@ -392,7 +392,7 @@
                         android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="遗传病史"
-                        android:textColor="@color/secondaryColor"
+                        android:textColor="@color/health_infor_nameTextColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
 
                     <TextView
@@ -430,7 +430,7 @@
                         android:layout_weight="1"
                         android:padding="@dimen/fragment_information_textPadding"
                         android:text="暴露史"
-                        android:textColor="@color/secondaryColor"
+                        android:textColor="@color/health_infor_nameTextColor"
                         android:textSize="@dimen/fragment_information_normalTextSize" />
 
                     <TextView

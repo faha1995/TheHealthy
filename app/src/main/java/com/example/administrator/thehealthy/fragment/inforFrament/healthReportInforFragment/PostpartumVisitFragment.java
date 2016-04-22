@@ -14,8 +14,8 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.entity.AppConfig;
-import com.example.administrator.thehealthy.fragment.BaseFatherFragment;
 import com.example.administrator.thehealthy.fragment.BaseSonFragment;
+import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
@@ -121,7 +121,7 @@ public class PostpartumVisitFragment extends BaseSonFragment {
                                     TextView classification_abnormal = findView(R.id.classification_abnormal);
                                     classification_abnormal.setText(detail.getString("classification_abnormal"));
                                     TextView guide = findView(R.id.guide);
-                                    guide.setText(detail.getString("guide"));
+                                    guide.setText(ChangeString.splitMain(detail.getString("guide")));
                                     TextView guide_extra = findView(R.id.guide_extra);
                                     guide_extra.setText(detail.getString("guide_extra"));
                                     TextView transfer_treatment = findView(R.id.transfer_treatment);

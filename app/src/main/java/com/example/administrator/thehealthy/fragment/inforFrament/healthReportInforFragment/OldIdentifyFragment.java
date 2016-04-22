@@ -13,6 +13,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.fragment.BaseSonFragment;
+import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
@@ -69,7 +70,7 @@ public class OldIdentifyFragment extends BaseSonFragment {
                                         yes_trend_pinghe.setText(detail.getString("yes_trend_pinghe"));
                                     }
                                     TextView health_care_guide_pinghe = findView(R.id.health_care_guide_pinghe);
-                                    health_care_guide_pinghe.setText(detail.getString("health_care_guide_pinghe"));
+                                    health_care_guide_pinghe.setText(ChangeString.splitMain(detail.getString("health_care_guide_pinghe")));
                                     TextView health_care_guide_extra_pinghe = findView(R.id.health_care_guide_extra_pinghe);
                                     health_care_guide_extra_pinghe.setText(detail.getString("health_care_guide_extra_pinghe"));
                                     TextView points_qixu = findView(R.id.points_qixu);
@@ -79,7 +80,7 @@ public class OldIdentifyFragment extends BaseSonFragment {
                                         yes_trend_qixu.setText(detail.getString("yes_trend_qixu"));
                                     }
                                     TextView health_care_guide_qixu = findView(R.id.health_care_guide_qixu);
-                                    health_care_guide_qixu.setText(detail.getString("health_care_guide_qixu"));
+                                    health_care_guide_qixu.setText(ChangeString.splitMain(detail.getString("health_care_guide_qixu")));
                                     TextView health_care_guide_extra_qixu = findView(R.id.health_care_guide_extra_qixu);
                                     health_care_guide_extra_qixu.setText(detail.getString("health_care_guide_extra_qixu"));
                                     TextView points_yangxu = findView(R.id.points_yangxu);
@@ -90,7 +91,7 @@ public class OldIdentifyFragment extends BaseSonFragment {
                                         yes_trend_yangxu.setText(detail.getString("yes_trend_yangxu"));
                                     }
                                     TextView health_care_guide_yangxu = findView(R.id.health_care_guide_yangxu);
-                                    health_care_guide_yangxu.setText(detail.getString("health_care_guide_yangxu"));
+                                    health_care_guide_yangxu.setText(ChangeString.splitMain(detail.getString("health_care_guide_yangxu")));
                                     TextView health_care_guide_extra_yangxu = findView(R.id.health_care_guide_extra_yangxu);
                                     health_care_guide_extra_yangxu.setText(detail.getString("health_care_guide_extra_yangxu"));
                                     TextView points_yinxu = findView(R.id.points_yinxu);
@@ -100,7 +101,7 @@ public class OldIdentifyFragment extends BaseSonFragment {
                                         yes_trend_yinxu.setText(detail.getString("yes_trend_yinxu"));
                                     }
                                     TextView health_care_guide_yinxu = findView(R.id.health_care_guide_yinxu);
-                                    health_care_guide_yinxu.setText(detail.getString("health_care_guide_yinxu"));
+                                    health_care_guide_yinxu.setText(ChangeString.splitMain(detail.getString("health_care_guide_yinxu")));
                                     TextView health_care_guide_extra_yinxu = findView(R.id.health_care_guide_extra_yinxu);
                                     health_care_guide_extra_yinxu.setText(detail.getString("health_care_guide_extra_yinxu"));
                                     TextView points_tanshi = findView(R.id.points_tanshi);
@@ -110,7 +111,7 @@ public class OldIdentifyFragment extends BaseSonFragment {
                                         yes_trend_tanshi.setText(detail.getString("yes_trend_tanshi"));
                                     }
                                     TextView health_care_guide_tanshi = findView(R.id.health_care_guide_tanshi);
-                                    health_care_guide_tanshi.setText(detail.getString("health_care_guide_tanshi"));
+                                    health_care_guide_tanshi.setText(ChangeString.splitMain(detail.getString("health_care_guide_tanshi")));
                                     TextView health_care_guide_extra_tanshi = findView(R.id.health_care_guide_extra_tanshi);
                                     health_care_guide_extra_tanshi.setText(detail.getString("health_care_guide_extra_tanshi"));
                                     TextView points_shire = findView(R.id.points_shire);
@@ -120,7 +121,7 @@ public class OldIdentifyFragment extends BaseSonFragment {
                                         yes_trend_shire.setText(detail.getString("yes_trend_shire"));
                                     }
                                     TextView health_care_guide_shire = findView(R.id.health_care_guide_shire);
-                                    health_care_guide_shire.setText(detail.getString("health_care_guide_shire"));
+                                    health_care_guide_shire.setText(ChangeString.splitMain(detail.getString("health_care_guide_shire")));
                                     TextView health_care_guide_extra_shire = findView(R.id.health_care_guide_extra_shire);
                                     health_care_guide_extra_shire.setText(detail.getString("health_care_guide_extra_shire"));
                                     TextView points_xueyu = findView(R.id.points_xueyu);
@@ -130,7 +131,7 @@ public class OldIdentifyFragment extends BaseSonFragment {
                                         yes_trend_xueyu.setText(detail.getString("yes_trend_xueyu"));
                                     }
                                     TextView health_care_guide_xueyu = findView(R.id.health_care_guide_xueyu);
-                                    health_care_guide_xueyu.setText(detail.getString("health_care_guide_xueyu"));
+                                    health_care_guide_xueyu.setText(ChangeString.splitMain(detail.getString("health_care_guide_xueyu")));
                                     TextView health_care_guide_extra_xueyu = findView(R.id.health_care_guide_extra_xueyu);
                                     health_care_guide_extra_xueyu.setText(detail.getString("health_care_guide_extra_xueyu"));
                                     TextView points_qiyu = findView(R.id.points_qiyu);
@@ -140,7 +141,7 @@ public class OldIdentifyFragment extends BaseSonFragment {
                                         yes_trend_qiyu.setText(detail.getString("yes_trend_qiyu"));
                                     }
                                     TextView health_care_guide_qiyu = findView(R.id.health_care_guide_qiyu);
-                                    health_care_guide_qiyu.setText(detail.getString("health_care_guide_qiyu"));
+                                    health_care_guide_qiyu.setText(ChangeString.splitMain(detail.getString("health_care_guide_qiyu")));
                                     TextView health_care_guide_extra_qiyu = findView(R.id.health_care_guide_extra_qiyu);
                                     health_care_guide_extra_qiyu.setText(detail.getString("health_care_guide_extra_qiyu"));
                                     TextView points_tebing = findView(R.id.points_tebing);
@@ -150,7 +151,7 @@ public class OldIdentifyFragment extends BaseSonFragment {
                                         yes_trend_tebing.setText(detail.getString("yes_trend_tebing"));
                                     }
                                     TextView health_care_guide_tebing = findView(R.id.health_care_guide_tebing);
-                                    health_care_guide_tebing.setText(detail.getString("health_care_guide_tebing"));
+                                    health_care_guide_tebing.setText(ChangeString.splitMain(detail.getString("health_care_guide_tebing")));
                                     TextView health_care_guide_extra_tebing = findView(R.id.health_care_guide_extra_tebing);
                                     health_care_guide_extra_tebing.setText(detail.getString("health_care_guide_extra_tebing"));
                                     TextView doctor_signature = findView(R.id.doctor_signature);

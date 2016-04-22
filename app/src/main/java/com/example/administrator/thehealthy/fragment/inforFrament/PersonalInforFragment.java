@@ -1,7 +1,6 @@
 package com.example.administrator.thehealthy.fragment.inforFrament;
 
 import android.annotation.SuppressLint;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,10 +15,10 @@ import com.example.administrator.thehealthy.fragment.inforFrament.personalFragme
 import com.example.administrator.thehealthy.fragment.inforFrament.personalFragment.HabitFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.personalFragment.InformationFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.personalFragment.MedicalHistoryFragment;
+import com.example.administrator.thehealthy.util.RoundImageView;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 
 /**
@@ -29,10 +28,12 @@ import java.util.HashMap;
 public class PersonalInforFragment extends BaseFatherFragment implements View.OnClickListener {
     private final String TAG = PersonalInforFragment.class.getSimpleName();
     private LinearLayout inforLinearFirst, inforLinearSecond, inforLinearThird,
-            inforLinearFourth;
+            inforLinearFourth,linearInforIcon;
     private Button exitBtn;
     private TextView nameText, mobileText;
     private DBTool dbTool;
+    private RoundImageView personalImg;
+    private String sex;
 
     @Override
     protected int setLayoutView() {
@@ -46,7 +47,8 @@ public class PersonalInforFragment extends BaseFatherFragment implements View.On
         inforLinearSecond = findView(R.id.linear_personalInfor_second);
         inforLinearThird = findView(R.id.linear_personalInfor_third);
         inforLinearFourth = findView(R.id.linear_personalInfor_fourth);
-//        linearAll = findView(R.id.fragment_personal_infor);
+        linearInforIcon = findView(R.id.linear_personal_icon);
+        personalImg = findView(R.id.roundImage_personalInfor);
         exitBtn = findView(R.id.btn_personalInfor_exit);
         nameText = findView(R.id.text_personalInfor_name);
         mobileText = findView(R.id.text_personalInfor_mobile);
@@ -62,26 +64,20 @@ public class PersonalInforFragment extends BaseFatherFragment implements View.On
         dbTool = new DBTool();
         Log.i(TAG, "-------->" + "initView()");
         Log.i(TAG, "-------->" + "perBac" + getActivity().getSupportFragmentManager().getBackStackEntryCount());
+
     }
+
 
 
     @Override
     public void onResume() {
         super.onResume();
         Log.i(TAG, "-------->  onResume()");
-//        Intent intent = getActivity().getIntent();
-//        if (intent.getStringExtra("loginForMain") == "onResume") {
-//            final HashMap<String, String> user = dbTool.getUserDetails();
-//            nameText.setText(user.get("name"));
-//            mobileText.setText(user.get("mobile"));
-//        }
 
         if (dbTool.isLogined()) {
+            final HashMap<String, String> user = dbTool.getUserDetails();
             Log.i(TAG, "-------->" + "isLogined()");
 
-
-            final HashMap<String, String> user = dbTool.getUserDetails();
-            Log.i(TAG, "-----> NAME :" + user.get("name"));
 
             nameText.setText(user.get("name"));
             mobileText.setText(user.get("mobile"));
@@ -93,34 +89,12 @@ public class PersonalInforFragment extends BaseFatherFragment implements View.On
 
     @Override
     protected void initData() {
+        Log.i(TAG, "----->  initData()");
+
 
     }
 
-    @Override
 
-    public void onDetach() {
-
-        super.onDetach();
-
-        try {
-
-            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
-
-            childFragmentManager.setAccessible(true);
-
-            childFragmentManager.set(this, null);
-
-        } catch (NoSuchFieldException e) {
-
-            throw new RuntimeException(e);
-
-        } catch (IllegalAccessException e) {
-
-            throw new RuntimeException(e);
-
-        }
-
-    }
 
     @SuppressLint("NewApi")
     @Override

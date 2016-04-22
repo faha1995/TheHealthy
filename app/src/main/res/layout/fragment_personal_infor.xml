@@ -33,15 +33,48 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="10dp"
-                android:src="@mipmap/person_icon"
+                android:src="@mipmap/personal_boy_icon"
                 imagecontrol:border_outside_color="#FF44B899"
-                imagecontrol:border_thickness="2dp" />
+                imagecontrol:border_thickness="2dp"/>
+            <LinearLayout
+                android:id="@+id/linear_personal_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_vertical"
+                android:visibility="gone"
+                android:layout_marginTop="10dp">
+                <com.example.administrator.thehealthy.util.RoundImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/personal_boy_icon"
+                    imagecontrol:border_outside_color="#FF44B899"
+                    imagecontrol:border_thickness="2dp"
+                    android:layout_marginRight="5dp"
+                   />
+                <com.example.administrator.thehealthy.util.RoundImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/personal_girl_icon"
+                    imagecontrol:border_outside_color="#FF44B899"
+                    imagecontrol:border_thickness="2dp"
+                    android:layout_marginLeft="5dp"
+                   />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/text_personalInfor_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/roundImage_personalInfor"
+                android:layout_above="@+id/text_personalInfor_mobile"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/colorWhite"
@@ -51,9 +84,11 @@
                 android:id="@+id/text_personalInfor_mobile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/text_personalInfor_name"
+
+                android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:textColor="@color/colorWhite"
                 android:text="未知" />
 

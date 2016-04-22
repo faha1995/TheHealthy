@@ -1,12 +1,12 @@
 package com.example.administrator.thehealthy.tools;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
 
 import com.example.administrator.thehealthy.R;
+import com.example.administrator.thehealthy.entity.AppData;
 import com.example.administrator.thehealthy.fragment.BaseFatherFragment;
 
 /**
@@ -35,18 +35,19 @@ public class ScrollViewOnTouch {
                     startX = (int) event.getX();
                     startY = (int) event.getY();
 
-                    Log.i("startY", "--------->" + startY);
+//                    Log.i("startY", "--------->" + startY);
                 } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
                     stopX = (int) event.getX();
                     stopY = (int) event.getY();
                     poorX = stopX - startX;
                     poorY = stopY - startY;
 
-                    Log.i("stopY", "--------->" + stopY);
+//                    Log.i("stopY", "--------->" + stopY);
 
                     if (poorX > 200 && Math.abs(poorY) < 80) {
-                        Log.i("--", "--------->" + poorX + "------>" + poorY);
+//                        Log.i("--", "--------->" + poorX + "------>" + poorY);
                         BaseFatherFragment.backBeforFragment();
+                        AppData.counts = 0;
                     }
                     return false;
                 }
@@ -65,18 +66,19 @@ public class ScrollViewOnTouch {
                     startX = (int) event.getX();
                     startY = (int) event.getY();
 
-                    Log.i("startY", "--------->" + startY);
+//                    Log.i("startY", "--------->" + startY);
                 } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
                     stopX = (int) event.getX();
                     stopY = (int) event.getY();
                     poorX = stopX - startX;
                     poorY = stopY - startY;
 
-                    Log.i("stopY", "--------->" + stopY);
+//                    Log.i("stopY", "--------->" + stopY);
 
                     if (poorX > 200 && Math.abs(poorY) < 80) {
-                        Log.i("--", "--------->" + poorX + "------>" + poorY);
+//                        Log.i("--", "--------->" + poorX + "------>" + poorY);
                         BaseFatherFragment.backBeforFragment();
+                        AppData.counts = 0;
                     }
                     return true;
                 }
@@ -84,6 +86,7 @@ public class ScrollViewOnTouch {
             }
         });
     }
+
     public void setViewFinishTouchFromActivity(View view, final Activity activity) {
 
         view.setOnTouchListener(new View.OnTouchListener() {
@@ -92,22 +95,23 @@ public class ScrollViewOnTouch {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     startX = (int) event.getX();
                     startY = (int) event.getY();
-                    Log.i("startX", "--------->" + startY);
-                    Log.i("startY", "--------->" + startY);
+//                    Log.i("startX", "--------->" + startY);
+//                    Log.i("startY", "--------->" + startY);
                 } else if (event.getAction() == MotionEvent.ACTION_MOVE) {
                     stopX = (int) event.getX();
                     stopY = (int) event.getY();
                     poorX = stopX - startX;
                     poorY = stopY - startY;
 
-                    Log.i("endY", "--------->" + stopY);
-                    Log.i("endX", "--------->" + stopX);
+//                    Log.i("endY", "--------->" + stopY);
+//                    Log.i("endX", "--------->" + stopX);
 
-                    Log.i("poor", "--------->" + poorX + "------>" + Math.abs(poorY));
+//                    Log.i("poor", "--------->" + poorX + "------>" + Math.abs(poorY));
                     if (poorX > 200 && Math.abs(poorY) < 80) {
-                        Log.i("--", "--------->" + poorX + "------>" + Math.abs(poorY));
+//                        Log.i("--", "--------->" + poorX + "------>" + Math.abs(poorY));
                        activity.finish();
-                        activity.overridePendingTransition(R.anim.no_move,R.anim.move_out_from_right);
+                        activity.overridePendingTransition(R.anim.no_move, R.anim.move_out_from_right);
+                        AppData.counts = 0;
                     }
                     return false;
                 }

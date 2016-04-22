@@ -547,7 +547,8 @@
                 android:paddingTop="5dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="指导："
                     android:textColor="@color/health_infor_nameTextColor" />
@@ -820,6 +821,12 @@
                         android:textColor="@color/secondaryColor" />
                 </LinearLayout>
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="@color/fragmentBackGround"
+                />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

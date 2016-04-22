@@ -16,8 +16,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity;
 import com.example.administrator.thehealthy.adapter.ExpandAdapter;
-import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.db.DBTool;
+import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.entity.Summary;
 import com.example.administrator.thehealthy.fragment.BaseFatherFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.Aftercare12MonthFragment;
@@ -37,6 +37,8 @@ import com.example.administrator.thehealthy.fragment.inforFrament.healthReportIn
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.HypertensionAftercareFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.NewbornFamilyVisitFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.OldIdentifyFragment;
+import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.OldPeopleLifeAbilityFragment;
+import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.PostpartumManyDaysHealthCheck;
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.PostpartumVisitFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.PsychiatricAftercareFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.TcmAftercareFragment;
@@ -89,11 +91,11 @@ public class HealthReportFragment extends BaseFatherFragment {
         });
         dbTool = new DBTool();
 
-       initNetWork();
+        initNetWork();
     }
 
     @Subscribe
-    public void onEvent(String string){
+    public void onEvent(String string) {
         switch (string) {
             case "isNew":
                 initNetWork();
@@ -160,7 +162,7 @@ public class HealthReportFragment extends BaseFatherFragment {
                                 childs.add(child);
                             }
                             expandAdapter.addChilds(childs);
-                        }else {
+                        } else {
                             Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/splash_discrip_text_type.ttf");
                             nothingText.setTypeface(typeface);
                             nothingText.setText("还未有相关记录");
@@ -210,6 +212,7 @@ public class HealthReportFragment extends BaseFatherFragment {
                         ChangeString.splitForPurpose(childs.get(groupPosition).get(childPosition).getTitle()),
                         childs.get(groupPosition).get(childPosition).getRecordId());
 
+
                 return true;
             }
         });
@@ -218,14 +221,17 @@ public class HealthReportFragment extends BaseFatherFragment {
 
     // 判断item点击后跳向的界面
     private void goWhich(String type_alias, String item_alias, String title, int record_id) {
+        Log.i(TAG, "--------> type_alias--- " + type_alias + " item_alias--- " + item_alias + " record_id--- " + record_id);
         if (type_alias.equals("pregnant") && item_alias.equals("aftercare_1")) {
             goToNextFragmentFromHealthReport(new AntenatalFragment(title), record_id);
-            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("pregnant") && item_alias.equals("postpartum_visit")) {
             goToNextFragmentFromHealthReport(new PostpartumVisitFragment(title), record_id);
         } else if (type_alias.equals("pregnant") && (item_alias.equals("aftercare_2") || item_alias.equals("aftercare_3")
                 || item_alias.equals("aftercare_4") || item_alias.equals("aftercare_5"))) {
             goToNextFragmentFromHealthReport(new AftercareFragment(title), record_id);
+        } else if (type_alias.equals("pregnant") && item_alias.equals("postpartum_42_day_examination")) {
+
+            goToNextFragmentFromHealthReport(new PostpartumManyDaysHealthCheck(), record_id);
         } else if (type_alias.equals("hypertension") && (item_alias.equals("aftercare_1")
                 || item_alias.equals("aftercare_2") || item_alias.equals("aftercare_3")
                 || item_alias.equals("aftercare_4"))) {
@@ -233,21 +239,19 @@ public class HealthReportFragment extends BaseFatherFragment {
         } else if (type_alias.equals("diabetes") && (item_alias.equals("aftercare_1") || item_alias.equals("aftercare_2")
                 || item_alias.equals("aftercare_3") || item_alias.equals("aftercare_4"))) {
             goToNextFragmentFromHealthReport(new DiabetesAftercareFragment(title), record_id);
-            Log.i(TAG, "------>    OK");
         } else if (item_alias.equals("body_exam_table") || item_alias.equals("physical_examination")) {
             goToNextFragmentFromHealthReport(new BodyExamFragment(title), record_id);
-            Log.i(TAG, "------>    OK");
+
         } else if (type_alias.equals("vaccine") && item_alias.equals("vaccine_card")) {
             goToNextFragmentFromHealthReport(new VaccineCardFragment(title), record_id);
-            Log.i(TAG, "------>    OK");
+
         } else if (type_alias.equals("vaccine") && !item_alias.equals("vaccine_card")) {
             goToNextFragmentFromHealthReport(new VaccinationFragment(title), record_id);
-            Log.i(TAG, "------>    OK");
         } else if (type_alias.equals("tcm") && (item_alias.equals("aftercare_6_month") || item_alias.equals("aftercare_12_month")
                 || item_alias.equals("aftercare_18_month") || item_alias.equals("aftercare_24_month")
                 || item_alias.equals("aftercare_30_month") || item_alias.equals("aftercare_3_year"))) {
             goToNextFragmentFromHealthReport(new TcmAftercareFragment(title), record_id);
-            Log.i(TAG, "------>    OK");
+
         } else if (type_alias.equals("tcm") && item_alias.equals("constitution_identification")) {
             goToNextFragmentFromHealthReport(new OldIdentifyFragment(), record_id);
         } else if (type_alias.equals("psychiatric") && (item_alias.equals("aftercare_1") || item_alias.equals("aftercare_2")
@@ -257,38 +261,39 @@ public class HealthReportFragment extends BaseFatherFragment {
             goToNextFragmentFromHealthReport(new PsychiatricAftercareFragment(), record_id);
         } else if (type_alias.equals("child") && item_alias.equals("newborn_family_visit")) {
             goToNextFragmentFromHealthReport(new NewbornFamilyVisitFragment(), record_id);
-            Log.i(TAG, "------>    OK");
+
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_1_month")) {
             goToNextFragmentFromHealthReport(new Aftercare1MonthFragment(), record_id);
-            Log.i(TAG, "------>    OK");
+
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_12_month")) {
             goToNextFragmentFromHealthReport(new Aftercare12MonthFragment(), record_id);
-            Log.i(TAG, "------>    OK");
+
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_18_month")) {
             goToNextFragmentFromHealthReport(new Aftercare18MonthFragment(), record_id);
-            Log.i(TAG, "------>    OK");
+
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_24_month")) {
             goToNextFragmentFromHealthReport(new Aftercare24MonthFragment(), record_id);
-            Log.i(TAG, "------>    OK");
+
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_30_month")) {
             goToNextFragmentFromHealthReport(new Aftercare30MonthFragment(), record_id);
-            Log.i(TAG, "------>    OK");
+
         } else if (type_alias.equals("child") && (item_alias.equals("aftercare_4_year")
                 || item_alias.equals("aftercare_5_year") || item_alias.equals("aftercare_6_year"))) {
             goToNextFragmentFromHealthReport(new Aftercare4To6YearFragment(), record_id);
-            Log.i(TAG, "------>    OK");
+
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_3_year")) {
             goToNextFragmentFromHealthReport(new Aftercare3YearFragment(), record_id);
-            Log.i(TAG, "------>    OK");
+
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_3_month")) {
             goToNextFragmentFromHealthReport(new Aftercare3MonthFragment(), record_id);
-            Log.i(TAG, "------>    OK");
+
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_6_month")) {
             goToNextFragmentFromHealthReport(new Aftercare6MonthFragment(), record_id);
-            Log.i(TAG, "------>    OK");
+
         } else if (type_alias.equals("child") && item_alias.equals("aftercare_8_month")) {
             goToNextFragmentFromHealthReport(new Aftercare8MonthFragment(), record_id);
-            Log.i(TAG, "------>    OK");
+        } else if (type_alias.equals("old") && item_alias.equals("living_selfcare_appraisal")) {
+            goToNextFragmentFromHealthReport(new OldPeopleLifeAbilityFragment(), record_id);
         }
     }
 

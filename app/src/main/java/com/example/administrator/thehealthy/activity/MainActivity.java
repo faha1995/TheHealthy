@@ -82,7 +82,7 @@ public class MainActivity extends BaseActivity {
                 super.onBackPressed();
                 AppData.counts--;
             } else if (AppData.counts < 1) {
-                if ((System.currentTimeMillis() - exitTime) > 2000) {
+                if ((System.currentTimeMillis() - exitTime) > 1300) {
                     Toast.makeText(getApplicationContext(), "再按一次返回桌面", Toast.LENGTH_SHORT).show();
                     exitTime = System.currentTimeMillis();
                 } else {

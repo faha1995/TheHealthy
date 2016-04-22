@@ -43,11 +43,11 @@ public class SplashActivity extends BaseActivity {
                         Typeface discripType = Typeface.createFromAsset(getAssets(), "fonts/splash_discrip_text_type.ttf");
                         Typeface titleType = Typeface.createFromAsset(getAssets(),"fonts/splash_text_title_type.ttf");
                         titleText.setTypeface(titleType);
-                        titleText.setText("医疗卫生");
+                        titleText.setText("公共卫生");
                         discripText.setTypeface(discripType);
                         discripText.setText("让你对健康, 了如指掌");
                         versionText.setTypeface(discripType);
-                        versionText.setText("V 2.0");
+                        versionText.setText("V 2.1");
 
                         titleText.startAnimation(animation);
                         discripText.startAnimation(animation);

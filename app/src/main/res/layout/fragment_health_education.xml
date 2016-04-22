@@ -2,17 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fragmentBackGround"
-    >
+    android:orientation="vertical"
+    android:background="@color/fragmentBackGround">
 
-<FrameLayout
-    android:id="@+id/fragment_healthEducation"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView_health_education"
-        android:overScrollMode="never"
+    <FrameLayout
+        android:id="@+id/fragment_healthEducation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</FrameLayout>
+        android:layout_height="match_parent">
+
+        <com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout
+            android:id="@+id/swipeRefreshLoadingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView_health_education"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never" />
+
+        </com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout>
+    </FrameLayout>
 </LinearLayout>

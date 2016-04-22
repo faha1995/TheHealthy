@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:text="生活环境"
             android:layout_margin="@dimen/text_margin_title"
-            android:textColor="@color/secondaryColor"
+            android:textColor="@color/health_infor_nameTextColor"
             android:textSize="16sp" />
 
     <LinearLayout
@@ -34,7 +34,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="厨房排风"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
@@ -62,7 +62,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="燃料类型"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
@@ -90,7 +90,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="饮水"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
@@ -118,7 +118,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="厕所"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
@@ -146,7 +146,7 @@
                 android:layout_weight="1"
                 android:padding="@dimen/fragment_information_textPadding"
                 android:text="禽畜"
-                android:textColor="@color/secondaryColor"
+                android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/fragment_information_normalTextSize" />
 
             <TextView
