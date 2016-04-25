@@ -2,6 +2,8 @@ package com.example.administrator.thehealthy.activity.inforactivity;
 
 import android.content.Intent;
 import android.webkit.WebView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.administrator.thehealthy.R;
@@ -14,6 +16,7 @@ public class EducateWebViewActivity extends BaseActivity {
     private String url;
     private int position;
     private TextView titleWv;
+    private ImageView dialogIcon;
 
 
     @Override
@@ -30,13 +33,13 @@ public class EducateWebViewActivity extends BaseActivity {
         position = intent.getIntExtra("pos",0);
         titleWv.setText(AppData.eduEntityList.get(position).getTitle());
         url = AppData.eduEntityList.get(position).getContent_url();
-
+        dialogIcon = findView(R.id.img_loading);
         initData();
     }
 
 
     protected void initData() {
-        setWebView(EducateWebViewActivity.this,webView, url);
+        setWebView(EducateWebViewActivity.this, webView, url,dialogIcon);
     }
 
     @Override

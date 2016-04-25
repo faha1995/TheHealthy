@@ -1,7 +1,6 @@
 package com.example.administrator.thehealthy.fragment.inforFrament;
 
 import android.graphics.Typeface;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
@@ -53,7 +52,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -90,7 +88,9 @@ public class HealthReportFragment extends BaseFatherFragment {
             }
         });
         dbTool = new DBTool();
-
+        exListView = findView(R.id.exlistView_health_report);
+        expandAdapter = new ExpandAdapter(getActivity(), groups, childs);
+        exListView.setAdapter(expandAdapter);
         initNetWork();
     }
 
@@ -113,6 +113,7 @@ public class HealthReportFragment extends BaseFatherFragment {
         if (dbTool.isLogined()) {
             pleaseLoginLinear.setVisibility(View.GONE);
             nothingText.setVisibility(View.GONE);
+            exListView.setVisibility(View.VISIBLE);
             final HashMap<String, String> user = dbTool.getUserDetails();
 
 
@@ -162,6 +163,15 @@ public class HealthReportFragment extends BaseFatherFragment {
                                 childs.add(child);
                             }
                             expandAdapter.addChilds(childs);
+                            if (childs.get(0).size() <1) {
+                                Log.i(TAG,"------------>  childs.size "+ childs.size());
+                                Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/splash_discrip_text_type.ttf");
+                                nothingText.setTypeface(typeface);
+                                nothingText.setText("还未有相关记录");
+                                nothingText.setVisibility(View.VISIBLE);
+                                exListView.setVisibility(View.GONE);
+                            }
+
                         } else {
                             Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/splash_discrip_text_type.ttf");
                             nothingText.setTypeface(typeface);
@@ -199,9 +209,7 @@ public class HealthReportFragment extends BaseFatherFragment {
 
     @Override
     protected void initData() {
-        exListView = findView(R.id.exlistView_health_report);
-        expandAdapter = new ExpandAdapter(getActivity(), groups, childs);
-        exListView.setAdapter(expandAdapter);
+
 
         exListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
@@ -303,29 +311,5 @@ public class HealthReportFragment extends BaseFatherFragment {
         EventBus.getDefault().unregister(this);
     }
 
-    @Override
 
-    public void onDetach() {
-
-        super.onDetach();
-
-        try {
-
-            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
-
-            childFragmentManager.setAccessible(true);
-
-            childFragmentManager.set(this, null);
-
-        } catch (NoSuchFieldException e) {
-
-            throw new RuntimeException(e);
-
-        } catch (IllegalAccessException e) {
-
-            throw new RuntimeException(e);
-
-        }
-
-    }
 }

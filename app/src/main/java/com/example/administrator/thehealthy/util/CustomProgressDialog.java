@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -40,20 +41,21 @@ public class CustomProgressDialog extends Dialog {
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.loading_dialog, null);// 得到加载View
         LinearLayout layout = (LinearLayout) v.findViewById(R.id.dialog_view);//加载布局
-        spaceshipImage = (ImageView) v.findViewById(R.id.img_progressBar);
-        tipTextVIew = (TextView) v.findViewById(R.id.tipTextView);
+        spaceshipImage = (ImageView) v.findViewById(R.id.img_loading);
+//        tipTextVIew = (TextView) v.findViewById(R.id.tipTextView);
         // 加载动画
         Animation animation = AnimationUtils.loadAnimation(
                 context, R.anim.loading_animation);
+        animation.setInterpolator(new LinearInterpolator());//不停顿
+        animation.setFillAfter(true);//停在最后
         spaceshipImage.startAnimation(animation);
-        tipTextVIew.setText("正在加载中...");
+
+//        tipTextVIew.setText("正在加载中...");
         // 创建自定义样式dialog
 //       spaceshipImage.setImageResource(res);
 
         // 设置布局
-       setContentView(layout, new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.FILL_PARENT,
-                LinearLayout.LayoutParams.FILL_PARENT));
+       setContentView(v);
 
     }
 

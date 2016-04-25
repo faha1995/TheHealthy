@@ -152,8 +152,11 @@ public abstract class BaseSonFragment extends Fragment implements View.OnTouchLi
     }
 
     // 返回的方法
-    public static void backBeforFragment() {
+    public  void backBeforFragment() {
+        if (fm == null) {
 
+            fm = getActivity().getSupportFragmentManager();
+        }
         fm.popBackStack();
 //        fm.popBackStackImmediate(" ", 1);
     }

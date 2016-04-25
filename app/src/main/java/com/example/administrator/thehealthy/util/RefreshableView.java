@@ -228,6 +228,7 @@ public class RefreshableView extends LinearLayout implements View.OnTouchListene
      */
     private void updateHeaderView() {
         if (lastStatus != currentStatus) {
+            description.setVisibility(VISIBLE);
             if (currentStatus == STATUS_PULL_TO_REFRESH) {
                 description.setText(getResources().getString(R.string.pull_to_refresh));
                 arrow.setVisibility(View.VISIBLE);
@@ -279,6 +280,7 @@ public class RefreshableView extends LinearLayout implements View.OnTouchListene
         long timeIntoFormat;
         String updateAtValue;
         if (lastUpdateTime == -1) {
+            updateAt.setVisibility(INVISIBLE);
             updateAtValue = getResources().getString(R.string.not_updated_yet);
         } else if (timePassed < 0) {
             updateAtValue = getResources().getString(R.string.time_error);
@@ -305,6 +307,7 @@ public class RefreshableView extends LinearLayout implements View.OnTouchListene
             String value = timeIntoFormat + "年";
             updateAtValue = String.format(getResources().getString(R.string.updated_at), value);
         }
+        updateAt.setVisibility(VISIBLE);
         updateAt.setText(updateAtValue);
     }
 

@@ -1,8 +1,9 @@
 package com.example.administrator.thehealthy.fragment;
 
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -17,7 +18,7 @@ import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.entity.AppData;
 import com.example.administrator.thehealthy.entity.HealthEduEntity;
-import com.example.administrator.thehealthy.tools.MyClickListener;
+import com.example.administrator.thehealthy.util.RefreshableView;
 import com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
@@ -31,11 +32,13 @@ import java.util.Map;
  * Created by Administrator on 2016/3/3.
  * 健康教育界面
  */
-public class HealthEducationFragment extends BaseFatherFragment implements MyClickListener, SwipeRefreshLoadingLayout.OnLoadListener, SwipeRefreshLoadingLayout.OnRefreshListener {
+public class HealthEducationFragment extends BaseFatherFragment implements AdapterView.OnItemClickListener {
     private final String TAG = HealthEducationFragment.class.getSimpleName();
-    private RecyclerView educationRv;
+    private ListView educationLv;
     private HealthEducationAdapter educationAdapter;
     private SwipeRefreshLoadingLayout swipeRefresh;
+    private RefreshableView refreshableView;
+    private int newCounts;
 
     @Override
     protected int setLayoutView() {
@@ -48,16 +51,29 @@ public class HealthEducationFragment extends BaseFatherFragment implements MyCli
         AppData.eduEntityList.clear();
 //        frameLayout = findView(R.id.fragment_healthEducation);
 //        frameLayout.setOnTouchListener(this);
-        swipeRefresh = findView(R.id.swipeRefreshLoadingLayout);
-        swipeRefresh.setOnRefreshListener(this);
-        swipeRefresh.setOnLoadListener(this);
+//        swipeRefresh = findView(R.id.swipeRefreshLoadingLayout);
+//        swipeRefresh.setOnRefreshListener(this);
+//        swipeRefresh.setOnLoadListener(this);
+        refreshableView = findView(R.id.refreshView_education);
+        refreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
+            @Override
+            public void onRefresh() {
+                try {
+                    Thread.sleep(1000);
+                    initRefreshData();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                refreshableView.finishRefreshing();
+            }
 
-        educationRv = findView(R.id.recyclerView_health_education);
-        educationRv.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        }, 0);
+
+        educationLv = findView(R.id.listView_health_education);
+        educationLv.setOnItemClickListener(this);
         educationAdapter = new HealthEducationAdapter(getActivity());
-        educationAdapter.setMyClickListener(this);
-        educationRv.setAdapter(educationAdapter);
 
+        educationLv.setAdapter(educationAdapter);
 
 //        NetBroadcastReceiver.mListeners.add(this);
 
@@ -69,10 +85,9 @@ public class HealthEducationFragment extends BaseFatherFragment implements MyCli
         if (BaseApplication.isNetwork()) {
             initNetWork();
         } else {
-            Toast.makeText(getActivity(),"当前无网络", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "当前无网络", Toast.LENGTH_SHORT).show();
         }
     }
-
 
 
     private void initNetWork() {
@@ -81,7 +96,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements MyCli
                 AppConfig.URL_EDUCATION, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                swipeRefresh.setRefreshing(false);
+//                swipeRefresh.setRefreshing(false);
 
                 try {
                     JSONObject object = new JSONObject(response);
@@ -102,6 +117,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements MyCli
                             AppData.eduEntityList.add(eduEntity);
                             educationAdapter.addData(AppData.eduEntityList);
                         }
+                        newCounts = AppData.eduEntityList.size();
                     } else {
                         String errorMsg = object.getString("error_msg");
                         Toast.makeText(getContext(), errorMsg, Toast.LENGTH_SHORT).show();
@@ -123,47 +139,26 @@ public class HealthEducationFragment extends BaseFatherFragment implements MyCli
             }
         };
         VolleySingleton.getInstace().addRequest(stringRequest);
-    }
-
-
-    @Override
-    public void myOnClickListener(int pos) {
-        activityIntent(this,new EducateWebViewActivity(), pos);
-//        Intent intent = new Intent(getContext(),EducateWebViewActivity.class);
-//        intent.putExtra("pos",pos);
-//        startActivity(intent);
-//        getActivity().overridePendingTransition(R.anim.move_in_from_bottom, R.anim.no_move);
-    }
-
-    @Override
-    public void myOnClickListener(String type_alias, String item_alias, String title, int record_id) {
 
     }
 
-    @Override
-    public void onRefresh() {
-        initNetWork();
-    }
 
-    @Override
-    public void onLoad() {
-        initLoad();
-    }
+    private void initRefreshData() {
 
-    private void initLoad() {
-        AppData.eduEntityList.clear();
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 AppConfig.URL_EDUCATION, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                swipeRefresh.setLoading(false);
+//                swipeRefresh.setRefreshing(false);
 
                 try {
                     JSONObject object = new JSONObject(response);
                     if (!object.getBoolean("error")) {
                         int length = object.getInt("length");
 
-                        for (int i = 0; i < length; i++) {
+                        if (length > newCounts) {
+                        for (int i = 0; i < length - newCounts; i++) {
+                            // 如果发布的教育咨询有更新
                             Log.i(TAG, "-------->" + object.getInt("length"));
                             JSONObject obj = (JSONObject) object.getJSONArray("list").get(i);
                             HealthEduEntity eduEntity = new HealthEduEntity();
@@ -174,8 +169,27 @@ public class HealthEducationFragment extends BaseFatherFragment implements MyCli
                             eduEntity.setCreate_by(obj.getString("create_by"));
                             eduEntity.setContent_url(obj.getString("content_url"));
                             eduEntity.setImage_url(obj.getString("image_url"));
+                            educationAdapter.addRefreshData(eduEntity);
+                        }
+                        newCounts = length;
+                        } else if(length < newCounts){
+                            // 如果发布的教育咨询有删除
+                            AppData.eduEntityList.clear();
+                            for (int i = 0; i < length; i++) {
+                                Log.i(TAG, "-------->" + object.getInt("length"));
+                                JSONObject obj = (JSONObject) object.getJSONArray("list").get(i);
+                                HealthEduEntity eduEntity = new HealthEduEntity();
+                                eduEntity.setItem_id(obj.getInt("item_id"));
+                                eduEntity.setTitle(obj.getString("title"));
+                                eduEntity.setDescription(obj.getString("description"));
+                                eduEntity.setCreate_at(obj.getString("create_at"));
+                                eduEntity.setCreate_by(obj.getString("create_by"));
+                                eduEntity.setContent_url(obj.getString("content_url"));
+                                eduEntity.setImage_url(obj.getString("image_url"));
                             AppData.eduEntityList.add(eduEntity);
-                            educationAdapter.addData(AppData.eduEntityList);
+                                educationAdapter.addData(AppData.eduEntityList);
+                            }
+                            newCounts = length;
                         }
                     } else {
                         String errorMsg = object.getString("error_msg");
@@ -198,6 +212,88 @@ public class HealthEducationFragment extends BaseFatherFragment implements MyCli
             }
         };
         VolleySingleton.getInstace().addRequest(stringRequest);
+
     }
 
+//    @Override
+//    public void myOnClickListener(int pos) {
+
+//        Intent intent = new Intent(getContext(),EducateWebViewActivity.class);
+//        intent.putExtra("pos",pos);
+//        startActivity(intent);
+//        getActivity().overridePendingTransition(R.anim.move_in_from_bottom, R.anim.no_move);
+//    }
+//
+//    @Override
+//    public void myOnClickListener(String type_alias, String item_alias, String title, int record_id) {
+//
+//    }
+//
+//    @Override
+//    public void onRefresh() {
+//        initNetWork();
+//    }
+//
+//    @Override
+//    public void onLoad() {
+//        initLoad();
+//    }
+//
+//    private void initLoad() {
+//        AppData.eduEntityList.clear();
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+//                AppConfig.URL_EDUCATION, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                swipeRefresh.setLoading(false);
+//
+//                try {
+//                    JSONObject object = new JSONObject(response);
+//                    if (!object.getBoolean("error")) {
+//                        int length = object.getInt("length");
+//
+//                        for (int i = 0; i < length; i++) {
+//                            Log.i(TAG, "-------->" + object.getInt("length"));
+//                            JSONObject obj = (JSONObject) object.getJSONArray("list").get(i);
+//                            HealthEduEntity eduEntity = new HealthEduEntity();
+//                            eduEntity.setItem_id(obj.getInt("item_id"));
+//                            eduEntity.setTitle(obj.getString("title"));
+//                            eduEntity.setDescription(obj.getString("description"));
+//                            eduEntity.setCreate_at(obj.getString(
+//
+// "create_at"));
+//                            eduEntity.setCreate_by(obj.getString("create_by"));
+//                            eduEntity.setContent_url(obj.getString("content_url"));
+//                            eduEntity.setImage_url(obj.getString("image_url"));
+//                            AppData.eduEntityList.add(eduEntity);
+//                            educationAdapter.addData(AppData.eduEntityList);
+//                        }
+//                    } else {
+//                        String errorMsg = object.getString("error_msg");
+//                        Toast.makeText(getContext(), errorMsg, Toast.LENGTH_SHORT).show();
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(getContext(), "网络无应答,请连接网络重新进入", Toast.LENGTH_SHORT).show();
+//            }
+//        }) {
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> params = new HashMap<>();
+//                return params;
+//            }
+//        };
+//        VolleySingleton.getInstace().addRequest(stringRequest);
+//    }
+
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        activityIntent(this, new EducateWebViewActivity(), position);
+    }
 }
