@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragmentBackGround">
+
+
+    <TextView
+        android:id="@+id/text_service_plan_nothing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/secondaryColor"
+        android:textSize="25sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/linear_service_plan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/text_pleaseLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="快登录~"
+            android:textColor="@color/mainColor"
+            android:textSize="25sp"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Go Go Go!"
+            android:textColor="@color/mainColor"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout
+        android:id="@+id/swipeRefresh_service_plan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ExpandableListView
+        android:id="@+id/expandable_service_plan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:divider="@null"
+        android:groupIndicator="@null"
+        android:overScrollMode="never">
+
+    </ExpandableListView>
+    </com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout>
+
+</RelativeLayout>

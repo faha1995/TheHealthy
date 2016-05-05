@@ -4,24 +4,30 @@
     android:layout_height="match_parent"
     android:background="@color/fragmentBackGround">
 
-
-    <LinearLayout
-        android:id="@+id/linear_oldPeopleAbility"
+    <ScrollView
+        android:id="@+id/scrollView_oldpeople_life_ability"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
-
-        <TextView
+        <LinearLayout
+            android:id="@+id/linear_oldPeopleAbility"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            android:gravity="center"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:text="老年人生活自理能力评估表"
-            android:textColor="@color/secondaryColor"
-            android:textSize="19sp" />
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="老年人生活自理能力评估表"
+                android:textColor="@color/secondaryColor"
+                android:textSize="19sp" />
 
 
             <TextView
@@ -51,224 +57,224 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:background="@color/bg"
+                android:orientation="horizontal"
                 android:paddingBottom="5dp"
                 android:paddingLeft="16dp"
-                android:paddingTop="5dp"
-                android:orientation="horizontal">
+                android:paddingTop="5dp">
 
                 <TextView
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="程度等级评分："
-                    android:layout_height="wrap_content"
                     android:textColor="@color/health_infor_nameTextColor"
                     android:textSize="@dimen/health_infor_second_titleSize" />
 
                 <TextView
                     android:id="@+id/text_score_eat"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:textColor="@color/secondaryColor"
                     android:textSize="@dimen/health_infor_second_titleSize" />
 
             </LinearLayout>
 
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            android:paddingBottom="5dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="5dp"
-            android:layout_marginTop="5dp"
-            android:text="梳洗： 梳头、洗脸、刷牙、剃须、洗澡等活动"
-            android:textColor="@color/health_infor_nameTextColor"
-            android:textSize="@dimen/health_infor_second_titleSize" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@color/bg"
-            android:paddingBottom="5dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="5dp"
-            android:orientation="horizontal">
-
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="程度等级评分："
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorWhite"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp"
+                android:text="梳洗： 梳头、洗脸、刷牙、剃须、洗澡等活动"
                 android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/health_infor_second_titleSize" />
 
-            <TextView
-                android:id="@+id/text_score_wash"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/secondaryColor"
-                android:textSize="@dimen/health_infor_second_titleSize" />
+                android:layout_marginTop="1dp"
+                android:background="@color/bg"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="程度等级评分："
+                    android:textColor="@color/health_infor_nameTextColor"
+                    android:textSize="@dimen/health_infor_second_titleSize" />
 
+                <TextView
+                    android:id="@+id/text_score_wash"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="@dimen/health_infor_second_titleSize" />
 
+            </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            android:paddingBottom="5dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="5dp"
-            android:layout_marginTop="5dp"
-            android:text="穿衣： 穿衣裤、袜子、鞋子等活动"
-            android:textColor="@color/health_infor_nameTextColor"
-            android:textSize="@dimen/health_infor_second_titleSize" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@color/bg"
-            android:paddingBottom="5dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="5dp"
-            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="程度等级评分："
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorWhite"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp"
+                android:text="穿衣： 穿衣裤、袜子、鞋子等活动"
                 android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/health_infor_second_titleSize" />
 
-            <TextView
-                android:id="@+id/text_score_dress"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/secondaryColor"
-                android:textSize="@dimen/health_infor_second_titleSize" />
+                android:layout_marginTop="1dp"
+                android:background="@color/bg"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="程度等级评分："
+                    android:textColor="@color/health_infor_nameTextColor"
+                    android:textSize="@dimen/health_infor_second_titleSize" />
 
+                <TextView
+                    android:id="@+id/text_score_dress"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="@dimen/health_infor_second_titleSize" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            android:paddingBottom="5dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="5dp"
-            android:layout_marginTop="5dp"
-            android:text="如厕： 小便、大便等活动及自控"
-            android:textColor="@color/health_infor_nameTextColor"
-            android:textSize="@dimen/health_infor_second_titleSize" />
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@color/bg"
-            android:paddingBottom="5dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="5dp"
-            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="程度等级评分："
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorWhite"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp"
+                android:text="如厕： 小便、大便等活动及自控"
                 android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/health_infor_second_titleSize" />
 
-            <TextView
-                android:id="@+id/text_score_toilet"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/secondaryColor"
-                android:textSize="@dimen/health_infor_second_titleSize" />
+                android:layout_marginTop="1dp"
+                android:background="@color/bg"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp">
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="程度等级评分："
+                    android:textColor="@color/health_infor_nameTextColor"
+                    android:textSize="@dimen/health_infor_second_titleSize" />
 
+                <TextView
+                    android:id="@+id/text_score_toilet"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="@dimen/health_infor_second_titleSize" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
-            android:paddingBottom="5dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="5dp"
-            android:layout_marginTop="5dp"
-            android:text="活动： 站立、室内行走、上下楼梯、户外活动"
-            android:textColor="@color/health_infor_nameTextColor"
-            android:textSize="@dimen/health_infor_second_titleSize" />
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@color/bg"
-            android:paddingBottom="5dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="5dp"
-            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="程度等级评分："
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorWhite"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp"
+                android:text="活动： 站立、室内行走、上下楼梯、户外活动"
                 android:textColor="@color/health_infor_nameTextColor"
                 android:textSize="@dimen/health_infor_second_titleSize" />
 
-            <TextView
-                android:id="@+id/text_score_activity"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/secondaryColor"
-                android:textSize="@dimen/health_infor_second_titleSize" />
+                android:layout_marginTop="1dp"
+                android:background="@color/bg"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp">
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="程度等级评分："
+                    android:textColor="@color/health_infor_nameTextColor"
+                    android:textSize="@dimen/health_infor_second_titleSize" />
+
+                <TextView
+                    android:id="@+id/text_score_activity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="@dimen/health_infor_second_titleSize" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/bg"
+                android:orientation="horizontal"
+                android:paddingBottom="5dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="总分："
+                    android:textColor="@color/health_infor_nameTextColor"
+                    android:textSize="@dimen/health_infor_second_titleSize" />
+
+                <TextView
+                    android:id="@+id/text_score_total"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/secondaryColor"
+                    android:textSize="@dimen/health_infor_second_titleSize" />
+
+            </LinearLayout>
+
+            <include layout="@layout/evaluate_footer" />
         </LinearLayout>
+    </ScrollView>
 
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@color/bg"
-            android:paddingBottom="5dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="5dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:text="总分："
-                android:layout_height="wrap_content"
-                android:textColor="@color/health_infor_nameTextColor"
-                android:textSize="@dimen/health_infor_second_titleSize" />
-
-            <TextView
-                android:id="@+id/text_score_total"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textColor="@color/secondaryColor"
-                android:textSize="@dimen/health_infor_second_titleSize" />
-
-        </LinearLayout>
-
-    </LinearLayout>
 </LinearLayout>

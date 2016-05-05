@@ -17,4 +17,7 @@ public class AppConfig {
     public static String URL_SUMMARYS = "http://124.248.40.142/backend/summaries/";
     public static String URL_EDUCATION = "http://124.248.40.142/backend/educations/";
     public static String URL_DETAIL = "http://124.248.40.142/backend/detail/";
+    public static String URL_EVALUATE = "http://124.248.40.142/backend/evaluate/";
+    public static String URL_PLANS = "http://124.248.40.142/backend/plans/";
+
 }

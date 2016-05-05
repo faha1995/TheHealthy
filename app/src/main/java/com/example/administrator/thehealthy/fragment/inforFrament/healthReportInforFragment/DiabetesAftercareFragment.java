@@ -3,6 +3,7 @@ package com.example.administrator.thehealthy.fragment.inforFrament.healthReportI
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -14,12 +15,15 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
+import com.example.administrator.thehealthy.entity.AndroidToServerEntity;
 import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.fragment.BaseSonFragment;
 import com.example.administrator.thehealthy.tools.ChangeString;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,13 +33,18 @@ import java.util.Map;
 /**
  * Created by Administrator on 2016/3/16.
  */
-public class DiabetesAftercareFragment extends BaseSonFragment {
+public class DiabetesAftercareFragment extends BaseSonFragment implements View.OnClickListener {
     private final String TAG = DiabetesAftercareFragment.class.getSimpleName();
     private LinearLayout linearDosageFirst, linearDosageSecond, linearDosageThird,
             linearSportNow, linearSportSuggest;
     private ScrollView scrollViewAfter;
     private ScrollViewOnTouch scrollViewOnTouch = new ScrollViewOnTouch();
     private String titles;
+    private Button unknowBtn, generalBtn, greatBtn;
+    private final int SCORE_UNKNOW = 1;
+    private final int SCORE_GENERAL = 2;
+    private final int SCORE_GREATE = 3;
+    private int record_id, evaluation;
 
     public DiabetesAftercareFragment(String title) {
         this.titles = title;
@@ -57,13 +66,21 @@ public class DiabetesAftercareFragment extends BaseSonFragment {
         scrollViewAfter = findView(R.id.scrollView_diabetes);
         scrollViewOnTouch.setScrollView(scrollViewAfter);
         Log.i(TAG, "---->  initView()");
+        unknowBtn = findView(R.id.btn_unKnow);
+        generalBtn = findView(R.id.btn_general);
+        greatBtn = findView(R.id.btn_great);
+        unknowBtn.setOnClickListener(this);
+        generalBtn.setOnClickListener(this);
+        greatBtn.setOnClickListener(this);
+        EventBus.getDefault().register(this);
+
     }
 
     @Override
     protected void initData() {
         Log.i(TAG, "---->  initData()");
         Bundle bundle = getArguments();
-        final int record_id = bundle.getInt("record_id", 0);
+         record_id = bundle.getInt("record_id", 0);
         Log.i(TAG, "----> " + record_id);
         if (record_id != 0) {
 
@@ -81,6 +98,23 @@ public class DiabetesAftercareFragment extends BaseSonFragment {
                                 if (!obj.getBoolean("error")) {
                                     JSONObject detail = obj.getJSONObject("detail");
                                     // Toast.makeText(getApplicationContext(), detail.getString("visit_date"), Toast.LENGTH_SHORT).show();
+                                    evaluation = detail.getInt("evaluation");
+                                    Log.i(TAG, "---------> " + evaluation);
+// 该界面已评价
+                                    if (evaluation > 0) {
+                                        setButtonEnabled(unknowBtn, generalBtn, greatBtn);
+                                        switch (evaluation) {
+                                            case 1:
+                                                unknowBtn.setBackgroundResource(R.drawable.button_shape);
+                                                break;
+                                            case 2:
+                                                generalBtn.setBackgroundResource(R.drawable.button_shape);
+                                                break;
+                                            case 3:
+                                                greatBtn.setBackgroundResource(R.drawable.button_shape);
+                                        }
+                                    }
+
                                     TextView title = findView(R.id.text_diabetes_title);
                                     title.setText("糖尿病患者 "+titles);
                                     TextView visit_date = findView(R.id.visit_date);
@@ -248,5 +282,46 @@ public class DiabetesAftercareFragment extends BaseSonFragment {
         }
     }
 
+
+    @Override
+    public void onClick(View v) {
+        if (evaluation == 0) {
+            switch (v.getId()) {
+                case R.id.btn_unKnow:
+                    //判断客户端与服务器交互后是否成功
+                    androidToServer(record_id, SCORE_UNKNOW, AppConfig.URL_EVALUATE,TAG);
+                    break;
+                case R.id.btn_general:
+                    androidToServer(record_id, SCORE_GENERAL, AppConfig.URL_EVALUATE,TAG);
+                    break;
+                case R.id.btn_great:
+                    androidToServer(record_id, SCORE_GREATE, AppConfig.URL_EVALUATE,TAG);
+                    break;
+            }
+
+        }
+
+    }
+
+    @Subscribe
+    public void onEvent(AndroidToServerEntity entity) {
+
+        if (entity.getString().equals(TAG)) {
+            switch (entity.getScore()) {
+                case 1:
+                    unknowBtn.setBackgroundResource(R.drawable.button_shape);
+                    setButtonEnabled(unknowBtn, generalBtn, greatBtn);
+                    break;
+                case 2:
+                    generalBtn.setBackgroundResource(R.drawable.button_shape);
+                    setButtonEnabled(unknowBtn, generalBtn, greatBtn);
+                    break;
+                case 3:
+                    greatBtn.setBackgroundResource(R.drawable.button_shape);
+                    setButtonEnabled(unknowBtn, generalBtn, greatBtn);
+                    break;
+            }
+        }
+    }
 
 }

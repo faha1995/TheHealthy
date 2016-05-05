@@ -1,6 +1,7 @@
 package com.example.administrator.thehealthy.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,31 +18,37 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/4/11.
  */
-public class ExpandAdapter extends BaseExpandableListAdapter {
+public class HealthRrportExpandAdapter extends BaseExpandableListAdapter {
     private List<String> groups;
     private List<List<Summary>> childs;
     private Context context;
-    final String TAG = ExpandAdapter.class.getSimpleName();
+    private final String TAG = HealthRrportExpandAdapter.class.getSimpleName();
 
 
-    public ExpandAdapter(Context context, List<String> groups, List<List<Summary>> childs) {
+    public HealthRrportExpandAdapter(Context context, List<String> groups, List<List<Summary>> childs) {
         this.groups = groups;
-
         this.childs = childs;
         this.context = context;
     }
 
     // 添加groups集合的方法
-    public void addGroups(List<String> groups) {
+//    public void addGroups(List<String> groups) {
+//        this.groups = groups;
+//        notifyDataSetChanged();
+//    }
+
+    // 添加groups和childs集合的方法
+    public void addToReportGroupsChilds(List<String> groups,List<List<Summary>> childs) {
         this.groups = groups;
+        this.childs = childs;
         notifyDataSetChanged();
     }
 
     // 添加childs集合的方法
-    public void addChilds(List<List<Summary>> childs) {
-        this.childs = childs;
-        notifyDataSetChanged();
-    }
+//    public void addChilds(List<List<Summary>> childs) {
+//        this.childs = childs;
+//        notifyDataSetChanged();
+//    }
 
     @Override
     public int getGroupCount() {
@@ -50,6 +57,7 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
+        Log.i(TAG,"--------> getChildrenCount  "+childs.get(groupPosition).size() );
         return childs != null && childs.get(groupPosition).size() > 0 ?
                 childs.get(groupPosition).size() : 0;
     }
@@ -113,7 +121,6 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
                     .inflate(R.layout.adapter_health_report_item, parent, false);
             childHolder = new ChildViewHolder();
             childHolder.titleText = (TextView) convertView.findViewById(R.id.text_healthReport_adapter_title);
-//            childHolder.purposeText = (TextView) convertView.findViewById(R.id.text_healthReport_adapter_purpose);
             childHolder.clinicText = (TextView) convertView.findViewById(R.id.adapter_health_report_clinic);
             childHolder.doctorText = (TextView) convertView.findViewById(R.id.adapter_health_report_doctor);
             childHolder.timeText = (TextView) convertView.findViewById(R.id.text_healthReport_adapter_time);
@@ -122,12 +129,10 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
         } else {
             childHolder = (ChildViewHolder) convertView.getTag();
         }
-            childHolder.titleText.setText(childs.get(groupPosition).get(childPosition).getTitle());
-//            childHolder.purposeText.setText(
-//                    ChangeString.splitForPurpose(childs.get(groupPosition).get(childPosition).getTitle())
-            childHolder.doctorText.setText(childs.get(groupPosition).get(childPosition).getProvider());
-            childHolder.clinicText.setText(childs.get(groupPosition).get(childPosition).getClinic());
-            childHolder.timeText.setText(childs.get(groupPosition).get(childPosition).getServiceTime());
+        childHolder.titleText.setText(childs.get(groupPosition).get(childPosition).getTitle());
+        childHolder.doctorText.setText(childs.get(groupPosition).get(childPosition).getProvider());
+        childHolder.clinicText.setText(childs.get(groupPosition).get(childPosition).getClinic());
+        childHolder.timeText.setText(childs.get(groupPosition).get(childPosition).getServiceTime());
 
         return convertView;
     }
@@ -145,6 +150,6 @@ public class ExpandAdapter extends BaseExpandableListAdapter {
     }
 
     class ChildViewHolder {
-        TextView titleText,clinicText, doctorText, timeText;
+        TextView titleText, clinicText, doctorText, timeText;
     }
 }

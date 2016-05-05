@@ -14,9 +14,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity;
-import com.example.administrator.thehealthy.adapter.ExpandAdapter;
+import com.example.administrator.thehealthy.adapter.HealthRrportExpandAdapter;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.entity.AppConfig;
+import com.example.administrator.thehealthy.entity.AppData;
 import com.example.administrator.thehealthy.entity.Summary;
 import com.example.administrator.thehealthy.fragment.BaseFatherFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.Aftercare12MonthFragment;
@@ -44,6 +45,7 @@ import com.example.administrator.thehealthy.fragment.inforFrament.healthReportIn
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.VaccinationFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.healthReportInforFragment.VaccineCardFragment;
 import com.example.administrator.thehealthy.tools.ChangeString;
+import com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
 import org.greenrobot.eventbus.EventBus;
@@ -61,15 +63,14 @@ import java.util.Map;
  * Created by Administrator on 2016/4/11.
  * 健康报告界面
  */
-public class HealthReportFragment extends BaseFatherFragment {
+public class HealthReportFragment extends BaseFatherFragment implements SwipeRefreshLoadingLayout.OnRefreshListener, SwipeRefreshLoadingLayout.OnLoadListener {
     private final String TAG = HealthReportFragment.class.getSimpleName();
     private DBTool dbTool;
     private ExpandableListView exListView;
-    private ExpandAdapter expandAdapter;
-    private List<String> groups = new ArrayList<>();
-    private List<List<Summary>> childs = new ArrayList<>();
+    private HealthRrportExpandAdapter expandAdapter;
     private LinearLayout pleaseLoginLinear;
     private TextView nothingText;
+    private SwipeRefreshLoadingLayout swipeLoading;
 
     @Override
     protected int setLayoutView() {
@@ -78,7 +79,7 @@ public class HealthReportFragment extends BaseFatherFragment {
 
     @Override
     protected void initView() {
-        EventBus.getDefault().register(this);
+
         nothingText = findView(R.id.text_health_report_nothing);
         pleaseLoginLinear = findView(R.id.linear_pleaseLogin);
         pleaseLoginLinear.setOnClickListener(new View.OnClickListener() {
@@ -87,11 +88,27 @@ public class HealthReportFragment extends BaseFatherFragment {
                 activityIntent(getActivity(), LoginActivity.class);
             }
         });
+
         dbTool = new DBTool();
         exListView = findView(R.id.exlistView_health_report);
-        expandAdapter = new ExpandAdapter(getActivity(), groups, childs);
-        exListView.setAdapter(expandAdapter);
+        expandAdapter = new HealthRrportExpandAdapter(getActivity(), AppData.hrGroups, AppData.hrChilds);
         initNetWork();
+        exListView.setAdapter(expandAdapter);
+        swipeLoading = findView(R.id.swipeRefresh_health_report);
+        swipeLoading.setOnRefreshListener(this);
+        swipeLoading.setOnLoadListener(this);
+
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this);
+        }
+    }
+
+
+    @Override
+    public void onRefresh() {
+
+        initNetWork();
+
     }
 
     @Subscribe
@@ -101,15 +118,17 @@ public class HealthReportFragment extends BaseFatherFragment {
                 initNetWork();
                 break;
             case "退出当前用户":
-                groups.clear();
-                childs.clear();
-                expandAdapter.addGroups(groups);
-                expandAdapter.addChilds(childs);
+                AppData.hrGroups.clear();
+                AppData.hrChilds.clear();
+                expandAdapter.addToReportGroupsChilds(AppData.hrGroups, AppData.hrChilds);
                 initNetWork();
         }
     }
 
     private void initNetWork() {
+        AppData.hrGroups.clear();
+        AppData.hrChilds.clear();
+
         if (dbTool.isLogined()) {
             pleaseLoginLinear.setVisibility(View.GONE);
             nothingText.setVisibility(View.GONE);
@@ -121,22 +140,25 @@ public class HealthReportFragment extends BaseFatherFragment {
                     AppConfig.URL_SUMMARYS, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    Log.i(TAG, "健康报告界面数据网络通信响应");
 
+                    swipeLoading.setRefreshing(false);
+
+                    Log.i(TAG, "健康报告界面数据网络通信响应");
                     try {
                         JSONObject jsonObject = new JSONObject(response);
                         boolean error = jsonObject.getBoolean("error");
 
                         if (!error) {
-
+//
                             // 得到一级分类的数据加入groups集合中
                             JSONArray member = jsonObject.getJSONArray("member");
                             for (int i = 0; i < member.length(); i++) {
-                                groups.add(member.getJSONObject(i).getString("resident"));
+//                                groups.add(i, member.getJSONObject(i).getString("resident"));
+                                AppData.hrGroups.add(i, member.getJSONObject(i).getString("resident"));
                                 Log.i(TAG, "------> member.length" + member.getJSONObject(i).getString("resident"));
-                                Log.i(TAG, "-------> Groups.size" + groups.size());
-                                expandAdapter.addGroups(groups);
                             }
+//                            expandAdapter.addGroups(AppData.hrGroups);
+
 
 //                             得到一级分类对应的二级分类数据，加入childs集合中
                             JSONArray summaries = jsonObject.getJSONArray("summary");
@@ -145,10 +167,11 @@ public class HealthReportFragment extends BaseFatherFragment {
                                 Log.i(TAG, "---------->  summaries.length" + summaries.length() + "  " + i);
                                 JSONArray array = summaries.getJSONArray(i);
                                 Log.i(TAG, "---------->  array.length" + array.length() + "  " + i);
+
                                 for (int k = 0; k < array.length(); k++) {
                                     JSONObject item = (JSONObject) array.get(k);
                                     Summary summary = new Summary();
-//
+
                                     summary.setRecordId(item.getInt("record_id"));
                                     summary.setTitle(item.getString("title"));
                                     summary.setResident(item.getString("resident"));
@@ -157,26 +180,23 @@ public class HealthReportFragment extends BaseFatherFragment {
                                     summary.setServiceTime(item.getString("service_time"));
                                     summary.setTypeAlias(item.getString("type_alias"));
                                     summary.setItemAlias(item.getString("item_alias"));
-                                    child.add(summary);
+                                    child.add(k, summary);
                                     dbTool.addSummary(summary);
                                 }
-                                childs.add(child);
+                                AppData.hrChilds.add(i, child);
                             }
-                            expandAdapter.addChilds(childs);
-                            if (childs.get(0).size() <1) {
-                                Log.i(TAG,"------------>  childs.size "+ childs.size());
-                                Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(),"fonts/splash_discrip_text_type.ttf");
-                                nothingText.setTypeface(typeface);
-                                nothingText.setText("还未有相关记录");
-                                nothingText.setVisibility(View.VISIBLE);
-                                exListView.setVisibility(View.GONE);
-                            }
+
+//                            expandAdapter.addChilds(AppData.hrChilds);
+                            // 为了刷新时 groups 和 childs 同时显示
+                            // 同时将两个集合传入adapter中
+                            expandAdapter.addToReportGroupsChilds(AppData.hrGroups, AppData.hrChilds);
 
                         } else {
                             Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/splash_discrip_text_type.ttf");
                             nothingText.setTypeface(typeface);
                             nothingText.setText("还未有相关记录");
                             nothingText.setVisibility(View.VISIBLE);
+                            exListView.setVisibility(View.GONE);
                         }
 
                     } catch (JSONException e) {
@@ -215,15 +235,16 @@ public class HealthReportFragment extends BaseFatherFragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 
-                goWhich(childs.get(groupPosition).get(childPosition).getTypeAlias(),
-                        childs.get(groupPosition).get(childPosition).getItemAlias(),
-                        ChangeString.splitForPurpose(childs.get(groupPosition).get(childPosition).getTitle()),
-                        childs.get(groupPosition).get(childPosition).getRecordId());
+                goWhich(AppData.hrChilds.get(groupPosition).get(childPosition).getTypeAlias(),
+                        AppData.hrChilds.get(groupPosition).get(childPosition).getItemAlias(),
+                        ChangeString.splitForPurpose(AppData.hrChilds.get(groupPosition).get(childPosition).getTitle()),
+                        AppData.hrChilds.get(groupPosition).get(childPosition).getRecordId());
 
 
                 return true;
             }
         });
+
 
     }
 
@@ -238,7 +259,6 @@ public class HealthReportFragment extends BaseFatherFragment {
                 || item_alias.equals("aftercare_4") || item_alias.equals("aftercare_5"))) {
             goToNextFragmentFromHealthReport(new AftercareFragment(title), record_id);
         } else if (type_alias.equals("pregnant") && item_alias.equals("postpartum_42_day_examination")) {
-
             goToNextFragmentFromHealthReport(new PostpartumManyDaysHealthCheck(), record_id);
         } else if (type_alias.equals("hypertension") && (item_alias.equals("aftercare_1")
                 || item_alias.equals("aftercare_2") || item_alias.equals("aftercare_3")
@@ -312,4 +332,8 @@ public class HealthReportFragment extends BaseFatherFragment {
     }
 
 
+    @Override
+    public void onLoad() {
+        swipeLoading.setLoading(false);
+    }
 }

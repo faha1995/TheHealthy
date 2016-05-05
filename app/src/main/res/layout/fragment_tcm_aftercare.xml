@@ -148,4 +148,5 @@
             android:textColor="@color/secondaryColor" />
     </LinearLayout>
 
+    <include layout="@layout/evaluate_footer"/>
 </LinearLayout>

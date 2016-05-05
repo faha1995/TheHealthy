@@ -26,6 +26,9 @@ public class VolleySingleton {
         return queue;
     }
 
+    public static void queueStart(){
+        getInstace().getQueue().start();
+    }
     private static final class singletonHolder{
         private static final VolleySingleton instance = new VolleySingleton();
     }

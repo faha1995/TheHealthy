@@ -30,4 +30,5 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.android.support:support-v13:23.2.0'
     compile 'com.android.support:support-v4:23.2.0'
+    compile 'com.github.yoojia:anyversion:1.0@aar'
 }

@@ -47,7 +47,7 @@ public class SplashActivity extends BaseActivity {
                         discripText.setTypeface(discripType);
                         discripText.setText("让你对健康, 了如指掌");
                         versionText.setTypeface(discripType);
-                        versionText.setText("V 2.0");
+                        versionText.setText("V 2.2");
 
                         titleText.startAnimation(animation);
                         discripText.startAnimation(animation);

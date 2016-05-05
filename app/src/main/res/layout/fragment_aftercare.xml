@@ -8,7 +8,8 @@
     tools:context=".activity.AftercareActivity">
 
 
-    <include layout="@layout/content_aftercare" />
+        <include layout="@layout/content_aftercare" />
+
 
 
 </android.support.design.widget.CoordinatorLayout>

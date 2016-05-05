@@ -157,22 +157,22 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                         int length = object.getInt("length");
 
                         if (length > newCounts) {
-                        for (int i = 0; i < length - newCounts; i++) {
-                            // 如果发布的教育咨询有更新
-                            Log.i(TAG, "-------->" + object.getInt("length"));
-                            JSONObject obj = (JSONObject) object.getJSONArray("list").get(i);
-                            HealthEduEntity eduEntity = new HealthEduEntity();
-                            eduEntity.setItem_id(obj.getInt("item_id"));
-                            eduEntity.setTitle(obj.getString("title"));
-                            eduEntity.setDescription(obj.getString("description"));
-                            eduEntity.setCreate_at(obj.getString("create_at"));
-                            eduEntity.setCreate_by(obj.getString("create_by"));
-                            eduEntity.setContent_url(obj.getString("content_url"));
-                            eduEntity.setImage_url(obj.getString("image_url"));
-                            educationAdapter.addRefreshData(eduEntity);
-                        }
-                        newCounts = length;
-                        } else if(length < newCounts){
+                            for (int i = 0; i < length - newCounts; i++) {
+                                // 如果发布的教育咨询有更新
+                                Log.i(TAG, "-------->" + object.getInt("length"));
+                                JSONObject obj = (JSONObject) object.getJSONArray("list").get(i);
+                                HealthEduEntity eduEntity = new HealthEduEntity();
+                                eduEntity.setItem_id(obj.getInt("item_id"));
+                                eduEntity.setTitle(obj.getString("title"));
+                                eduEntity.setDescription(obj.getString("description"));
+                                eduEntity.setCreate_at(obj.getString("create_at"));
+                                eduEntity.setCreate_by(obj.getString("create_by"));
+                                eduEntity.setContent_url(obj.getString("content_url"));
+                                eduEntity.setImage_url(obj.getString("image_url"));
+                                educationAdapter.addRefreshData(eduEntity);
+                            }
+                            newCounts = length;
+                        } else if (length < newCounts) {
                             // 如果发布的教育咨询有删除
                             AppData.eduEntityList.clear();
                             for (int i = 0; i < length; i++) {
@@ -186,7 +186,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                                 eduEntity.setCreate_by(obj.getString("create_by"));
                                 eduEntity.setContent_url(obj.getString("content_url"));
                                 eduEntity.setImage_url(obj.getString("image_url"));
-                            AppData.eduEntityList.add(eduEntity);
+                                AppData.eduEntityList.add(eduEntity);
                                 educationAdapter.addData(AppData.eduEntityList);
                             }
                             newCounts = length;
@@ -214,82 +214,6 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
         VolleySingleton.getInstace().addRequest(stringRequest);
 
     }
-
-//    @Override
-//    public void myOnClickListener(int pos) {
-
-//        Intent intent = new Intent(getContext(),EducateWebViewActivity.class);
-//        intent.putExtra("pos",pos);
-//        startActivity(intent);
-//        getActivity().overridePendingTransition(R.anim.move_in_from_bottom, R.anim.no_move);
-//    }
-//
-//    @Override
-//    public void myOnClickListener(String type_alias, String item_alias, String title, int record_id) {
-//
-//    }
-//
-//    @Override
-//    public void onRefresh() {
-//        initNetWork();
-//    }
-//
-//    @Override
-//    public void onLoad() {
-//        initLoad();
-//    }
-//
-//    private void initLoad() {
-//        AppData.eduEntityList.clear();
-//        StringRequest stringRequest = new StringRequest(Request.Method.POST,
-//                AppConfig.URL_EDUCATION, new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                swipeRefresh.setLoading(false);
-//
-//                try {
-//                    JSONObject object = new JSONObject(response);
-//                    if (!object.getBoolean("error")) {
-//                        int length = object.getInt("length");
-//
-//                        for (int i = 0; i < length; i++) {
-//                            Log.i(TAG, "-------->" + object.getInt("length"));
-//                            JSONObject obj = (JSONObject) object.getJSONArray("list").get(i);
-//                            HealthEduEntity eduEntity = new HealthEduEntity();
-//                            eduEntity.setItem_id(obj.getInt("item_id"));
-//                            eduEntity.setTitle(obj.getString("title"));
-//                            eduEntity.setDescription(obj.getString("description"));
-//                            eduEntity.setCreate_at(obj.getString(
-//
-// "create_at"));
-//                            eduEntity.setCreate_by(obj.getString("create_by"));
-//                            eduEntity.setContent_url(obj.getString("content_url"));
-//                            eduEntity.setImage_url(obj.getString("image_url"));
-//                            AppData.eduEntityList.add(eduEntity);
-//                            educationAdapter.addData(AppData.eduEntityList);
-//                        }
-//                    } else {
-//                        String errorMsg = object.getString("error_msg");
-//                        Toast.makeText(getContext(), errorMsg, Toast.LENGTH_SHORT).show();
-//                    }
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(getContext(), "网络无应答,请连接网络重新进入", Toast.LENGTH_SHORT).show();
-//            }
-//        }) {
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<>();
-//                return params;
-//            }
-//        };
-//        VolleySingleton.getInstace().addRequest(stringRequest);
-//    }
 
 
     @Override

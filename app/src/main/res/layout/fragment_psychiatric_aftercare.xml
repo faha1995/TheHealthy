@@ -1185,6 +1185,8 @@
                     android:layout_weight="1"
                     android:textColor="@color/secondaryColor" />
             </LinearLayout>
+
+            <include layout="@layout/evaluate_footer"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

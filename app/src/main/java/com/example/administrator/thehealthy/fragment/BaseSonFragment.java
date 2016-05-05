@@ -22,15 +22,28 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.MainActivity;
 import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity;
+import com.example.administrator.thehealthy.entity.AndroidToServerEntity;
 import com.example.administrator.thehealthy.entity.AppData;
+import com.example.administrator.thehealthy.tools.NormalPostRequest;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
+
+import org.greenrobot.eventbus.EventBus;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/3/3.
+ *
  */
 public abstract class BaseSonFragment extends Fragment implements View.OnTouchListener {
     private View view;
@@ -38,6 +51,7 @@ public abstract class BaseSonFragment extends Fragment implements View.OnTouchLi
     private static FragmentTransaction ft;
     private static ImageLoader imageLoader;
     private Context context;
+
 
 
     @Nullable
@@ -92,6 +106,7 @@ public abstract class BaseSonFragment extends Fragment implements View.OnTouchLi
         if (fm == null) {
 
             fm = getActivity().getSupportFragmentManager();
+
         }
 
         ft = fm.beginTransaction();
@@ -105,7 +120,7 @@ public abstract class BaseSonFragment extends Fragment implements View.OnTouchLi
         // addToBackStack() 是为了将该Fragment加入到后退栈中
         // 在返回时,可以直接返回到上一个界面
         ft.addToBackStack(null);
-        Log.i("FragmentManagerCounts","---------> "+ fm.getBackStackEntryCount());
+        Log.i("FragmentManagerCounts", "---------> " + fm.getBackStackEntryCount());
         ft.commitAllowingStateLoss();
 
     }
@@ -152,7 +167,7 @@ public abstract class BaseSonFragment extends Fragment implements View.OnTouchLi
     }
 
     // 返回的方法
-    public  void backBeforFragment() {
+    public void backBeforFragment() {
         if (fm == null) {
 
             fm = getActivity().getSupportFragmentManager();
@@ -270,8 +285,59 @@ public abstract class BaseSonFragment extends Fragment implements View.OnTouchLi
     }
 
 
-    private void setCounts(){
+    private void setCounts() {
         AppData.counts = 1;
     }
 
+    //判断客户端与服务器交互后是否成功的方法
+//        boolean isOk;
+    public void androidToServer(int record_id, final int score, String url, final String whichDetail) {
+
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("record_id", String.valueOf(record_id));
+        map.put("score", String.valueOf(score));
+
+        Request<JSONObject> request = new NormalPostRequest(url,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            if (!response.getBoolean("error")) {
+                                AndroidToServerEntity entity = new AndroidToServerEntity();
+                                entity.setString(whichDetail);
+                                entity.setScore(score);
+                                EventBus.getDefault().post(entity);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }, map);
+        VolleySingleton.getInstace().addRequest(request);
+
+    }
+
+
+
+    // 设置按钮不可点击
+    public void setButtonEnabled(Button button0, Button button1, Button button2) {
+        button0.setEnabled(false);
+        button1.setEnabled(false);
+        button2.setEnabled(false);
+    }
 }
+
+
+
+
+
+
+
+
+
+

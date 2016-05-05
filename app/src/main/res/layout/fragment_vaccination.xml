@@ -184,5 +184,5 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-
+    <include layout="@layout/evaluate_footer"/>
 </LinearLayout>

@@ -8,6 +8,7 @@ import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.adapter.PersonalAdapter;
 import com.example.administrator.thehealthy.fragment.inforFrament.HealthReportFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.PersonalInforFragment;
+import com.example.administrator.thehealthy.fragment.inforFrament.ServicePlanFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,17 +36,17 @@ public class PersonalFragment extends BaseFatherFragment {
     protected void initView() {
         personalTabLayout = findView(R.id.tabLayout_per);
         personalViewPager = findView(R.id.viewPager_per);
-//        // 预缓存为2
-//        personalViewPager.setOffscreenPageLimit(0);
+       // 预缓存为2
+        personalViewPager.setOffscreenPageLimit(2);
         // 添加Fragment
         fragmentList.add(new PersonalInforFragment());
         fragmentList.add(new HealthReportFragment());
-//        fragmentList.add(new HospitalTreatmentFragment());
+        fragmentList.add(new ServicePlanFragment());
 
         // 添加Title
         titles.add("个人信息");
         titles.add("健康报告");
-//        titles.add("医院诊疗");
+        titles.add("服务计划");
 
         personalAdapter = new PersonalAdapter(
                 getActivity().getSupportFragmentManager(), getActivity(), fragmentList, titles);
@@ -55,7 +56,7 @@ public class PersonalFragment extends BaseFatherFragment {
         // 添加tab对应的文字
         personalTabLayout.addTab(personalTabLayout.newTab().setText(titles.get(0)));
         personalTabLayout.addTab(personalTabLayout.newTab().setText(titles.get(1)));
-//        personalTabLayout.addTab(personalTabLayout.newTab().setText(titles.get(2)));
+        personalTabLayout.addTab(personalTabLayout.newTab().setText(titles.get(2)));
         personalTabLayout.setupWithViewPager(personalViewPager);
     }
 
@@ -64,31 +65,6 @@ public class PersonalFragment extends BaseFatherFragment {
 
     }
 
-//    @Override
-//
-//    public void onDetach() {
-//
-//        super.onDetach();
-//
-//        try {
-//
-//            Field childFragmentManager = Fragment.class.getDeclaredField("mChildFragmentManager");
-//
-//            childFragmentManager.setAccessible(true);
-//
-//            childFragmentManager.set(this, null);
-//
-//        } catch (NoSuchFieldException e) {
-//
-//            throw new RuntimeException(e);
-//
-//        } catch (IllegalAccessException e) {
-//
-//            throw new RuntimeException(e);
-//
-//        }
-
-//    }
 
 
 }

@@ -4,48 +4,58 @@
     android:layout_height="match_parent"
     android:background="@color/fragmentBackGround">
 
-    <TextView
-        android:id="@+id/text_health_report_nothing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:textColor="@color/secondaryColor"
-        android:textSize="25sp"
-        android:visibility="gone" />
-
-    <ExpandableListView
-        android:id="@+id/exlistView_health_report"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:groupIndicator="@null"
-        android:overScrollMode="never"
-        android:divider="@null"></ExpandableListView>
-
-    <LinearLayout
-        android:id="@+id/linear_pleaseLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:visibility="gone">
 
         <TextView
-            android:id="@+id/text_pleaseLogin"
+            android:id="@+id/text_health_report_nothing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/secondaryColor"
+            android:textSize="25sp"
+            android:visibility="gone" />
+<com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout
+    android:id="@+id/swipeRefresh_health_report"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+        <ExpandableListView
+            android:id="@+id/exlistView_health_report"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="快登录~"
-            android:textColor="@color/mainColor"
-            android:textSize="25sp"
+            android:layout_marginTop="5dp"
+            android:divider="@null"
+            android:groupIndicator="@null"
+            android:overScrollMode="never"></ExpandableListView>
 
-            />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Go Go Go!"
-            android:textColor="@color/mainColor"
-            android:textSize="20sp" />
 
-    </LinearLayout>
+</com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout>
+        <LinearLayout
+            android:id="@+id/linear_pleaseLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/text_pleaseLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="快登录~"
+                android:textColor="@color/mainColor"
+                android:textSize="25sp"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Go Go Go!"
+                android:textColor="@color/mainColor"
+                android:textSize="20sp" />
+
+        </LinearLayout>
 </RelativeLayout>
