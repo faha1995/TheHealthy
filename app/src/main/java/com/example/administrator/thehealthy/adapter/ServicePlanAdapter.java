@@ -1,6 +1,7 @@
 package com.example.administrator.thehealthy.adapter;
 
 import android.content.Context;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.entity.PlanEntity;
+import com.example.administrator.thehealthy.tools.ChangeString;
 
 import java.util.List;
 
@@ -23,13 +25,20 @@ public class ServicePlanAdapter extends BaseExpandableListAdapter {
     private List<String> groups;
     private List<List<PlanEntity>> childs;
     private Context context;
+    private int nowYear, nowMonth, nowDate;
+    private Time time;
+
 
     public ServicePlanAdapter(Context context, List<String> groups, List<List<PlanEntity>> childs) {
         this.groups = groups;
         this.childs = childs;
         this.context = context;
+        time = new Time("GMT+8:00");
+        time.setToNow();
+        nowYear = time.year;
+        nowMonth = time.month + 1;
+        nowDate = time.monthDay;
     }
-
 
 
     // 同时添加groups 和 childs 的集合
@@ -103,6 +112,7 @@ public class ServicePlanAdapter extends BaseExpandableListAdapter {
         }
         groupViewHolder.groupText.setText(groups.get(groupPosition));
 
+
         return convertView;
     }
 
@@ -121,11 +131,27 @@ public class ServicePlanAdapter extends BaseExpandableListAdapter {
         } else {
             childViewHolder = (ChildViewHolder) convertView.getTag();
         }
+        Log.i("int","----> int " + ChangeString.planStatus(childs.get(groupPosition).get(childPosition).getNext_date(),
+                nowYear, nowMonth, nowDate));
+        switch (ChangeString.Count(childs.get(groupPosition).get(childPosition).getNext_date(),
+                nowYear, nowMonth, nowDate)) {
 
+            case 1:
+                childViewHolder.statusText.setText("未过期");
+                childViewHolder.statusText.setBackgroundResource(R.drawable.service_plan_child_status_text_background_green);
+                break;
+            case 2:
+                childViewHolder.statusText.setText("快过期");
+                childViewHolder.statusText.setBackgroundResource(R.drawable.service_plan_child_status_text_background_yellow);
+                break;
+            case 3:
+                childViewHolder.statusText.setText("过期");
+                childViewHolder.statusText.setBackgroundResource(R.drawable.service_plan_child_status_text_background_red);
+                break;
+        }
         childViewHolder.titleText.setText(childs.get(groupPosition)
                 .get(childPosition).getService_item());
-        childViewHolder.statusText.setText(childs.get(groupPosition)
-                .get(childPosition).getStatus());
+
         childViewHolder.dateText.setText(childs.get(groupPosition)
                 .get(childPosition).getNext_date());
 

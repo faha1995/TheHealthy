@@ -19,8 +19,8 @@
             android:layout_weight="1"
             app:tabTextAppearance="@style/MyTabLayoutTextAppearanceInverse"
             app:tabIndicatorColor="@color/mainColor"
-            app:tabSelectedTextColor="@color/secondaryColor"
-            app:tabTextColor="@color/tabwidgetSecondColor"
+            app:tabSelectedTextColor="@color/tablayout_selected_color"
+            app:tabTextColor="@color/secondaryColor"
             android:background="@color/colorWhite"/>
 
         <android.support.v4.view.ViewPager
