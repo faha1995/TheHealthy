@@ -33,4 +33,15 @@ public interface SQLValues {
 
     static final String SP_NAME = "notFirst";
     static final String HAS_LOGINED = "hasLogined";
+
+   // HealthEducationFragment的缓存表名
+    static final String TABLE_HEALTH = "health_education";
+    static final String KEY_HEALTH_ID = "id";
+    static final String KEY_HEALTH_DESCRIP = "description";
+    static final String KEY_HEALTH_TITLE = "title";
+    static final String KEY_HEALTH_CREATE_AT = "create_at";
+    static final String KEY_HEALTH_CONTENT_URL = "content_url";
+    static final String KEY_HEALTH_IMAGE_URL = "image_url";
+    static final String KEY_HEALTH_ITEM_ID = "item_id";
+    static final String KEY_HEALTH_CREATE_BY = "create_by";
 }

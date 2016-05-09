@@ -15,6 +15,7 @@ import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.inforactivity.EducateWebViewActivity;
 import com.example.administrator.thehealthy.adapter.HealthEducationAdapter;
 import com.example.administrator.thehealthy.application.BaseApplication;
+import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.entity.AppData;
 import com.example.administrator.thehealthy.entity.HealthEduEntity;
@@ -26,6 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,6 +41,8 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
     private SwipeRefreshLoadingLayout swipeRefresh;
     private RefreshableView refreshableView;
     private int newCounts;
+    private DBTool dbTool;
+    private List<HealthEduEntity> eduEntityList;
 
     @Override
     protected int setLayoutView() {
@@ -49,11 +53,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
     protected void initView() {
         // 清理之前eduEntityList中的数据
         AppData.eduEntityList.clear();
-//        frameLayout = findView(R.id.fragment_healthEducation);
-//        frameLayout.setOnTouchListener(this);
-//        swipeRefresh = findView(R.id.swipeRefreshLoadingLayout);
-//        swipeRefresh.setOnRefreshListener(this);
-//        swipeRefresh.setOnLoadListener(this);
+        dbTool = new DBTool();
         refreshableView = findView(R.id.refreshView_education);
         refreshableView.setOnRefreshListener(new RefreshableView.PullToRefreshListener() {
             @Override
@@ -70,23 +70,29 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
         }, 0);
 
         educationLv = findView(R.id.listView_health_education);
+
         educationLv.setOnItemClickListener(this);
+
         educationAdapter = new HealthEducationAdapter(getActivity());
 
         educationLv.setAdapter(educationAdapter);
 
-//        NetBroadcastReceiver.mListeners.add(this);
 
+        eduEntityList = dbTool.queryHealthEdu();
     }
 
 
     @Override
     protected void initData() {
-        if (BaseApplication.isNetwork()) {
-            initNetWork();
+        Log.i(TAG, "----------->  eduEntityList.size()  " + eduEntityList.size());
+        if (!BaseApplication.isNetwork() && eduEntityList != null && eduEntityList.size() != 0) {
+            educationAdapter.addData(eduEntityList);
+            newCounts = eduEntityList.size();
         } else {
-            Toast.makeText(getActivity(), "当前无网络", Toast.LENGTH_SHORT).show();
+            initNetWork();
         }
+
+
     }
 
 
@@ -96,7 +102,6 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                 AppConfig.URL_EDUCATION, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-//                swipeRefresh.setRefreshing(false);
 
                 try {
                     JSONObject object = new JSONObject(response);
@@ -116,6 +121,9 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                             eduEntity.setImage_url(obj.getString("image_url"));
                             AppData.eduEntityList.add(eduEntity);
                             educationAdapter.addData(AppData.eduEntityList);
+
+                            dbTool.deleteHealthEduDate();
+                            dbTool.saveHealthEduDate(AppData.eduEntityList);
                         }
                         newCounts = AppData.eduEntityList.size();
                     } else {
@@ -129,7 +137,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "网络无应答,请连接网络重新进入", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "网络无应答,请连接网络", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -140,6 +148,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
         };
         VolleySingleton.getInstace().addRequest(stringRequest);
 
+
     }
 
 
@@ -149,13 +158,12 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                 AppConfig.URL_EDUCATION, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-//                swipeRefresh.setRefreshing(false);
 
                 try {
                     JSONObject object = new JSONObject(response);
                     if (!object.getBoolean("error")) {
                         int length = object.getInt("length");
-
+                        Log.i(TAG, "----------->  newCounts  " + newCounts);
                         if (length > newCounts) {
                             for (int i = 0; i < length - newCounts; i++) {
                                 // 如果发布的教育咨询有更新
@@ -170,9 +178,12 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                                 eduEntity.setContent_url(obj.getString("content_url"));
                                 eduEntity.setImage_url(obj.getString("image_url"));
                                 educationAdapter.addRefreshData(eduEntity);
+
+                                dbTool.saveRefreshHealthEduDate(eduEntity);
+                                Log.i(TAG, "--------> length > newCounts");
                             }
                             newCounts = length;
-                        } else if (length < newCounts) {
+                        } else {
                             // 如果发布的教育咨询有删除
                             AppData.eduEntityList.clear();
                             for (int i = 0; i < length; i++) {
@@ -188,6 +199,10 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                                 eduEntity.setImage_url(obj.getString("image_url"));
                                 AppData.eduEntityList.add(eduEntity);
                                 educationAdapter.addData(AppData.eduEntityList);
+
+                                dbTool.deleteHealthEduDate();
+                                dbTool.saveHealthEduDate(AppData.eduEntityList);
+                                Log.i(TAG, "--------> length < newCounts");
                             }
                             newCounts = length;
                         }
@@ -202,7 +217,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "网络无应答,请连接网络重新进入", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "网络无应答,请连接网络", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -218,6 +233,10 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        activityIntent(this, new EducateWebViewActivity(), position);
+        if (BaseApplication.isNetwork()) {
+            activityIntent(this, new EducateWebViewActivity(), position);
+        } else {
+            Toast.makeText(getActivity(), "当前无网络", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -3,11 +3,11 @@ package com.example.administrator.thehealthy.activity.inforactivity;
 import android.content.Intent;
 import android.webkit.WebView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.BaseActivity;
+import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.entity.AppData;
 import com.example.administrator.thehealthy.tools.ScrollViewOnTouch;
 
@@ -17,7 +17,7 @@ public class EducateWebViewActivity extends BaseActivity {
     private int position;
     private TextView titleWv;
     private ImageView dialogIcon;
-
+private DBTool dbTool;
 
     @Override
     protected int setLayout() {
@@ -26,15 +26,18 @@ public class EducateWebViewActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        dbTool = new DBTool();
         webView = findView(R.id.webView_health_educate);
         titleWv = findView(R.id.text_educate_webView_title);
         ScrollViewOnTouch.getInstance().setViewFinishTouchFromActivity(webView,EducateWebViewActivity.this);
         Intent intent = getIntent();
         position = intent.getIntExtra("pos",0);
+
         titleWv.setText(AppData.eduEntityList.get(position).getTitle());
         url = AppData.eduEntityList.get(position).getContent_url();
         dialogIcon = findView(R.id.img_loading);
         initData();
+
     }
 
 

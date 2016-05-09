@@ -8,9 +8,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.administrator.thehealthy.application.BaseApplication;
+import com.example.administrator.thehealthy.entity.HealthEduEntity;
 import com.example.administrator.thehealthy.entity.Summary;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/3/10.
@@ -47,7 +50,7 @@ public class DBTool implements SQLValues {
     // 向本地数据库添加用户的方法
     public void addUser(String name, String mobile, String identity,
                         String resident_id, String create_at) {
-        database = dbHelper.getWritableDatabase();
+//        database = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("name", name);
         values.put("mobile", mobile);
@@ -56,7 +59,7 @@ public class DBTool implements SQLValues {
         values.put("create_at", create_at);
         database.insert(TABLE_USER, null, values);
 //        long id = database.insert(TABLE_USER, null, values);
-        database.close();
+//        database.close();
 
 //        Log.d(TAG, "New user inserted into SQLite: " + id);
 
@@ -85,9 +88,9 @@ public class DBTool implements SQLValues {
 
     // 删除当前数据库中所有信息
     public void deleteUser() {
-        database = dbHelper.getWritableDatabase();
+//        database = dbHelper.getWritableDatabase();
         database.delete(TABLE_USER, null, null);
-        database.close();
+//        database.close();
 
         Log.i(TAG, "Deleted all user from TABLE_USER");
     }
@@ -96,24 +99,24 @@ public class DBTool implements SQLValues {
     public void deleteSummary() {
         // 由于在此之前的调用deleteUser()方法中database已经关闭
         // 所以再次调用时要初始化
-        this.database = dbHelper.getWritableDatabase();
+//        this.database = dbHelper.getWritableDatabase();
         database.delete(TABLE_SUMMARY, null, null);
-        database.close();
 
         Log.i(TAG, "Deleted all user infor from TABLE_SUMMARY");
     }
 
     // 复写添加健康报告方法
-    public void addSummary(Summary summary){
-        addSummary(summary.getRecordId(),summary.getTitle(),summary.getClinic(),
-                summary.getProvider(),summary.getServiceTime(),summary.getTypeAlias(),
+    public void addSummary(Summary summary) {
+        addSummary(summary.getRecordId(), summary.getTitle(), summary.getClinic(),
+                summary.getProvider(), summary.getServiceTime(), summary.getTypeAlias(),
                 summary.getItemAlias());
     }
+
     // 添加健康报告方法
     public void addSummary(int record_id, String title, String clinic, String provider,
-                           String service_time, String type_alias, String item_alias){
-        SQLiteDatabase database = dbHelper.getWritableDatabase();
-        Log.i(TAG,"开始添加健康报告数据");
+                           String service_time, String type_alias, String item_alias) {
+//        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        Log.i(TAG, "开始添加健康报告数据");
 
         ContentValues values = new ContentValues();
         values.put(KEY_RECORD_ID, record_id);
@@ -123,8 +126,78 @@ public class DBTool implements SQLValues {
         values.put(KEY_SERVICE_TIME, service_time);
         values.put(KEY_TYPE_ALIAS, type_alias);
         values.put(KEY_ITEM_ALIAS, item_alias);
-        database.close();
+//        database.close();
         Log.i(TAG, "健康报告数据添加完毕");
     }
 
+
+    // 将解析后的数据添加到数据库中
+    public void saveHealthEduDate(List<HealthEduEntity> healthEduEntity) {
+//        database = dbHelper.getWritableDatabase();
+        /**循环方式将数据插入到数据库中*/
+        for (HealthEduEntity entity : healthEduEntity) {
+            ContentValues values = new ContentValues();
+            values.put(KEY_HEALTH_TITLE, entity.getTitle());
+            values.put(KEY_HEALTH_DESCRIP, entity.getDescription());
+            values.put(KEY_HEALTH_IMAGE_URL, entity.getImage_url());
+            values.put(KEY_HEALTH_CONTENT_URL, entity.getContent_url());
+            values.put(KEY_HEALTH_CREATE_AT, entity.getCreate_at());
+            values.put(KEY_HEALTH_CREATE_BY, entity.getCreate_by());
+            database.insert(TABLE_HEALTH, null, values);
+        }
+    }
+
+    public void saveRefreshHealthEduDate(HealthEduEntity healthEduEntity) {
+//        database = dbHelper.getWritableDatabase();
+        /**循环方式将数据插入到数据库中*/
+
+            ContentValues values = new ContentValues();
+            values.put(KEY_HEALTH_TITLE, healthEduEntity.getTitle());
+            values.put(KEY_HEALTH_DESCRIP, healthEduEntity.getDescription());
+            values.put(KEY_HEALTH_IMAGE_URL, healthEduEntity.getImage_url());
+            values.put(KEY_HEALTH_CONTENT_URL, healthEduEntity.getContent_url());
+            values.put(KEY_HEALTH_CREATE_AT, healthEduEntity.getCreate_at());
+            values.put(KEY_HEALTH_CREATE_BY, healthEduEntity.getCreate_by());
+            database.insert(TABLE_HEALTH, null, values);
+
+    }
+
+    // 删除数据库中的数据
+    public void deleteHealthEduDate() {
+        database.delete(TABLE_HEALTH, null, null);
+    }
+
+
+    // 查询数据库中的HealthEdu的数据
+    public List<HealthEduEntity> queryHealthEdu() {
+        Cursor cursor = database.query(TABLE_HEALTH, null, null, null, null, null, null);
+        if (cursor != null) {
+            List<HealthEduEntity> entities = new ArrayList<>();
+
+            while (cursor.moveToNext()) {
+                // 通过列名所在的列序取列值
+                String title = cursor.getString(cursor.getColumnIndex(KEY_HEALTH_TITLE));
+                String descrip = cursor.getString(cursor.getColumnIndex(KEY_HEALTH_DESCRIP));
+                String create_at = cursor.getString(cursor.getColumnIndex(KEY_HEALTH_CREATE_AT));
+                String create_by = cursor.getString(cursor.getColumnIndex(KEY_HEALTH_CREATE_BY));
+                int item_id = cursor.getInt(cursor.getColumnIndex(KEY_HEALTH_ITEM_ID));
+                String image_url = cursor.getString(cursor.getColumnIndex(KEY_HEALTH_IMAGE_URL));
+                String content_ulr = cursor.getString(cursor.getColumnIndex(KEY_HEALTH_CONTENT_URL));
+
+                HealthEduEntity eduEntity = new HealthEduEntity();
+                eduEntity.setTitle(title);
+                eduEntity.setDescription(descrip);
+                eduEntity.setCreate_by(create_by);
+                eduEntity.setCreate_at(create_at);
+                eduEntity.setImage_url(create_at);
+                eduEntity.setItem_id(item_id);
+
+                entities.add(eduEntity);
+            }
+            cursor.close();
+            return entities;
+        }
+
+        return null;
+    }
 }
