@@ -53,6 +53,7 @@ public class PersonalFragment extends BaseFatherFragment {
         personalViewPager.setAdapter(personalAdapter);
         // 设置tabLayout的模式
         personalTabLayout.setTabMode(TabLayout.MODE_FIXED);
+
         // 添加tab对应的文字
         personalTabLayout.addTab(personalTabLayout.newTab().setText(titles.get(0)));
         personalTabLayout.addTab(personalTabLayout.newTab().setText(titles.get(1)));

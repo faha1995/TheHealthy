@@ -3,6 +3,8 @@ package com.example.administrator.thehealthy.fragment.inforFrament;
 import android.graphics.Typeface;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity;
 import com.example.administrator.thehealthy.adapter.ServicePlanAdapter;
+import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.entity.AppData;
@@ -41,10 +44,10 @@ import java.util.Map;
 public class ServicePlanFragment extends BaseFatherFragment implements SwipeRefreshLoadingLayout.OnRefreshListener, SwipeRefreshLoadingLayout.OnLoadListener {
     private final String TAG = ServicePlanFragment.class.getSimpleName();
     private DBTool dbTool;
-    private ExpandableListView expandableLv;
+    private ExpandableListView exListView;
     private ServicePlanAdapter servicePlanAdapter;
-    private LinearLayout plaseLoginLinear;
-    private TextView nothingText;
+    private LinearLayout plaseLoginLinear,networkLinear;
+    private TextView nothingText,networkTv;
     private SwipeRefreshLoadingLayout swipLayout;
     private List<String> groups = new ArrayList<>();
 
@@ -58,16 +61,23 @@ public class ServicePlanFragment extends BaseFatherFragment implements SwipeRefr
 
         dbTool = new DBTool();
         plaseLoginLinear = findView(R.id.linear_service_plan);
+        networkLinear = findView(R.id.linear_service_plan_network);
+        networkTv = findView(R.id.text_service_plan_network);
         nothingText = findView(R.id.text_service_plan_nothing);
-        expandableLv = findView(R.id.expandable_service_plan);
+        exListView = findView(R.id.expandable_service_plan);
         servicePlanAdapter = new ServicePlanAdapter(getActivity(), AppData.spGroups, AppData.spChilds);
+        exListView.setAdapter(servicePlanAdapter);
         initNetWork();
-        expandableLv.setAdapter(servicePlanAdapter);
 
         swipLayout = findView(R.id.swipeRefresh_service_plan);
         swipLayout.setOnRefreshListener(this);
         swipLayout.setOnLoadListener(this);
 
+//        if (!BaseApplication.isNetwork()) {
+//            networkLinear.setVisibility(View.VISIBLE);
+//            Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/splash_discrip_type.ttf");
+//            networkTv.setTypeface(typeface);
+//        }
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
@@ -94,8 +104,7 @@ public class ServicePlanFragment extends BaseFatherFragment implements SwipeRefr
         AppData.spChilds.clear();
         if (dbTool.isLogined()) {
             plaseLoginLinear.setVisibility(View.GONE);
-            nothingText.setVisibility(View.GONE);
-            expandableLv.setVisibility(View.VISIBLE);
+           
             final HashMap<String, String> user = dbTool.getUserDetails();
 
 
@@ -103,7 +112,9 @@ public class ServicePlanFragment extends BaseFatherFragment implements SwipeRefr
                     AppConfig.URL_PLANS, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-
+                    nothingText.setVisibility(View.GONE);
+                    exListView.setAlpha(1);
+                    networkLinear.setVisibility(View.GONE);
                     swipLayout.setRefreshing(false);
 
                     Log.i(TAG, "服务计划界面数据网络通信响应");
@@ -152,7 +163,7 @@ public class ServicePlanFragment extends BaseFatherFragment implements SwipeRefr
                             nothingText.setTypeface(typeface);
                             nothingText.setText("还未有相关记录");
                             nothingText.setVisibility(View.VISIBLE);
-                            expandableLv.setVisibility(View.GONE);
+                            exListView.setVisibility(View.GONE);
                         }
 
                     } catch (JSONException e) {
@@ -164,6 +175,9 @@ public class ServicePlanFragment extends BaseFatherFragment implements SwipeRefr
                 @Override
                 public void onErrorResponse(VolleyError error) {
 //                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/splash_discrip_text_type.ttf");
+                    networkTv.setTypeface(typeface);
+                    networkLinear.setVisibility(View.VISIBLE);
                 }
             }) {
                 @Override
@@ -205,7 +219,38 @@ public class ServicePlanFragment extends BaseFatherFragment implements SwipeRefr
 
     @Override
     public void onRefresh() {
-        initNetWork();
+        // 没有网络
+        if (!BaseApplication.isNetwork()) {
+            // 二级列表显示时
+            if (exListView.getVisibility() == View.VISIBLE) {
+
+                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.dialog_icon_alpha);
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        exListView.setAlpha(0);
+                        networkLinear.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                exListView.setAnimation(animation);
+                swipLayout.setRefreshing(false);
+            } else {
+                swipLayout.setRefreshing(false);
+            }
+        } else {
+            initNetWork();
+        }
+
     }
 
     @Override

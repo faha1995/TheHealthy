@@ -19,7 +19,7 @@
         >
         <shape android:shape="rectangle">
             <!-- 内部颜色-->
-            <solid android:color="#FFFFFFFF"/>
+            <solid android:color="#88DADEFD"/>
             <corners android:radius="10dp"/>
         </shape>
     </item>

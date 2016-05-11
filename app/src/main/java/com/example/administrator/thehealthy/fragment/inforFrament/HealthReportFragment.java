@@ -3,9 +3,12 @@ package com.example.administrator.thehealthy.fragment.inforFrament;
 import android.graphics.Typeface;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ExpandableListView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -15,6 +18,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.activity.inforactivity.LoginActivity;
 import com.example.administrator.thehealthy.adapter.HealthRrportExpandAdapter;
+import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.db.DBTool;
 import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.entity.AppData;
@@ -68,9 +72,9 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
     private DBTool dbTool;
     private ExpandableListView exListView;
     private HealthRrportExpandAdapter expandAdapter;
-    private LinearLayout pleaseLoginLinear;
-    private TextView nothingText;
-    private SwipeRefreshLoadingLayout swipeLoading;
+    private LinearLayout pleaseLoginLinear, networkLinear;
+    private TextView nothingText, networkTv;
+    private SwipeRefreshLoadingLayout swipeLayout;
 
     @Override
     protected int setLayoutView() {
@@ -80,7 +84,10 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
     @Override
     protected void initView() {
 
+        dbTool = new DBTool();
         nothingText = findView(R.id.text_health_report_nothing);
+        networkTv = findView(R.id.text_health_report_network);
+        networkLinear = findView(R.id.linear_health_report_network);
         pleaseLoginLinear = findView(R.id.linear_pleaseLogin);
         pleaseLoginLinear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,26 +95,57 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
                 activityIntent(getActivity(), LoginActivity.class);
             }
         });
+        swipeLayout = findView(R.id.swipeRefresh_health_report);
+        swipeLayout.setOnRefreshListener(this);
+        swipeLayout.setOnLoadListener(this);
 
-        dbTool = new DBTool();
         exListView = findView(R.id.exlistView_health_report);
         expandAdapter = new HealthRrportExpandAdapter(getActivity(), AppData.hrGroups, AppData.hrChilds);
-        initNetWork();
         exListView.setAdapter(expandAdapter);
-        swipeLoading = findView(R.id.swipeRefresh_health_report);
-        swipeLoading.setOnRefreshListener(this);
-        swipeLoading.setOnLoadListener(this);
 
+        initNetWork();
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
         }
+
     }
 
 
     @Override
     public void onRefresh() {
+               // 没有网络
+        if (!BaseApplication.isNetwork()) {
+            // 二级列表显示时
+            Log.i(TAG, "onRefresh: " + exListView.getVisibility());
+            if (exListView.getVisibility() == View.VISIBLE) {
 
-        initNetWork();
+                Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.dialog_icon_alpha);
+                animation.setAnimationListener(new Animation.AnimationListener() {
+                    @Override
+                    public void onAnimationStart(Animation animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animation animation) {
+                        exListView.setAlpha(0);
+                        networkLinear.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animation animation) {
+
+                    }
+                });
+                exListView.setAnimation(animation);
+                swipeLayout.setRefreshing(false);
+            } else {
+                swipeLayout.setRefreshing(false);
+            }
+        } else {
+            initNetWork();
+        }
+
 
     }
 
@@ -128,20 +166,24 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
     private void initNetWork() {
         AppData.hrGroups.clear();
         AppData.hrChilds.clear();
-
+        Log.i(TAG, "initNetWork: ");
         if (dbTool.isLogined()) {
+
             pleaseLoginLinear.setVisibility(View.GONE);
-            nothingText.setVisibility(View.GONE);
-            exListView.setVisibility(View.VISIBLE);
+
             final HashMap<String, String> user = dbTool.getUserDetails();
 
 
             final StringRequest request = new StringRequest(Request.Method.POST,
                     AppConfig.URL_SUMMARYS, new Response.Listener<String>() {
+
                 @Override
                 public void onResponse(String response) {
 
-                    swipeLoading.setRefreshing(false);
+                    nothingText.setVisibility(View.GONE);
+                    exListView.setAlpha(1);
+                    swipeLayout.setRefreshing(false);
+                    networkLinear.setVisibility(View.GONE);
 
                     Log.i(TAG, "健康报告界面数据网络通信响应");
                     try {
@@ -149,15 +191,14 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
                         boolean error = jsonObject.getBoolean("error");
 
                         if (!error) {
-//
+
                             // 得到一级分类的数据加入groups集合中
                             JSONArray member = jsonObject.getJSONArray("member");
                             for (int i = 0; i < member.length(); i++) {
-//                                groups.add(i, member.getJSONObject(i).getString("resident"));
                                 AppData.hrGroups.add(i, member.getJSONObject(i).getString("resident"));
+
                                 Log.i(TAG, "------> member.length" + member.getJSONObject(i).getString("resident"));
                             }
-//                            expandAdapter.addGroups(AppData.hrGroups);
 
 
 //                             得到一级分类对应的二级分类数据，加入childs集合中
@@ -181,22 +222,25 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
                                     summary.setTypeAlias(item.getString("type_alias"));
                                     summary.setItemAlias(item.getString("item_alias"));
                                     child.add(k, summary);
-                                    dbTool.addSummary(summary);
+
                                 }
+
                                 AppData.hrChilds.add(i, child);
                             }
 
-//                            expandAdapter.addChilds(AppData.hrChilds);
+
                             // 为了刷新时 groups 和 childs 同时显示
                             // 同时将两个集合传入adapter中
                             expandAdapter.addToReportGroupsChilds(AppData.hrGroups, AppData.hrChilds);
 
-                        } else {
-                            Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/splash_discrip_text_type.ttf");
-                            nothingText.setTypeface(typeface);
-                            nothingText.setText("还未有相关记录");
-                            nothingText.setVisibility(View.VISIBLE);
-                            exListView.setVisibility(View.GONE);
+                            if (summaries.length() < 1) {
+                                Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/splash_discrip_text_type.ttf");
+                                nothingText.setTypeface(typeface);
+                                nothingText.setText("还未有相关记录");
+                                nothingText.setVisibility(View.VISIBLE);
+                                exListView.setVisibility(View.GONE);
+                            }
+
                         }
 
                     } catch (JSONException e) {
@@ -208,6 +252,11 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
                 @Override
                 public void onErrorResponse(VolleyError error) {
 //                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.i(TAG, "--------->  ErrorListener");
+                    Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/splash_discrip_text_type.ttf");
+                    networkTv.setTypeface(typeface);
+                    networkLinear.setVisibility(View.VISIBLE);
+
                 }
             }) {
                 @Override
@@ -222,6 +271,7 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
             VolleySingleton.getInstace().addRequest(request);
         } else {
             pleaseLoginLinear.setVisibility(View.VISIBLE);
+
         }
 
 
@@ -230,20 +280,23 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
     @Override
     protected void initData() {
 
-
         exListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                if (BaseApplication.isNetwork()) {
 
                 goWhich(AppData.hrChilds.get(groupPosition).get(childPosition).getTypeAlias(),
                         AppData.hrChilds.get(groupPosition).get(childPosition).getItemAlias(),
                         ChangeString.splitForPurpose(AppData.hrChilds.get(groupPosition).get(childPosition).getTitle()),
                         AppData.hrChilds.get(groupPosition).get(childPosition).getRecordId());
-
+                } else {
+                    Toast.makeText(getActivity(),"网络不可用",Toast.LENGTH_SHORT).show();
+                }
 
                 return true;
             }
         });
+
 
 
     }
@@ -334,6 +387,6 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
 
     @Override
     public void onLoad() {
-        swipeLoading.setLoading(false);
+        swipeLayout.setLoading(false);
     }
 }

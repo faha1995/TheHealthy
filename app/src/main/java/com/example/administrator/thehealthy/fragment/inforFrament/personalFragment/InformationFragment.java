@@ -114,7 +114,7 @@ public class InformationFragment extends BaseSonFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "网络无应答",
+                Toast.makeText(getActivity(), "网络不可用",
                         Toast.LENGTH_SHORT).show();
             }
         }) {

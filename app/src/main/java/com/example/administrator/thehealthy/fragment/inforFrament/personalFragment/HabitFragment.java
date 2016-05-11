@@ -86,7 +86,7 @@ public class HabitFragment extends BaseSonFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getActivity(), "网络无应答", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "网络不可用", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override

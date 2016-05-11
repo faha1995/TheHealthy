@@ -29,6 +29,8 @@ public class DBHelper extends SQLiteOpenHelper implements SQLValues {
             + KEY_HEALTH_CONTENT_URL + " TEXT," + KEY_HEALTH_IMAGE_URL + " TEXT,"
             + KEY_HEALTH_ITEM_ID + " INTEGER," + KEY_HEALTH_CREATE_BY + " TEXT)";
 
+
+
     public DBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         Log.i("DBHelper", "------>  DBHelper");
@@ -36,7 +38,7 @@ public class DBHelper extends SQLiteOpenHelper implements SQLValues {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.i("DBHelper","------>  onCreate0");
+        Log.i("DBHelper", "------>  onCreate0");
         db.execSQL(CREATE_LOGIN_TABLE);
         db.execSQL(CREATE_SUMMARY_TABLE);
         db.execSQL(CREATE_HEALTH_EDUCATION_TABLE);

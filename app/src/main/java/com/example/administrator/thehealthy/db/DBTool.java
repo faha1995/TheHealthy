@@ -105,34 +105,37 @@ public class DBTool implements SQLValues {
         Log.i(TAG, "Deleted all user infor from TABLE_SUMMARY");
     }
 
-    // 复写添加健康报告方法
-    public void addSummary(Summary summary) {
-        addSummary(summary.getRecordId(), summary.getTitle(), summary.getClinic(),
-                summary.getProvider(), summary.getServiceTime(), summary.getTypeAlias(),
-                summary.getItemAlias());
-    }
+//    // 复写添加健康报告方法
+//    public void addSummary(Summary summary) {
+//        addSummary(summary.getRecordId(), summary.getTitle(), summary.getClinic(),
+//                summary.getProvider(), summary.getServiceTime(), summary.getTypeAlias(),
+//                summary.getItemAlias());
+//    }
+//
+//    // 添加健康报告方法
+//    public void addSummary(int record_id, String title, String clinic, String provider,
+//                           String service_time, String type_alias, String item_alias) {
+////        SQLiteDatabase database = dbHelper.getWritableDatabase();
+//        Log.i(TAG, "开始添加健康报告数据");
+//
+//        ContentValues values = new ContentValues();
+//        values.put(KEY_RECORD_ID, record_id);
+//        values.put(KEY_TITLE, title);
+//        values.put(KEY_CLINIC, clinic);
+//        values.put(KEY_PROVIDER, provider);
+//        values.put(KEY_SERVICE_TIME, service_time);
+//        values.put(KEY_TYPE_ALIAS, type_alias);
+//        values.put(KEY_ITEM_ALIAS, item_alias);
+////        database.close();
+//        Log.i(TAG, "健康报告数据添加完毕");
+//    }
 
-    // 添加健康报告方法
-    public void addSummary(int record_id, String title, String clinic, String provider,
-                           String service_time, String type_alias, String item_alias) {
-//        SQLiteDatabase database = dbHelper.getWritableDatabase();
-        Log.i(TAG, "开始添加健康报告数据");
 
-        ContentValues values = new ContentValues();
-        values.put(KEY_RECORD_ID, record_id);
-        values.put(KEY_TITLE, title);
-        values.put(KEY_CLINIC, clinic);
-        values.put(KEY_PROVIDER, provider);
-        values.put(KEY_SERVICE_TIME, service_time);
-        values.put(KEY_TYPE_ALIAS, type_alias);
-        values.put(KEY_ITEM_ALIAS, item_alias);
-//        database.close();
-        Log.i(TAG, "健康报告数据添加完毕");
-    }
+    public List<Summary> querySummary(){return null;};
 
 
     // 将解析后的数据添加到数据库中
-    public void saveHealthEduDate(List<HealthEduEntity> healthEduEntity) {
+    public void saveHealthEduData(List<HealthEduEntity> healthEduEntity) {
 //        database = dbHelper.getWritableDatabase();
         /**循环方式将数据插入到数据库中*/
         for (HealthEduEntity entity : healthEduEntity) {
@@ -147,29 +150,28 @@ public class DBTool implements SQLValues {
         }
     }
 
-    public void saveRefreshHealthEduDate(HealthEduEntity healthEduEntity) {
+    public void saveRefreshHealthEduData(HealthEduEntity healthEduEntity) {
 //        database = dbHelper.getWritableDatabase();
         /**循环方式将数据插入到数据库中*/
 
-            ContentValues values = new ContentValues();
-            values.put(KEY_HEALTH_TITLE, healthEduEntity.getTitle());
-            values.put(KEY_HEALTH_DESCRIP, healthEduEntity.getDescription());
-            values.put(KEY_HEALTH_IMAGE_URL, healthEduEntity.getImage_url());
-            values.put(KEY_HEALTH_CONTENT_URL, healthEduEntity.getContent_url());
-            values.put(KEY_HEALTH_CREATE_AT, healthEduEntity.getCreate_at());
-            values.put(KEY_HEALTH_CREATE_BY, healthEduEntity.getCreate_by());
-            database.insert(TABLE_HEALTH, null, values);
+        ContentValues values = new ContentValues();
+        values.put(KEY_HEALTH_TITLE, healthEduEntity.getTitle());
+        values.put(KEY_HEALTH_DESCRIP, healthEduEntity.getDescription());
+        values.put(KEY_HEALTH_IMAGE_URL, healthEduEntity.getImage_url());
+        values.put(KEY_HEALTH_CONTENT_URL, healthEduEntity.getContent_url());
+        values.put(KEY_HEALTH_CREATE_AT, healthEduEntity.getCreate_at());
+        values.put(KEY_HEALTH_CREATE_BY, healthEduEntity.getCreate_by());
+        database.insert(TABLE_HEALTH, null, values);
 
     }
 
     // 删除数据库中的数据
-    public void deleteHealthEduDate() {
+    public void deleteHealthEduData() {
         database.delete(TABLE_HEALTH, null, null);
     }
 
-
     // 查询数据库中的HealthEdu的数据
-    public List<HealthEduEntity> queryHealthEdu() {
+    public List<HealthEduEntity> queryHealthData() {
         Cursor cursor = database.query(TABLE_HEALTH, null, null, null, null, null, null);
         if (cursor != null) {
             List<HealthEduEntity> entities = new ArrayList<>();
@@ -189,8 +191,9 @@ public class DBTool implements SQLValues {
                 eduEntity.setDescription(descrip);
                 eduEntity.setCreate_by(create_by);
                 eduEntity.setCreate_at(create_at);
-                eduEntity.setImage_url(create_at);
+                eduEntity.setImage_url(image_url);
                 eduEntity.setItem_id(item_id);
+                eduEntity.setContent_url(content_ulr);
 
                 entities.add(eduEntity);
             }
@@ -200,4 +203,7 @@ public class DBTool implements SQLValues {
 
         return null;
     }
+
+
+
 }

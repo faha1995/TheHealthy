@@ -44,4 +44,21 @@ public interface SQLValues {
     static final String KEY_HEALTH_IMAGE_URL = "image_url";
     static final String KEY_HEALTH_ITEM_ID = "item_id";
     static final String KEY_HEALTH_CREATE_BY = "create_by";
+
+
+    // HealthReportFragment的缓存表名
+    static final String TABLE_HEALTH_REPORT = "health_report";
+    static final String KEY_HEALTH_REPORT_ID = "id";
+    static final String KEY_HEALTH_REPORT_RECORDID = "recordId";
+    static final String KEY_HEALTH_REPORT_TITLE = "title";
+    static final String KEY_HEALTH_REPORT_CLINIC = "clinic";
+    static final String KEY_HEALTH_REPORT_PROVIDER = "provider";
+    static final String KEY_HEALTH_REPORT_SERVICETIME = "serviceTime";
+    static final String KEY_HEALTH_REPORT_TYPEALIAS = "typeAlias";
+    static final String KEY_HEALTH_REPORT_ITEMALIAS = "itemAlias";
+
+    // HealthReportGroup
+    static final String TABLE_HEALTH_REPORT_GROUP = "health_report_group";
+    static final String KEY_HEALTH_REPORT_GROUP_ID = "id";
+    static final String KEY_HEALTH_REPORT_GROUP_NAME ="name";
 }

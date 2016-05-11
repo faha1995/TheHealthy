@@ -40,9 +40,10 @@ public class HealthEducationAdapter extends BaseAdapter {
 
     // 刷新后添加数剧的方法
     public void addRefreshData(HealthEduEntity eduEntity) {
-       this.eduEntityList.add(0,eduEntity);
+        this.eduEntityList.add(0, eduEntity);
         notifyDataSetChanged();
     }
+
     @Override
     public int getCount() {
         return eduEntityList != null && eduEntityList.size() > 0
@@ -78,7 +79,6 @@ public class HealthEducationAdapter extends BaseAdapter {
         healthHolder.healthEduDescrip.setText(eduEntityList.get(position).getDescription());
         healthHolder.healthEduTime.setText(ChangeString.splitTime(eduEntityList.get(position).getCreate_at()));
         healthHolder.imageHealthEducate.setImageUrl(eduEntityList.get(position).getImage_url(), imageLoader);
-
         return convertView;
     }
 

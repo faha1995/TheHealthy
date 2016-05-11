@@ -3,6 +3,7 @@ package com.example.administrator.thehealthy.fragment.inforFrament.personalFragm
 import android.util.Log;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -132,7 +133,8 @@ public class MedicalHistoryFragment extends BaseSonFragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                Toast.makeText(getActivity(), "网络不可用",
+                        Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override

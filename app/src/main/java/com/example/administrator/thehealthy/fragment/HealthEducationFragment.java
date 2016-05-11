@@ -20,7 +20,6 @@ import com.example.administrator.thehealthy.entity.AppConfig;
 import com.example.administrator.thehealthy.entity.AppData;
 import com.example.administrator.thehealthy.entity.HealthEduEntity;
 import com.example.administrator.thehealthy.util.RefreshableView;
-import com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout;
 import com.example.administrator.thehealthy.volley.VolleySingleton;
 
 import org.json.JSONException;
@@ -38,7 +37,6 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
     private final String TAG = HealthEducationFragment.class.getSimpleName();
     private ListView educationLv;
     private HealthEducationAdapter educationAdapter;
-    private SwipeRefreshLoadingLayout swipeRefresh;
     private RefreshableView refreshableView;
     private int newCounts;
     private DBTool dbTool;
@@ -70,7 +68,6 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
         }, 0);
 
         educationLv = findView(R.id.listView_health_education);
-
         educationLv.setOnItemClickListener(this);
 
         educationAdapter = new HealthEducationAdapter(getActivity());
@@ -78,7 +75,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
         educationLv.setAdapter(educationAdapter);
 
 
-        eduEntityList = dbTool.queryHealthEdu();
+        eduEntityList = dbTool.queryHealthData();
     }
 
 
@@ -122,8 +119,8 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                             AppData.eduEntityList.add(eduEntity);
                             educationAdapter.addData(AppData.eduEntityList);
 
-                            dbTool.deleteHealthEduDate();
-                            dbTool.saveHealthEduDate(AppData.eduEntityList);
+                            dbTool.deleteHealthEduData();
+                            dbTool.saveHealthEduData(AppData.eduEntityList);
                         }
                         newCounts = AppData.eduEntityList.size();
                     } else {
@@ -137,7 +134,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "网络无应答,请连接网络", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "网络不可用", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -179,7 +176,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                                 eduEntity.setImage_url(obj.getString("image_url"));
                                 educationAdapter.addRefreshData(eduEntity);
 
-                                dbTool.saveRefreshHealthEduDate(eduEntity);
+                                dbTool.saveRefreshHealthEduData(eduEntity);
                                 Log.i(TAG, "--------> length > newCounts");
                             }
                             newCounts = length;
@@ -200,8 +197,8 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                                 AppData.eduEntityList.add(eduEntity);
                                 educationAdapter.addData(AppData.eduEntityList);
 
-                                dbTool.deleteHealthEduDate();
-                                dbTool.saveHealthEduDate(AppData.eduEntityList);
+                                dbTool.deleteHealthEduData();
+                                dbTool.saveHealthEduData(AppData.eduEntityList);
                                 Log.i(TAG, "--------> length < newCounts");
                             }
                             newCounts = length;
@@ -217,7 +214,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "网络无应答,请连接网络", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "网络不可用", Toast.LENGTH_SHORT).show();
             }
         }) {
             @Override
@@ -236,7 +233,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
         if (BaseApplication.isNetwork()) {
             activityIntent(this, new EducateWebViewActivity(), position);
         } else {
-            Toast.makeText(getActivity(), "当前无网络", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "网络不可用", Toast.LENGTH_SHORT).show();
         }
     }
 }

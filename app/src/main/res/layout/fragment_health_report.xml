@@ -4,20 +4,42 @@
     android:layout_height="match_parent"
     android:background="@color/fragmentBackGround">
 
+    <LinearLayout
+        android:id="@+id/linear_health_report_network"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/no_network_icon" />
 
         <TextView
-            android:id="@+id/text_health_report_nothing"
+            android:id="@+id/text_health_report_network"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textColor="@color/secondaryColor"
-            android:textSize="25sp"
-            android:visibility="gone" />
-<com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout
-    android:id="@+id/swipeRefresh_health_report"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+            android:layout_gravity="center"
+            android:text="网络溜走了~"
+            android:textColor="#a9b7b7"
+            android:textSize="18sp" />
+    </LinearLayout>
 
+    <TextView
+        android:id="@+id/text_health_report_nothing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/secondaryColor"
+        android:textSize="25sp"
+        android:visibility="gone" />
+
+    <com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout
+        android:id="@+id/swipeRefresh_health_report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
         <ExpandableListView
@@ -30,32 +52,32 @@
             android:overScrollMode="never"></ExpandableListView>
 
 
+    </com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout>
 
-</com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout>
-        <LinearLayout
-            android:id="@+id/linear_pleaseLogin"
-            android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linear_pleaseLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/text_pleaseLogin"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:text="快登录~"
+            android:textColor="@color/mainColor"
+            android:textSize="25sp"
 
-            <TextView
-                android:id="@+id/text_pleaseLogin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="快登录~"
-                android:textColor="@color/mainColor"
-                android:textSize="25sp"
+            />
 
-                />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Go Go Go!"
+            android:textColor="@color/mainColor"
+            android:textSize="20sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Go Go Go!"
-                android:textColor="@color/mainColor"
-                android:textSize="20sp" />
-
-        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
