@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Handler;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -18,6 +19,16 @@ public class BaseApplication extends Application {
     private static Context context;
     private static ArrayList<Activity> activityList;
     public static int mNetWorkState;
+    private Handler handler = null;
+
+    public void setHandler(Handler handler){
+        this.handler = handler;
+    }
+    public Handler getHandler(){
+        return this.handler;
+    }
+
+
 
     public static int getmNetWorkState() {
         return mNetWorkState;

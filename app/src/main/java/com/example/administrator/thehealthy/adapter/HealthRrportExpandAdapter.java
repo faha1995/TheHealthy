@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.entity.Summary;
+import com.readystatesoftware.viewbadger.BadgeView;
 
 import java.util.List;
 
@@ -95,6 +96,7 @@ public class HealthRrportExpandAdapter extends BaseExpandableListAdapter {
                     .inflate(R.layout.fragment_health_report_group, parent, false);
             groupHolder = new GroupViewHolder();
             groupHolder.groupText = (TextView) convertView.findViewById(R.id.text_health_report_group);
+            groupHolder.badgerText = (TextView) convertView.findViewById(R.id.text_for_badgerView_group);
             groupHolder.groupImg = (ImageView) convertView.findViewById(R.id.img_health_report_group);
             groupHolder.groupLinear = (LinearLayout) convertView.findViewById(R.id.linear_health_report_group);
             if (groupPosition == (groups.size() - 1)) {
@@ -110,6 +112,12 @@ public class HealthRrportExpandAdapter extends BaseExpandableListAdapter {
             groupHolder.groupImg.setImageResource(R.mipmap.groupclose_icon);
         }
         groupHolder.groupText.setText(groups.get(groupPosition));
+
+        groupHolder.badgeView = new BadgeView(context,groupHolder.badgerText);
+        groupHolder.badgeView.setText("2");
+        groupHolder.badgeView.setBadgePosition(BadgeView.POSITION_CENTER);
+        groupHolder.badgeView.setBackgroundResource(R.drawable.button_shape);
+        groupHolder.badgeView.show();
         return convertView;
     }
 
@@ -145,8 +153,9 @@ public class HealthRrportExpandAdapter extends BaseExpandableListAdapter {
 
     class GroupViewHolder {
         private LinearLayout groupLinear;
-        private TextView groupText;
+        private TextView groupText,badgerText;
         private ImageView groupImg;
+        private BadgeView badgeView;
     }
 
     class ChildViewHolder {

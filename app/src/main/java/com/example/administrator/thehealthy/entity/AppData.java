@@ -15,5 +15,8 @@ public class AppData {
     public static List<String> spGroups = new ArrayList<>();
     public static List<List<PlanEntity>> spChilds = new ArrayList<>();
     public static int counts = 0;
+    public static int eduCounts = 0;
+    public static List<Integer> reportCounts = new ArrayList<>();
+    public static List<Integer> planeCounts  = new ArrayList<>();
 
 }

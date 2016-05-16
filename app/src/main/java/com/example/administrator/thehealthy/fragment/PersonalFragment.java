@@ -23,7 +23,7 @@ public class PersonalFragment extends BaseFatherFragment {
     private PersonalAdapter personalAdapter;
     private List<Fragment> fragmentList = new ArrayList<>();
     private List<String> titles = new ArrayList<>();
-
+    public static boolean startService = false;
 
     @Override
     protected int setLayoutView() {
@@ -31,12 +31,17 @@ public class PersonalFragment extends BaseFatherFragment {
         return R.layout.fragment_personal;
     }
 
+    public static boolean isStartService(){
+        return startService;
+    }
+
+
 
     @Override
     protected void initView() {
         personalTabLayout = findView(R.id.tabLayout_per);
         personalViewPager = findView(R.id.viewPager_per);
-       // 预缓存为2
+        // 预缓存为2
         personalViewPager.setOffscreenPageLimit(2);
         // 添加Fragment
         fragmentList.add(new PersonalInforFragment());
@@ -63,9 +68,8 @@ public class PersonalFragment extends BaseFatherFragment {
 
     @Override
     protected void initData() {
-
+        startService = true;
     }
-
 
 
 }

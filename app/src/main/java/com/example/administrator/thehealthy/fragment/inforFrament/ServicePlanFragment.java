@@ -131,7 +131,7 @@ public class ServicePlanFragment extends BaseFatherFragment implements SwipeRefr
                                 Log.i(TAG, "------> member.length" + member.getJSONObject(i).getString("resident"));
                             }
 
-
+                            Log.i(TAG, "initnetwork : plantGroup --  " + member.length());
 //                             得到一级分类对应的二级分类数据，加入childs集合中
                             JSONArray plans = jsonObject.getJSONArray("plan");
                             for (int i = 0; i < plans.length(); i++) {
@@ -155,7 +155,7 @@ public class ServicePlanFragment extends BaseFatherFragment implements SwipeRefr
                                 }
                                 AppData.spChilds.add(i, child);
                             }
-
+                            Log.i(TAG, "initnetwork : reportChild --  " + member.length());
                             servicePlanAdapter.addToPlanGroupsChilds(groups,AppData.spChilds);
 
                         } else {

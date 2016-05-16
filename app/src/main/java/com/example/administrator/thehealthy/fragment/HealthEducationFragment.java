@@ -38,9 +38,9 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
     private ListView educationLv;
     private HealthEducationAdapter educationAdapter;
     private RefreshableView refreshableView;
-    private int newCounts;
     private DBTool dbTool;
     private List<HealthEduEntity> eduEntityList;
+    private final int DISAPPEAR = 1;
 
     @Override
     protected int setLayoutView() {
@@ -84,7 +84,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
         Log.i(TAG, "----------->  eduEntityList.size()  " + eduEntityList.size());
         if (!BaseApplication.isNetwork() && eduEntityList != null && eduEntityList.size() != 0) {
             educationAdapter.addData(eduEntityList);
-            newCounts = eduEntityList.size();
+            AppData.eduCounts = eduEntityList.size();
         } else {
             initNetWork();
         }
@@ -122,7 +122,8 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                             dbTool.deleteHealthEduData();
                             dbTool.saveHealthEduData(AppData.eduEntityList);
                         }
-                        newCounts = AppData.eduEntityList.size();
+                        AppData.eduCounts = AppData.eduEntityList.size();
+                        Log.i(TAG, " initNetwork : "+AppData.eduCounts );
                     } else {
                         String errorMsg = object.getString("error_msg");
                         Toast.makeText(getContext(), errorMsg, Toast.LENGTH_SHORT).show();
@@ -155,14 +156,15 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                 AppConfig.URL_EDUCATION, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+            BaseApplication.getInstance().getHandler().sendEmptyMessage(DISAPPEAR);
 
                 try {
                     JSONObject object = new JSONObject(response);
                     if (!object.getBoolean("error")) {
                         int length = object.getInt("length");
-                        Log.i(TAG, "----------->  newCounts  " + newCounts);
-                        if (length > newCounts) {
-                            for (int i = 0; i < length - newCounts; i++) {
+                        Log.i(TAG, "----------->  newCounts  " + AppData.eduCounts);
+                        if (length > AppData.eduCounts) {
+                            for (int i = 0; i < length - AppData.eduCounts; i++) {
                                 // 如果发布的教育咨询有更新
                                 Log.i(TAG, "-------->" + object.getInt("length"));
                                 JSONObject obj = (JSONObject) object.getJSONArray("list").get(i);
@@ -179,7 +181,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                                 dbTool.saveRefreshHealthEduData(eduEntity);
                                 Log.i(TAG, "--------> length > newCounts");
                             }
-                            newCounts = length;
+                            AppData.eduCounts = length;
                         } else {
                             // 如果发布的教育咨询有删除
                             AppData.eduEntityList.clear();
@@ -201,7 +203,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                                 dbTool.saveHealthEduData(AppData.eduEntityList);
                                 Log.i(TAG, "--------> length < newCounts");
                             }
-                            newCounts = length;
+                            AppData.eduCounts = length;
                         }
                     } else {
                         String errorMsg = object.getString("error_msg");

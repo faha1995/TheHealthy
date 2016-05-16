@@ -1,9 +1,12 @@
 package com.example.administrator.thehealthy.activity;
 
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TabHost;
+import android.widget.TabWidget;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,6 +15,7 @@ import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.entity.AppData;
 import com.example.administrator.thehealthy.fragment.HealthEducationFragment;
 import com.example.administrator.thehealthy.fragment.PersonalFragment;
+import com.readystatesoftware.viewbadger.BadgeView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -20,6 +24,8 @@ public class MainActivity extends BaseActivity {
     private TabHost mTabHost;
     public TextView mainTitle;
     private long exitTime = 0;
+    private BadgeView badgeView0;
+
 
     @Override
     protected int setLayout() {
@@ -37,6 +43,8 @@ public class MainActivity extends BaseActivity {
                 .inflate(R.layout.tabwidget_infor, null);
         spec0.setIndicator(inforView);
         spec0.setContent(R.id.inforView);
+
+
         mTabHost.addTab(spec0);
 
         TabHost.TabSpec spec1 = mTabHost.newTabSpec("spec1");
@@ -51,10 +59,35 @@ public class MainActivity extends BaseActivity {
 
         BaseApplication.addActivity(new MainActivity());
         Log.i("MainActivity", "-------------->  initView()");
+        BaseApplication.getInstance().setHandler(handler);
+
+
+
+        TabWidget tabs0 = findView(android.R.id.tabs);
+        badgeView0 = new BadgeView(this, tabs0, 0);
+        badgeView0.setText("111");
+        badgeView0.setBadgePosition(BadgeView.POSITION_TOP_RIGHT);
+//        badgeView.setBadgeMargin(10);
+        badgeView0.setBackgroundResource(R.drawable.button_shape);
+        badgeView0.show();
 
         EventBus.getDefault().register(this);
     }
 
+
+    Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    if (badgeView0.getVisibility() == View.VISIBLE) {
+                        badgeView0.setVisibility(View.GONE);
+                    }
+                    break;
+            }
+            return false;
+        }
+    });
 
     // 防止
     @Subscribe

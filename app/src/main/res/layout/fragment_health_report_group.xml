@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/img_health_report_group"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -16,8 +16,14 @@
     <TextView
         android:id="@+id/text_health_report_group"
         android:layout_width="0dp"
-        android:layout_weight="9"
+        android:layout_weight="8"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:text="adfaf"/>
+    <TextView
+        android:id="@+id/text_for_badgerView_group"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"/>
 </LinearLayout>

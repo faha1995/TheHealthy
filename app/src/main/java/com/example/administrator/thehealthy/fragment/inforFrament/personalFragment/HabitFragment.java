@@ -47,6 +47,8 @@ public class HabitFragment extends BaseSonFragment {
         toiletText = findView(R.id.text_information_toilet);
         liveStokeText = findView(R.id.text_information_liveStock);
 
+
+
         linearLayout = findView(R.id.linear_habit);
         ScrollViewOnTouch.getInstance().setViewFinishTouchFromFragment(linearLayout);
 

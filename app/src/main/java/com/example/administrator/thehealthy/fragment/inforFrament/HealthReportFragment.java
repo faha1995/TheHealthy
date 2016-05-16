@@ -113,7 +113,7 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
 
     @Override
     public void onRefresh() {
-               // 没有网络
+        // 没有网络
         if (!BaseApplication.isNetwork()) {
             // 二级列表显示时
             Log.i(TAG, "onRefresh: " + exListView.getVisibility());
@@ -143,11 +143,13 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
                 swipeLayout.setRefreshing(false);
             }
         } else {
+            exListView.setEnabled(false);
             initNetWork();
+
         }
 
-
     }
+
 
     @Subscribe
     public void onEvent(String string) {
@@ -199,7 +201,7 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
 
                                 Log.i(TAG, "------> member.length" + member.getJSONObject(i).getString("resident"));
                             }
-
+                            Log.i(TAG, "initnetwork : reportGroup --  " + member.length());
 
 //                             得到一级分类对应的二级分类数据，加入childs集合中
                             JSONArray summaries = jsonObject.getJSONArray("summary");
@@ -228,11 +230,14 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
                                 AppData.hrChilds.add(i, child);
                             }
 
-
+                            Log.i(TAG, "initnetwork : reportChild -- " + summaries.length());
                             // 为了刷新时 groups 和 childs 同时显示
                             // 同时将两个集合传入adapter中
                             expandAdapter.addToReportGroupsChilds(AppData.hrGroups, AppData.hrChilds);
-
+                            // 如果exListView不可被点击
+                            if (!exListView.isEnabled()) {
+                                exListView.setEnabled(true);
+                            }
                             if (summaries.length() < 1) {
                                 Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/splash_discrip_text_type.ttf");
                                 nothingText.setTypeface(typeface);
@@ -285,18 +290,17 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 if (BaseApplication.isNetwork()) {
 
-                goWhich(AppData.hrChilds.get(groupPosition).get(childPosition).getTypeAlias(),
-                        AppData.hrChilds.get(groupPosition).get(childPosition).getItemAlias(),
-                        ChangeString.splitForPurpose(AppData.hrChilds.get(groupPosition).get(childPosition).getTitle()),
-                        AppData.hrChilds.get(groupPosition).get(childPosition).getRecordId());
+                    goWhich(AppData.hrChilds.get(groupPosition).get(childPosition).getTypeAlias(),
+                            AppData.hrChilds.get(groupPosition).get(childPosition).getItemAlias(),
+                            ChangeString.splitForPurpose(AppData.hrChilds.get(groupPosition).get(childPosition).getTitle()),
+                            AppData.hrChilds.get(groupPosition).get(childPosition).getRecordId());
                 } else {
-                    Toast.makeText(getActivity(),"网络不可用",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "网络不可用", Toast.LENGTH_SHORT).show();
                 }
 
                 return true;
             }
         });
-
 
 
     }
