@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.adapter.PersonalAdapter;
+import com.example.administrator.thehealthy.entity.AppData;
 import com.example.administrator.thehealthy.fragment.inforFrament.HealthReportFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.PersonalInforFragment;
 import com.example.administrator.thehealthy.fragment.inforFrament.ServicePlanFragment;
@@ -23,16 +24,12 @@ public class PersonalFragment extends BaseFatherFragment {
     private PersonalAdapter personalAdapter;
     private List<Fragment> fragmentList = new ArrayList<>();
     private List<String> titles = new ArrayList<>();
-    public static boolean startService = false;
+
 
     @Override
     protected int setLayoutView() {
 
         return R.layout.fragment_personal;
-    }
-
-    public static boolean isStartService(){
-        return startService;
     }
 
 
@@ -68,7 +65,7 @@ public class PersonalFragment extends BaseFatherFragment {
 
     @Override
     protected void initData() {
-        startService = true;
+        AppData.isOnResume = true;
     }
 
 

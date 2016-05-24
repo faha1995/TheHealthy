@@ -113,11 +113,11 @@ public class HealthRrportExpandAdapter extends BaseExpandableListAdapter {
         }
         groupHolder.groupText.setText(groups.get(groupPosition));
 
-        groupHolder.badgeView = new BadgeView(context,groupHolder.badgerText);
-        groupHolder.badgeView.setText("2");
-        groupHolder.badgeView.setBadgePosition(BadgeView.POSITION_CENTER);
-        groupHolder.badgeView.setBackgroundResource(R.drawable.button_shape);
-        groupHolder.badgeView.show();
+//        groupHolder.badgeView = new BadgeView(context,groupHolder.badgerText);
+//        groupHolder.badgeView.setText("2");
+//        groupHolder.badgeView.setBadgePosition(BadgeView.POSITION_CENTER);
+//        groupHolder.badgeView.setBackgroundResource(R.drawable.button_shape);
+//        groupHolder.badgeView.show();
         return convertView;
     }
 

@@ -41,6 +41,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
     private DBTool dbTool;
     private List<HealthEduEntity> eduEntityList;
     private final int DISAPPEAR = 1;
+private int item_id;
 
     @Override
     protected int setLayoutView() {
@@ -71,7 +72,6 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
         educationLv.setOnItemClickListener(this);
 
         educationAdapter = new HealthEducationAdapter(getActivity());
-
         educationLv.setAdapter(educationAdapter);
 
 
@@ -93,6 +93,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
     }
 
 
+//                        List<Integer> itemList = dbTool.itemsFromSummary();
     private void initNetWork() {
         AppData.eduEntityList.clear();
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
@@ -104,7 +105,8 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                     JSONObject object = new JSONObject(response);
                     if (!object.getBoolean("error")) {
                         int length = object.getInt("length");
-
+                        // 获得数据库中已有的item_id
+                        boolean hasItem = false;
                         for (int i = 0; i < length; i++) {
                             Log.i(TAG, "-------->" + object.getInt("length"));
                             JSONObject obj = (JSONObject) object.getJSONArray("list").get(i);
@@ -120,10 +122,20 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                             educationAdapter.addData(AppData.eduEntityList);
 
                             dbTool.deleteHealthEduData();
-                            dbTool.saveHealthEduData(AppData.eduEntityList);
+//                            if (itemList != null) {
+//                                for (int item = 0; item < itemList.size(); item++) {
+//                                    if (obj.getInt("item_id") == itemList.get(item)) {
+//                                        hasItem = true;
+//                                    }
+//                                }
+//                                if (hasItem = false) {
+                                    dbTool.saveHealthEduData(AppData.eduEntityList);
+//                                }
+//                            }
+
                         }
                         AppData.eduCounts = AppData.eduEntityList.size();
-                        Log.i(TAG, " initNetwork : "+AppData.eduCounts );
+                        Log.i(TAG, " initNetwork : " + AppData.eduCounts);
                     } else {
                         String errorMsg = object.getString("error_msg");
                         Toast.makeText(getContext(), errorMsg, Toast.LENGTH_SHORT).show();
@@ -156,7 +168,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
                 AppConfig.URL_EDUCATION, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-            BaseApplication.getInstance().getHandler().sendEmptyMessage(DISAPPEAR);
+                BaseApplication.getInstance().getHandler().sendEmptyMessage(DISAPPEAR);
 
                 try {
                     JSONObject object = new JSONObject(response);
@@ -222,6 +234,7 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
+
                 return params;
             }
         };
@@ -229,13 +242,21 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
 
     }
 
-
+int pos;
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (BaseApplication.isNetwork()) {
             activityIntent(this, new EducateWebViewActivity(), position);
+//            item_id = AppData.eduEntityList.get(position).getItem_id();
+//            for (int i = 0; i <itemList.size() ; i++) {
+//                if (item_id == itemList.get(i)) {
+//                    pos = i;
+//                }
+//            }
         } else {
             Toast.makeText(getActivity(), "网络不可用", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 }

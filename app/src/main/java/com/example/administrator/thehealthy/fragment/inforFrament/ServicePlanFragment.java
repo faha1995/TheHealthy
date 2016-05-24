@@ -46,7 +46,7 @@ public class ServicePlanFragment extends BaseFatherFragment implements SwipeRefr
     private DBTool dbTool;
     private ExpandableListView exListView;
     private ServicePlanAdapter servicePlanAdapter;
-    private LinearLayout plaseLoginLinear,networkLinear;
+    private LinearLayout pleaseLoginLinear,networkLinear;
     private TextView nothingText,networkTv;
     private SwipeRefreshLoadingLayout swipLayout;
     private List<String> groups = new ArrayList<>();
@@ -60,7 +60,7 @@ public class ServicePlanFragment extends BaseFatherFragment implements SwipeRefr
     protected void initView() {
 
         dbTool = new DBTool();
-        plaseLoginLinear = findView(R.id.linear_service_plan);
+        pleaseLoginLinear = findView(R.id.linear_service_plan);
         networkLinear = findView(R.id.linear_service_plan_network);
         networkTv = findView(R.id.text_service_plan_network);
         nothingText = findView(R.id.text_service_plan_nothing);
@@ -103,7 +103,7 @@ public class ServicePlanFragment extends BaseFatherFragment implements SwipeRefr
         groups.clear();
         AppData.spChilds.clear();
         if (dbTool.isLogined()) {
-            plaseLoginLinear.setVisibility(View.GONE);
+            pleaseLoginLinear.setVisibility(View.GONE);
            
             final HashMap<String, String> user = dbTool.getUserDetails();
 
@@ -158,13 +158,25 @@ public class ServicePlanFragment extends BaseFatherFragment implements SwipeRefr
                             Log.i(TAG, "initnetwork : reportChild --  " + member.length());
                             servicePlanAdapter.addToPlanGroupsChilds(groups,AppData.spChilds);
 
-                        } else {
-                            Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/splash_discrip_text_type.ttf");
-                            nothingText.setTypeface(typeface);
-                            nothingText.setText("还未有相关记录");
-                            nothingText.setVisibility(View.VISIBLE);
-                            exListView.setVisibility(View.GONE);
-                        }
+                            // 如果exListView不可被点击
+                            if (!exListView.isEnabled()) {
+                                exListView.setEnabled(true);
+                            }
+                            if (plans.length() < 1) {
+                                Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/splash_discrip_text_type.ttf");
+                                nothingText.setTypeface(typeface);
+                                nothingText.setText("还未有相关记录");
+                                nothingText.setVisibility(View.VISIBLE);
+                                exListView.setVisibility(View.GONE);
+                            }
+                        } 
+//                        else {
+//                            Typeface typeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/splash_discrip_text_type.ttf");
+//                            nothingText.setTypeface(typeface);
+//                            nothingText.setText("还未有相关记录");
+//                            nothingText.setVisibility(View.VISIBLE);
+//                            exListView.setVisibility(View.GONE);
+//                        }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -190,11 +202,12 @@ public class ServicePlanFragment extends BaseFatherFragment implements SwipeRefr
 
             VolleySingleton.getInstace().addRequest(request);
         } else {
-            plaseLoginLinear.setVisibility(View.VISIBLE);
-            plaseLoginLinear.setOnClickListener(new View.OnClickListener() {
+            pleaseLoginLinear.setVisibility(View.VISIBLE);
+            pleaseLoginLinear.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     activityIntent(getActivity(), LoginActivity.class);
+                    Log.i(TAG, "onClick: lalalaaal+");
                 }
             });
 

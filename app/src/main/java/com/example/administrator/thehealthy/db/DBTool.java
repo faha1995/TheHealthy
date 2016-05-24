@@ -65,6 +65,24 @@ public class DBTool implements SQLValues {
 
     }
 
+    // 得到数据库中教育的item_id
+    public List itemsFromSummary() {
+        List<Integer> list = new ArrayList();
+        String selectItems = "select item_id from " + TABLE_SUMMARY;
+        Cursor cursor = database.rawQuery(selectItems, null);
+        cursor.moveToFirst();
+        if (cursor.getColumnCount() > 0) {
+            list.add(cursor.getInt(5));
+        }
+        cursor.close();
+        return list;
+    }
+
+    public void changeItem(int i){
+
+    }
+
+
     // 从数据库中获得详细信息
     public HashMap<String, String> getUserDetails() {
         HashMap<String, String> user = new HashMap<>();
@@ -81,7 +99,6 @@ public class DBTool implements SQLValues {
             user.put("created_at", cursor.getString(5));
         }
         cursor.close();
-        db.close();
 
         return user;
     }
@@ -131,7 +148,11 @@ public class DBTool implements SQLValues {
 //    }
 
 
-    public List<Summary> querySummary(){return null;};
+    public List<Summary> querySummary() {
+        return null;
+    }
+
+    ;
 
 
     // 将解析后的数据添加到数据库中
@@ -146,6 +167,7 @@ public class DBTool implements SQLValues {
             values.put(KEY_HEALTH_CONTENT_URL, entity.getContent_url());
             values.put(KEY_HEALTH_CREATE_AT, entity.getCreate_at());
             values.put(KEY_HEALTH_CREATE_BY, entity.getCreate_by());
+            values.put(KEY_HEALTH_ITEM_ID, entity.getItem_id());
             database.insert(TABLE_HEALTH, null, values);
         }
     }

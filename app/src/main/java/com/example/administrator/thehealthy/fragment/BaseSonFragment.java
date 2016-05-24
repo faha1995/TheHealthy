@@ -297,6 +297,7 @@ public abstract class BaseSonFragment extends Fragment implements View.OnTouchLi
         map.put("record_id", String.valueOf(record_id));
         map.put("score", String.valueOf(score));
 
+
         Request<JSONObject> request = new NormalPostRequest(url,
                 new Response.Listener<JSONObject>() {
                     @Override

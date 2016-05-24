@@ -28,7 +28,7 @@ import java.util.HashMap;
 public class PersonalInforFragment extends BaseFatherFragment implements View.OnClickListener {
     private final String TAG = PersonalInforFragment.class.getSimpleName();
     private LinearLayout inforLinearFirst, inforLinearSecond, inforLinearThird,
-            inforLinearFourth,linearInforIcon;
+            inforLinearFourth, linearInforIcon;
     private Button exitBtn;
     private TextView nameText, mobileText;
     private DBTool dbTool;
@@ -68,7 +68,6 @@ public class PersonalInforFragment extends BaseFatherFragment implements View.On
     }
 
 
-
     @Override
     public void onResume() {
         super.onResume();
@@ -93,7 +92,6 @@ public class PersonalInforFragment extends BaseFatherFragment implements View.On
 
 
     }
-
 
 
     @SuppressLint("NewApi")
@@ -147,14 +145,18 @@ public class PersonalInforFragment extends BaseFatherFragment implements View.On
 
             // 退出
             case R.id.btn_personalInfor_exit:
-                logoutUser();
-                EventBus.getDefault().post("退出当前用户");
-                activityIntent(getActivity(), LoginActivity.class);
-                nameText.setText("未设置");
-                mobileText.setText("未知");
+                if (!dbTool.isLogined()) {
+                    System.exit(0);
+                } else {
+                    logoutUser();
+                    EventBus.getDefault().post("退出当前用户");
+                    activityIntent(getActivity(), LoginActivity.class);
+                    nameText.setText("未设置");
+                    mobileText.setText("未知");
 //                getActivity().finish();
-                break;
-            // 名字和电话
+                    break;
+                }
+                // 名字和电话
             case R.id.text_personalInfor_name:
                 if (!dbTool.isLogined()) {
                     showAlertDialog("请先进行登录", 1);

@@ -36,6 +36,24 @@
         android:textSize="25sp"
         android:visibility="gone" />
 
+
+    <com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout
+        android:id="@+id/swipeRefresh_service_plan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ExpandableListView
+        android:id="@+id/expandable_service_plan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:divider="@null"
+        android:groupIndicator="@null"
+        android:overScrollMode="never">
+
+    </ExpandableListView>
+    </com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout>
+
     <LinearLayout
         android:id="@+id/linear_service_plan"
         android:layout_width="wrap_content"
@@ -62,22 +80,4 @@
             android:textSize="20sp" />
 
     </LinearLayout>
-
-    <com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout
-        android:id="@+id/swipeRefresh_service_plan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    <ExpandableListView
-        android:id="@+id/expandable_service_plan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:divider="@null"
-        android:groupIndicator="@null"
-        android:overScrollMode="never">
-
-    </ExpandableListView>
-    </com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout>
-
 </RelativeLayout>

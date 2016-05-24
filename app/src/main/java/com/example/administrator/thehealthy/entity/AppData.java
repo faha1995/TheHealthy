@@ -18,5 +18,6 @@ public class AppData {
     public static int eduCounts = 0;
     public static List<Integer> reportCounts = new ArrayList<>();
     public static List<Integer> planeCounts  = new ArrayList<>();
+    public static boolean isOnResume = false;
 
 }

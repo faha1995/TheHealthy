@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.example.administrator.thehealthy.R;
 import com.example.administrator.thehealthy.application.BaseApplication;
 import com.example.administrator.thehealthy.entity.AppData;
+import com.example.administrator.thehealthy.entity.ServiceToUiEntity;
 import com.example.administrator.thehealthy.fragment.HealthEducationFragment;
 import com.example.administrator.thehealthy.fragment.PersonalFragment;
 import com.readystatesoftware.viewbadger.BadgeView;
@@ -24,7 +25,7 @@ public class MainActivity extends BaseActivity {
     private TabHost mTabHost;
     public TextView mainTitle;
     private long exitTime = 0;
-    private BadgeView badgeView0;
+    private BadgeView badgeView0,badgeView1;
 
 
     @Override
@@ -65,11 +66,9 @@ public class MainActivity extends BaseActivity {
 
         TabWidget tabs0 = findView(android.R.id.tabs);
         badgeView0 = new BadgeView(this, tabs0, 0);
-        badgeView0.setText("111");
-        badgeView0.setBadgePosition(BadgeView.POSITION_TOP_RIGHT);
-//        badgeView.setBadgeMargin(10);
-        badgeView0.setBackgroundResource(R.drawable.button_shape);
-        badgeView0.show();
+        badgeView1 = new BadgeView(this,tabs0,1);
+
+
 
         EventBus.getDefault().register(this);
     }
@@ -91,11 +90,28 @@ public class MainActivity extends BaseActivity {
 
     // 防止
     @Subscribe
-    public void onEvent(String string) {
-        if (string.equals("forMainActivityBackPressed")) {
-//            counts = 2;
-//            Log.i("MainActivity","-----> counts" + counts);
+    public void onEvent(ServiceToUiEntity entity) {
+        if (entity.getName().equals("DataChangedService")) {
+            if (entity.getWhich().equals("tabs0")) {
+            // TabWidget0 显示小绿点
+            badgeView0.setText(entity.getNum()+"");
+            badgeView0.setBadgePosition(BadgeView.POSITION_TOP_RIGHT);
+            badgeView0.setBackgroundResource(R.drawable.button_shape);
+            badgeView0.show();
+
+            } else if (entity.getWhich().equals("tabs1")){
+                // TabWidget1 显示小绿点
+                badgeView1.setText(entity.getNum()+"");
+                badgeView1.setBadgePosition(BadgeView.POSITION_TOP_RIGHT);
+                badgeView1.setBackgroundResource(R.drawable.button_shape);
+                badgeView1.show();
+
+
+
+
+            }
         }
+
     }
 
     @Override
