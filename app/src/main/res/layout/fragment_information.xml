@@ -30,7 +30,7 @@
             android:background="@color/personalInforRelativeBackground"
             android:orientation="horizontal">
 
-            <com.example.administrator.thehealthy.util.RoundImageView
+            <com.seimun.mobileHealth.util.RoundImageView
                 android:id="@+id/roundImage_information"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

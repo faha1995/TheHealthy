@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@mipmap/aa"
     android:padding="20dp"
-    tools:context="com.example.administrator.thehealthy.activity.inforactivity.RegisterActivity">
+    tools:context="com.seimun.mobileHealth.activity.inforactivity.RegisterActivity">
 
 
     <LinearLayout

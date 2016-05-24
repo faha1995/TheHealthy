@@ -26,7 +26,7 @@
             android:layout_height="match_parent"
             android:background="@color/personalInforRelativeBackground">
 
-            <com.example.administrator.thehealthy.util.RoundImageView
+            <com.seimun.mobileHealth.util.RoundImageView
                 android:id="@+id/roundImage_personalInfor"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
                 android:layout_gravity="center_vertical"
                 android:visibility="gone"
                 android:layout_marginTop="10dp">
-                <com.example.administrator.thehealthy.util.RoundImageView
+                <com.seimun.mobileHealth.util.RoundImageView
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                     imagecontrol:border_thickness="2dp"
                     android:layout_marginRight="5dp"
                    />
-                <com.example.administrator.thehealthy.util.RoundImageView
+                <com.seimun.mobileHealth.util.RoundImageView
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

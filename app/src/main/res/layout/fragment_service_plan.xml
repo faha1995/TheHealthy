@@ -37,7 +37,7 @@
         android:visibility="gone" />
 
 
-    <com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout
+    <com.seimun.mobileHealth.util.SwipeRefreshLoadingLayout
         android:id="@+id/swipeRefresh_service_plan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -52,7 +52,7 @@
         android:overScrollMode="never">
 
     </ExpandableListView>
-    </com.example.administrator.thehealthy.util.SwipeRefreshLoadingLayout>
+    </com.seimun.mobileHealth.util.SwipeRefreshLoadingLayout>
 
     <LinearLayout
         android:id="@+id/linear_service_plan"
