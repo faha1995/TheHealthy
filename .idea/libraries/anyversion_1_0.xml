@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="anyversion-1.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.yoojia/anyversion/1.0/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.yoojia/anyversion/1.0/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.yoojia/anyversion/1.0/2c237c0e7fc667bfa06ae8a48a158f9ebc25896/anyversion-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

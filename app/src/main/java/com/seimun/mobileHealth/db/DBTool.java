@@ -69,7 +69,8 @@ public class DBTool implements SQLValues {
     public List itemsFromSummary() {
         List<Integer> list = new ArrayList();
         String selectItems = "select item_id from " + TABLE_SUMMARY;
-        Cursor cursor = database.rawQuery(selectItems, null);
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectItems, null);
         cursor.moveToFirst();
         if (cursor.getColumnCount() > 0) {
             list.add(cursor.getInt(5));
@@ -78,7 +79,11 @@ public class DBTool implements SQLValues {
         return list;
     }
 
-    public void changeItem(int i){
+    public void changeItem(int i) {
+        ContentValues values = new ContentValues();
+        values.put("create_by", "checked");
+        database.update(TABLE_SUMMARY, values, "item_id=?", (String[]) new Object[]{i});
+
 
     }
 
@@ -152,8 +157,6 @@ public class DBTool implements SQLValues {
         return null;
     }
 
-    ;
-
 
     // 将解析后的数据添加到数据库中
     public void saveHealthEduData(List<HealthEduEntity> healthEduEntity) {
@@ -171,6 +174,20 @@ public class DBTool implements SQLValues {
             database.insert(TABLE_HEALTH, null, values);
         }
     }
+
+    // 添加新的健康教育的方法
+    public void saveNewHealthEduData(HealthEduEntity healthEduEntity) {
+        ContentValues values = new ContentValues();
+        values.put(KEY_HEALTH_TITLE, healthEduEntity.getTitle());
+        values.put(KEY_HEALTH_DESCRIP, healthEduEntity.getDescription());
+        values.put(KEY_HEALTH_IMAGE_URL, healthEduEntity.getImage_url());
+        values.put(KEY_HEALTH_CONTENT_URL, healthEduEntity.getContent_url());
+        values.put(KEY_HEALTH_CREATE_AT, healthEduEntity.getCreate_at());
+        values.put(KEY_HEALTH_CREATE_BY, healthEduEntity.getCreate_by());
+        values.put(KEY_HEALTH_ITEM_ID, healthEduEntity.getItem_id());
+        database.insert(TABLE_HEALTH, null, values);
+    }
+
 
     public void saveRefreshHealthEduData(HealthEduEntity healthEduEntity) {
 //        database = dbHelper.getWritableDatabase();

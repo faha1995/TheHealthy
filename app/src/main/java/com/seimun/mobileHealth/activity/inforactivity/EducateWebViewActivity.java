@@ -52,5 +52,9 @@ private DBTool dbTool;
         overridePendingTransition(R.anim.no_move, R.anim.move_out_from_right);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
+    }
 }

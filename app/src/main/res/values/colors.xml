@@ -13,5 +13,6 @@
     <color name="colorF0">#FFF0F0F0</color>
     <color name="health_infor_nameTextColor">#FF000000</color>
     <color name="tablayout_selected_color">#FF000000</color>
+    <color name="line">#FF44B899</color>
 
 </resources>

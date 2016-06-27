@@ -1,5 +1,7 @@
 package com.seimun.mobileHealth.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -11,16 +13,16 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.seimun.mobileHealth.adapter.HealthEducationAdapter;
-import com.seimun.mobileHealth.db.DBTool;
-import com.seimun.mobileHealth.volley.VolleySingleton;
 import com.example.administrator.thehealthy.R;
 import com.seimun.mobileHealth.activity.inforactivity.EducateWebViewActivity;
+import com.seimun.mobileHealth.adapter.HealthEducationAdapter;
 import com.seimun.mobileHealth.application.BaseApplication;
+import com.seimun.mobileHealth.db.DBTool;
 import com.seimun.mobileHealth.entity.AppConfig;
 import com.seimun.mobileHealth.entity.AppData;
 import com.seimun.mobileHealth.entity.HealthEduEntity;
 import com.seimun.mobileHealth.util.RefreshableView;
+import com.seimun.mobileHealth.volley.VolleySingleton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,12 +43,16 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
     private DBTool dbTool;
     private List<HealthEduEntity> eduEntityList;
     private final int DISAPPEAR = 1;
-private int item_id;
+    private int item_id;
+    private SharedPreferences sharedPreference;
+    private final String THE_FIRST_RUN = "firstRun";
+
 
     @Override
     protected int setLayoutView() {
         return R.layout.fragment_health_education;
     }
+
 
     @Override
     protected void initView() {
@@ -76,6 +82,7 @@ private int item_id;
 
 
         eduEntityList = dbTool.queryHealthData();
+        sharedPreference = getActivity().getSharedPreferences(THE_FIRST_RUN, Context.MODE_PRIVATE);
     }
 
 
@@ -93,7 +100,6 @@ private int item_id;
     }
 
 
-//                        List<Integer> itemList = dbTool.itemsFromSummary();
     private void initNetWork() {
         AppData.eduEntityList.clear();
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
@@ -122,14 +128,25 @@ private int item_id;
                             educationAdapter.addData(AppData.eduEntityList);
 
                             dbTool.deleteHealthEduData();
-//                            if (itemList != null) {
-//                                for (int item = 0; item < itemList.size(); item++) {
-//                                    if (obj.getInt("item_id") == itemList.get(item)) {
-//                                        hasItem = true;
+
+                            // 如果第一次进入APP 就将所有数据加入到数据库
+//                            if (sharedPreference.getBoolean("first", false)) {
+                                dbTool.saveHealthEduData(AppData.eduEntityList);
+//                            } else {
+                                // 获得数据库中保存健康教育
+                                // 数据中的所有item_id集合
+                                // 并且判断当前解析数据中是否有新的
+                                // 若有则加入数据库中
+//                                List<Integer> itemList = dbTool.itemsFromSummary();
+//                                if (itemList != null) {
+//                                    for (int item = 0; item < itemList.size(); item++) {
+//                                        if (obj.getInt("item_id") == itemList.get(item)) {
+//                                            hasItem = true;
+//                                        }
 //                                    }
-//                                }
-//                                if (hasItem = false) {
-                                    dbTool.saveHealthEduData(AppData.eduEntityList);
+//                                    if (hasItem = false) {
+                                        dbTool.saveNewHealthEduData(eduEntity);
+//                                    }
 //                                }
 //                            }
 
@@ -242,17 +259,23 @@ private int item_id;
 
     }
 
-int pos;
+    int pos;
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (BaseApplication.isNetwork()) {
-            activityIntent(this, new EducateWebViewActivity(), position);
+            // 获得点击的item的item_id 并且改变数据库中其对应的create_by属性
+//            List<Integer> itemList = dbTool.itemsFromSummary();
 //            item_id = AppData.eduEntityList.get(position).getItem_id();
-//            for (int i = 0; i <itemList.size() ; i++) {
+//            for (int i = 0; i < itemList.size(); i++) {
 //                if (item_id == itemList.get(i)) {
-//                    pos = i;
+//                    // 改变数据库中对应的create_by属性
+//                    dbTool.changeItem(item_id);
 //                }
 //            }
+            activityIntent(this, new EducateWebViewActivity(), position);
+//            TextView titleTv,descripTv,timeTv,dateTv;
+//            titleTv = view.findViewById(R.id.)
         } else {
             Toast.makeText(getActivity(), "网络不可用", Toast.LENGTH_SHORT).show();
         }

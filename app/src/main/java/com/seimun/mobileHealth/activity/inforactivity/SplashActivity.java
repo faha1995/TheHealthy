@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Typeface;
@@ -54,7 +55,8 @@ public class SplashActivity extends BaseActivity {
     // 下载失败
     private static final int DOWN_ERROR = 2;
     private long time;
-
+    private SharedPreferences sp;
+    private final String THE_FIRST_RUN = "firstRun";
     @Override
     protected int setLayout() {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -65,6 +67,12 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        sp = getSharedPreferences(THE_FIRST_RUN, MODE_PRIVATE);
+        if (!sp.getBoolean("first",false)) {
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("first",false);
+        editor.commit();
+        }
         titleText = findView(R.id.text_splash_title);
         discripText = findView(R.id.text_splash_discrip);
         versionText = findView(R.id.text_version);

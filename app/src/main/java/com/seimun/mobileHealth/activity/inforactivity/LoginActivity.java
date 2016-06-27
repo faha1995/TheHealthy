@@ -93,7 +93,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 }
                 break;
             case R.id.btn_register:
-                Intent intent = new Intent(this, RegisterActivity.class);
+                Intent intent = new Intent(this, RegisterActivity1.class);
                 overridePendingTransition(R.anim.move_in_from_right, R.anim.no_move);
                 startActivityForResult(intent, 2);
                 break;

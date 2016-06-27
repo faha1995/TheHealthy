@@ -8,6 +8,9 @@ import android.net.NetworkInfo;
 import android.os.Handler;
 import android.util.Log;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 import java.util.ArrayList;
 
 /**
@@ -19,6 +22,9 @@ public class BaseApplication extends Application {
     private static Context context;
     private static ArrayList<Activity> activityList;
     public static int mNetWorkState;
+    //volley请求队列
+    public static RequestQueue volleyQueue;
+
     private Handler handler = null;
 
     public void setHandler(Handler handler){
@@ -44,6 +50,17 @@ public class BaseApplication extends Application {
         }
         return mApplication;
     }
+
+    /**
+     *
+     */
+    public static synchronized RequestQueue getRequestQueue(){
+        if(volleyQueue == null){
+            volleyQueue = Volley.newRequestQueue(getContext());
+        }
+        return volleyQueue;
+    }
+
 
     @Override
     public void onCreate() {

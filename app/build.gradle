@@ -19,6 +19,12 @@ android {
     }
 }
 
+repositories {
+    flatDir {
+        dirs 'libs' //就是你放aar的目录地址
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
@@ -32,4 +38,7 @@ dependencies {
     compile 'com.android.support:support-v4:23.2.0'
     compile 'com.github.yoojia:anyversion:1.0@aar'
     compile files('libs/android-viewbadger.jar')
+
+    //Mob短信验证码
+    compile name: 'SMSSDK-2.0.2', ext: 'aar'
 }
