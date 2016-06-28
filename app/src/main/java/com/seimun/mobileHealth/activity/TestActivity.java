@@ -10,7 +10,7 @@ public class TestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_aftercare1_to8_month);
+        setContentView(R.layout.fragment_aftercare12_to30_month);
     }
 
 
