@@ -11,9 +11,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.entity.PlanEntity;
 import com.seimun.mobileHealth.tools.ChangeString;
-import com.example.administrator.thehealthy.R;
 
 import java.util.List;
 

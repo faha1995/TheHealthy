@@ -6,11 +6,11 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.seimun.mobileHealth.R;
+import com.seimun.mobileHealth.entity.AppData;
 import com.seimun.mobileHealth.fragment.BaseFatherFragment;
 import com.seimun.mobileHealth.tools.ChangeString;
 import com.seimun.mobileHealth.tools.ScrollViewOnTouch;
-import com.example.administrator.thehealthy.R;
-import com.seimun.mobileHealth.entity.AppData;
 
 /**
  * Created by Administrator on 2016/3/9.

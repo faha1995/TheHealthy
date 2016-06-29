@@ -15,12 +15,12 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.activity.BaseActivity;
-import com.seimun.mobileHealth.db.DBTool;
-import com.seimun.mobileHealth.volley.VolleySingleton;
-import com.example.administrator.thehealthy.R;
-import com.seimun.mobileHealth.entity.AppConfig;
 import com.seimun.mobileHealth.application.BaseApplication;
+import com.seimun.mobileHealth.db.DBTool;
+import com.seimun.mobileHealth.entity.AppConfig;
+import com.seimun.mobileHealth.volley.VolleySingleton;
 
 import org.json.JSONException;
 import org.json.JSONObject;

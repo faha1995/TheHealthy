@@ -5,11 +5,11 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.activity.BaseActivity;
 import com.seimun.mobileHealth.db.DBTool;
-import com.seimun.mobileHealth.tools.ScrollViewOnTouch;
-import com.example.administrator.thehealthy.R;
 import com.seimun.mobileHealth.entity.AppData;
+import com.seimun.mobileHealth.tools.ScrollViewOnTouch;
 
 public class EducateWebViewActivity extends BaseActivity {
     private WebView webView;

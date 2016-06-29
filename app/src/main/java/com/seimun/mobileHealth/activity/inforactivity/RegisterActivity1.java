@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
-import com.example.administrator.thehealthy.R;
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.activity.BaseActivity;
 import com.seimun.mobileHealth.entity.AppConfig;
 import com.seimun.mobileHealth.tools.MobValidateCode;

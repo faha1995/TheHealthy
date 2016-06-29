@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.seimun.mobileHealth.R;
+import com.seimun.mobileHealth.entity.HealthEduEntity;
 import com.seimun.mobileHealth.tools.ChangeString;
 import com.seimun.mobileHealth.volley.VolleySingleton;
-import com.example.administrator.thehealthy.R;
-import com.seimun.mobileHealth.entity.HealthEduEntity;
 
 import java.util.List;
 

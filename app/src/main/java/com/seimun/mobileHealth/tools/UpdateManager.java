@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.example.administrator.thehealthy.R;
+import com.seimun.mobileHealth.R;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -13,7 +13,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.administrator.thehealthy.R;
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.activity.inforactivity.EducateWebViewActivity;
 import com.seimun.mobileHealth.adapter.HealthEducationAdapter;
 import com.seimun.mobileHealth.application.BaseApplication;

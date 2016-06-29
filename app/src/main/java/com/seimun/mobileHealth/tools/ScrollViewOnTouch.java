@@ -5,9 +5,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
 
-import com.seimun.mobileHealth.fragment.BaseFatherFragment;
-import com.example.administrator.thehealthy.R;
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.entity.AppData;
+import com.seimun.mobileHealth.fragment.BaseFatherFragment;
 
 /**
  * Created by Administrator on 2016/3/24.

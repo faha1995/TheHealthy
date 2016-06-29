@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.administrator.thehealthy.R;
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.activity.inforactivity.LoginActivity;
 import com.seimun.mobileHealth.db.DBTool;
 import com.seimun.mobileHealth.fragment.BaseFatherFragment;

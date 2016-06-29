@@ -10,13 +10,13 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.administrator.thehealthy.R;
+import com.readystatesoftware.viewbadger.BadgeView;
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.application.BaseApplication;
 import com.seimun.mobileHealth.entity.AppData;
 import com.seimun.mobileHealth.entity.ServiceToUiEntity;
 import com.seimun.mobileHealth.fragment.HealthEducationFragment;
 import com.seimun.mobileHealth.fragment.PersonalFragment;
-import com.readystatesoftware.viewbadger.BadgeView;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

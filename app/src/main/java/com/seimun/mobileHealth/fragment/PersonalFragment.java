@@ -4,12 +4,12 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.adapter.PersonalAdapter;
+import com.seimun.mobileHealth.entity.AppData;
 import com.seimun.mobileHealth.fragment.inforFrament.HealthReportFragment;
 import com.seimun.mobileHealth.fragment.inforFrament.PersonalInforFragment;
 import com.seimun.mobileHealth.fragment.inforFrament.ServicePlanFragment;
-import com.example.administrator.thehealthy.R;
-import com.seimun.mobileHealth.entity.AppData;
 
 import java.util.ArrayList;
 import java.util.List;

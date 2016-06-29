@@ -23,7 +23,7 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.example.administrator.thehealthy.R;
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.util.CustomProgressDialog;
 
 /**
@@ -191,7 +191,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         // 加载动画
         Animation animation = AnimationUtils.loadAnimation(
                 context, R.anim.loading_animation);
-        // 用I妈个View显示动画
+        // 用ImageView显示动画
         spaceshipImage.startAnimation(animation);
 //        tipTextVIew.setText("正在加载中");
         // 创建自定义样式dialog

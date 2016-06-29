@@ -10,9 +10,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.seimun.mobileHealth.entity.Summary;
-import com.example.administrator.thehealthy.R;
 import com.readystatesoftware.viewbadger.BadgeView;
+import com.seimun.mobileHealth.R;
+import com.seimun.mobileHealth.entity.Summary;
 
 import java.util.List;
 

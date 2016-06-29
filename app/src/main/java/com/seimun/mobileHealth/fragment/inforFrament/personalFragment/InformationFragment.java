@@ -11,13 +11,13 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.db.DBTool;
 import com.seimun.mobileHealth.entity.AppConfig;
 import com.seimun.mobileHealth.fragment.BaseSonFragment;
 import com.seimun.mobileHealth.tools.ChangeString;
 import com.seimun.mobileHealth.tools.ScrollViewOnTouch;
 import com.seimun.mobileHealth.volley.VolleySingleton;
-import com.example.administrator.thehealthy.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

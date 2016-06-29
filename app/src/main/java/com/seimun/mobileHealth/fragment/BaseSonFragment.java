@@ -26,13 +26,13 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.activity.MainActivity;
 import com.seimun.mobileHealth.activity.inforactivity.LoginActivity;
 import com.seimun.mobileHealth.entity.AndroidToServerEntity;
-import com.seimun.mobileHealth.volley.VolleySingleton;
-import com.example.administrator.thehealthy.R;
 import com.seimun.mobileHealth.entity.AppData;
 import com.seimun.mobileHealth.tools.NormalPostRequest;
+import com.seimun.mobileHealth.volley.VolleySingleton;
 
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;

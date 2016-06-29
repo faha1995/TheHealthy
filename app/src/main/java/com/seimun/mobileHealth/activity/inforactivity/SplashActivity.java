@@ -25,9 +25,9 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.activity.BaseActivity;
 import com.seimun.mobileHealth.activity.MainActivity;
-import com.example.administrator.thehealthy.R;
 import com.seimun.mobileHealth.entity.UpdataInfo;
 
 import org.json.JSONException;

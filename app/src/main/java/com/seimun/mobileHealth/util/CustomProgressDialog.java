@@ -12,7 +12,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.administrator.thehealthy.R;
+import com.seimun.mobileHealth.R;
+
 
 /**
  * Created by Administrator on 2016/4/20.

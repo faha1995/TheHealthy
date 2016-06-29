@@ -2,9 +2,9 @@ package com.seimun.mobileHealth.fragment.inforFrament.personalFragment;
 
 import android.widget.LinearLayout;
 
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.fragment.BaseSonFragment;
 import com.seimun.mobileHealth.tools.ScrollViewOnTouch;
-import com.example.administrator.thehealthy.R;
 
 /**
  * Created by Administrator on 2016/3/15.\

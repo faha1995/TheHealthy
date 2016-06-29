@@ -15,8 +15,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.seimun.mobileHealth.fragment.inforFrament.healthReportInforFragment.TcmAftercareFragment;
-import com.example.administrator.thehealthy.R;
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.activity.inforactivity.LoginActivity;
 import com.seimun.mobileHealth.adapter.HealthRrportExpandAdapter;
 import com.seimun.mobileHealth.application.BaseApplication;
@@ -46,6 +45,7 @@ import com.seimun.mobileHealth.fragment.inforFrament.healthReportInforFragment.O
 import com.seimun.mobileHealth.fragment.inforFrament.healthReportInforFragment.PostpartumManyDaysHealthCheck;
 import com.seimun.mobileHealth.fragment.inforFrament.healthReportInforFragment.PostpartumVisitFragment;
 import com.seimun.mobileHealth.fragment.inforFrament.healthReportInforFragment.PsychiatricAftercareFragment;
+import com.seimun.mobileHealth.fragment.inforFrament.healthReportInforFragment.TcmAftercareFragment;
 import com.seimun.mobileHealth.fragment.inforFrament.healthReportInforFragment.VaccinationFragment;
 import com.seimun.mobileHealth.fragment.inforFrament.healthReportInforFragment.VaccineCardFragment;
 import com.seimun.mobileHealth.tools.ChangeString;

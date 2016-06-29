@@ -16,7 +16,8 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.administrator.thehealthy.R;
+import com.seimun.mobileHealth.R;
+
 
 /**
  * Created by Administrator on 2016/4/22.

@@ -23,9 +23,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.activity.MainActivity;
 import com.seimun.mobileHealth.activity.inforactivity.LoginActivity;
-import com.example.administrator.thehealthy.R;
 import com.seimun.mobileHealth.entity.AppData;
 import com.seimun.mobileHealth.volley.VolleySingleton;
 

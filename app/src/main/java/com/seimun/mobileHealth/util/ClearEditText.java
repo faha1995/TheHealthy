@@ -12,7 +12,8 @@ import android.view.animation.CycleInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.EditText;
 
-import com.example.administrator.thehealthy.R;
+import com.seimun.mobileHealth.R;
+
 
 /**
  * Created by Administrator on 2016/3/9.

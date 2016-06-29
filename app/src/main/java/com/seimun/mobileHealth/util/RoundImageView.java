@@ -14,7 +14,8 @@ import android.graphics.drawable.NinePatchDrawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
-import com.example.administrator.thehealthy.R;
+import com.seimun.mobileHealth.R;
+
 
 /**
  * Created by Administrator on 2016/3/4.
@@ -49,7 +50,7 @@ public class RoundImageView extends ImageView {
     }
 
     private void setCustomAttributes(AttributeSet attrs) {
-        TypedArray a = mContext.obtainStyledAttributes(attrs,R.styleable.roundedimageview);
+        TypedArray a = mContext.obtainStyledAttributes(attrs, R.styleable.roundedimageview);
         mBorderThickness = a.getDimensionPixelSize(R.styleable.roundedimageview_border_thickness, 0);
         mBorderOutsideColor = a.getColor(R.styleable.roundedimageview_border_outside_color,defaultColor);
         mBorderInsideColor = a.getColor(R.styleable.roundedimageview_border_inside_color, defaultColor);
