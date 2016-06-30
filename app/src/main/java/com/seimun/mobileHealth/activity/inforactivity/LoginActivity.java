@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -16,8 +17,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.seimun.mobileHealth.R;
-import com.seimun.mobileHealth.activity.BaseActivity;
 import com.seimun.mobileHealth.activity.MainActivity;
+import com.seimun.mobileHealth.activity.BaseActivity;
 import com.seimun.mobileHealth.application.BaseApplication;
 import com.seimun.mobileHealth.db.DBTool;
 import com.seimun.mobileHealth.entity.AppConfig;
@@ -36,6 +37,7 @@ import java.util.Map;
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
     private ImageView editCleanImg;
     private EditText mobileEdit, pswEdit;
+    private TextView forgetTv;
     private DBTool dbTool;
     private Button loginBtn, registerBtn;
     private static final String TAG = LoginActivity.class.getSimpleName();
@@ -52,11 +54,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         registerBtn = findView(R.id.btn_register);
         mobileEdit = findView(R.id.edit_login_mobile);
         pswEdit = findView(R.id.edit_login_psw);
+        forgetTv = findView(R.id.tv_login_forget);
         editCleanImg = findView(R.id.img_login_clean);
         editCleanImg.setOnClickListener(this);
 
         loginBtn.setOnClickListener(this);
         registerBtn.setOnClickListener(this);
+        forgetTv.setOnClickListener(this);
         mobileEdit.addTextChangedListener(new Watcher(mobileEdit));
         pswEdit.addTextChangedListener(new Watcher(pswEdit));
 
@@ -93,9 +97,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 }
                 break;
             case R.id.btn_register:
-                Intent intent = new Intent(this, RegisterActivity1.class);
+                Intent intent = new Intent(this, RegisterActivity2.class);
                 overridePendingTransition(R.anim.move_in_from_right, R.anim.no_move);
                 startActivityForResult(intent, 2);
+                break;
+            case R.id.tv_login_forget:
+                Intent intent1 = new Intent(this, ForgetActivity.class);
+                overridePendingTransition(R.anim.move_in_from_right, R.anim.no_move);
+                startActivity(intent1);
                 break;
         }
     }
@@ -151,7 +160,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.i(TAG, "---> error" + error.toString());
-                Log.i(TAG, "---> errorMessage" + error.getMessage().toString());
 
                 Toast.makeText(getApplicationContext(),
                         "账号或密码错误", Toast.LENGTH_LONG).show();
