@@ -1,6 +1,7 @@
 package com.seimun.mobileHealth.fragment.inforFrament;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.seimun.mobileHealth.R;
+import com.seimun.mobileHealth.activity.inforactivity.AuthentActivity;
+import com.seimun.mobileHealth.activity.inforactivity.ChangeActivity;
 import com.seimun.mobileHealth.activity.inforactivity.LoginActivity;
 import com.seimun.mobileHealth.db.DBTool;
 import com.seimun.mobileHealth.fragment.BaseFatherFragment;
@@ -28,7 +31,7 @@ import java.util.HashMap;
 public class PersonalInforFragment extends BaseFatherFragment implements View.OnClickListener {
     private final String TAG = PersonalInforFragment.class.getSimpleName();
     private LinearLayout inforLinearFirst, inforLinearSecond, inforLinearThird,
-            inforLinearFourth, linearInforIcon;
+            inforLinearFourth, linearInforIcon, changePassword, authentLinear;
     private Button exitBtn;
     private TextView nameText, mobileText;
     private DBTool dbTool;
@@ -47,6 +50,8 @@ public class PersonalInforFragment extends BaseFatherFragment implements View.On
         inforLinearSecond = findView(R.id.linear_personalInfor_second);
         inforLinearThird = findView(R.id.linear_personalInfor_third);
         inforLinearFourth = findView(R.id.linear_personalInfor_fourth);
+        authentLinear = findView(R.id.linear_authent);
+        changePassword = findView(R.id.linear_changePassword);
         linearInforIcon = findView(R.id.linear_personal_icon);
         personalImg = findView(R.id.roundImage_personalInfor);
         exitBtn = findView(R.id.btn_personalInfor_exit);
@@ -58,6 +63,8 @@ public class PersonalInforFragment extends BaseFatherFragment implements View.On
         inforLinearSecond.setOnClickListener(this);
         inforLinearThird.setOnClickListener(this);
         inforLinearFourth.setOnClickListener(this);
+        authentLinear.setOnClickListener(this);
+        changePassword.setOnClickListener(this);
         exitBtn.setOnClickListener(this);
         nameText.setOnClickListener(this);
         mobileText.setOnClickListener(this);
@@ -80,8 +87,11 @@ public class PersonalInforFragment extends BaseFatherFragment implements View.On
 
             nameText.setText(user.get("name"));
             mobileText.setText(user.get("mobile"));
+            changePassword.setVisibility(View.VISIBLE);
 
             Log.i(TAG, "-----> mobile :" + user.get("mobile"));
+        } else {
+            changePassword.setVisibility(View.GONE);
         }
 
     }
@@ -112,6 +122,12 @@ public class PersonalInforFragment extends BaseFatherFragment implements View.On
                     goToNextFragmentFromPersonal(new InformationFragment());
                 }
                 break;
+            // 实名认证
+            case R.id.linear_authent:
+                Intent intent = new Intent(getContext(), AuthentActivity.class);
+
+                startActivity(intent);
+                break;
             // 生活习惯
             case R.id.linear_personalInfor_second:
                 //没有登录的判断
@@ -137,6 +153,11 @@ public class PersonalInforFragment extends BaseFatherFragment implements View.On
                     goToNextFragmentFromPersonal(new MedicalHistoryFragment());
                 }
                 break;
+            // 修改密码
+            case R.id.linear_changePassword:
+                Intent intent1 = new Intent(getContext(), ChangeActivity.class);
+                startActivity(intent1);
+                break;
 
             // 关于我们
             case R.id.linear_personalInfor_fourth:
@@ -153,6 +174,7 @@ public class PersonalInforFragment extends BaseFatherFragment implements View.On
                     activityIntent(getActivity(), LoginActivity.class);
                     nameText.setText("未设置");
                     mobileText.setText("未知");
+                    changePassword.setVisibility(View.GONE);
 //                getActivity().finish();
                     break;
                 }
