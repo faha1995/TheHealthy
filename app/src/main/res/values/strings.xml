@@ -12,7 +12,12 @@
     <string name="register_password">请输入密码</string>
     <string name="register_repeatPassword">请再次输入密码</string>
     <string name="register_idnumber">请输入身份证号码</string>
-
+    //forget
+    <string name="forget">重置密码</string>
+    <string name="forget_password">请输入新密码</string>
+    //change
+    <string name="change">修改密码</string>
+    <string name="change_password">请输入新密码</string>
     //
     <string name="pull_to_refresh">下拉可以刷新</string>
     <string name="release_to_refresh">释放立即刷新</string>
