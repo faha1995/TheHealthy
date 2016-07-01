@@ -43,9 +43,9 @@
             android:layout_height="@dimen/editext_login_height"
             android:layout_marginLeft="@dimen/editext_phone_margin"
             android:layout_marginRight="@dimen/editext_phone_margin"
+            android:layout_marginTop="10dp"
             android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:layout_marginTop="10dp">
+            android:focusableInTouchMode="true">
 
             <EditText
                 android:id="@+id/edit_login_mobile"
@@ -54,9 +54,9 @@
                 android:background="@drawable/edittext_shape"
                 android:drawableLeft="@mipmap/login_phone_icon"
                 android:drawablePadding="@dimen/edit_login_phone_drawPadding"
-                android:singleLine="true"
                 android:hint="电话号码"
                 android:padding="@dimen/editText_login_phone_padding"
+                android:singleLine="true"
                 android:textColor="@color/secondaryColor"
                 android:textColorHint="@color/secondaryColor"
                 android:textSize="15sp" />
@@ -67,9 +67,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:visibility="invisible"
                 android:layout_marginRight="10dp"
-                android:src="@mipmap/edittext_drawright_icon" />
+                android:src="@mipmap/edittext_drawright_icon"
+                android:visibility="invisible" />
         </RelativeLayout>
 
         <EditText
@@ -86,10 +86,24 @@
             android:hint="密码"
             android:padding="@dimen/editText_login_phone_padding"
             android:password="true"
-            android:textColor="@color/secondaryColor"
             android:singleLine="true"
+            android:textColor="@color/secondaryColor"
             android:textColorHint="@color/secondaryColor"
             android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_login_forget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="@dimen/editext_phone_margin"
+            android:padding="@dimen/editText_login_phone_padding"
+            android:text="忘记密码"
+            android:textColor="@color/secondaryColor"
+            android:textSize="13sp" />
+
 
     </RelativeLayout>
 
