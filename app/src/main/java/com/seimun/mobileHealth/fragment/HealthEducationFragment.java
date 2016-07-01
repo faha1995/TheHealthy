@@ -181,81 +181,81 @@ public class HealthEducationFragment extends BaseFatherFragment implements Adapt
 
     private void initRefreshData() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                AppConfig.URL_EDUCATION, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                BaseApplication.getInstance().getHandler().sendEmptyMessage(DISAPPEAR);
+            StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                    AppConfig.URL_EDUCATION, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    BaseApplication.getInstance().getHandler().sendEmptyMessage(DISAPPEAR);
 
-                try {
-                    JSONObject object = new JSONObject(response);
-                    if (!object.getBoolean("error")) {
-                        int length = object.getInt("length");
-                        Log.i(TAG, "----------->  newCounts  " + AppData.eduCounts);
-                        if (length > AppData.eduCounts) {
-                            for (int i = 0; i < length - AppData.eduCounts; i++) {
-                                // 如果发布的教育咨询有更新
-                                Log.i(TAG, "-------->" + object.getInt("length"));
-                                JSONObject obj = (JSONObject) object.getJSONArray("list").get(i);
-                                HealthEduEntity eduEntity = new HealthEduEntity();
-                                eduEntity.setItem_id(obj.getInt("item_id"));
-                                eduEntity.setTitle(obj.getString("title"));
-                                eduEntity.setDescription(obj.getString("description"));
-                                eduEntity.setCreate_at(obj.getString("create_at"));
-                                eduEntity.setCreate_by(obj.getString("create_by"));
-                                eduEntity.setContent_url(obj.getString("content_url"));
-                                eduEntity.setImage_url(obj.getString("image_url"));
-                                educationAdapter.addRefreshData(eduEntity);
+                    try {
+                        JSONObject object = new JSONObject(response);
+                        if (!object.getBoolean("error")) {
+                            int length = object.getInt("length");
+                            Log.i(TAG, "----------->  newCounts  " + AppData.eduCounts);
+                            if (length > AppData.eduCounts) {
+                                for (int i = 0; i < length - AppData.eduCounts; i++) {
+                                    // 如果发布的教育咨询有更新
+                                    Log.i(TAG, "-------->" + object.getInt("length"));
+                                    JSONObject obj = (JSONObject) object.getJSONArray("list").get(i);
+                                    HealthEduEntity eduEntity = new HealthEduEntity();
+                                    eduEntity.setItem_id(obj.getInt("item_id"));
+                                    eduEntity.setTitle(obj.getString("title"));
+                                    eduEntity.setDescription(obj.getString("description"));
+                                    eduEntity.setCreate_at(obj.getString("create_at"));
+                                    eduEntity.setCreate_by(obj.getString("create_by"));
+                                    eduEntity.setContent_url(obj.getString("content_url"));
+                                    eduEntity.setImage_url(obj.getString("image_url"));
+                                    educationAdapter.addRefreshData(eduEntity);
 
-                                dbTool.saveRefreshHealthEduData(eduEntity);
-                                Log.i(TAG, "--------> length > newCounts");
+                                    dbTool.saveRefreshHealthEduData(eduEntity);
+                                    Log.i(TAG, "--------> length > newCounts");
+                                }
+                                AppData.eduCounts = length;
+                            } else {
+                                // 如果发布的教育咨询有删除
+                                AppData.eduEntityList.clear();
+                                for (int i = 0; i < length; i++) {
+                                    Log.i(TAG, "-------->" + object.getInt("length"));
+                                    JSONObject obj = (JSONObject) object.getJSONArray("list").get(i);
+                                    HealthEduEntity eduEntity = new HealthEduEntity();
+                                    eduEntity.setItem_id(obj.getInt("item_id"));
+                                    eduEntity.setTitle(obj.getString("title"));
+                                    eduEntity.setDescription(obj.getString("description"));
+                                    eduEntity.setCreate_at(obj.getString("create_at"));
+                                    eduEntity.setCreate_by(obj.getString("create_by"));
+                                    eduEntity.setContent_url(obj.getString("content_url"));
+                                    eduEntity.setImage_url(obj.getString("image_url"));
+                                    AppData.eduEntityList.add(eduEntity);
+                                    educationAdapter.addData(AppData.eduEntityList);
+
+                                    dbTool.deleteHealthEduData();
+                                    dbTool.saveHealthEduData(AppData.eduEntityList);
+                                    Log.i(TAG, "--------> length < newCounts");
+                                }
+                                AppData.eduCounts = length;
                             }
-                            AppData.eduCounts = length;
                         } else {
-                            // 如果发布的教育咨询有删除
-                            AppData.eduEntityList.clear();
-                            for (int i = 0; i < length; i++) {
-                                Log.i(TAG, "-------->" + object.getInt("length"));
-                                JSONObject obj = (JSONObject) object.getJSONArray("list").get(i);
-                                HealthEduEntity eduEntity = new HealthEduEntity();
-                                eduEntity.setItem_id(obj.getInt("item_id"));
-                                eduEntity.setTitle(obj.getString("title"));
-                                eduEntity.setDescription(obj.getString("description"));
-                                eduEntity.setCreate_at(obj.getString("create_at"));
-                                eduEntity.setCreate_by(obj.getString("create_by"));
-                                eduEntity.setContent_url(obj.getString("content_url"));
-                                eduEntity.setImage_url(obj.getString("image_url"));
-                                AppData.eduEntityList.add(eduEntity);
-                                educationAdapter.addData(AppData.eduEntityList);
-
-                                dbTool.deleteHealthEduData();
-                                dbTool.saveHealthEduData(AppData.eduEntityList);
-                                Log.i(TAG, "--------> length < newCounts");
-                            }
-                            AppData.eduCounts = length;
+                            String errorMsg = object.getString("error_msg");
+                            Toast.makeText(getContext(), errorMsg, Toast.LENGTH_SHORT).show();
                         }
-                    } else {
-                        String errorMsg = object.getString("error_msg");
-                        Toast.makeText(getContext(), errorMsg, Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
                 }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), "网络不可用", Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Toast.makeText(getContext(), "网络不可用", Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
 
-                return params;
-            }
-        };
-        VolleySingleton.getInstace().addRequest(stringRequest);
+                    return params;
+                }
+            };
+            VolleySingleton.getInstace().addRequest(stringRequest);
 
     }
 

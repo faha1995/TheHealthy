@@ -14,6 +14,7 @@ import com.seimun.mobileHealth.entity.HealthEduEntity;
 import com.seimun.mobileHealth.tools.ChangeString;
 import com.seimun.mobileHealth.volley.VolleySingleton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,6 +41,9 @@ public class HealthEducationAdapter extends BaseAdapter {
 
     // 刷新后添加数剧的方法
     public void addRefreshData(HealthEduEntity eduEntity) {
+        if (eduEntityList == null) {
+            eduEntityList = new ArrayList<>();
+        }
         this.eduEntityList.add(0, eduEntity);
         notifyDataSetChanged();
     }
