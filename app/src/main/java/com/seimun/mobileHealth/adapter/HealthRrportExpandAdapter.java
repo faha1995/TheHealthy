@@ -1,6 +1,7 @@
 package com.seimun.mobileHealth.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -132,7 +133,7 @@ public class HealthRrportExpandAdapter extends BaseExpandableListAdapter {
             childHolder.clinicText = (TextView) convertView.findViewById(R.id.adapter_health_report_clinic);
             childHolder.doctorText = (TextView) convertView.findViewById(R.id.adapter_health_report_doctor);
             childHolder.timeText = (TextView) convertView.findViewById(R.id.text_healthReport_adapter_time);
-
+            childHolder.cardView = (CardView) convertView.findViewById(R.id.cardView_health_report_item);
             convertView.setTag(childHolder);
         } else {
             childHolder = (ChildViewHolder) convertView.getTag();
@@ -141,7 +142,11 @@ public class HealthRrportExpandAdapter extends BaseExpandableListAdapter {
         childHolder.doctorText.setText(childs.get(groupPosition).get(childPosition).getProvider());
         childHolder.clinicText.setText(childs.get(groupPosition).get(childPosition).getClinic());
         childHolder.timeText.setText(childs.get(groupPosition).get(childPosition).getServiceTime());
-
+//        为了让最后一个的childitem 与下面的groupitem有些距离
+//        if (childs.get(groupPosition).size() == childPosition + 1) {
+//            Log.i("SSS","------------------>"+childs.get(groupPosition).get(childPosition).getTitle());
+//       childHolder.cardView.setContentPadding(0,0,0,15);
+//        }
         return convertView;
     }
 
@@ -160,5 +165,6 @@ public class HealthRrportExpandAdapter extends BaseExpandableListAdapter {
 
     class ChildViewHolder {
         TextView titleText, clinicText, doctorText, timeText;
+        CardView cardView;
     }
 }

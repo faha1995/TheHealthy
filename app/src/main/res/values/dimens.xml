@@ -13,8 +13,9 @@
     <dimen name="fragment_information_linear_marginLeft">10dp</dimen>
     <dimen name="textSize_biger">18sp</dimen>
     <dimen name="text_margin_title">10dp</dimen>
-    <dimen name="health_report_adapter_cardView_margin">5dp</dimen>
-    <dimen name="adapter_health_report_view_marginLeft_tight">10dp</dimen>
+    <dimen name="health_report_adapter_cardView_marginTop">5dp</dimen>
+    <dimen name="health_report_adapter_cardView_marginSide">10dp</dimen>
+    <dimen name="adapter_health_report_view_marginLeft_right">10dp</dimen>
     <dimen name="adapter_health_report_title_textSize">17sp</dimen>
     <dimen name="adapter_health_report_purpose_textSize">16sp</dimen>
     <dimen name="adapter_health_report_doctor_textSize">15sp</dimen>
@@ -34,4 +35,7 @@
     <dimen name="adapter_health_report_time_textSize">13sp</dimen>
     <dimen name="health_report_infor_secondTitle_textSize">15sp</dimen>
     <dimen name="health_infor_second_titleSize">15sp</dimen>
+    <dimen name="appointment_descrip_marginTop">5dp</dimen>
+    <dimen name="appointment_title_textsize">18sp</dimen>
+    <dimen name="appointment_descrip_textsize">15sp</dimen>
 </resources>

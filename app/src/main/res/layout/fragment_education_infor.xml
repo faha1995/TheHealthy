@@ -20,7 +20,7 @@
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/health_report_adapter_cardView_margin"
+                android:layout_margin="@dimen/health_report_adapter_cardView_marginTop"
                 app:cardBackgroundColor="@color/colorWhite"
                 app:cardCornerRadius="10dp">
 

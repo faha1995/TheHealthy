@@ -7,11 +7,12 @@
 
 
     <android.support.v7.widget.CardView
+        android:id="@+id/cardView_health_report_item"
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:layout_marginLeft="@dimen/health_report_adapter_cardView_margin"
-        android:layout_marginRight="@dimen/health_report_adapter_cardView_margin"
-        android:layout_marginTop="@dimen/health_report_adapter_cardView_margin"
+        android:layout_marginLeft="@dimen/health_report_adapter_cardView_marginSide"
+        android:layout_marginRight="@dimen/health_report_adapter_cardView_marginSide"
+        android:layout_marginTop="@dimen/health_report_adapter_cardView_marginTop"
         app:cardBackgroundColor="@color/colorWhite"
         app:cardCornerRadius="10dp">
 
@@ -43,8 +44,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginLeft="@dimen/adapter_health_report_view_marginLeft_tight"
-                android:layout_marginRight="@dimen/adapter_health_report_view_marginLeft_tight"
+                android:layout_marginLeft="@dimen/adapter_health_report_view_marginLeft_right"
+                android:layout_marginRight="@dimen/adapter_health_report_view_marginLeft_right"
                 android:background="@color/fragmentBackGround" />
 
             <!--中间部分-->
@@ -96,8 +97,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginLeft="@dimen/adapter_health_report_view_marginLeft_tight"
-                android:layout_marginRight="@dimen/adapter_health_report_view_marginLeft_tight"
+                android:layout_marginLeft="@dimen/adapter_health_report_view_marginLeft_right"
+                android:layout_marginRight="@dimen/adapter_health_report_view_marginLeft_right"
                 android:background="@color/fragmentBackGround" />
 
             <!-- 下半部分-->

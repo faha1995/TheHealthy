@@ -15,6 +15,7 @@ import com.seimun.mobileHealth.R;
 import com.seimun.mobileHealth.application.BaseApplication;
 import com.seimun.mobileHealth.entity.AppData;
 import com.seimun.mobileHealth.entity.ServiceToUiEntity;
+import com.seimun.mobileHealth.fragment.AppointmentFragment;
 import com.seimun.mobileHealth.fragment.HealthEducationFragment;
 import com.seimun.mobileHealth.fragment.PersonalFragment;
 
@@ -44,18 +45,26 @@ public class MainActivity extends BaseActivity {
                 .inflate(R.layout.tabwidget_infor, null);
         spec0.setIndicator(inforView);
         spec0.setContent(R.id.inforView);
-
-
         mTabHost.addTab(spec0);
 
         TabHost.TabSpec spec1 = mTabHost.newTabSpec("spec1");
-        View personalView = LayoutInflater.from(this)
-                .inflate(R.layout.tabwidget_personal, null);
-        spec1.setIndicator(personalView);
-        spec1.setContent(R.id.personalView);
+        View appointmentView = LayoutInflater.from(this)
+                .inflate(R.layout.tabwidget_appointment, null);
+        spec1.setIndicator(appointmentView);
+        spec1.setContent(R.id.appointmentView);
         mTabHost.addTab(spec1);
 
+        TabHost.TabSpec spec2 = mTabHost.newTabSpec("spec2");
+        View personalView = LayoutInflater.from(this)
+                .inflate(R.layout.tabwidget_personal, null);
+        spec2.setIndicator(personalView);
+        spec2.setContent(R.id.personalView);
+        mTabHost.addTab(spec2);
+
+
+
         replaceFragmentNoBacStack(R.id.inforView, new HealthEducationFragment());
+        replaceFragmentNoBacStack(R.id.appointmentView, new AppointmentFragment());
         replaceFragmentNoBacStack(R.id.personalView, new PersonalFragment());
 
         BaseApplication.addActivity(new MainActivity());

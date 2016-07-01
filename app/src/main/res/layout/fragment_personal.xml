@@ -1,35 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/fragmentBackGround">
-<FrameLayout
-    android:id="@+id/fragment_personal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
+
+    <FrameLayout
+        android:id="@+id/fragment_personal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabLayout_per"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            app:tabTextAppearance="@style/MyTabLayoutTextAppearanceInverse"
-            app:tabIndicatorColor="@color/mainColor"
-            app:tabSelectedTextColor="@color/tablayout_selected_color"
-            app:tabTextColor="@color/secondaryColor"
-            android:background="@color/colorWhite"/>
+        android:layout_height="match_parent">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewPager_per"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="10"
-            />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    </LinearLayout>
-</FrameLayout>
-    </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/relative_personal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@color/mainColor">
+
+                <TextView
+                    android:id="@+id/text_main_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/main_mainTitle"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="9"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tabLayout_per"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorWhite"
+                    app:tabIndicatorColor="@color/mainColor"
+                    app:tabSelectedTextColor="@color/tablayout_selected_color"
+                    app:tabTextAppearance="@style/MyTabLayoutTextAppearanceInverse"
+                    app:tabTextColor="@color/secondaryColor" />
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewPager_per"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="12" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</RelativeLayout>

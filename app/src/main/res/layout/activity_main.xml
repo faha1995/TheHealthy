@@ -6,42 +6,18 @@
     tools:context="com.seimun.mobileHealth.activity.MainActivity"
     android:orientation="vertical"
     android:background="@color/colorWhite">
-    <RelativeLayout
-        android:id="@+id/relative_main"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/mainColor">
-        <TextView
-            android:id="@+id/text_main_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/main_mainTitle"
-            android:textColor="@color/colorWhite"
-            android:layout_centerInParent="true"
-            android:textSize="20sp"/>
 
-    </RelativeLayout>
 <TabHost
     android:id="@android:id/tabhost"
     android:layout_below="@+id/relative_main"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="9">
+    android:layout_height="match_parent"
+    >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TabWidget
-            android:id="@android:id/tabs"
-            android:layout_alignParentBottom="true"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:showDividers="none"
-            android:background="#FFF3F9F1"
-            >
 
-        </TabWidget>
         <FrameLayout
             android:id="@android:id/tabcontent"
             android:layout_above="@android:id/tabs"
@@ -52,10 +28,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"></FrameLayout>
             <FrameLayout
+                android:id="@+id/appointmentView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></FrameLayout>
+            <FrameLayout
                 android:id="@+id/personalView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"></FrameLayout>
         </FrameLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:scaleType="fitXY"
+            android:layout_alignParentBottom="true"
+            android:src="@mipmap/tab_background"
+            android:layout_centerInParent="true"
+            />
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="50dp"
+            android:showDividers="none"
+            android:background="#FFF3F9F1"
+            >
+
+        </TabWidget>
     </RelativeLayout>
 </TabHost>
 
