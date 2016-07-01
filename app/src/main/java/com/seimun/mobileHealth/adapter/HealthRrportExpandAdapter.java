@@ -28,6 +28,7 @@ public class HealthRrportExpandAdapter extends BaseExpandableListAdapter {
 
 
     public HealthRrportExpandAdapter(Context context, List<String> groups, List<List<Summary>> childs) {
+
         this.groups = groups;
         this.childs = childs;
         this.context = context;
@@ -41,6 +42,7 @@ public class HealthRrportExpandAdapter extends BaseExpandableListAdapter {
 
     // 添加groups和childs集合的方法
     public void addToReportGroupsChilds(List<String> groups,List<List<Summary>> childs) {
+        Log.i("addToReportGroupsChilds","----------->  Groups.size: "+ groups.size());
         this.groups = groups;
         this.childs = childs;
         notifyDataSetChanged();
@@ -92,6 +94,7 @@ public class HealthRrportExpandAdapter extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         GroupViewHolder groupHolder;
+
         if (convertView == null) {
             convertView = LayoutInflater.from(context)
                     .inflate(R.layout.fragment_health_report_group, parent, false);

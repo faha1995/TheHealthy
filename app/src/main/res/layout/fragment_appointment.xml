@@ -7,260 +7,278 @@
     android:orientation="vertical">
 
 
-    <RelativeLayout
-        android:id="@+id/relative_appointment"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@color/mainColor">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-        <TextView
-            android:id="@+id/text_main_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/main_mainTitle"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    </RelativeLayout>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_margin="5dp"
+                android:background="#d5d5d6"
+                app:cardCornerRadius="10dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="9"
-        android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-        <!--<android.support.v7.widget.CardView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="0dp"-->
-            <!--android:layout_margin="5dp"-->
-            <!--android:layout_weight="1.5"-->
-            <!--android:background="#d5d5d6"-->
-            <!--app:cardCornerRadius="10dp">-->
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:scaleType="fitXY"
+                        android:src="@mipmap/hospital_icon" />
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:orientation="vertical">-->
-
-                <!--<ImageView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="2"-->
-                    <!--android:scaleType="fitXY"-->
-                    <!--android:src="@mipmap/hospital_icon" />-->
-
-                <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_weight="1"-->
-                    <!--android:orientation="horizontal">-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
-                    <!--<com.seimun.mobileHealth.util.RoundImageView-->
-                        <!--android:layout_width="50dp"-->
-                        <!--android:layout_height="50dp"-->
-                        <!--android:layout_gravity="center_vertical"-->
-                        <!--android:layout_marginLeft="5dp"-->
-                        <!--android:src="@mipmap/hospital_icon" />-->
+                        <com.seimun.mobileHealth.util.RoundImageView
+                            android:layout_width="50dp"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="5dp"
+                            android:src="@mipmap/hospital_icon" />
 
-                    <!--<LinearLayout-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginLeft="10dp"-->
-                        <!--android:orientation="vertical">-->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:orientation="vertical">
 
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_marginTop="5dp"-->
-                            <!--android:text="海淀区医院"-->
-                            <!--android:textColor="#555"-->
-                            <!--android:textSize="16sp" />-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="海淀区医院"
+                                android:textColor="#555"
+                                android:textSize="16sp" />
 
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_marginTop="2dp"-->
-                            <!--android:text="三甲医院"-->
-                            <!--android:textColor="#777"-->
-                            <!--android:textSize="13sp" />-->
-
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_marginTop="2dp"-->
-                            <!--android:text="可预约"-->
-                            <!--android:textColor="#44b844"-->
-                            <!--android:textSize="13sp" />-->
-                    <!--</LinearLayout>-->
-                <!--</LinearLayout>-->
-
-            <!--</LinearLayout>-->
-
-        <!--</android.support.v7.widget.CardView>-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="0dp"-->
-            <!--android:layout_weight="1"-->
-            <!--android:orientation="horizontal">-->
-
-            <!--<android.support.v7.widget.CardView-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_marginBottom="5dp"-->
-                <!--android:layout_marginLeft="5dp"-->
-                <!--android:layout_weight="3"-->
-                <!--android:background="#ccffff"-->
-                <!--app:cardCornerRadius="10dp">-->
-
-                <!--<RelativeLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent">-->
-
-                    <!--<LinearLayout-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_centerInParent="true"-->
-                        <!--android:orientation="vertical">-->
-
-                        <!--<TextView-->
-                            <!--android:id="@+id/tv_appointment_make"-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_gravity="center"-->
-                            <!--android:drawablePadding="10dp"-->
-                            <!--android:drawableTop="@mipmap/appointment_icon"-->
-                            <!--android:text="预约挂号"-->
-                            <!--android:textColor="#000000"-->
-                            <!--android:textSize="@dimen/appointment_title_textsize" />-->
-
-                        <!--<TextView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_below="@+id/tv_appointment_make"-->
-                            <!--android:layout_centerHorizontal="true"-->
-                            <!--android:layout_marginTop="@dimen/appointment_descrip_marginTop"-->
-                            <!--android:text="不用排队，提前挂号"-->
-                            <!--android:textColor="#999999"-->
-                            <!--android:textSize="@dimen/appointment_descrip_textsize" />-->
-                    <!--</LinearLayout>-->
-                <!--</RelativeLayout>-->
-            <!--</android.support.v7.widget.CardView>-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="三甲医院"
+                                android:textColor="#44b688"
+                                android:textSize="13sp" />
 
 
-            <!--<LinearLayout-->
-                <!--android:layout_width="0dp"-->
-                <!--android:layout_height="match_parent"-->
-                <!--android:layout_weight="4"-->
-                <!--android:orientation="vertical">-->
+                        </LinearLayout>
+                    </LinearLayout>
 
-                <!--<android.support.v7.widget.CardView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_marginLeft="5dp"-->
-                    <!--android:layout_marginRight="5dp"-->
-                    <!--android:layout_weight="4"-->
-                    <!--android:background="#ccffff"-->
-                    <!--app:cardCornerRadius="10dp">-->
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
 
-                    <!--<RelativeLayout-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent">-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal">
 
-                        <!--<LinearLayout-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_centerVertical="true"-->
-                            <!--android:layout_marginLeft="10dp"-->
-                            <!--android:orientation="vertical">-->
+                <android.support.v7.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="3"
+                    android:background="#ccffff"
+                    app:cardCornerRadius="10dp">
 
-                            <!--<TextView-->
-                                <!--android:layout_width="wrap_content"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:text="预约清单"-->
-                                <!--android:textColor="#000"-->
-                                <!--android:textSize="@dimen/appointment_title_textsize" />-->
+                    <TextView
+                        android:id="@+id/tv_appointment_make"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawablePadding="5dp"
+                        android:drawableTop="@mipmap/appointment_icon"
+                        android:padding="5dp"
+                        android:text="预约挂号"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/appointment_title_textsize" />
 
-                            <!--<TextView-->
-
-                                <!--android:layout_width="wrap_content"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginTop="@dimen/appointment_descrip_marginTop"-->
-                                <!--android:text="查看预约挂号单"-->
-                                <!--android:textColor="#999999"-->
-                                <!--android:textSize="@dimen/appointment_descrip_textsize" />-->
-                        <!--</LinearLayout>-->
-
-                        <!--<ImageView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_alignParentRight="true"-->
-                            <!--android:layout_centerVertical="true"-->
-                            <!--android:src="@mipmap/appointment_list" />-->
-                    <!--</RelativeLayout>-->
-                <!--</android.support.v7.widget.CardView>-->
-
-                <!--<android.support.v7.widget.CardView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_margin="5dp"-->
-                    <!--android:layout_marginRight="1dp"-->
-                    <!--android:layout_weight="4"-->
-                    <!--android:background="#88ccffff"-->
-                    <!--app:cardCornerRadius="10dp">-->
-
-                    <!--<RelativeLayout-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="match_parent">-->
-
-                        <!--<LinearLayout-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_centerVertical="true"-->
-                            <!--android:layout_marginLeft="10dp"-->
-                            <!--android:orientation="vertical">-->
-
-                            <!--<TextView-->
-                                <!--android:layout_width="wrap_content"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:text="取消清单"-->
-                                <!--android:textColor="#000"-->
-                                <!--android:textSize="@dimen/appointment_title_textsize" />-->
-
-                            <!--<TextView-->
-
-                                <!--android:layout_width="wrap_content"-->
-                                <!--android:layout_height="wrap_content"-->
-                                <!--android:layout_marginTop="@dimen/appointment_descrip_marginTop"-->
-                                <!--android:text="查看已取消挂号单"-->
-                                <!--android:textColor="#999999"-->
-                                <!--android:textSize="@dimen/appointment_descrip_textsize" />-->
-                        <!--</LinearLayout>-->
-
-                        <!--<ImageView-->
-                            <!--android:layout_width="wrap_content"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_alignParentRight="true"-->
-                            <!--android:layout_centerVertical="true"-->
-                            <!--android:src="@mipmap/appointment_cancle" />-->
-                    <!--</RelativeLayout>-->
-
-                <!--</android.support.v7.widget.CardView>-->
-            <!--</LinearLayout>-->
-
-        <!--</LinearLayout>-->
+                </android.support.v7.widget.CardView>
 
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="0dp"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="#d5d5d6"-->
-            <!--android:orientation="horizontal">-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
 
-        <!--</LinearLayout>-->
-    </LinearLayout>
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="4"
+                        android:background="#ccffff"
+                        app:cardCornerRadius="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="预约清单"
+                                    android:textColor="#000"
+                                    android:textSize="@dimen/appointment_title_textsize" />
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="查看预约挂号单"
+                                    android:textColor="#999999"
+                                    android:textSize="@dimen/appointment_descrip_textsize" />
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:paddingBottom="8dp"
+                                android:src="@mipmap/appointment_list" />
+                        </RelativeLayout>
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="4"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="2dp"
+                        android:background="#88ccffff"
+                        app:cardCornerRadius="10dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginLeft="10dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="取消清单"
+                                    android:textColor="#000"
+                                    android:textSize="@dimen/appointment_title_textsize" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="查看已取消挂号单"
+                                    android:textColor="#999999"
+                                    android:textSize="@dimen/appointment_descrip_textsize" />
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@mipmap/appointment_cancle" />
+                        </RelativeLayout>
+
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="85dp"
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:src="@mipmap/appointment_notic_icon" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1.6"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="预约注意事项"
+                                android:textColor="#99ccff"
+                               android:layout_marginLeft="20dp"
+                                android:textSize="@dimen/appointment_title_textsize" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="请用户仔细阅读注意事项"
+                                android:textColor="#999"
+                                android:textSize="@dimen/appointment_descrip_textsize" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="有疑问可拨打电话12000"
+                                android:textColor="#999"
+                                android:textSize="@dimen/appointment_descrip_textsize" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="祝您身体健康!"
+                                android:textColor="#999"
+                                android:textSize="@dimen/appointment_descrip_textsize" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
 </LinearLayout>

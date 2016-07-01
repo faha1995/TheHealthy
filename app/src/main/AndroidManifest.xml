@@ -79,12 +79,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustPan|stateHidden"/>
-        <activity
-            android:name=".activity.inforactivity.AuthentActivity"
-            android:launchMode="singleTop"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateVisible|adjustPan|stateHidden"/>
+
 
         <activity android:name="com.seimun.mobileHealth.activity.inforactivity.EducateWebViewActivity"
             android:launchMode="singleTop">

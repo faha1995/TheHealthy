@@ -43,6 +43,7 @@ public class ServicePlanAdapter extends BaseExpandableListAdapter {
 
     // 同时添加groups 和 childs 的集合
     public void addToPlanGroupsChilds(List<String> groups, List<List<PlanEntity>> childs) {
+        Log.i("addToPlanGroupsChilds", "--------->  groupCount " + groups.size());
         this.groups = groups;
         this.childs = childs;
         notifyDataSetChanged();

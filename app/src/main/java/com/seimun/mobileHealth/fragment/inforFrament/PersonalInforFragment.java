@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.seimun.mobileHealth.R;
-import com.seimun.mobileHealth.activity.inforactivity.AuthentActivity;
 import com.seimun.mobileHealth.activity.inforactivity.ChangeActivity;
 import com.seimun.mobileHealth.activity.inforactivity.LoginActivity;
 import com.seimun.mobileHealth.db.DBTool;
@@ -124,9 +123,9 @@ public class PersonalInforFragment extends BaseFatherFragment implements View.On
                 break;
             // 实名认证
             case R.id.linear_authent:
-                Intent intent = new Intent(getContext(), AuthentActivity.class);
+//                Intent intent = new Intent(getContext(), AuthentActivity.class);
 
-                startActivity(intent);
+//                startActivity(intent);
                 break;
             // 生活习惯
             case R.id.linear_personalInfor_second:

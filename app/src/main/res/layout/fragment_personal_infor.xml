@@ -109,7 +109,10 @@
                 android:id="@+id/linear_personalInfor_first"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/personal_infor_linear_width"
-                android:layout_margin="@dimen/personal_infor_list_margin"
+                android:layout_marginTop="@dimen/personal_infor_list_margin"
+                android:layout_marginLeft="@dimen/personal_infor_list_margin"
+                android:layout_marginRight="@dimen/personal_infor_list_margin"
+                android:layout_marginBottom="@dimen/personal_infor_margin_buttom"
                 android:background="@color/colorWhite"
                 android:orientation="horizontal">
 
@@ -128,7 +131,9 @@
                 android:id="@+id/linear_authent"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/personal_infor_linear_width"
-                android:layout_margin="@dimen/personal_infor_list_margin"
+                android:layout_marginLeft="@dimen/personal_infor_list_margin"
+                android:layout_marginRight="@dimen/personal_infor_list_margin"
+                android:layout_marginBottom="@dimen/personal_infor_margin_buttom"
                 android:background="@color/colorWhite"
                 android:orientation="horizontal">
 
@@ -147,9 +152,9 @@
                 android:id="@+id/linear_personalInfor_third"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/personal_infor_linear_width"
-                android:layout_marginBottom="@dimen/personal_infor_list_margin"
                 android:layout_marginLeft="@dimen/personal_infor_list_margin"
                 android:layout_marginRight="@dimen/personal_infor_list_margin"
+                android:layout_marginBottom="@dimen/personal_infor_margin_buttom"
                 android:background="@color/colorWhite"
                 android:orientation="horizontal">
 
@@ -171,6 +176,7 @@
                 android:layout_height="@dimen/personal_infor_linear_width"
                 android:layout_marginLeft="@dimen/personal_infor_list_margin"
                 android:layout_marginRight="@dimen/personal_infor_list_margin"
+                android:layout_marginBottom="@dimen/personal_infor_margin_buttom"
                 android:background="@color/colorWhite"
                 android:orientation="horizontal">
 
@@ -193,7 +199,6 @@
                 android:layout_height="@dimen/personal_infor_linear_width"
                 android:layout_marginLeft="@dimen/personal_infor_list_margin"
                 android:layout_marginRight="@dimen/personal_infor_list_margin"
-                android:layout_marginTop="@dimen/personal_infor_list_margin"
                 android:background="@color/colorWhite"
                 android:orientation="horizontal"
                 android:visibility="gone">
@@ -215,9 +220,10 @@
                 android:id="@+id/linear_personalInfor_fourth"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/personal_infor_linear_width"
+                android:layout_marginTop="@dimen/personal_infor_list_margin"
                 android:layout_marginLeft="@dimen/personal_infor_list_margin"
                 android:layout_marginRight="@dimen/personal_infor_list_margin"
-                android:layout_marginTop="@dimen/personal_infor_list_margin"
+                android:layout_marginBottom="@dimen/personal_infor_margin_buttom"
                 android:background="@color/colorWhite"
                 android:orientation="horizontal">
 
@@ -244,6 +250,10 @@
                 android:text="退出"
                 android:textColor="@color/colorWhite"
                 android:textSize="22sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"/>
         </LinearLayout>
     </ScrollView>
 

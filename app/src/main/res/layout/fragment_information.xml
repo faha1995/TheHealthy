@@ -74,7 +74,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/fragment_information_linear_marginLeft"
-        android:layout_marginRight="@dimen/personal_infor_list_margin"
+        android:layout_marginRight="@dimen/fragment_information_linear_marginLeft"
         android:layout_marginTop="@dimen/fragment_information_linear_marginTop"
         android:background="@color/colorWhite"
         android:orientation="vertical">

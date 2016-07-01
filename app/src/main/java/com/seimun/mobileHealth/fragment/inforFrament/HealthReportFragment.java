@@ -166,19 +166,14 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
     }
 
     private void initNetWork() {
-        AppData.hrGroups.clear();
-        AppData.hrChilds.clear();
-        Log.i(TAG, "initNetWork: ");
-        if (dbTool.isLogined()) {
-
+            AppData.hrGroups.clear();
+            AppData.hrChilds.clear();
+            if (dbTool.isLogined()) {
             pleaseLoginLinear.setVisibility(View.GONE);
-
             final HashMap<String, String> user = dbTool.getUserDetails();
-
 
             final StringRequest request = new StringRequest(Request.Method.POST,
                     AppConfig.URL_SUMMARYS, new Response.Listener<String>() {
-
                 @Override
                 public void onResponse(String response) {
 
@@ -193,36 +188,47 @@ public class HealthReportFragment extends BaseFatherFragment implements SwipeRef
                         boolean error = jsonObject.getBoolean("error");
 
                         if (!error) {
-
                             // 得到一级分类的数据加入groups集合中
                             JSONArray member = jsonObject.getJSONArray("member");
+                            //TODO
                             for (int i = 0; i < member.length(); i++) {
+                                // 为了多一个隐藏并占位置的group来将底部圆形让出来
+//                                if (i == member.length()) {
+//                                    AppData.hrGroups.add(i,"aa");
+//
+//                                } else {
                                 AppData.hrGroups.add(i, member.getJSONObject(i).getString("resident"));
 
+//                                }
                                 Log.i(TAG, "------> member.length" + member.getJSONObject(i).getString("resident"));
+                            Log.i(TAG, "initnetwork : reportGroup --  " + AppData.hrGroups.size());
                             }
-                            Log.i(TAG, "initnetwork : reportGroup --  " + member.length());
 
 //                             得到一级分类对应的二级分类数据，加入childs集合中
                             JSONArray summaries = jsonObject.getJSONArray("summary");
-                            for (int i = 0; i < summaries.length(); i++) {
+
+                   for (int i = 0; i < summaries.length(); i++) {
                                 List<Summary> child = new ArrayList<>();
                                 Log.i(TAG, "---------->  summaries.length" + summaries.length() + "  " + i);
                                 JSONArray array = summaries.getJSONArray(i);
                                 Log.i(TAG, "---------->  array.length" + array.length() + "  " + i);
 
-                                for (int k = 0; k < array.length(); k++) {
+                                for (int k = 0; k < array.length() ; k++) {
                                     JSONObject item = (JSONObject) array.get(k);
                                     Summary summary = new Summary();
+//                                    if (k != array.length()) {
 
-                                    summary.setRecordId(item.getInt("record_id"));
-                                    summary.setTitle(item.getString("title"));
-                                    summary.setResident(item.getString("resident"));
-                                    summary.setClinic(item.getString("clinic"));
-                                    summary.setProvider(item.getString("provider"));
-                                    summary.setServiceTime(item.getString("service_time"));
-                                    summary.setTypeAlias(item.getString("type_alias"));
-                                    summary.setItemAlias(item.getString("item_alias"));
+
+                                        summary.setRecordId(item.getInt("record_id"));
+                                        summary.setTitle(item.getString("title"));
+                                        summary.setResident(item.getString("resident"));
+                                        summary.setClinic(item.getString("clinic"));
+                                        summary.setProvider(item.getString("provider"));
+                                        summary.setServiceTime(item.getString("service_time"));
+                                        summary.setTypeAlias(item.getString("type_alias"));
+                                        summary.setItemAlias(item.getString("item_alias"));
+
+//                                    }
                                     child.add(k, summary);
 
                                 }
